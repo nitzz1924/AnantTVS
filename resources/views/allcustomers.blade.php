@@ -68,23 +68,36 @@
                                             <td>{{ $row->customercountry }}</td>
                                             <td>{{ $row->customeraddress }}</td>
                                             <td>
-                                                <button class="btn btn-outline-primary openModalBtn"
-                                                    id="openModalBtnone" data-bs-toggle="modal"
-                                                    data-bs-target="#myModal"
-                                                    data-record-id="{{ json_encode($row) }}">View</button>
-                                            </td>
-                                            <td>
                                                 <a href="/viewbuyvehicles/{{ $row->id }}">
                                                     <button class="btn btn-outline-success" id="openModalBtnone">Buy
                                                         Vehicle</button>
                                                 </a>
                                             </td>
                                             <td>
-                                                <a href="#">
-                                                    <button class="btn btn-outline-info
-
-                                                    " id="openModalBtnone">Show my Vehicle</button>
-                                                </a>
+                                                <div class="dropdown d-inline-block">
+                                                    <button class="btn btn-soft-secondary btn-sm dropdown"
+                                                        type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                        <i class="ri-more-fill align-middle"></i>
+                                                    </button>
+                                                    <ul class="dropdown-menu dropdown-menu-end">
+                                                        <li><a href="#" data-bs-target="#myModal"
+                                                                data-record-id="{{ json_encode($row) }}"
+                                                                id="openModalBtnone" data-bs-toggle="modal"
+                                                                class="dropdown-item openModalBtn"><i
+                                                                    class="ri-eye-fill align-bottom me-2 text-muted"></i>
+                                                                View</a></li>
+                                                        <li><a class="dropdown-item edit-item-btn" href="/editcustomer/{{$row->id}}"><i
+                                                                    class="ri-pencil-fill align-bottom me-2 text-muted"></i>
+                                                                Edit</a></li>
+                                                        <li>
+                                                            <a href="/viewuservehicles/{{$row->id}}" class="dropdown-item remove-item-btn">
+                                                                <i
+                                                                    class="ri-car-fill align-bottom me-2 text-muted"></i>All
+                                                                Vehicles
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -153,5 +166,5 @@
     </script>
 
     <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI/
-                                    =" crossorigin="anonymous"></script>
+                                        =" crossorigin="anonymous"></script>
 </x-app-layout>

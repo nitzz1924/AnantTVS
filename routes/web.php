@@ -1,5 +1,6 @@
 <?php
 #-- -----------------------------------------------🙏JAI SHREE RAM🚩------------------------------------------------------------- --
+use App\Http\Controllers\EditController;
 use App\Http\Controllers\MasterController;
 use App\Http\Controllers\StoreController;
 use Illuminate\Support\Facades\Route;
@@ -28,6 +29,7 @@ Route::get('/viewvehicles', [ViewController::class, 'viewvehicles'])->name('view
 Route::get('/viewaddcustomer', [ViewController::class,'viewaddcustomer'])->name('viewaddcustomer');
 Route::get('/viewallcustomers', [ViewController::class,'viewallcustomers'])->name('viewallcustomers');
 Route::get('/viewbuyvehicles/{id}', [ViewController::class,'viewbuyvehicles'])->name('viewbuyvehicles');
+Route::get('/viewuservehicles/{id}', [ViewController::class,'viewuservehicles'])->name('viewuservehicles');
 
 
 
@@ -48,4 +50,8 @@ Route::get('/getmastercatajax/{selectedCat}', [MasterController::class, 'getmast
 Route::post('/updatestatus', [StoreController::class, 'updatestatus'])->name('updatestatus');
 Route::get('/ajaxvehicleshow/{id}',[StoreController::class, 'ajaxvehicleshow'])->name('ajaxvehicleshow');
 Route::get('/filtervehicle/{selectedtype}',[StoreController::class,'filtervehicle'])->name('filtervehicle');
+
+//Edit Routes
+Route::get('/editcustomer/{id}',[EditController::class,'editcustomer'])->name('editcustomer');
+Route::post('/updatecustomer',[EditController ::class,'updatecustomer'])->name('updatecustomer');
 

@@ -87,7 +87,7 @@
                             </div>
                         @endif
                         <div class="card-body">
-                            <table class="table table-nowrap">
+                            <table class="table table-nowrap table-bordered text-center">
                                 <thead>
                                     <tr>
                                         <th scope="col">ID</th>
