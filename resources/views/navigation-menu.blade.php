@@ -1,0 +1,126 @@
+
+<div id="scrollbar">
+    <div class="container-fluid">
+        <div id="two-column-menu">
+        </div>
+        <ul class="navbar-nav" id="navbar-nav">
+            <li class="menu-title"><span data-key="t-menu">Menu</span></li>
+            <li class="nav-item">
+                <a class="nav-link menu-link" href="{{ route('dashboard') }}" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
+                    <i class="bx bxs-dashboard"></i> <span>Dashboard</span>
+                </a>
+                {{-- <div class="collapse menu-dropdown" id="sidebarDashboards">
+                    <ul class="nav nav-sm flex-column">
+                        <li class="nav-item">
+                            <a href="dashboard-analytics.html" class="nav-link" data-key="t-analytics"> Analytics </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="dashboard-crm.html" class="nav-link" data-key="t-crm"> CRM </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="index.html" class="nav-link" data-key="t-ecommerce"> Ecommerce </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="dashboard-crypto.html" class="nav-link" data-key="t-crypto"> Crypto </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="dashboard-projects.html" class="nav-link" data-key="t-projects"> Projects </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="dashboard-nft.html" class="nav-link" data-key="t-nft"> NFT</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="dashboard-job.html" class="nav-link" data-key="t-job">Job</a>
+                        </li>
+                    </ul>
+                </div> --}}
+            </li> <!-- end Dashboard Menu -->
+
+            <li class="nav-item">
+                <a class="nav-link menu-link" href="#sidebarLayouts" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarLayouts">
+                    <i class="bx bx-layout"></i><span data-key="t-layouts">Master</span>
+                </a>
+                <div class="collapse menu-dropdown" id="sidebarLayouts">
+                    <ul class="nav nav-sm flex-column">
+                        <li class="nav-item">
+                            <a href="{{route('viewmaster')}}" class="nav-link">Add Master</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('viewsubmaster')}}" class="nav-link">Add Sub-Master</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link menu-link" href="#sidebarLayoutsone" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarLayoutsone">
+                    <i class="bx bx-car"></i><span data-key="t-layouts">Vehicle</span>
+                </a>
+                <div class="collapse menu-dropdown" id="sidebarLayoutsone">
+                    <ul class="nav nav-sm flex-column">
+                        <li class="nav-item">
+                            <a href="{{route('viewaddvehicle')}}" class="nav-link">Add Vehicle</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('viewvehicles')}}" class="nav-link">All Vehicles</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link menu-link" href="#sidebarLayoutstwo" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarLayoutstwo">
+                    <i class="bx bx-user"></i><span data-key="t-layouts">Customer</span>
+                </a>
+                <div class="collapse menu-dropdown" id="sidebarLayoutstwo">
+                    <ul class="nav nav-sm flex-column">
+                        <li class="nav-item">
+                            <a href="{{route('viewaddcustomer')}}" class="nav-link">Add Customer</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('viewallcustomers')}}" class="nav-link">All Customers</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+            {{-- <li class="nav-item">
+                <a class="nav-link menu-link" href="#sidebarMultilevel" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarMultilevel">
+                    <i class="bx bx-sitemap"></i> <span data-key="t-multi-level">Multi Level</span>
+                </a>
+                <div class="collapse menu-dropdown" id="sidebarMultilevel">
+                    <ul class="nav nav-sm flex-column">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-key="t-level-1.1"> Level 1.1 </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#sidebarAccount" class="nav-link" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarAccount" data-key="t-level-1.2"> Level 1.2
+                            </a>
+                            <div class="collapse menu-dropdown" id="sidebarAccount">
+                                <ul class="nav nav-sm flex-column">
+                                    <li class="nav-item">
+                                        <a href="#" class="nav-link" data-key="t-level-2.1"> Level 2.1 </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#sidebarCrm" class="nav-link" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarCrm" data-key="t-level-2.2"> Level 2.2
+                                        </a>
+                                        <div class="collapse menu-dropdown" id="sidebarCrm">
+                                            <ul class="nav nav-sm flex-column">
+                                                <li class="nav-item">
+                                                    <a href="#" class="nav-link" data-key="t-level-3.1"> Level 3.1 </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="#" class="nav-link" data-key="t-level-3.2"> Level 3.2 </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </li> --}}
+
+        </ul>
+    </div>
+    <!-- Sidebar -->
+</div>
