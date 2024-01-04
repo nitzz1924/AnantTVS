@@ -29,7 +29,8 @@ class ViewController extends Controller
     public function viewaddvehicle()
     {
         $masterdata = Master::where('type', '=', 'Vehicle')->get();
-        return view('addvehicle', compact('masterdata'));
+        $masterdatacolor = Master::where('type', '=', 'color')->get();
+        return view('addvehicle', compact('masterdata', 'masterdatacolor'));
     }
 
     public function viewvehicles()
@@ -54,21 +55,34 @@ class ViewController extends Controller
         $customerid = $id;
         $masterdata = Master::where('type', '=', 'vehicle')->get();
         $mastercolor = Master::where('type', '=', 'color')->get();
-        return view('buyvehicle', compact('masterdata', 'mastercolor', 'customerid'));
+        $vehicleid = Vehicle::pluck('id');
+        // dd($vehicleid);
+        return view('buyvehicle', compact('masterdata', 'mastercolor', 'customerid', 'vehicleid'));
     }
 
     public function viewuservehicles($id)
     {
-        $buyvehiclesdata = BuyVehicle::where('customer_id', '=', $id)->get();
-        $vehicleimage = Vehicle::get();
-        // dd($buyvehiclesdata);
+        $buyvehiclesdata = BuyVehicle::join('vehicles', 'vehicles.id', '=', 'buy_vehicles.vehicle_id')
+            ->select('buy_vehicles.*', 'vehicles.image as vehicleImage', 'vehicles.name as vehicleName', 'vehicles.discription as vehicleDis','vehicles.modelno as vehicleModel')
+            ->where('buy_vehicles.customer_id', $id)
+            ->get();
+
         if ($buyvehiclesdata->isEmpty()) {
-            // Handle the case where no records are found
             return back()->with('error', 'no records found..!!!!');
         } else {
             // Process the retrieved records
-            return view('uservehicles', compact('buyvehiclesdata','vehicleimage'));
+            return view('uservehicles', compact('buyvehiclesdata'));
         }
 
+    }
+
+    public function viewvehicledetailpage($id)
+    {
+        $buyvehiclesdata = BuyVehicle::join('vehicles', 'vehicles.id', '=', 'buy_vehicles.vehicle_id')
+            ->select('buy_vehicles.*', 'vehicles.*')
+            ->where('vehicles.id', $id)
+            ->orderByDesc('buy_vehicles.created_at')
+            ->get();
+        return view('vehicledetailpage', compact('buyvehiclesdata'));
     }
 }

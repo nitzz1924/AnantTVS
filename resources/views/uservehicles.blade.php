@@ -6,7 +6,6 @@
                 <div class="col-12">
                     <div class="page-title-box d-sm-flex align-items-center justify-content-between">
                         <h4 class="mb-sm-0">Anant TVS</h4>
-
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
                                 <li class="breadcrumb-item"><a href="javascript: void(0);">My Vehicles</a></li>
@@ -18,62 +17,57 @@
             </div>
 
             <div class="row">
-                <div class="col-lg-12">
-                    @if ($mymess = Session::get('success'))
-                        <div class="alert border-0 alert-success text-center" role="alert" id="successAlert">
-                            <strong>{{ $mymess }}</strong>
-                        </div>
-                    @endif
-                    @if ($mymess = Session::get('error'))
-                        <div class="alert border-0 alert-danger text-center" role="alert" id="dangerAlert">
-                            <strong>{{ $mymess }}</strong>
-                        </div>
-                    @endif
-                    <div class="card">
-                        <div class="card-header align-items-center d-flex">
-                            <h4 class="card-title mb-0 flex-grow-1">My Vehicles</h4>
-                            {{-- <div class="flex-shrink-0">
-                                <div class="form-check form-switch form-switch-right form-switch-md">
-                                    <a href="{{ route('viewallcustomers') }}"><button
-                                            type="button"class="btn btn-outline-primary waves-effect waves-light btn-sm">View
-                                            Customers</button></a>
-                                </div>
-                            </div> --}}
-                        </div><!-- end card header -->
-                        <div class="card-body">
-                            <div class="live-preview">
-                                @foreach ($buyvehiclesdata as $row)
+                @foreach ($buyvehiclesdata as $row)
+                    <div class="col-lg-4">
+                        <div class="card rounded border border-1">
+                            <div class="card-body">
+                                <div class="live-preview">
                                     <div class="d-flex position-relative">
-                                        <img src="assets/images/users/avatar-3.jpg"
-                                            class="flex-shrink-0 me-3 avatar-xl rounded" alt="..." />
-                                        <div>
-                                            <h5 class="mt-0">{{ $row->vehiclename }}</h5>
-                                            <p>This is some placeholder content for the custom component. It is intended
-                                                to mimic what some real-world content would look like, and we're using
-                                                it here to give the component a bit of body and size.</p>
-                                            <a href="#" class="stretched-link">View More</a>
+                                        @php
+                                            $imagePaths = explode(',', $row->vehicleImage);
+                                            // dd($imagePaths);
+                                            $firstImagePath = $imagePaths[0];
+                                        @endphp
+                                        <img src="{{ asset($firstImagePath) }}"
+                                            class="flex-shrink-0 me-3 avatar-xl rounded border border-1 p-2"
+                                            alt="..." />
+                                        <div class="">
+                                            <h5 class="mt-0">{{ $row->vehicleName }}</h5>
+                                            <p>{{ $cutString = substr($row->vehicleDis, 0, 50) }}</p>
+                                            <a href="/viewvehicledetailpage/{{ $row->vehicle_id }}"
+                                                class="fs-6 badge rounded-pill bg-primary-subtle text-primary p-2">More
+                                                Details</a>&nbsp;
+                                            @php
+                                                $txt = $row->rcnumber == null ? 'RC not available' : 'RC available';
+                                                $class = $row->rcnumber != null ? 'badge rounded-pill bg-success' : 'badge rounded-pill bg-danger';
+
+                                                $Insurance = $row->insuranceid == null ? 'Insurance not available' : 'Insurance available';
+                                                $classInsurance = $row->insuranceid != null ? 'badge rounded-pill bg-success' : 'badge rounded-pill bg-danger';
+
+                                                $Invoice = $row->invoicenumber == null ? 'Invoice not available' : 'Invoice available';
+                                                $classInvoice = $row->invoicenumber != null ? 'badge rounded-pill bg-success' : 'badge rounded-pill bg-danger';
+                                            @endphp
+                                            &nbsp;<span class="{{ $class }} p-2">{{ $txt }}</span>
+                                            &nbsp;<span class="{{ $classInsurance }} p-2">{{ $Insurance }}</span><br>
+                                            &nbsp;<span class="{{ $classInvoice }} p-2 mt-2">{{ $Invoice }}</span>
                                         </div>
                                     </div>
-                                @endforeach
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
-    {{-- @php
-                                            $imagePaths = explode(',', $recordId->image);
-                                            $firstImagePath = $imagePaths[0];
-                                        @endphp --}}
     <script>
-        setTimeout(function() {
-            $('#successAlert').fadeOut('slow');
-        }, 2000);
+        // setTimeout(function() {
+        //     $('#successAlert').fadeOut('slow');
+        // }, 2000);
 
-        setTimeout(function() {
-            $('#dangerAlert').fadeOut('slow');
-        }, 2000);
+        // setTimeout(function() {
+        //     $('#dangerAlert').fadeOut('slow');
+        // }, 2000);
     </script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </x-app-layout>

@@ -85,8 +85,15 @@
                                         <div class="col-lg-4 col-md-6">
                                             <div>
                                                 <label for="placeholderInput" class="form-label">Vehicle Color</label>
-                                                <input type="text" class="form-control" id="placeholderInput"
-                                                    placeholder="enter color" name="color">
+                                                <select name="color" class="form-select mb-3"
+                                                    aria-label="Default select example" id="">
+                                                    <option value="">--select color--</option>
+                                                    @foreach ($masterdatacolor as $row)
+                                                        <option value="{{ $row->label }}">
+                                                            {{ $row->label }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="col-lg-4 col-md-6">

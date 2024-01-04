@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class BuyVehicle extends Model
 {
-    protected $fillable = ['id','customer_id','vehicletype','vehiclename','chassisnumber','color','rcnumber','invoicenumber','insuranceid','rcimage','invoiceimage','insuranceimage'] ;
+    protected $fillable = ['id','customer_id','vehicle_id','vehicletype','chassisnumber','color','rcnumber','invoicenumber','insuranceid','rcimage','invoiceimage','insuranceimage'] ;
 }

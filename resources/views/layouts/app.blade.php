@@ -33,9 +33,6 @@
 
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
-    <!-- Scripts -->
-    {{-- <link rel="stylesheet" href="{{ asset('css/app.css') }}"> --}}
-    {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
 </head>
 
 <body class="font-sans antialiased">
@@ -1054,4 +1051,5 @@
     <script src="{{asset('assets/libs/list.pagination.js/list.pagination.min.js')}}"></script>
     <script src="{{asset('assets/js/pages/listjs.init.js')}}"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="{{asset('assets/js/pages/ecommerce-product-details.init.js')}}"></script>
 </html>

@@ -97,6 +97,7 @@ class StoreController extends Controller
 
     public function createbuyvehicle(Request $req)
     {
+
         try {
             $req->validate([
                 'chassisnumber' => 'unique:buy_vehicles',
@@ -125,8 +126,8 @@ class StoreController extends Controller
 
             BuyVehicle::create([
                 'customer_id' => $req->customerid,
+                'vehicle_id' => $req->vehicle,
                 'vehicletype' => $req->type,
-                'vehiclename' => $req->vehicle,
                 'chassisnumber' => $req->chassisnumber,
                 'color' => $req->color,
                 'rcnumber' => $req->rcnumber,

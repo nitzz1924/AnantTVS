@@ -20,16 +20,24 @@ Route::middleware([
     })->name('dashboard');
 });
 
+/*
+    GIT COMMANDS........
+
+    git add .
+    git commit
+    git push
+*/
 
 //View Routes
 Route::get('/viewmaster', [ViewController::class, 'viewmaster'])->name('viewmaster');
 Route::get('/viewsubmaster', [ViewController::class, 'viewsubmaster'])->name('viewsubmaster');
 Route::get('/viewaddvehicle', [ViewController::class, 'viewaddvehicle'])->name('viewaddvehicle');
 Route::get('/viewvehicles', [ViewController::class, 'viewvehicles'])->name('viewvehicles');
-Route::get('/viewaddcustomer', [ViewController::class,'viewaddcustomer'])->name('viewaddcustomer');
-Route::get('/viewallcustomers', [ViewController::class,'viewallcustomers'])->name('viewallcustomers');
-Route::get('/viewbuyvehicles/{id}', [ViewController::class,'viewbuyvehicles'])->name('viewbuyvehicles');
-Route::get('/viewuservehicles/{id}', [ViewController::class,'viewuservehicles'])->name('viewuservehicles');
+Route::get('/viewaddcustomer', [ViewController::class, 'viewaddcustomer'])->name('viewaddcustomer');
+Route::get('/viewallcustomers', [ViewController::class, 'viewallcustomers'])->name('viewallcustomers');
+Route::get('/viewbuyvehicles/{id}', [ViewController::class, 'viewbuyvehicles'])->name('viewbuyvehicles');
+Route::get('/viewuservehicles/{id}', [ViewController::class, 'viewuservehicles'])->name('viewuservehicles');
+Route::get('/viewvehicledetailpage/{id}', [ViewController::class,'viewvehicledetailpage'])->name('viewvehicledetailpage');
 
 
 
@@ -37,8 +45,8 @@ Route::get('/viewuservehicles/{id}', [ViewController::class,'viewuservehicles'])
 Route::post('/createmaster', [MasterController::class, 'createmaster'])->name('createmaster');
 Route::post('/createsubmaster', [MasterController::class, 'createsubmaster'])->name('createsubmaster');
 Route::post('/createvehicle', [StoreController::class, 'createvehicle'])->name('createvehicle');
-Route::post('/createcustomer', [StoreController::class,'createcustomer'])->name('createcustomer');
-Route::post('/createbuyvehicle',[StoreController::class,'createbuyvehicle'])->name('createbuyvehicle');
+Route::post('/createcustomer', [StoreController::class, 'createcustomer'])->name('createcustomer');
+Route::post('/createbuyvehicle', [StoreController::class, 'createbuyvehicle'])->name('createbuyvehicle');
 
 
 //Delete Routes
@@ -48,10 +56,10 @@ Route::get('/deletemaster/{id}/{type}', [MasterController::class, 'deletemaster'
 //AJAX ROUTES
 Route::get('/getmastercatajax/{selectedCat}', [MasterController::class, 'getmastercatajax'])->name('getmastercatajax');
 Route::post('/updatestatus', [StoreController::class, 'updatestatus'])->name('updatestatus');
-Route::get('/ajaxvehicleshow/{id}',[StoreController::class, 'ajaxvehicleshow'])->name('ajaxvehicleshow');
-Route::get('/filtervehicle/{selectedtype}',[StoreController::class,'filtervehicle'])->name('filtervehicle');
+Route::get('/ajaxvehicleshow/{id}', [StoreController::class, 'ajaxvehicleshow'])->name('ajaxvehicleshow');
+Route::get('/filtervehicle/{selectedtype}', [StoreController::class, 'filtervehicle'])->name('filtervehicle');
 
 //Edit Routes
-Route::get('/editcustomer/{id}',[EditController::class,'editcustomer'])->name('editcustomer');
-Route::post('/updatecustomer',[EditController ::class,'updatecustomer'])->name('updatecustomer');
+Route::get('/editcustomer/{id}', [EditController::class, 'editcustomer'])->name('editcustomer');
+Route::post('/updatecustomer', [EditController::class, 'updatecustomer'])->name('updatecustomer');
 

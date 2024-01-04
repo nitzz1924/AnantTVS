@@ -156,12 +156,12 @@
                 url: '/filtervehicle/' + selectedtype,
                 type: 'GET',
                 success: function(response) {
-                    console.log(response);
+                    console.log("this working",response);
                     var dropdown1 = $('#vehiclenameid');
                     dropdown1.empty();
                     dropdown1.append($('<option selected>Choose...</option>'));
                     response.vehicle.forEach(function(item) {
-                        dropdown1.append($('<option value="' + item.name + '">' + item.name +
+                        dropdown1.append($('<option value="' + item.id + '">' + item.name +
                             '</option>'));
                     });
                 }
