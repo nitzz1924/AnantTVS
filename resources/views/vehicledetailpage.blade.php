@@ -91,9 +91,9 @@
                                             </div>
                                             <div class="flex-shrink-0">
                                                 <div>
-                                                    <a href="apps-ecommerce-add-product.html" class="btn btn-light"
+                                                    <a href="/editbuyvehicle/{{$value->id}}" class="btn btn-light"
                                                         data-bs-toggle="tooltip" data-bs-placement="top"
-                                                        title="Edit"><i class="ri-pencil-fill align-bottom"></i></a>
+                                                        title="Re-Upload Documents"><i class="ri-pencil-fill align-bottom"></i></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -204,6 +204,12 @@
                                                             aria-controls="nav-detail"
                                                             aria-selected="false">Details</a>
                                                     </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" id="nav-detail-tab5" data-bs-toggle="tab"
+                                                            href="#nav-document" role="tab"
+                                                            aria-controls="nav-document"
+                                                            aria-selected="false">Documents</a>
+                                                    </li>
                                                 </ul>
                                             </nav>
                                             <div class="tab-content border border-top-0 p-4" id="nav-tabContent">
@@ -228,8 +234,8 @@
                                                                             $Statusclass = $value->status != null ? 'badge bg-success-subtle text-success badge-border ' : 'badge bg-danger-subtle text-danger badge-border';
                                                                         @endphp
                                                                         <th scope="row">Status</th>
-                                                                        <td><span
-                                                                                class="{{ $Statusclass }}">{{ $Status }}</span>
+                                                                        <td>
+                                                                            <span class="{{ $Statusclass }}">{{ $Status }}</span>
                                                                         </td>
                                                                     </tr>
                                                                     <tr>
@@ -241,9 +247,10 @@
                                                         </table>
                                                     </div>
                                                 </div>
-                                                @foreach ($buyvehiclesdata as $value)
-                                                    <div class="tab-pane fade" id="nav-detail" role="tabpanel"
-                                                        aria-labelledby="nav-detail-tab">
+
+                                                <div class="tab-pane fade" id="nav-detail" role="tabpanel"
+                                                    aria-labelledby="nav-detail-tab">
+                                                    @foreach ($buyvehiclesdata as $value)
                                                         <div>
                                                             <h5 class="mb-3">
                                                                 {{ $value->name }}({{ $value->color }})</h5>
@@ -265,8 +272,78 @@
                                                                 </p>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                @endforeach
+                                                    @endforeach
+                                                </div>
+                                                <div class="tab-pane fade" id="nav-document" role="tabpanel"
+                                                    aria-labelledby="nav-detail-tab5">
+                                                    @foreach ($buyvehiclesdata as $value)
+                                                        <div class="row">
+                                                            <div class="col-lg-4">
+                                                                <div class="card border border-1">
+                                                                    <div class="card-header">
+                                                                        <h4 class="card-title mb-0 text-center">RC Document</h4>
+                                                                    </div><!-- end card header -->
+
+                                                                    <div class="card-body">
+                                                                        <div class="card border">
+                                                                            <div class="card-body">
+                                                                              <h5 class="card-title text-center">{{$value->rcimage}}</h5>
+                                                                              <div class="d-flex justify-content-center mt-2">
+                                                                                <a href="{{asset('uploads/'.$value->rcimage)}}" class="btn btn-soft-success waves-effect waves-light btn-sm" download="RC">Download</a>
+                                                                              </div>
+
+                                                                            </div>
+                                                                          </div>
+
+                                                                    </div>
+                                                                    <!-- end card body -->
+                                                                </div>
+                                                                <!-- end card -->
+                                                            </div>
+                                                            <div class="col-lg-4">
+                                                                <div class="card border border-1">
+                                                                    <div class="card-header">
+                                                                        <h4 class="card-title mb-0 text-center">Invoice Document</h4>
+                                                                    </div><!-- end card header -->
+
+                                                                    <div class="card-body">
+                                                                        <div class="card border">
+                                                                            <div class="card-body">
+                                                                              <h5 class="card-title text-center">{{$value->invoiceimage}}</h5>
+                                                                              <div class="d-flex justify-content-center mt-2">
+                                                                              <a href="{{asset('uploads/'.$value->invoiceimage)}}" class="btn btn-soft-success waves-effect waves-light btn-sm" download="Invoice">Download</a>
+                                                                              </div>
+                                                                            </div>
+                                                                          </div>
+                                                                    </div>
+                                                                    <!-- end card body -->
+                                                                </div>
+                                                                <!-- end card -->
+                                                            </div>
+                                                            <div class="col-lg-4">
+                                                                <div class="card border border-1">
+                                                                    <div class="card-header">
+                                                                        <h4 class="card-title mb-0 text-center">Insurance Document</h4>
+                                                                    </div><!-- end card header -->
+
+                                                                    <div class="card-body">
+                                                                        <div class="card border">
+                                                                            <div class="card-body">
+                                                                              <h5 class="card-title text-center">{{$value->insuranceimage}}</h5>
+                                                                              <div class="d-flex justify-content-center mt-2">
+                                                                              <a href="{{asset('uploads/'.$value->insuranceimage)}}" class="btn btn-soft-success waves-effect waves-light btn-sm" download="Insurance">Download</a>
+                                                                              </div>
+                                                                            </div>
+                                                                          </div>
+                                                                    </div>
+                                                                    <!-- end card body -->
+                                                                </div>
+                                                                <!-- end card -->
+                                                            </div>
+                                                        </div>
+                                                    @endforeach
+                                                </div>
+
                                             </div>
                                         </div>
                                         <!-- product-content -->

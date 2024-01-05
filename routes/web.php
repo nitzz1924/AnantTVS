@@ -62,4 +62,6 @@ Route::get('/filtervehicle/{selectedtype}', [StoreController::class, 'filtervehi
 //Edit Routes
 Route::get('/editcustomer/{id}', [EditController::class, 'editcustomer'])->name('editcustomer');
 Route::post('/updatecustomer', [EditController::class, 'updatecustomer'])->name('updatecustomer');
+Route::get('/editbuyvehicle/{id}',[EditController::class,'editbuyvehicle'])->name('editbuyvehicle');
+Route::post('/updatedocuments', [EditController::class, 'updatedocuments'])->name('updatedocuments');
 

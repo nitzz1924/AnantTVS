@@ -1,46 +1,42 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="lqoBWUuwRU6CPGDM4bhGDaS3bXnfsTMc1pPSFTQn">
 
-    <title>{{ config('app.name', 'Anant TVS') }}</title>
+    <title>AnantTVS</title>
 
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
     <link rel="shortcut icon" href="assets/images/favicon.ico">
 
     <!-- jsvectormap css -->
-    <link href="{{ asset('assets/libs/jsvectormap/css/jsvectormap.min.css') }}" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="{{asset('assets/libs/gridjs/theme/mermaid.min.css')}}">
+    <link href="http://127.0.0.1:8000/assets/libs/jsvectormap/css/jsvectormap.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="http://127.0.0.1:8000/assets/libs/gridjs/theme/mermaid.min.css">
     <!--Swiper slider css-->
-    <link href="{{ asset('assets/libs/swiper/swiper-bundle.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="http://127.0.0.1:8000/assets/libs/swiper/swiper-bundle.min.css" rel="stylesheet" type="text/css" />
 
     <!-- Layout config Js -->
-    <script src="{{ asset('assets/js/layout.js') }}"></script>
+    <script src="http://127.0.0.1:8000/assets/js/layout.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <!-- Bootstrap Css -->
-    <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="http://127.0.0.1:8000/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <!-- Icons Css -->
-    <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="http://127.0.0.1:8000/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
     <!-- App Css-->
-    <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="http://127.0.0.1:8000/assets/css/app.min.css" rel="stylesheet" type="text/css" />
     <!-- custom Css-->
-    <link href="{{ asset('assets/css/custom.min.css') }}" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="{{asset('assets/libs/gridjs/theme/mermaid.min.css')}}">
+    <link href="http://127.0.0.1:8000/assets/css/custom.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="http://127.0.0.1:8000/assets/libs/gridjs/theme/mermaid.min.css">
 
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
-
-    <link rel="stylesheet" href="{{asset('assets/libs/dropzone/dropzone.css')}}" type="text/css" />
-    <link rel="stylesheet" href="{{asset('assets/libs/filepond/filepond.min.css')}}" type="text/css" />
-    <link rel="stylesheet" href="{{asset('assets/libs/filepond-plugin-image-preview/filepond-plugin-image-preview.min.css')}}">
 </head>
 
 <body class="font-sans antialiased">
-    {{-- <x-jet-banner /> --}}
+    
 
     <!-- Begin page -->
     <div id="layout-wrapper">
@@ -867,14 +863,14 @@
                                     <img class="rounded-circle header-profile-user"
                                         src="assets/images/users/avatar-1.jpg" alt="Header Avatar">
                                     <span class="text-start ms-xl-2">
-                                        <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text"> {{ Auth::user()->name }}</span>
+                                        <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text"> Nitesh</span>
                                         <span class="d-none d-xl-block ms-1 fs-12 user-name-sub-text">Founder</span>
                                     </span>
                                 </span>
                             </button>
                             <div class="dropdown-menu dropdown-menu-end">
                                 <!-- item-->
-                                <h6 class="dropdown-header">Welcome  {{ Auth::user()->name }}</h6>
+                                <h6 class="dropdown-header">Welcome  Nitesh</h6>
                                 <a class="dropdown-item" href="pages-profile.html"><i
                                         class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span
                                         class="align-middle">Profile</span></a>
@@ -899,17 +895,13 @@
                                         class="mdi mdi-lock text-muted fs-16 align-middle me-1"></i> <span
                                         class="align-middle">Lock screen</span></a>
                                 <!-- Authentication -->
-                                <form method="POST" action="{{ route('logout') }}" x-data>
-                                    @csrf
-
-                                    <x-jet-responsive-nav-link class="dropdown-item" href="{{ route('logout') }}"
-                                        @click.prevent="$root.submit();">
-                                        <span  class="mdi mdi-logout text-muted fs-16 align-middle me-1">{{ __('Log Out') }}</span>
-                                    </x-jet-responsive-nav-link>
+                                <form method="POST" action="http://127.0.0.1:8000/logout" x-data>
+                                    <input type="hidden" name="_token" value="lqoBWUuwRU6CPGDM4bhGDaS3bXnfsTMc1pPSFTQn">
+                                    <a class="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 transition dropdown-item" href="http://127.0.0.1:8000/logout" @click.prevent="$root.submit();">
+    <span  class="mdi mdi-logout text-muted fs-16 align-middle me-1">Log Out</span>
+</a>
                                 </form>
-                                {{-- <a class="dropdown-item" href="auth-logout-basic.html"><i
-                                        class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span
-                                        class="align-middle" data-key="t-logout">Logout</span></a> --}}
+                                
                             </div>
                         </div>
                     </div>
@@ -972,13 +964,78 @@
                     <i class="ri-record-circle-line"></i>
                 </button>
             </div>
-            @livewire('navigation-menu')
+            <div wire:id="v8b50Nrst91QJhMAi4s9" wire:initial-data="{&quot;fingerprint&quot;:{&quot;id&quot;:&quot;v8b50Nrst91QJhMAi4s9&quot;,&quot;name&quot;:&quot;navigation-menu&quot;,&quot;locale&quot;:&quot;en&quot;,&quot;path&quot;:&quot;viewvehicledetailpage\/9&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;v&quot;:&quot;acj&quot;},&quot;effects&quot;:{&quot;listeners&quot;:[&quot;refresh-navigation-menu&quot;]},&quot;serverMemo&quot;:{&quot;children&quot;:[],&quot;errors&quot;:[],&quot;htmlHash&quot;:&quot;5fc86266&quot;,&quot;data&quot;:[],&quot;dataMeta&quot;:[],&quot;checksum&quot;:&quot;be9b47b3bcffbef36fc17bc1cc624a23e3184a79a188ca3d27d9edf8c90028cb&quot;}}" id="scrollbar">
+    <div class="container-fluid">
+        <div id="two-column-menu">
+        </div>
+        <ul class="navbar-nav" id="navbar-nav">
+            <li class="menu-title"><span data-key="t-menu">Menu</span></li>
+            <li class="nav-item">
+                <a class="nav-link menu-link" href="http://127.0.0.1:8000/dashboard" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
+                    <i class="bx bxs-dashboard"></i> <span>Dashboard</span>
+                </a>
+                
+            </li> <!-- end Dashboard Menu -->
 
+            <li class="nav-item">
+                <a class="nav-link menu-link" href="#sidebarLayouts" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarLayouts">
+                    <i class="bx bx-layout"></i><span data-key="t-layouts">Master</span>
+                </a>
+                <div class="collapse menu-dropdown" id="sidebarLayouts">
+                    <ul class="nav nav-sm flex-column">
+                        <li class="nav-item">
+                            <a href="http://127.0.0.1:8000/viewmaster" class="nav-link">Add Master</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="http://127.0.0.1:8000/viewsubmaster" class="nav-link">Add Sub-Master</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link menu-link" href="#sidebarLayoutsone" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarLayoutsone">
+                    <i class="bx bx-car"></i><span data-key="t-layouts">Vehicle</span>
+                </a>
+                <div class="collapse menu-dropdown" id="sidebarLayoutsone">
+                    <ul class="nav nav-sm flex-column">
+                        <li class="nav-item">
+                            <a href="http://127.0.0.1:8000/viewaddvehicle" class="nav-link">Add Vehicle</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="http://127.0.0.1:8000/viewvehicles" class="nav-link">All Vehicles</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link menu-link" href="#sidebarLayoutstwo" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarLayoutstwo">
+                    <i class="bx bx-user"></i><span data-key="t-layouts">Customer</span>
+                </a>
+                <div class="collapse menu-dropdown" id="sidebarLayoutstwo">
+                    <ul class="nav nav-sm flex-column">
+                        <li class="nav-item">
+                            <a href="http://127.0.0.1:8000/viewaddcustomer" class="nav-link">Add Customer</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="http://127.0.0.1:8000/viewallcustomers" class="nav-link">All Customers</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+            
+
+        </ul>
+    </div>
+    <!-- Sidebar -->
+</div>
+
+<!-- Livewire Component wire-end:v8b50Nrst91QJhMAi4s9 -->
             <div class="sidebar-background"></div>
         </div>
         <!-- Left Sidebar End -->
         <!-- Vertical Overlay-->
-        {{-- <div class="vertical-overlay"></div> --}}
+        
 
         <!-- ============================================================== -->
         <!-- Start right Content here -->
@@ -986,7 +1043,263 @@
         <div class="main-content">
 
             <main>
-                {{ $slot }}
+                <div class="page-content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                        <h4 class="mb-sm-0">Product Details</h4>
+
+                        <div class="page-title-right">
+                            <ol class="breadcrumb m-0">
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Ecommerce</a></li>
+                                <li class="breadcrumb-item active">Product Details</li>
+                            </ol>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row gx-lg-5">
+                                <div class="col-xl-4 col-md-8 mx-auto">
+                                    <div class="product-img-slider sticky-side-div">
+                                        <div class="swiper product-thumbnail-slider p-2 rounded bg-light">
+                                            <div class="swiper-wrapper">
+                                                                                                                                                                                                                                                                                <div class="swiper-slide">
+                                                                <img src="http://127.0.0.1:8000/uploads/vehicle/800.webp" alt=""
+                                                                    class="img-fluid d-block" />
+                                                            </div>
+                                                                                                                                                                                                        </div>
+                                            <div class="swiper-button-next"></div>
+                                            <div class="swiper-button-prev"></div>
+                                        </div>
+                                        <!-- end swiper thumbnail slide -->
+                                        <div class="swiper product-nav-slider mt-2">
+                                            <div class="swiper-wrapper">
+                                                                                                                                                                                                                                                                                <div class="swiper-slide">
+                                                                <div class="nav-slide-item">
+                                                                    <img src="http://127.0.0.1:8000/uploads/vehicle/800.webp" alt=""
+                                                                        class="img-fluid d-block" />
+                                                                </div>
+                                                            </div>
+                                                                                                                                                                                                        </div>
+                                        </div>
+                                        <!-- end swiper nav slide -->
+                                    </div>
+                                </div>
+                                <!-- end col -->
+
+                                <div class="col-xl-8">
+                                    <div class="mt-xl-0 mt-5">
+                                        <div class="d-flex">
+                                            <div class="flex-grow-1">
+                                                                                                    <h4>Maruti 800</h4>
+                                                                                                <div class="hstack gap-3 flex-wrap">
+                                                    <div><a href="#" class="text-primary d-block">Tommy
+                                                            Hilfiger</a></div>
+                                                    <div class="vr"></div>
+                                                    <div class="text-muted">Seller : <span
+                                                            class="text-body fw-medium">Zoetic Fashion</span>
+                                                    </div>
+                                                    <div class="vr"></div>
+                                                    <div class="text-muted">Published : <span
+                                                            class="text-body fw-medium">26 Mar, 2021</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="flex-shrink-0">
+                                                <div>
+                                                    <a href="apps-ecommerce-add-product.html" class="btn btn-light"
+                                                        data-bs-toggle="tooltip" data-bs-placement="top"
+                                                        title="Edit"><i class="ri-pencil-fill align-bottom"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex flex-wrap gap-2 align-items-center mt-3">
+                                            <div class="text-muted fs-16">
+                                                <span class="mdi mdi-star text-warning"></span>
+                                                <span class="mdi mdi-star text-warning"></span>
+                                                <span class="mdi mdi-star text-warning"></span>
+                                                <span class="mdi mdi-star text-warning"></span>
+                                                <span class="mdi mdi-star text-warning"></span>
+                                            </div>
+                                            <div class="text-muted">( 5.50k Customer Review )</div>
+                                        </div>
+
+                                                                                    <div class="row mt-4">
+                                                <div class="col-lg-3 col-sm-6">
+                                                    <div class="p-2 border border-dashed rounded">
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="avatar-sm me-2">
+                                                                <div
+                                                                    class="avatar-title rounded bg-transparent text-success fs-24">
+                                                                    &#8377;
+                                                                </div>
+                                                            </div>
+                                                            <div class="flex-grow-1">
+                                                                <p class="text-muted mb-1">Price :</p>
+                                                                <h5 class="mb-0">10000</h5>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- end col -->
+                                                <div class="col-lg-3 col-sm-6">
+                                                    <div class="p-2 border border-dashed rounded">
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="avatar-sm me-2">
+                                                                <div
+                                                                    class="avatar-title rounded bg-transparent text-success fs-24">
+                                                                    <i class="ri-clipboard-fill"></i>
+                                                                </div>
+                                                            </div>
+                                                            <div class="d-flex">
+                                                                <p class="text-muted mb-1">RC No. :</p>
+                                                                <h5 class="mb-0">1288</h5>
+                                                                <a href="#" download="your_file_name.pdf"><i class="ri-download-fill fw-bold" aria-hidden="true"></i></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- end col -->
+                                                <div class="col-lg-3 col-sm-6">
+                                                    <div class="p-2 border border-dashed rounded">
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="avatar-sm me-2">
+                                                                <div
+                                                                    class="avatar-title rounded bg-transparent text-success fs-24">
+                                                                    <i class="ri-stack-fill"></i>
+                                                                </div>
+                                                            </div>
+                                                            <div class="flex-grow-1">
+                                                                <p class="text-muted mb-1">Available Stocks :</p>
+                                                                <h5 class="mb-0">1,230</h5>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- end col -->
+                                                <div class="col-lg-3 col-sm-6">
+                                                    <div class="p-2 border border-dashed rounded">
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="avatar-sm me-2">
+                                                                <div
+                                                                    class="avatar-title rounded bg-transparent text-success fs-24">
+                                                                    <i class="ri-inbox-archive-fill"></i>
+                                                                </div>
+                                                            </div>
+                                                            <div class="flex-grow-1">
+                                                                <p class="text-muted mb-1">Total Revenue :</p>
+                                                                <h5 class="mb-0">$60,645</h5>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        
+
+                                        <div class="product-content mt-5">
+                                            <h5 class="fs-13 mb-3">Product Description :</h5>
+                                            <nav>
+                                                <ul class="nav nav-tabs nav-tabs-custom nav-success" id="nav-tab"
+                                                    role="tablist">
+                                                    <li class="nav-item">
+                                                        <a class="nav-link active" id="nav-speci-tab"
+                                                            data-bs-toggle="tab" href="#nav-speci" role="tab"
+                                                            aria-controls="nav-speci"
+                                                            aria-selected="true">Specification</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" id="nav-detail-tab" data-bs-toggle="tab"
+                                                            href="#nav-detail" role="tab"
+                                                            aria-controls="nav-detail"
+                                                            aria-selected="false">Details</a>
+                                                    </li>
+                                                </ul>
+                                            </nav>
+                                            <div class="tab-content border border-top-0 p-4" id="nav-tabContent">
+                                                <div class="tab-pane fade show active" id="nav-speci" role="tabpanel"
+                                                    aria-labelledby="nav-speci-tab">
+                                                    <div class="table-responsive">
+                                                        <table class="table mb-0">
+                                                            <tbody>
+                                                                                                                                    <tr>
+                                                                        <th scope="row" style="width: 200px;">
+                                                                            Type</th>
+                                                                        <td>Cars</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th scope="row">Color</th>
+                                                                        <td>Black</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                                                                                                <th scope="row">Status</th>
+                                                                        <td><span
+                                                                                class="badge bg-success-subtle text-success badge-border ">Enable</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th scope="row">Modal No.</th>
+                                                                        <td>201H12</td>
+                                                                    </tr>
+                                                                                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                                                                                    <div class="tab-pane fade" id="nav-detail" role="tabpanel"
+                                                        aria-labelledby="nav-detail-tab">
+                                                        <div>
+                                                            <h5 class="mb-3">
+                                                                Maruti 800(Black)</h5>
+                                                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tenetur quod voluptatibus est repellendus in minima error harum perspiciatis dolores quia! Natus omnis odit, explicabo magni ab possimus ratione suscipit enim deleniti recusandae libero laboriosam illo laudantium eum! Quod fuga a dolorem cupiditate, officia nesciunt aut, temporibus soluta odit aspernatur voluptates.</p>
+                                                            <div>
+                                                                <p class="mb-2"><i
+                                                                        class="mdi mdi-circle-medium me-1 text-muted align-middle"></i><strong>
+                                                                        Chassis Number
+                                                                        :&nbsp;</strong>201GAAA</p>
+                                                                <p class="mb-2"><i
+                                                                        class="mdi mdi-circle-medium me-1 text-muted align-middle"></i>
+                                                                    <strong> RC Number
+                                                                        :&nbsp;</strong>1288
+                                                                </p>
+                                                                <p class="mb-2"><i
+                                                                        class="mdi mdi-circle-medium me-1 text-muted align-middle"></i>
+                                                                    <strong> Insurance ID
+                                                                        :&nbsp;</strong>1288
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                                                            </div>
+                                        </div>
+                                        <!-- product-content -->
+
+                                        
+                                        <!-- end card body -->
+                                    </div>
+                                </div>
+                                <!-- end col -->
+                            </div>
+                            <!-- end row -->
+                        </div>
+                        <!-- end card body -->
+                    </div>
+                    <!-- end card -->
+                </div>
+                <!-- end col -->
+            </div>
+            <!-- end row -->
+
+        </div>
+        <!-- container-fluid -->
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
             </main>
             <footer class="footer">
                 <div class="container-fluid">
@@ -1026,41 +1339,34 @@
 
 
 
-    <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('assets/libs/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-    <script src="{{ asset('assets/libs/simplebar/simplebar.min.js')}}"></script>
-    <script src="{{ asset('assets/libs/node-waves/waves.min.js')}}"></script>
-    <script src="{{ asset('assets/libs/feather-icons/feather.min.js')}}"></script>
-    <script src="{{ asset('assets/js/pages/plugins/lord-icon-2.1.0.js')}}"></script>
-    <script src="{{ asset('assets/js/plugins.js') }}"></script>
+    <script src="http://127.0.0.1:8000/js/app.js"></script>
+    <script src="http://127.0.0.1:8000/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="http://127.0.0.1:8000/assets/libs/simplebar/simplebar.min.js"></script>
+    <script src="http://127.0.0.1:8000/assets/libs/node-waves/waves.min.js"></script>
+    <script src="http://127.0.0.1:8000/assets/libs/feather-icons/feather.min.js"></script>
+    <script src="http://127.0.0.1:8000/assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
+    <script src="http://127.0.0.1:8000/assets/js/plugins.js"></script>
 
     <!-- apexcharts -->
-    <script src="{{ asset('assets/libs/apexcharts/apexcharts.min.js') }}"></script>
+    <script src="http://127.0.0.1:8000/assets/libs/apexcharts/apexcharts.min.js"></script>
 
     <!-- Vector map-->
-    <script src="{{ asset('assets/libs/jsvectormap/js/jsvectormap.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/jsvectormap/maps/world-merc.js') }}"></script>
+    <script src="http://127.0.0.1:8000/assets/libs/jsvectormap/js/jsvectormap.min.js"></script>
+    <script src="http://127.0.0.1:8000/assets/libs/jsvectormap/maps/world-merc.js"></script>
 
     <!--Swiper slider js-->
-    <script src="{{ asset('assets/libs/swiper/swiper-bundle.min.js') }}"></script>
+    <script src="http://127.0.0.1:8000/assets/libs/swiper/swiper-bundle.min.js"></script>
 
     <!-- Dashboard init -->
-    <script src="{{ asset('assets/js/pages/dashboard-ecommerce.init.js') }}"></script>
+    <script src="http://127.0.0.1:8000/assets/js/pages/dashboard-ecommerce.init.js"></script>
 
     <!-- App js -->
-    <script src="{{ asset('assets/js/app.js') }}"></script>
-    <script src="{{asset('assets/libs/gridjs/gridjs.umd.js')}}"></script>
-    <script src="{{asset('assets/js/pages/gridjs.init.js')}}"></script>
-    <script src="{{asset('assets/libs/list.js/list.min.js')}}"></script>
-    <script src="{{asset('assets/libs/list.pagination.js/list.pagination.min.js')}}"></script>
-    <script src="{{asset('assets/js/pages/listjs.init.js')}}"></script>
+    <script src="http://127.0.0.1:8000/assets/js/app.js"></script>
+    <script src="http://127.0.0.1:8000/assets/libs/gridjs/gridjs.umd.js"></script>
+    <script src="http://127.0.0.1:8000/assets/js/pages/gridjs.init.js"></script>
+    <script src="http://127.0.0.1:8000/assets/libs/list.js/list.min.js"></script>
+    <script src="http://127.0.0.1:8000/assets/libs/list.pagination.js/list.pagination.min.js"></script>
+    <script src="http://127.0.0.1:8000/assets/js/pages/listjs.init.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-    <script src="{{asset('assets/js/pages/ecommerce-product-details.init.js')}}"></script>
-    <script src="{{asset('assets/libs/dropzone/dropzone-min.js')}}"></script>
-    <script src="{{asset('assets/libs/filepond/filepond.min.js')}}"></script>
-    <script src="{{asset('assets/libs/filepond-plugin-image-preview/filepond-plugin-image-preview.min.js')}}"></script>
-    <script src="{{asset('assets/libs/filepond-plugin-file-validate-size/filepond-plugin-file-validate-size.min.js')}}"></script>
-    <script src="{{asset('assets/libs/filepond-plugin-image-exif-orientation/filepond-plugin-image-exif-orientation.min.js')}}"></script>
-    <script src="{{asset('assets/libs/filepond-plugin-file-encode/filepond-plugin-file-encode.min.js')}}"></script>
-    <script src="{{asset('assets/js/pages/form-file-upload.init.js')}}"></script>
+    <script src="http://127.0.0.1:8000/assets/js/pages/ecommerce-product-details.init.js"></script>
 </html>
