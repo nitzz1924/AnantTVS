@@ -102,13 +102,15 @@
                                                 <div>
                                                     <label for="placeholderInput" class="form-label">RC Number</label>
                                                     <input type="text" class="form-control" id="placeholderInput"
-                                                        placeholder="enter RC Number" name="rcnumber" value="{{$row->rcnumber}}" >
+                                                        placeholder="enter RC Number" name="rcnumber"
+                                                        value="{{ $row->rcnumber }}">
                                                     <div class="mt-3">
                                                         <label for="placeholderInput" class="form-label">Upload
                                                             RC</label>
                                                         <input type="file" class="form-control" id="image"
                                                             placeholder="enter color" name="uploadrc">
-                                                        <input type="hidden" name="vehicleid" value="{{ $row->vehicle_id }}">
+                                                        <input type="hidden" name="vehicleid"
+                                                            value="{{ $row->vehicle_id }}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -117,12 +119,13 @@
                                                     <label for="placeholderInput" class="form-label">Invoice
                                                         Number</label>
                                                     <input type="text" class="form-control" id="placeholderInput"
-                                                        placeholder="enter invoice Number" name="invoicenumber" value="{{$row->invoicenumber}}">
+                                                        placeholder="enter invoice Number" name="invoicenumber"
+                                                        value="{{ $row->invoicenumber }}">
                                                     <div class="mt-3">
                                                         <label for="placeholderInput" class="form-label">Upload Invoice
                                                             Document</label>
                                                         <input type="file" class="form-control" id="image"
-                                                            placeholder="enter color" name="uploadinvoice" >
+                                                            placeholder="enter color" name="uploadinvoice">
                                                     </div>
                                                 </div>
                                             </div>
@@ -131,20 +134,22 @@
                                                     <label for="placeholderInput" class="form-label">Insurance
                                                         ID</label>
                                                     <input type="text" class="form-control" id="placeholderInput"
-                                                        placeholder="enter insurance id" name="insuranceid" value="{{$row->insuranceid}}">
+                                                        placeholder="enter insurance id" name="insuranceid"
+                                                        value="{{ $row->insuranceid }}">
                                                     <div class="mt-3">
                                                         <label for="placeholderInput" class="form-label">Upload
                                                             Insurance
                                                             Document</label>
                                                         <input type="file" class="form-control" id="image"
-                                                            placeholder="enter color" name="uploadinsurance" >
+                                                            placeholder="enter color" name="uploadinsurance">
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     @endforeach
                                     <div class="card-footer border border-0">
-                                        <button type="submit" class="btn btn-success waves-effect waves-light float-end">Update</button>
+                                        <button type="submit"
+                                            class="btn btn-success waves-effect waves-light float-end">Update</button>
                                     </div>
                                 </form>
                             </div>

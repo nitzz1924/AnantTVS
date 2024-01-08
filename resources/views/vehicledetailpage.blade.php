@@ -91,9 +91,10 @@
                                             </div>
                                             <div class="flex-shrink-0">
                                                 <div>
-                                                    <a href="/editbuyvehicle/{{$value->id}}" class="btn btn-light"
+                                                    <a href="/editbuyvehicle/{{ $value->id }}" class="btn btn-light"
                                                         data-bs-toggle="tooltip" data-bs-placement="top"
-                                                        title="Re-Upload Documents"><i class="ri-pencil-fill align-bottom"></i></a>
+                                                        title="Re-Upload Documents"><i
+                                                            class="ri-pencil-fill align-bottom"></i></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -134,17 +135,12 @@
                                                             <div class="avatar-sm me-2">
                                                                 <div
                                                                     class="avatar-title rounded bg-transparent text-success fs-24">
-                                                                    <i class="ri-clipboard-fill"></i>
+                                                                    <i class="ri-stack-fill"></i>
                                                                 </div>
                                                             </div>
-                                                            <div class="d-flex justify-content-between w-100">
-                                                                <p class="text-muted mb-1">RC Document. :</p>
-                                                                <a href="#" download="your_file_name.pdf"><i
-                                                                        class="ri-download-fill fw-bold"
-                                                                        aria-hidden="true"></i></a>
-                                                                <div>
-                                                                    <h5 class="mb-0">{{ $value->rcnumber }}</h5>
-                                                                </div>
+                                                            <div class="flex-grow-1">
+                                                                <p class="text-muted mb-1">Available Stocks :</p>
+                                                                <h5 class="mb-0">1,230</h5>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -235,7 +231,8 @@
                                                                         @endphp
                                                                         <th scope="row">Status</th>
                                                                         <td>
-                                                                            <span class="{{ $Statusclass }}">{{ $Status }}</span>
+                                                                            <span
+                                                                                class="{{ $Statusclass }}">{{ $Status }}</span>
                                                                         </td>
                                                                     </tr>
                                                                     <tr>
@@ -281,19 +278,24 @@
                                                             <div class="col-lg-4">
                                                                 <div class="card border border-1">
                                                                     <div class="card-header">
-                                                                        <h4 class="card-title mb-0 text-center">RC Document</h4>
+                                                                        <h4 class="card-title mb-0 text-center">RC
+                                                                            Document</h4>
                                                                     </div><!-- end card header -->
 
                                                                     <div class="card-body">
                                                                         <div class="card border">
                                                                             <div class="card-body">
-                                                                              <h5 class="card-title text-center">{{$value->rcimage}}</h5>
-                                                                              <div class="d-flex justify-content-center mt-2">
-                                                                                <a href="{{asset('uploads/'.$value->rcimage)}}" class="btn btn-soft-success waves-effect waves-light btn-sm" download="RC">Download</a>
-                                                                              </div>
+                                                                                <h5 class="card-title text-center">
+                                                                                    {{ $value->rcimage }}</h5>
+                                                                                <div
+                                                                                    class="d-flex justify-content-center mt-2">
+                                                                                    <a href="{{ asset('uploads/' . $value->rcimage) }}"
+                                                                                        class="btn btn-soft-success waves-effect waves-light btn-sm"
+                                                                                        download="RC">Download</a>
+                                                                                </div>
 
                                                                             </div>
-                                                                          </div>
+                                                                        </div>
 
                                                                     </div>
                                                                     <!-- end card body -->
@@ -303,18 +305,23 @@
                                                             <div class="col-lg-4">
                                                                 <div class="card border border-1">
                                                                     <div class="card-header">
-                                                                        <h4 class="card-title mb-0 text-center">Invoice Document</h4>
+                                                                        <h4 class="card-title mb-0 text-center">Invoice
+                                                                            Document</h4>
                                                                     </div><!-- end card header -->
 
                                                                     <div class="card-body">
                                                                         <div class="card border">
                                                                             <div class="card-body">
-                                                                              <h5 class="card-title text-center">{{$value->invoiceimage}}</h5>
-                                                                              <div class="d-flex justify-content-center mt-2">
-                                                                              <a href="{{asset('uploads/'.$value->invoiceimage)}}" class="btn btn-soft-success waves-effect waves-light btn-sm" download="Invoice">Download</a>
-                                                                              </div>
+                                                                                <h5 class="card-title text-center">
+                                                                                    {{ $value->invoiceimage }}</h5>
+                                                                                <div
+                                                                                    class="d-flex justify-content-center mt-2">
+                                                                                    <a href="{{ asset('uploads/' . $value->invoiceimage) }}"
+                                                                                        class="btn btn-soft-success waves-effect waves-light btn-sm"
+                                                                                        download="Invoice">Download</a>
+                                                                                </div>
                                                                             </div>
-                                                                          </div>
+                                                                        </div>
                                                                     </div>
                                                                     <!-- end card body -->
                                                                 </div>
@@ -323,18 +330,23 @@
                                                             <div class="col-lg-4">
                                                                 <div class="card border border-1">
                                                                     <div class="card-header">
-                                                                        <h4 class="card-title mb-0 text-center">Insurance Document</h4>
+                                                                        <h4 class="card-title mb-0 text-center">
+                                                                            Insurance Document</h4>
                                                                     </div><!-- end card header -->
 
                                                                     <div class="card-body">
                                                                         <div class="card border">
                                                                             <div class="card-body">
-                                                                              <h5 class="card-title text-center">{{$value->insuranceimage}}</h5>
-                                                                              <div class="d-flex justify-content-center mt-2">
-                                                                              <a href="{{asset('uploads/'.$value->insuranceimage)}}" class="btn btn-soft-success waves-effect waves-light btn-sm" download="Insurance">Download</a>
-                                                                              </div>
+                                                                                <h5 class="card-title text-center">
+                                                                                    {{ $value->insuranceimage }}</h5>
+                                                                                <div
+                                                                                    class="d-flex justify-content-center mt-2">
+                                                                                    <a href="{{ asset('uploads/' . $value->insuranceimage) }}"
+                                                                                        class="btn btn-soft-success waves-effect waves-light btn-sm"
+                                                                                        download="Insurance">Download</a>
+                                                                                </div>
                                                                             </div>
-                                                                          </div>
+                                                                        </div>
                                                                     </div>
                                                                     <!-- end card body -->
                                                                 </div>
