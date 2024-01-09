@@ -65,3 +65,9 @@ Route::post('/updatecustomer', [EditController::class, 'updatecustomer'])->name(
 Route::get('/editbuyvehicle/{id}',[EditController::class,'editbuyvehicle'])->name('editbuyvehicle');
 Route::post('/updatedocuments', [EditController::class, 'updatedocuments'])->name('updatedocuments');
 
+//Frontend-Routes
+
+Route::get('/home',[ViewController::class,'frontendhomepage'])->name('frontendhomepage');
+Route::get('/about',[ViewController::class,'frontendaboutpage'])->name('frontendaboutpage');
+Route::get('/contact',[ViewController::class,'frontendcontactpage'])->name('frontendcontactpage');
+Route::get('/vehicles',[ViewController::class,'frontendvehiclespage'])->name('frontendvehiclespage');

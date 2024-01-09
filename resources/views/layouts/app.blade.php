@@ -14,7 +14,7 @@
 
     <!-- jsvectormap css -->
     <link href="{{ asset('assets/libs/jsvectormap/css/jsvectormap.min.css') }}" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="{{asset('assets/libs/gridjs/theme/mermaid.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/libs/gridjs/theme/mermaid.min.css') }}">
     <!--Swiper slider css-->
     <link href="{{ asset('assets/libs/swiper/swiper-bundle.min.css') }}" rel="stylesheet" type="text/css" />
 
@@ -29,14 +29,14 @@
     <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" />
     <!-- custom Css-->
     <link href="{{ asset('assets/css/custom.min.css') }}" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="{{asset('assets/libs/gridjs/theme/mermaid.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/libs/gridjs/theme/mermaid.min.css') }}">
 
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
 
-    <link rel="stylesheet" href="{{asset('assets/libs/dropzone/dropzone.css')}}" type="text/css" />
-    <link rel="stylesheet" href="{{asset('assets/libs/filepond/filepond.min.css')}}" type="text/css" />
-    <link rel="stylesheet" href="{{asset('assets/libs/filepond-plugin-image-preview/filepond-plugin-image-preview.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/libs/dropzone/dropzone.css') }}" type="text/css" />
+    <link rel="stylesheet" href="{{ asset('assets/libs/filepond/filepond.min.css') }}" type="text/css" />
+    <link rel="stylesheet" href="{{ asset('assets/libs/filepond-plugin-image-preview/filepond-plugin-image-preview.min.css') }}">
 </head>
 
 <body class="font-sans antialiased">
@@ -867,14 +867,15 @@
                                     <img class="rounded-circle header-profile-user"
                                         src="assets/images/users/avatar-1.jpg" alt="Header Avatar">
                                     <span class="text-start ms-xl-2">
-                                        <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text"> {{ Auth::user()->name }}</span>
+                                        <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">
+                                            {{ Auth::user()->name }}</span>
                                         <span class="d-none d-xl-block ms-1 fs-12 user-name-sub-text">Founder</span>
                                     </span>
                                 </span>
                             </button>
                             <div class="dropdown-menu dropdown-menu-end">
                                 <!-- item-->
-                                <h6 class="dropdown-header">Welcome  {{ Auth::user()->name }}</h6>
+                                <h6 class="dropdown-header">Welcome {{ Auth::user()->name }}</h6>
                                 <a class="dropdown-item" href="pages-profile.html"><i
                                         class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span
                                         class="align-middle">Profile</span></a>
@@ -904,7 +905,8 @@
 
                                     <x-jet-responsive-nav-link class="dropdown-item" href="{{ route('logout') }}"
                                         @click.prevent="$root.submit();">
-                                        <span  class="mdi mdi-logout text-muted fs-16 align-middle me-1">{{ __('Log Out') }}</span>
+                                        <span
+                                            class="mdi mdi-logout text-muted fs-16 align-middle me-1">{{ __('Log Out') }}</span>
                                     </x-jet-responsive-nav-link>
                                 </form>
                                 {{-- <a class="dropdown-item" href="auth-logout-basic.html"><i
@@ -1027,11 +1029,11 @@
 
 
     <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('assets/libs/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-    <script src="{{ asset('assets/libs/simplebar/simplebar.min.js')}}"></script>
-    <script src="{{ asset('assets/libs/node-waves/waves.min.js')}}"></script>
-    <script src="{{ asset('assets/libs/feather-icons/feather.min.js')}}"></script>
-    <script src="{{ asset('assets/js/pages/plugins/lord-icon-2.1.0.js')}}"></script>
+    <script src="{{ asset('assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/simplebar/simplebar.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/node-waves/waves.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/feather-icons/feather.min.js') }}"></script>
+    <script src="{{ asset('assets/js/pages/plugins/lord-icon-2.1.0.js') }}"></script>
     <script src="{{ asset('assets/js/plugins.js') }}"></script>
 
     <!-- apexcharts -->
@@ -1049,18 +1051,22 @@
 
     <!-- App js -->
     <script src="{{ asset('assets/js/app.js') }}"></script>
-    <script src="{{asset('assets/libs/gridjs/gridjs.umd.js')}}"></script>
-    <script src="{{asset('assets/js/pages/gridjs.init.js')}}"></script>
-    <script src="{{asset('assets/libs/list.js/list.min.js')}}"></script>
-    <script src="{{asset('assets/libs/list.pagination.js/list.pagination.min.js')}}"></script>
-    <script src="{{asset('assets/js/pages/listjs.init.js')}}"></script>
+    <script src="{{ asset('assets/libs/gridjs/gridjs.umd.js') }}"></script>
+    <script src="{{ asset('assets/js/pages/gridjs.init.js') }}"></script>
+    <script src="{{ asset('assets/libs/list.js/list.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/list.pagination.js/list.pagination.min.js') }}"></script>
+    <script src="{{ asset('assets/js/pages/listjs.init.js') }}"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-    <script src="{{asset('assets/js/pages/ecommerce-product-details.init.js')}}"></script>
-    <script src="{{asset('assets/libs/dropzone/dropzone-min.js')}}"></script>
-    <script src="{{asset('assets/libs/filepond/filepond.min.js')}}"></script>
-    <script src="{{asset('assets/libs/filepond-plugin-image-preview/filepond-plugin-image-preview.min.js')}}"></script>
-    <script src="{{asset('assets/libs/filepond-plugin-file-validate-size/filepond-plugin-file-validate-size.min.js')}}"></script>
-    <script src="{{asset('assets/libs/filepond-plugin-image-exif-orientation/filepond-plugin-image-exif-orientation.min.js')}}"></script>
-    <script src="{{asset('assets/libs/filepond-plugin-file-encode/filepond-plugin-file-encode.min.js')}}"></script>
-    <script src="{{asset('assets/js/pages/form-file-upload.init.js')}}"></script>
+    <script src="{{ asset('assets/js/pages/ecommerce-product-details.init.js') }}"></script>
+    <script src="{{ asset('assets/libs/dropzone/dropzone-min.js') }}"></script>
+    <script src="{{ asset('assets/libs/filepond/filepond.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/filepond-plugin-image-preview/filepond-plugin-image-preview.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/filepond-plugin-file-validate-size/filepond-plugin-file-validate-size.min.js') }}">
+    </script>
+    <script
+        src="{{ asset('assets/libs/filepond-plugin-image-exif-orientation/filepond-plugin-image-exif-orientation.min.js') }}">
+    </script>
+    <script src="{{ asset('assets/libs/filepond-plugin-file-encode/filepond-plugin-file-encode.min.js') }}"></script>
+    <script src="{{ asset('assets/js/pages/form-file-upload.init.js') }}"></script>
+
 </html>

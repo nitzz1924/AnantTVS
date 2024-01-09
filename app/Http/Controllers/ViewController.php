@@ -63,7 +63,7 @@ class ViewController extends Controller
     public function viewuservehicles($id)
     {
         $buyvehiclesdata = BuyVehicle::join('vehicles', 'vehicles.id', '=', 'buy_vehicles.vehicle_id')
-            ->select('buy_vehicles.*', 'vehicles.image as vehicleImage', 'vehicles.name as vehicleName', 'vehicles.discription as vehicleDis','vehicles.modelno as vehicleModel')
+            ->select('buy_vehicles.*', 'vehicles.image as vehicleImage', 'vehicles.name as vehicleName', 'vehicles.discription as vehicleDis', 'vehicles.modelno as vehicleModel')
             ->where('buy_vehicles.customer_id', $id)
             ->get();
 
@@ -84,5 +84,23 @@ class ViewController extends Controller
             ->orderByDesc('buy_vehicles.created_at')
             ->get();
         return view('vehicledetailpage', compact('buyvehiclesdata'));
+    }
+
+    public function frontendhomepage()
+    {
+        return view('home');
+    }
+    public function frontendaboutpage()
+    {
+        return view('about');
+    }
+    public function frontendcontactpage()
+    {
+        return view('contact');
+    }
+    public function frontendvehiclespage()
+    {
+        $allvehicles = Vehicle::paginate(4);
+        return view('vehicles', compact('allvehicles'));
     }
 }
