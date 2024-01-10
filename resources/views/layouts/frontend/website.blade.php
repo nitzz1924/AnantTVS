@@ -28,9 +28,10 @@
     <link rel="stylesheet" href="{{ asset('website-assets/frontend-css/jquery.fancybox.min.css') }}" type="text/css" />
     <link rel="stylesheet" href="{{ asset('website-assets/frontend-css/style.css') }}" type="text/css" />
     <link rel="stylesheet" href="{{ asset('website-assets/frontend-css/responsive.css') }}" type="text/css" />
-    
+
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
 </head>
 
 <body>
@@ -175,7 +176,7 @@
             </div>
         </footer>
         <script src="{{ asset('js/app.js') }}"></script>
-        <script src="{{ asset('website-assets/frontend-js/jquery.min.js') }}"></script>
+        {{-- <script src="{{ asset('website-assets/frontend-js/jquery.min.js') }}"></script> --}}
         <script src="{{ asset('website-assets/frontend-js/bootstrap.min.js') }}"></script>
         <script src="{{ asset('website-assets/frontend-js/cascading-select.js') }}"></script>
         <script src="{{ asset('website-assets/frontend-js/owl.carousel.min.js') }}"></script>
@@ -185,10 +186,14 @@
 
         <!--* Theme Base, Components and Settings -->
         <script src="{{ asset('website-assets/frontend-js/theme.js') }}"></script>
-        <script src="{{ asset('website-assets/frontend-js/jquery.min.latest.js') }}"></script>
-        <script src="https://sacredthemes.net/wheels/script.js"></script> <!--this is not coming-->
+        {{-- <script src="{{ asset('website-assets/frontend-js/jquery.min.latest.js') }}"></script> --}}
+        {{-- <script src="https://sacredthemes.net/wheels/script.js"></script> <!--this is not coming--> --}}
         <!--* Theme Custom -->
-        <script src="{{ asset('website-assets/frontend-js/custom.js') }}"></script> <!--this is not coming-->
+        <script src="{{ asset('website-assets/frontend-js/custom.js') }}"></script> <!--this is not coming-->\
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
+            integrity="sha256-kvXmE4RDzPKxUtJh2SS5BUHoz3ZtSm3YDYY2P9O1BZU=" crossorigin="anonymous"></script>
         <script>
             (function(e) {
                 e.fn.circle = function(t) {
@@ -205,6 +210,8 @@
                             var n;
                             i.addClass("disable-hover"), i.stop(!0, !0).animate({
                                 rotatedeg: p.deg += p.step
+
+
                             }, {
                                 duration: 400,
                                 step: function(t) {
@@ -391,8 +398,7 @@
                 }
             }, speed);
         </script>
-        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-        <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI/=" crossorigin="anonymous"></script>
     </div>
 </body>
+
 </html>

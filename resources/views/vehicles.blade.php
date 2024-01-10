@@ -51,14 +51,16 @@
                         $firstImagePath = $imagePaths[0];
                     @endphp
                     <div class="slider">
-                        <img src="{{ asset($firstImagePath) }}" alt="" class="img-fluid">
+                        <div>
+
+                            <img src="{{ asset($firstImagePath) }}" alt="" class="img-fluid">
+                        </div>
                     </div>
                 </div>
             @endforeach
         </div>
     </div>
     <script>
-        // Initialize Slick Slider
         $(document).ready(function() {
             $('.slider').slick({
                 dots: true,
@@ -85,5 +87,4 @@
             });
         });
     </script>
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI/=" crossorigin="anonymous"></script>
 @endsection
