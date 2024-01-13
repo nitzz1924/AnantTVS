@@ -65,7 +65,7 @@
                             </p>
                         </div>
                         <div class="">
-                            <a href="{{ route('frontendaboutpage') }}" class="btn btn-primary has-icon text-center">
+                            <a href="{{ route('frontendaboutpage') }}" class="btn btn-primary text-center">
                                 <span>Read More</span>
                             </a>
                         </div>
@@ -349,6 +349,8 @@
             </div>
         </section>
         <!--* Variation Section end -->
+
+
 
         <!--* Enviornment impact section start -->
         <section id="impact" class="gallery-section  light-text"
@@ -708,6 +710,7 @@
                                     </div>
                                 </div>
                             </form>
+                            <script src="https://sacredthemes.net/wheels/js/owl.carousel.min.js"></script>
                         </div>
                     </div>
                     <div class="col-lg-3">

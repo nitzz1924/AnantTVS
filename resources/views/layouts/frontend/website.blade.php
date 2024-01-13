@@ -18,13 +18,13 @@
     <link rel="shortcut icon" href="https://sacredthemes.net/wheels/images/favicon.ico" type="image/x-icon">
     <link rel="icon" href="https://sacredthemes.net/wheels/images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
-    {{-- <link rel="stylesheet" href="{{ asset('css/app.css') }}"> --}}
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('website-assets/frontend-css/animate.css') }}" type="text/css" />
     <link rel="stylesheet" href="{{ asset('website-assets/frontend-css/fontawesome.min.css') }}" type="text/css" />
     <link rel="stylesheet" href="{{ asset('website-assets/frontend-css/bootstrap.min.css') }}" type="text/css" />
     <link rel="stylesheet" href="{{ asset('website-assets/frontend-css/bootstrap.min5.css') }}" type="text/css" />
     <link rel="stylesheet" href="{{ asset('website-assets/frontend-css/bootstrap5.css') }}" type="text/css" />
-    <link rel="stylesheet" href="{{ asset('website-assets/frontend-css/owl.carousel.min.css') }}" type="text/css" />
+    <link rel="stylesheet" href="https://sacredthemes.net/wheels/css/owl.carousel.min.css" type="text/css" />
     <link rel="stylesheet" href="{{ asset('website-assets/frontend-css/jquery.fancybox.min.css') }}" type="text/css" />
     <link rel="stylesheet" href="{{ asset('website-assets/frontend-css/style.css') }}" type="text/css" />
     <link rel="stylesheet" href="{{ asset('website-assets/frontend-css/responsive.css') }}" type="text/css" />
@@ -176,24 +176,22 @@
             </div>
         </footer>
         <script src="{{ asset('js/app.js') }}"></script>
-        {{-- <script src="{{ asset('website-assets/frontend-js/jquery.min.js') }}"></script> --}}
+        <script src="{{ asset('website-assets/frontend-js/jquery.min.js') }}"></script>
         <script src="{{ asset('website-assets/frontend-js/bootstrap.min.js') }}"></script>
         <script src="{{ asset('website-assets/frontend-js/cascading-select.js') }}"></script>
-        <script src="{{ asset('website-assets/frontend-js/owl.carousel.min.js') }}"></script>
+        <script src="https://sacredthemes.net/wheels/js/owl.carousel.min.js"></script>
         <script src="{{ asset('website-assets/frontend-js/onpagescroll.js') }}"></script>
         <script src="{{ asset('website-assets/frontend-js/wow.min.js') }}"></script>
         <script src="{{ asset('website-assets/frontend-js/fancybox/jquery.fancybox.min.js') }}"></script>
 
         <!--* Theme Base, Components and Settings -->
         <script src="{{ asset('website-assets/frontend-js/theme.js') }}"></script>
-        {{-- <script src="{{ asset('website-assets/frontend-js/jquery.min.latest.js') }}"></script> --}}
-        {{-- <script src="https://sacredthemes.net/wheels/script.js"></script> <!--this is not coming--> --}}
+        <script src="{{ asset('website-assets/frontend-js/jquery.min.latest.js') }}"></script>
+        <script src="https://sacredthemes.net/wheels/js/jquery.min.latest.js"></script>
         <!--* Theme Custom -->
-        <script src="{{ asset('website-assets/frontend-js/custom.js') }}"></script> <!--this is not coming-->\
-        <script src="https://code.jquery.com/jquery-3.7.1.min.js"
-            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
-            integrity="sha256-kvXmE4RDzPKxUtJh2SS5BUHoz3ZtSm3YDYY2P9O1BZU=" crossorigin="anonymous"></script>
+        <script src="{{ asset('website-assets/frontend-js/custom.js') }}"></script>
+
+        <script src="https://sacredthemes.net/wheels/script.js"></script>
         <script>
             (function(e) {
                 e.fn.circle = function(t) {

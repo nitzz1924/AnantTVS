@@ -37,7 +37,7 @@ Route::get('/viewaddcustomer', [ViewController::class, 'viewaddcustomer'])->name
 Route::get('/viewallcustomers', [ViewController::class, 'viewallcustomers'])->name('viewallcustomers');
 Route::get('/viewbuyvehicles/{id}', [ViewController::class, 'viewbuyvehicles'])->name('viewbuyvehicles');
 Route::get('/viewuservehicles/{id}', [ViewController::class, 'viewuservehicles'])->name('viewuservehicles');
-Route::get('/viewvehicledetailpage/{id}', [ViewController::class,'viewvehicledetailpage'])->name('viewvehicledetailpage');
+Route::get('/viewvehicledetailpage/{id}', [ViewController::class, 'viewvehicledetailpage'])->name('viewvehicledetailpage');
 
 
 
@@ -62,12 +62,12 @@ Route::get('/filtervehicle/{selectedtype}', [StoreController::class, 'filtervehi
 //Edit Routes
 Route::get('/editcustomer/{id}', [EditController::class, 'editcustomer'])->name('editcustomer');
 Route::post('/updatecustomer', [EditController::class, 'updatecustomer'])->name('updatecustomer');
-Route::get('/editbuyvehicle/{id}',[EditController::class,'editbuyvehicle'])->name('editbuyvehicle');
+Route::get('/editbuyvehicle/{id}', [EditController::class, 'editbuyvehicle'])->name('editbuyvehicle');
 Route::post('/updatedocuments', [EditController::class, 'updatedocuments'])->name('updatedocuments');
 
 //Frontend-Routes
 
-Route::get('/home',[ViewController::class,'frontendhomepage'])->name('frontendhomepage');
-Route::get('/about',[ViewController::class,'frontendaboutpage'])->name('frontendaboutpage');
-Route::get('/contact',[ViewController::class,'frontendcontactpage'])->name('frontendcontactpage');
-Route::get('/vehicles',[ViewController::class,'frontendvehiclespage'])->name('frontendvehiclespage');
+Route::get('/home', [ViewController::class, 'frontendhomepage'])->name('frontendhomepage');
+Route::get('/about', [ViewController::class, 'frontendaboutpage'])->name('frontendaboutpage');
+Route::get('/contact', [ViewController::class, 'frontendcontactpage'])->name('frontendcontactpage');
+Route::get('/vehicles', [ViewController::class, 'frontendvehiclespage'])->name('frontendvehiclespage');

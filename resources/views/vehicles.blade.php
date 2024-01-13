@@ -42,49 +42,6 @@
                 </div>
             </div>
         </section>
-
-        <div class="row">
-            @foreach ($allvehicles as $value)
-                <div class="col-lg-3">
-                    @php
-                        $imagePaths = explode(',', $value->image);
-                        $firstImagePath = $imagePaths[0];
-                    @endphp
-                    <div class="slider">
-                        <div>
-
-                            <img src="{{ asset($firstImagePath) }}" alt="" class="img-fluid">
-                        </div>
-                    </div>
-                </div>
-            @endforeach
-        </div>
+        <script src="https://sacredthemes.net/wheels/js/jquery.min.latest.js"></script>
     </div>
-    <script>
-        $(document).ready(function() {
-            $('.slider').slick({
-                dots: true,
-                arrows: true,
-                infinite: true,
-                speed: 500,
-                slidesToShow: 1,
-                slidesToScroll: 1,
-                autoplay: true,
-                autoplaySpeed: 1000,
-                responsive: [{
-                        breakpoint: 768,
-                        settings: {
-                            slidesToShow: 2,
-                        }
-                    },
-                    {
-                        breakpoint: 576,
-                        settings: {
-                            slidesToShow: 1,
-                        }
-                    }
-                ]
-            });
-        });
-    </script>
 @endsection
