@@ -2,6 +2,31 @@
 @extends('layouts.frontend.website')
 @section('content')
     <div class="main-container">
+        <style>
+            .counter-section {
+                background-color: #eeeeee;
+                /* Red color */
+                color: #000000;
+                /* White text */
+                text-align: center;
+                padding: 50px 0;
+            }
+
+            .counter-item {
+                display: inline-block;
+                margin: 0 20px;
+            }
+
+            .counter-item h2 {
+                font-size: 36px;
+                margin: 10px 0;
+            }
+
+            .counter-item p {
+                font-size: 18px;
+                margin: 5px 0;
+            }
+        </style>
         <!--* Hero Section Start -->
         <section id="home" class="hero-section style-1 light-text"
             style="position: relative; height: 100%; background-color: black; background-image: url(https://sacredthemes.net/wheels/images/hero-bg.jpg); background-repeat: no-repeat;background-position: right; background-size: cover;">
@@ -628,44 +653,37 @@
         </section>
         <!--* Enviornment impact section end -->
 
-        <!--* Dealer Section start -->
-        {{-- <section id="dealer" class="dealer-section light-gray-bg">
+
+        <section id="dealer" class="dealer-section light-gray-bg">
             <div class="container">
                 <div class="row align-items-center">
-                    <div class="col-lg-4">
-                        <h2>Find Dealer Near You</h2>
-                    </div>
-                    <div class="col-lg-8">
-                        <div class="form-row">
-                            <div class="col-lg-4 col-sm-6">
-                                <select name="country" class="form-control">
-                                    <option value="">Select Country</option>
-                                    <option value="Country 1">Country 1</option>
-                                    <option value="Country 2">Country 2</option>
-                                    <option value="Country 3">Country 3</option>
-                                    <option value="Country 4">Country 4</option>
-                                    <option value="Country 5">Country 5</option>
-                                </select>
+                    <h2 class="large-heading text-uppercase text-center" style="color: #000000;">
+                        <span>A Fleet of Excellence</span>Satisfied Drivers and Riders
+                    </h2>
+                    <div class="col-lg-12">
+                        <div class="counter-section">
+                            <div class="counter-item border border-danger p-3" id="happyCustomers"
+                                style="background-color: #f74848; color:white; border-top-left-radius: 50%; border-top-right-radius: 50%;">
+                                <h2>0</h2>
+                                <p>Happy Customers</p>
                             </div>
-                            <div class="col-lg-4 col-sm-6">
-                                <select name="city" class="form-control">
-                                    <option value="">Select City</option>
-                                    <option value="city 1">City 1</option>
-                                    <option value="city 2">City 2</option>
-                                    <option value="city 3">City 3</option>
-                                    <option value="city 4">City 4</option>
-                                    <option value="city 5">City 5</option>
-                                </select>
+
+                            <div class="counter-item border border-danger p-3" id="yearsExperience"
+                                style="background-color: #f74848; color:white; border-top-left-radius: 50%; border-top-right-radius: 50%;">
+                                <h2>0</h2>
+                                <p>Years of Experience</p>
                             </div>
-                            <div class="col-lg-4 col-sm-12">
-                                <input type="submit" class="btn fw" value="Submit">
+
+                            <div class="counter-item border border-danger p-3" id="qualityVehicles"
+                                style="background-color: #f74848; color:white; border-top-left-radius: 50%; border-top-right-radius: 50%;">
+                                <h2>0</h2>
+                                <p>Quality Vehicles</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section> --}}
-        <!--* Dealer Section end -->
+        </section>
 
         <!--* Contact Section start -->
         <section id="contact" class="contact-section">
@@ -720,6 +738,30 @@
                 </div>
             </div>
         </section>
-        <!--* Contact Section End -->
+        <script>
+            // Counter function
+            function startCounter(target, endValue, duration) {
+                let start = 0;
+                const increment = endValue / duration;
+
+                function updateCounter() {
+                    start += increment;
+                    target.innerText = Math.round(start);
+
+                    if (start < endValue) {
+                        requestAnimationFrame(updateCounter);
+                    }
+                }
+
+                updateCounter();
+            }
+
+            // Start counters on page load
+            document.addEventListener('DOMContentLoaded', function() {
+                startCounter(document.getElementById('happyCustomers').getElementsByTagName('h2')[0], 50, 500);
+                startCounter(document.getElementById('yearsExperience').getElementsByTagName('h2')[0], 10, 500);
+                startCounter(document.getElementById('qualityVehicles').getElementsByTagName('h2')[0], 1000, 500);
+            });
+        </script>
     </div>
 @endsection

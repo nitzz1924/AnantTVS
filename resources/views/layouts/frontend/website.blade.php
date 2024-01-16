@@ -22,7 +22,6 @@
     <link rel="stylesheet" href="{{ asset('website-assets/frontend-css/animate.css') }}" type="text/css" />
     <link rel="stylesheet" href="{{ asset('website-assets/frontend-css/fontawesome.min.css') }}" type="text/css" />
     <link rel="stylesheet" href="{{ asset('website-assets/frontend-css/bootstrap.min.css') }}" type="text/css" />
-    <link rel="stylesheet" href="{{ asset('website-assets/frontend-css/bootstrap.min5.css') }}" type="text/css" />
     <link rel="stylesheet" href="{{ asset('website-assets/frontend-css/bootstrap5.css') }}" type="text/css" />
     <link rel="stylesheet" href="https://sacredthemes.net/wheels/css/owl.carousel.min.css" type="text/css" />
     <link rel="stylesheet" href="{{ asset('website-assets/frontend-css/jquery.fancybox.min.css') }}" type="text/css" />
@@ -177,7 +176,8 @@
         </footer>
         <script src="{{ asset('js/app.js') }}"></script>
         <script src="{{ asset('website-assets/frontend-js/jquery.min.js') }}"></script>
-        <script src="{{ asset('website-assets/frontend-js/bootstrap.min.js') }}"></script>
+
+        {{-- <script src="{{ asset('website-assets/frontend-js/bootstrap.min.js') }}"></script> --}}
         <script src="{{ asset('website-assets/frontend-js/cascading-select.js') }}"></script>
         <script src="https://sacredthemes.net/wheels/js/owl.carousel.min.js"></script>
         <script src="{{ asset('website-assets/frontend-js/onpagescroll.js') }}"></script>
@@ -190,7 +190,7 @@
         <script src="https://sacredthemes.net/wheels/js/jquery.min.latest.js"></script>
         <!--* Theme Custom -->
         <script src="{{ asset('website-assets/frontend-js/custom.js') }}"></script>
-
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
         <script src="https://sacredthemes.net/wheels/script.js"></script>
         <script>
             (function(e) {

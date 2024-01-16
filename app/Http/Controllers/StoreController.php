@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\BuyVehicle;
 use App\Models\Customer;
+use App\Models\Lead;
 use App\Models\Vehicle;
 use Illuminate\Http\Request;
 
@@ -144,4 +145,27 @@ class StoreController extends Controller
             return redirect()->route('viewallcustomers')->with('error', 'Vehicle Not Buyed Try Again...');
         }
     }
+
+    public function createlead(Request $req)
+    {
+        // dd($req->all());
+        try{
+            $req->validate([
+                'phoneno'=>'required'
+            ]);
+
+            $lead = Lead::create([
+                'leadid'=> $req->leadid,
+                'name'=> $req->name,
+                'phoneno'=> $req->phoneno,
+                'email'=> $req->email,
+                'city'=> $req->city,
+                'state'=> $req->state,
+                'country'=> $req->country,
+            ]);
+            return back()->with('success', 'Thanks For Visiting..!!!');
+        }catch(\Exception $e){
+            return back()->with('error', $e->getMessage());
+        }
+}
 }

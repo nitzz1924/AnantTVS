@@ -47,6 +47,7 @@ Route::post('/createsubmaster', [MasterController::class, 'createsubmaster'])->n
 Route::post('/createvehicle', [StoreController::class, 'createvehicle'])->name('createvehicle');
 Route::post('/createcustomer', [StoreController::class, 'createcustomer'])->name('createcustomer');
 Route::post('/createbuyvehicle', [StoreController::class, 'createbuyvehicle'])->name('createbuyvehicle');
+Route::post('/createlead', [StoreController::class,'createlead'])->name('createlead');
 
 
 //Delete Routes

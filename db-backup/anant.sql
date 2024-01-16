@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 15, 2024 at 05:39 AM
+-- Generation Time: Jan 16, 2024 at 02:19 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.1
 
@@ -99,6 +99,32 @@ CREATE TABLE `failed_jobs` (
   `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `leads`
+--
+
+CREATE TABLE `leads` (
+  `id` int(11) NOT NULL,
+  `leadid` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `phoneno` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `city` varchar(255) NOT NULL,
+  `state` varchar(255) NOT NULL,
+  `country` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `leads`
+--
+
+INSERT INTO `leads` (`id`, `leadid`, `name`, `phoneno`, `email`, `city`, `state`, `country`, `created_at`, `updated_at`) VALUES
+(4, '13', 'Anshul', '1111111118', 'nitzz@gmail.com', 'Ajmer', 'Rajasthan', 'India', '2024-01-16 07:46:59', '2024-01-16 07:46:59');
 
 -- --------------------------------------------------------
 
@@ -209,8 +235,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('DMdEVo7p8GT6hA7QosUIXUtk0a2Vi478yXbgwV21', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiWVptWE92NUVOeEVnbzI4eXE3U0dNTzRhMGVNQ3RDelpHVmZycmRWTiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hYm91dCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7czoyMToicGFzc3dvcmRfaGFzaF9zYW5jdHVtIjtzOjYwOiIkMnkkMTAkNTMwN3dlZDFKSUkxOHV5cmVkLi90ZVZsQWpkc0QuUFI2N1hVR3pBbmhqZy4uYUwzMkVIT08iO30=', 1704972432),
-('Lyp5Oe6NpMgQil0754oCohI78cSHYPstge6hpnU5', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiY1BaRmRqVFlLZndQdkN0MW1pMld3Sk5vYXN1MTAzMmFmV2M5WFdxRCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjY6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9ob21lIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTtzOjIxOiJwYXNzd29yZF9oYXNoX3NhbmN0dW0iO3M6NjA6IiQyeSQxMCQ1MzA3d2VkMUpJSTE4dXlyZWQuL3RlVmxBamRzRC5QUjY3WFVHekFuaGpnLi5hTDMyRUhPTyI7fQ==', 1704958905);
+('IdqZubSeDXkvC6VGNIsRRKQlbyKfWmcyieBpaiM4', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiU1hQUG9nT0tFRzZQVnBFZGZaYVJiNUlJazRuN1N5eUFHTk9sb25ObyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mzc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC92ZWhpY2xlcz9wYWdlPTIiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6MjE6InBhc3N3b3JkX2hhc2hfc2FuY3R1bSI7czo2MDoiJDJ5JDEwJDUzMDd3ZWQxSklJMTh1eXJlZC4vdGVWbEFqZHNELlBSNjdYVUd6QW5oamcuLmFMMzJFSE9PIjt9', 1705411019);
 
 -- --------------------------------------------------------
 
@@ -297,6 +322,12 @@ ALTER TABLE `failed_jobs`
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
 
 --
+-- Indexes for table `leads`
+--
+ALTER TABLE `leads`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `masters`
 --
 ALTER TABLE `masters`
@@ -364,6 +395,12 @@ ALTER TABLE `customers`
 --
 ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `leads`
+--
+ALTER TABLE `leads`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `masters`

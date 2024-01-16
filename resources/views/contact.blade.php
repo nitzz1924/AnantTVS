@@ -3,37 +3,39 @@
 @section('content')
     <div class="main-container">
         <!--* Enviornment impact section start -->
-        <section id="impact" class="gallery-section  mt-5 light-text" style="position: relative;">
+        <section id="impact" class="light-text" style="position: relative;">
+            <img src="{{ asset('website-assets/images/raiderred.png') }}" alt="" class="img-fluid elements" width="30%">
+            <img src="{{ asset('website-assets/images/jupiter.png') }}" alt="" class="img-fluid elementsscooter" width="30%">
             <div class="container">
-                <div class="row" style="position: relative;">
-                    <div class="my-lg-5 col-lg-6 col-md-5 col-12 bicycle-img wow fadeInLeft">
+                <div class="row">
+                    <div class="my-lg-5 col-lg-12 col-md-5 col-12 bicycle-img wow fadeInLeft">
                         <div class="heading-wrapper text-left">
-                            <h2 class="large-heading text-uppercase" style="color: #000000;">
+                            <h2 class="large-heading text-uppercase text-center" style="color: #000000;">
                                 <span></span>Contact Us
                             </h2>
                             <div class="card p-3 mb-3 mt-3 border border-0">
-                                <h3 class="text-danger">Phone:</h3>
-                                <a style="color: #000000;" class="mb-0">
+                                <h3 class="text-danger text-center">Phone:</h3>
+                                <a style="color: #000000; text-align: center; font-size: 20px" class="mb-0">
                                     +91-7414055555
                                 </a>
                             </div>
                             <div class="card p-3 mb-3 mt-3 border border-0">
-                                <h3 class="text-danger">Email:</h3>
-                                <a style="color: #000000;" class="mb-0">
+                                <h3 class="text-danger text-center">Email:</h3>
+                                <a style="color: #000000; text-align: center; font-size: 20px" class="mb-0">
                                     info@ananttvs.com
                                 </a>
                             </div>
                             <div class="card p-3 mb-3 mt-3 border border-0">
-                                <h3 class="text-danger">Address:</h3>
-                                <a style="color: #000000;" class="mb-0">
+                                <h3 class="text-danger text-center">Address:</h3>
+                                <a style="color: #000000; text-align: center; font-size: 20px" class="mb-0">
                                     Makhupura,Ajmer
                                 </a>
                             </div>
                             <br>
                         </div>
                     </div>
-                    <div class='my-lg-5 col-lg-6 col-md-5 col-12 bicycle-img wow fadeInLeft'>
-                        <img src="{{ asset('website-assets/images/bike.png') }}" alt="" class="img-fluid">
+                    <div class='my-lg-5 col-lg-12 col-md-12 col-12 bicycle-img wow fadeInLeft'>
+                        <img src="{{ asset('website-assets/images/all.png') }}" alt="" class="img-fluid" width="100%">
                     </div>
                 </div>
             </div>

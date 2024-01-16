@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Master;
 use App\Models\User;
 
@@ -48,7 +49,7 @@ class MasterController extends Controller
     {
         $modelInstance = new User();
         $res = $modelInstance->checkID();
-        $data = Master::where('parent_id','=',$res)->where('type','=',$selectedCat)->get();
+        $data = Master::where('parent_id', '=', $res)->where('type', '=', $selectedCat)->get();
         return response()->json($data);
 
     }
