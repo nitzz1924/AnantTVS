@@ -38,11 +38,14 @@ class MasterController extends Controller
     public function deletemaster($id, $type)
     {
         $records = Master::find($id);
-        $records->delete();
-        if ($type == 'masterpage')
-            return redirect()->route('viewmaster')->with('failure', "Deleted Successfully..!!!!");
-        else
-            return redirect()->route('viewmaster')->with('failure', "Not Deleted");
+        if ($type == 'masterpage') {
+            $records->delete();
+            return redirect()->route('viewmaster')->with('success', "Deleted Successfully..!!!!");
+        } else if ($type == "subcatpage") {
+            $records->delete();
+            return redirect()->route('viewsubmaster')->with('success', "Deleted");
+        } else
+            return back()->with('failure', "not Deleted");
     }
 
     public function getmastercatajax($selectedCat)
@@ -71,9 +74,9 @@ class MasterController extends Controller
             $master->type = $req->type;
             $master->parent_id = $res;
             $master->save();
-            return back()->with('subsuccess', 'Sub-Master Inserted Successfully..!!!!');
+            return back()->with('success', 'Sub-Master Inserted Successfully..!!!!');
         } catch (\Exception $sm) {
-            return redirect()->route('viewsubmaster')->with('suberror', 'Sub-Master Not Inserted Try Again...');
+            return redirect()->route('viewsubmaster')->with('failure', 'Sub-Master Not Inserted Try Again...');
         }
     }
 }

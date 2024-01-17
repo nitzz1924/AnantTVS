@@ -63,6 +63,7 @@
                                 <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
                                 <li><a href="#"><i class="fab fa-twitter"></i></a></li>
                                 <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                                <li><a href="{{route('viewloginpage')}}"><span class="rounded-pill bg-danger text-white py-2 px-3">Log in</span></a></li>
                             </ul>
                         </nav>
                     </div>

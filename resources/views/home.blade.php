@@ -652,9 +652,9 @@
             </div>
         </section>
         <!--* Enviornment impact section end -->
-
-
-        <section id="dealer" class="dealer-section light-gray-bg">
+        <section id="dealer" class="dealer-section light-gray-bg position-relative">
+            <img src="{{ asset('website-assets/images/engine.png') }}" alt="" class="img-fluid elementhome"
+            width="20%">
             <div class="container">
                 <div class="row align-items-center">
                     <h2 class="large-heading text-uppercase text-center" style="color: #000000;">
@@ -685,59 +685,87 @@
             </div>
         </section>
 
-        <!--* Contact Section start -->
-        <section id="contact" class="contact-section">
-            <div class="section-background m-bg-hide">
-                <div class="background-wrapper bicycle-img">
-                    <div class="background-inner"
-                        style="background-image: url('{{ asset('website-assets/images/background.png') }}'); background-repeat: no-repeat;background-position: bottom;background-size: cover;">
-                    </div>
-                </div>
-            </div>
-            <div class="container py-lg-5 bicycle-img">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="heading-wrapper">
-                            <h2 class="large-heading text-uppercase">Say Hi !!</h2>
-                            <h4 class="fw-300">Fill the Gap and We Will Contact You Soon</h4>
+               <!--* Contact Section start -->
+               <section id="contact" class="contact-section">
+                <div class="section-background m-bg-hide">
+                    <div class="background-wrapper bicycle-img">
+                        <div class="background-inner"
+                            style="background-image: url('{{ asset('website-assets/images/background.png') }}'); background-repeat: no-repeat;background-position: bottom;background-size: cover;">
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-lg-7 col-12">
-                        <div class="form-wrapper">
-                            <form>
-                                <div class="form-row">
-                                    <div class="form-group col-lg-6 col-sm-6">
-                                        <input type="text" class="form-control" id="inputYourName"
-                                            placeholder="Your Name">
-                                    </div>
-                                    <div class="form-group col-lg-6 col-sm-6">
-                                        <input type="email" class="form-control" id="inputYourEmail"
-                                            placeholder="Your Email">
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-lg-12">
-                                        <textarea class="form-control" id="inputYourQuestion" placeholder="Your Question"></textarea>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-lg-12 d-flex justify-content-end">
-                                        <input type="submit" value="Send" class="btn btn-primary border-btn">
-                                    </div>
-                                </div>
-                            </form>
-                            <script src="https://sacredthemes.net/wheels/js/owl.carousel.min.js"></script>
+                <div class="container py-lg-5 bicycle-img">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="heading-wrapper">
+                                <h2 class="large-heading text-uppercase">Say Hi !!</h2>
+                                <h4 class="fw-300">Fill the Gap and We Will Contact You Soon</h4>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-lg-3">
-                        <img src="{{ asset('website-assets/images/jupiter.png') }}" alt="" height="500px"
-                            width="900px" class="">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="mb-3">
+                                        <label for="exampleFormControlInput1" class="form-label fw-bold">Name</label>
+                                        <input type="text" name="name" class="form-control custominput"
+                                            id="exampleFormControlInput1" placeholder="enter name">
+                                        {{-- <input type="hidden" name="leadid" value="{{ $row->id }}"> --}}
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-12">
+                                    <div class="mb-3">
+                                        <label for="exampleFormControlInput1" class="form-label fw-bold">Phone
+                                            No.</label><span class="fw-bold text-danger">*</span>
+                                        <input type="text" name="phoneno" class="form-control custominput"
+                                            id="exampleFormControlInput1" placeholder="enter phone no" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-12">
+                                    <div class="mb-3">
+                                        <label for="exampleFormControlInput1" class="form-label  fw-bold">Email
+                                            address</label>
+                                        <input type="email" name="email" class="form-control custominput"
+                                            id="exampleFormControlInput1" placeholder="enter email">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-12">
+                                    <div class="mb-3">
+                                        <label for="exampleFormControlInput1" class="form-label  fw-bold">City</label>
+                                        <input type="text" name="city" class="form-control custominput"
+                                            id="exampleFormControlInput1" placeholder="enter city">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-12">
+                                    <div class="mb-3">
+                                        <label for="exampleFormControlInput1" class="form-label  fw-bold">State</label>
+                                        <input type="text" name="state" class="form-control custominput"
+                                            id="exampleFormControlInput1" placeholder="enter state">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-12">
+                                    <div class="mb-3">
+                                        <label for="exampleFormControlInput1" class="form-label  fw-bold">Country</label>
+                                        <input type="text" name="country" class="form-control custominput"
+                                            id="exampleFormControlInput1" placeholder="enter country">
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-center mt-4">
+                                    <a href="#"><span class="rounded-pill bg-dark text-white px-4 py-2">Send</span></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 row">
+                            <div>
+                                <img src="{{ asset('website-assets/images/jupiter.png') }}" alt="" height="500px"
+                                    width="400px" class="">
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+            <!--* Contact Section End -->
         <script>
             // Counter function
             function startCounter(target, endValue, duration) {

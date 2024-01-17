@@ -76,12 +76,12 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card">
-                        @if ($message = Session::get('subsuccess'))
+                        @if ($message = Session::get('success'))
                             <div class="alert border-0 alert-success text-center" role="alert" id="successAlert">
                                 <strong>{{ $message }}</strong>
                             </div>
                         @endif
-                        @if ($message = Session::get('suberror'))
+                        @if ($message = Session::get('failure'))
                             <div class="alert border-0 alert-danger text-center" role="alert" id="dangerAlert">
                                 <strong>{{ $message }}</strong>
                             </div>

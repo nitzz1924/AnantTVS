@@ -218,6 +218,5 @@
             });
         });
     </script>
-
     <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI/=" crossorigin="anonymous"></script>
 </x-app-layout>

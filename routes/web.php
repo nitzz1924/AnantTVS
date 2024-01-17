@@ -20,13 +20,6 @@ Route::middleware([
     })->name('dashboard');
 });
 
-/*
-    GIT COMMANDS........
-
-    git add .
-    git commit
-    git push
-*/
 
 //View Routes
 Route::get('/viewmaster', [ViewController::class, 'viewmaster'])->name('viewmaster');
@@ -51,7 +44,7 @@ Route::post('/createlead', [StoreController::class,'createlead'])->name('createl
 
 
 //Delete Routes
-Route::get('/deletemaster/{id}/{type}', [MasterController::class, 'deletemaster'])->name('deletemaster');
+Route::get('/deletemastercat/{id}/{type}', [MasterController::class, 'deletemaster'])->name('deletemaster');
 
 
 //AJAX ROUTES
@@ -72,3 +65,13 @@ Route::get('/home', [ViewController::class, 'frontendhomepage'])->name('frontend
 Route::get('/about', [ViewController::class, 'frontendaboutpage'])->name('frontendaboutpage');
 Route::get('/contact', [ViewController::class, 'frontendcontactpage'])->name('frontendcontactpage');
 Route::get('/vehicles', [ViewController::class, 'frontendvehiclespage'])->name('frontendvehiclespage');
+
+
+
+//--------------------USER PANEL ROUTING--------------------------------------------------------
+
+//view Routes
+Route::get('/viewuserpanelhome', [ViewController::class,'viewuserpanelhome'])->name('viewuserpanelhome');
+Route::get('/viewloginpage', [ViewController::class,'viewloginpage'])->name('viewloginpage');
+
+

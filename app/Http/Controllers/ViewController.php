@@ -5,6 +5,7 @@ use App\Models\BuyVehicle;
 use App\Models\Master;
 use App\Models\Vehicle;
 use App\Models\Customer;
+use App\Models\SliderImages;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -86,6 +87,8 @@ class ViewController extends Controller
         return view('vehicledetailpage', compact('buyvehiclesdata'));
     }
 
+    //WEBSITE VIEWS
+
     public function frontendhomepage()
     {
         return view('home');
@@ -102,5 +105,22 @@ class ViewController extends Controller
     {
         $allvehicles = Vehicle::paginate(4);
         return view('vehicles', compact('allvehicles'));
+    }
+
+    //WEBSITE VIEWS ENDS
+
+
+    //USER PANEL VIEWS
+    public function viewuserpanelhome()
+    {
+        $sliderimages = SliderImages::where('type', 'userhomeslider')->get();
+        $vehiclesdata = Vehicle::get();
+        //dd($sliderimages);
+        return view('userpanelviews.home', compact('sliderimages','vehiclesdata'));
+    }
+
+    public function viewloginpage()
+    {
+        return view('auth.userauth.login');
     }
 }

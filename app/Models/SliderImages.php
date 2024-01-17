@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Lead extends Model
+class SliderImages extends Model
 {
-    protected $fillable = ['id', 'leadid', 'name', 'phoneno', 'email', 'city', 'state', 'country'];
+    use HasFactory;
 }

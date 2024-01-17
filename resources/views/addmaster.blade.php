@@ -33,30 +33,31 @@
                         </div><!-- end card header -->
                         <div class="card-body">
                             <div class="live-preview">
-                                <form action="{{route('createmaster')}}" method="POST">
-                                 @csrf
-                                <div class="row gy-4">
-                                    <div class="col-xxl-3 col-md-6">
-                                        <div>
-                                            <label for="placeholderInput" class="form-label">Label</label>
-                                            <input type="text" class="form-control" id="placeholderInput"
-                                                placeholder="enter label" name="label">
+                                <form action="{{ route('createmaster') }}" method="POST">
+                                    @csrf
+                                    <div class="row gy-4">
+                                        <div class="col-xxl-3 col-md-6">
+                                            <div>
+                                                <label for="placeholderInput" class="form-label">Label</label>
+                                                <input type="text" class="form-control" id="placeholderInput"
+                                                    placeholder="enter label" name="label">
+                                            </div>
+                                        </div>
+                                        <div class="col-xxl-3 col-md-6">
+                                            <div>
+                                                <label for="placeholderInput" class="form-label">Value</label>
+                                                <input type="text" class="form-control" id="placeholderInput"
+                                                    placeholder="enter value" name="value">
+                                            </div>
+                                        </div>
+                                        <div class="col-xxl-3 col-md-6">
+                                            <div class="mt-4 p-1">
+                                                <button type="submit"
+                                                    class="btn btn-success waves-effect waves-light">Add</button>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-xxl-3 col-md-6">
-                                        <div>
-                                            <label for="placeholderInput" class="form-label">Value</label>
-                                            <input type="text" class="form-control" id="placeholderInput"
-                                                placeholder="enter value" name="value">
-                                        </div>
-                                    </div>
-                                    <div class="col-xxl-3 col-md-6">
-                                        <div class="mt-4 p-1">
-                                            <button type="submit" class="btn btn-success waves-effect waves-light">Add</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -90,14 +91,15 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($masterdata as $index => $row)
-                                    <tr>
-                                        <th scope="row" class="fw-semibold">{{ $index + 1 }}</th>
-                                        <td>{{$row->label}}</td>
-                                        <td>{{$row->value}}</td>
-                                        <td>{{$row->type}}</td>
-                                        <td>{{$row->status}}</td>
-                                        <td><a href="/deletemaster/{{$row->id}}/masterpage"><button class="btn btn-outline-danger btn-sm">delete</button></a></td>
-                                    </tr>
+                                        <tr>
+                                            <th scope="row" class="fw-semibold">{{ $index + 1 }}</th>
+                                            <td>{{ $row->label }}</td>
+                                            <td>{{ $row->value }}</td>
+                                            <td>{{ $row->type }}</td>
+                                            <td>{{ $row->status }}</td>
+                                            <td><a href="/deletemastercat/{{ $row->id }}/masterpage"><button
+                                                        class="btn btn-outline-danger btn-sm">delete</button></a></td>
+                                        </tr>
                                     @endforeach
                                 </tbody>
                             </table>
@@ -108,11 +110,11 @@
         </div>
     </div>
     <script>
-        setTimeout(function(){
+        setTimeout(function() {
             $('#successAlert').fadeOut('slow');
         }, 2000);
 
-        setTimeout(function(){
+        setTimeout(function() {
             $('#dangerAlert').fadeOut('slow');
         }, 2000);
     </script>
