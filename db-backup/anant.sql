@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 16, 2024 at 02:19 PM
+-- Generation Time: Jan 17, 2024 at 02:33 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.1
 
@@ -149,7 +149,6 @@ CREATE TABLE `masters` (
 
 INSERT INTO `masters` (`id`, `parent_id`, `label`, `value`, `type`, `status`, `created_at`, `updated_at`) VALUES
 (10, '1', 'Vehicle', 'Vehicle', 'Master', 'A', '2023-12-30 02:53:53', '2023-12-30 02:53:53'),
-(11, '1', 'Pumps', 'Pumps', 'Master', 'A', '2023-12-30 03:23:55', '2023-12-30 03:23:55'),
 (26, '1', 'Bike', 'Bike', 'Vehicle', 'A', '2023-12-30 04:18:24', '2023-12-30 04:18:24'),
 (27, '1', 'PPC', 'PPC', 'Pumps', 'A', '2023-12-30 04:18:55', '2023-12-30 04:18:55'),
 (28, '1', 'Plastic', 'Plastic', 'Pumps', 'A', '2023-12-30 04:19:09', '2023-12-30 04:19:09'),
@@ -159,7 +158,10 @@ INSERT INTO `masters` (`id`, `parent_id`, `label`, `value`, `type`, `status`, `c
 (33, '1', 'Color', 'Color', 'Master', 'A', '2024-01-02 23:13:47', '2024-01-02 23:13:47'),
 (34, '1', 'Black', 'Black', 'Color', 'A', '2024-01-02 23:14:00', '2024-01-02 23:14:00'),
 (35, '1', 'Dark Blue', 'Dark Blue', 'Color', 'A', '2024-01-02 23:14:13', '2024-01-02 23:14:13'),
-(36, '1', 'White', 'White', 'Color', 'A', '2024-01-03 23:45:04', '2024-01-03 23:45:04');
+(37, '1', 'Payment Button', 'Payment Button', 'Master', 'A', '2024-01-17 01:40:24', '2024-01-17 01:40:24'),
+(38, '1', 'Pay Now', 'link', 'Payment Button', 'A', '2024-01-17 01:40:53', '2024-01-17 01:40:53'),
+(39, '1', 'Payment with Paytm', 'link', 'Payment Button', 'A', '2024-01-17 01:42:18', '2024-01-17 01:42:18'),
+(40, '1', 'Payment with PhonePe', 'link', 'Payment Button', 'A', '2024-01-17 01:42:42', '2024-01-17 01:42:42');
 
 -- --------------------------------------------------------
 
@@ -235,7 +237,28 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('IdqZubSeDXkvC6VGNIsRRKQlbyKfWmcyieBpaiM4', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiU1hQUG9nT0tFRzZQVnBFZGZaYVJiNUlJazRuN1N5eUFHTk9sb25ObyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mzc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC92ZWhpY2xlcz9wYWdlPTIiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6MjE6InBhc3N3b3JkX2hhc2hfc2FuY3R1bSI7czo2MDoiJDJ5JDEwJDUzMDd3ZWQxSklJMTh1eXJlZC4vdGVWbEFqZHNELlBSNjdYVUd6QW5oamcuLmFMMzJFSE9PIjt9', 1705411019);
+('aSir9T20iebQwEWrR6cGCSEOB7kkX8JWq48tV6ia', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiWWdSUTJhUHV0R3ptT1dZeWM2enpZYjVyQ0N3SVU1MzBQUG5UZ2RsUCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzU6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC92aWV3bG9naW5wYWdlIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTtzOjIxOiJwYXNzd29yZF9oYXNoX3NhbmN0dW0iO3M6NjA6IiQyeSQxMCQ1MzA3d2VkMUpJSTE4dXlyZWQuL3RlVmxBamRzRC5QUjY3WFVHekFuaGpnLi5hTDMyRUhPTyI7fQ==', 1705497987);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `slider_images`
+--
+
+CREATE TABLE `slider_images` (
+  `id` int(11) NOT NULL,
+  `type` varchar(255) NOT NULL,
+  `images` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `slider_images`
+--
+
+INSERT INTO `slider_images` (`id`, `type`, `images`, `created_at`, `updated_at`) VALUES
+(1, 'userhomeslider', 'uploads/vehicle/sliderone.jpg,uploads/vehicle/slidertwo.jpg,uploads/vehicle/sliderthree.jpg', '2024-01-17 10:56:18', '2024-01-17 11:26:16');
 
 -- --------------------------------------------------------
 
@@ -362,6 +385,12 @@ ALTER TABLE `sessions`
   ADD KEY `sessions_last_activity_index` (`last_activity`);
 
 --
+-- Indexes for table `slider_images`
+--
+ALTER TABLE `slider_images`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -406,7 +435,7 @@ ALTER TABLE `leads`
 -- AUTO_INCREMENT for table `masters`
 --
 ALTER TABLE `masters`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -419,6 +448,12 @@ ALTER TABLE `migrations`
 --
 ALTER TABLE `personal_access_tokens`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `slider_images`
+--
+ALTER TABLE `slider_images`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `users`
