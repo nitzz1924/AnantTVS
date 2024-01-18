@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Anant TVS') }}</title>
+    <title>User Panel</title>
 
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
@@ -868,14 +868,14 @@
                                         src="assets/images/users/avatar-1.jpg" alt="Header Avatar">
                                     <span class="text-start ms-xl-2">
                                         <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">
-                                            {{ Auth::user()->name }}</span>
+                                            Nitesh</span>
                                         <span class="d-none d-xl-block ms-1 fs-12 user-name-sub-text">Founder</span>
                                     </span>
                                 </span>
                             </button>
                             <div class="dropdown-menu dropdown-menu-end">
                                 <!-- item-->
-                                <h6 class="dropdown-header">Welcome {{ Auth::user()->name }}</h6>
+                                <h6 class="dropdown-header">Welcome Nitesh</h6>
                                 <a class="dropdown-item" href="pages-profile.html"><i
                                         class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span
                                         class="align-middle">Profile</span></a>
@@ -990,7 +990,7 @@
             <main>
                 @yield('content')
             </main>
-                <div class="container-fluid card" style="position: fixed; top: 92%;">
+                <div class="container-fluid card myDivhide" style="position: fixed; top: 92%;">
                     <div class="row justify-content-center d-flex">
                         <div class="col-xl-4 col-4">
                             <div class="card-height-20">

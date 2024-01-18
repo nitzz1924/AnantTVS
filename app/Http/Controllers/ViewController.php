@@ -8,7 +8,7 @@ use App\Models\Customer;
 use App\Models\SliderImages;
 use App\Models\User;
 use Illuminate\Http\Request;
-
+use Auth;
 class ViewController extends Controller
 {
     public function viewmaster()
@@ -79,10 +79,9 @@ class ViewController extends Controller
 
     public function viewvehicledetailpage($id)
     {
-        $buyvehiclesdata = BuyVehicle::join('vehicles', 'vehicles.id', '=', 'buy_vehicles.vehicle_id')
+        $buyvehiclesdata = BuyVehicle::join('vehicles','buy_vehicles.vehicle_id', '=', 'vehicles.id')
             ->select('buy_vehicles.*', 'vehicles.*')
-            ->where('vehicles.id', $id)
-            ->orderByDesc('buy_vehicles.created_at')
+            ->where('buy_vehicles.id', $id)
             ->get();
         return view('vehicledetailpage', compact('buyvehiclesdata'));
     }
@@ -113,6 +112,7 @@ class ViewController extends Controller
     //USER PANEL VIEWS
     public function viewuserpanelhome()
     {
+
         $sliderimages = SliderImages::where('type', 'userhomeslider')->get();
         $vehiclesdata = Vehicle::get();
         //dd($sliderimages);

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 17, 2024 at 02:33 PM
+-- Generation Time: Jan 18, 2024 at 02:29 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.1
 
@@ -54,7 +54,8 @@ INSERT INTO `buy_vehicles` (`id`, `customer_id`, `vehicle_id`, `vehicletype`, `c
 (5, '1', '12', 'Bike', '201HAR8', 'Black', '123456', '12345', '12345', '1704350557.webp', '1704350557.webp', '0', '1704350557.webp', '2024-01-04 01:12:37', '2024-01-05 07:13:02'),
 (6, '3', '8', 'Cars', '201Y', 'Black', '133455', 'RRR', 'EEE', '1704441068.pdf', '1704441068.pdf', '0', '1704441068.pdf', '2024-01-04 01:34:08', '2024-01-05 02:21:08'),
 (7, '1', '9', 'Cars', '201GAAA', 'Dark Blue', '1288AAAA', 'AAA', 'BBB', 'C:\\xampp\\tmp\\php9913.tmp', 'C:\\xampp\\tmp\\php9914.tmp', '0', 'C:\\xampp\\tmp\\php9925.tmp', '2024-01-04 02:15:43', '2024-01-05 02:04:17'),
-(8, '3', '13', 'Bike', '301Ydfgdf', 'White', '123AA', 'AAA', 'BBB', '1704444187.pdf', '1704444187.pdf', '0', '1704444187.pdf', '2024-01-04 04:42:50', '2024-01-05 03:13:07');
+(8, '3', '13', 'Bike', '301Ydfgdf', 'White', '123AA', 'AAA', 'BBB', '1704444187.pdf', '1704444187.pdf', '0', '1704444187.pdf', '2024-01-04 04:42:50', '2024-01-05 03:13:07'),
+(10, '6', '13', 'Bike', 'QQQQ2', 'Black', '12345689109', 'AAA', 'BBB', '1705570981.jpg', '1705570981.jpg', '0', '1705570981.jpg', '2024-01-18 04:13:02', '2024-01-18 04:13:02');
 
 -- --------------------------------------------------------
 
@@ -71,6 +72,7 @@ CREATE TABLE `customers` (
   `customerstate` varchar(255) NOT NULL,
   `customercountry` varchar(255) NOT NULL,
   `customeraddress` text NOT NULL,
+  `password` varchar(255) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -79,10 +81,11 @@ CREATE TABLE `customers` (
 -- Dumping data for table `customers`
 --
 
-INSERT INTO `customers` (`id`, `customername`, `customerphoneno`, `customeremailaddress`, `customercity`, `customerstate`, `customercountry`, `customeraddress`, `created_at`, `updated_at`) VALUES
-(1, 'Nitesh Sharma', '8209165518', 'nitzz@gmail.com', 'Ajmer', 'Rajasthan', 'India', 'this is me', '2024-01-02 05:26:43', '2024-01-03 07:19:36'),
-(2, 'Kishan Gopal', '8209165518', 'kishan@gmail.com', 'Jaipur', 'Rajasthan', 'India', 'This is K', '2024-01-02 06:34:58', '2024-01-03 06:49:09'),
-(3, 'Anshul Kumar', '8209165518', 'anshul@gmail.com', 'Ajmer', 'Rajasthan', 'India', 'This is Anshul', '2024-01-02 06:45:08', '2024-01-04 02:26:21');
+INSERT INTO `customers` (`id`, `customername`, `customerphoneno`, `customeremailaddress`, `customercity`, `customerstate`, `customercountry`, `customeraddress`, `password`, `created_at`, `updated_at`) VALUES
+(1, 'Nitesh Sharma', '8209165518', 'nitzz@gmail.com', 'Ajmer', 'Rajasthan', 'India', 'this is me', '$2y$10$5307wed1JII18uyred./teVlAjdsD.PR67XUGzAnhjg..aL32EHOO', '2024-01-02 05:26:43', '2024-01-18 06:09:37'),
+(2, 'Kishan Gopal', '8209167518', 'kishan@gmail.com', 'Jaipur', 'Rajasthan', 'India', 'This is K', '', '2024-01-02 06:34:58', '2024-01-18 05:24:07'),
+(3, 'Anshul Kumar', '8209775518', 'anshul@gmail.com', 'Ajmer', 'Rajasthan', 'India', 'This is Anshul', '12345678', '2024-01-02 06:45:08', '2024-01-18 08:49:13'),
+(6, 'Roman Reings', '2222222222', 'roman@gmail.com', 'Ajmer', 'Raj', 'India', 'sadas', '$2y$10$4G7CJnoIEhlnHZeLGxsSWuk.c6v7J3ey2VeGHrz7tWYMiEFHKLVI2', '2024-01-18 01:28:35', '2024-01-18 01:28:35');
 
 -- --------------------------------------------------------
 
@@ -237,7 +240,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('aSir9T20iebQwEWrR6cGCSEOB7kkX8JWq48tV6ia', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiWWdSUTJhUHV0R3ptT1dZeWM2enpZYjVyQ0N3SVU1MzBQUG5UZ2RsUCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzU6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC92aWV3bG9naW5wYWdlIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTtzOjIxOiJwYXNzd29yZF9oYXNoX3NhbmN0dW0iO3M6NjA6IiQyeSQxMCQ1MzA3d2VkMUpJSTE4dXlyZWQuL3RlVmxBamRzRC5QUjY3WFVHekFuaGpnLi5hTDMyRUhPTyI7fQ==', 1705497987);
+('hSQgLHzoXse94JihBC2y7vOtLLTyZeLKfVfdLvhl', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiTXpxRkMyMlRJZEFzNkVXWFhxaDBoVDBoNVFScW9aYXpCdjFtdHY4SSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mzc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hbGx2ZWhpY2xlc2xpc3QiO31zOjU1OiJsb2dpbl9jdXN0b21lcl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjY7fQ==', 1705582145);
 
 -- --------------------------------------------------------
 
@@ -411,13 +414,13 @@ ALTER TABLE `vehicles`
 -- AUTO_INCREMENT for table `buy_vehicles`
 --
 ALTER TABLE `buy_vehicles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`

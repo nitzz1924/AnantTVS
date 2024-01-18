@@ -34,7 +34,7 @@
                                         <div class="">
                                             <h5 class="mt-0">{{ $row->vehicleName }}</h5>
                                             <p>{{ $cutString = substr($row->vehicleDis, 0, 50) }}</p>
-                                            <a href="/viewvehicledetailpage/{{ $row->vehicle_id }}"
+                                            <a href="/viewvehicledetailpage/{{ $row->id }}"
                                                 class="fs-6 badge rounded-pill bg-primary-subtle text-primary p-2">More
                                                 Details</a>&nbsp;
                                             @php

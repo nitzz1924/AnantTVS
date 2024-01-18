@@ -38,28 +38,34 @@
 
                             <div class="card-body p-4">
                                 <div class="text-center mt-2">
-                                    <h5 class="text-primary">Welcome Back !</h5>
+                                    <h5 class="text-primary">Welcome Riders !</h5>
                                     <p class="text-muted">Sign in to continue to Anant TVS.</p>
+                                    @if ($errors->has('login'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('login') }}</strong>
+                                        </span>
+                                    @endif
                                 </div>
                                 <div class="p-2 mt-4">
-                                    <form action="https://themesbrand.com/velzon/html/saas/index.html">
-
+                                    <form action="{{ route('loginuser') }}" method="POST">
+                                        @csrf
                                         <div class="mb-3">
                                             <label for="username" class="form-label">Mobile Number</label>
                                             <input type="text" class="form-control" id="username"
-                                                placeholder="Enter mobile number" name="mobilenumber" >
+                                                placeholder="Enter mobile number" name="customerphoneno">
                                         </div>
 
                                         <div class="mb-3">
                                             {{-- <div class="float-end">
                                                 <a href="auth-pass-reset-basic.html" class="text-muted">Forgot password?</a>
                                             </div> --}}
-                                            <div class="position-relative auth-pass-inputgroup mb-3">
-                                                <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon"
-                                                    type="button" id="password-addon"></button>
+                                            {{-- <label class="form-label" for="password-input">Password</label> --}}
+                                            <div class="position-relative auth-pass-inputgroup mb-3 d-none">
+                                                <input type="password" name="password" class="form-control pe-5 password-input" placeholder="Enter password" id="password-input" value="123456578">
+                                                <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon" type="button" id="password-addon"></button>
                                             </div>
                                         </div>
-{{--
+                                        {{--
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" value=""
                                                 id="auth-remember-check">
@@ -95,7 +101,7 @@
                             <!-- end card body -->
                         </div>
                         <!-- end card -->
-{{--
+                        {{--
                         <div class="mt-4 text-center">
                             <p class="mb-0">Don't have an account ? <a href="auth-signup-basic.html"
                                     class="fw-semibold text-primary text-decoration-underline"> Signup </a> </p>

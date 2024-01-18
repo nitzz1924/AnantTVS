@@ -1,13 +1,15 @@
 <?php
 #-- -----------------------------------------------🙏JAI SHREE RAM🚩------------------------------------------------------------- --
+use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\EditController;
 use App\Http\Controllers\MasterController;
 use App\Http\Controllers\StoreController;
+use App\Http\Controllers\UserViewsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ViewController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Route::middleware([
@@ -74,4 +76,10 @@ Route::get('/vehicles', [ViewController::class, 'frontendvehiclespage'])->name('
 Route::get('/viewuserpanelhome', [ViewController::class,'viewuserpanelhome'])->name('viewuserpanelhome');
 Route::get('/viewloginpage', [ViewController::class,'viewloginpage'])->name('viewloginpage');
 
+Route::get('/uservehicledetailview/{id}', [UserViewsController::class,'uservehicledetailview'])->name('uservehicledetailview');
+Route::get('/alluservehiclesview',[UserViewsController::class,'alluservehiclesview'])->name('alluservehiclesview');
+Route::get('/allvehicleslist', [UserViewsController::class,'allvehicleslist'])->name('allvehicleslist');
 
+
+//Login Routes
+Route::post('/loginuser',[AuthenticationController::class,'loginuser'])->name('loginuser');

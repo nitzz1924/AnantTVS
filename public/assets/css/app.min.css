@@ -16178,4 +16178,14 @@ span.flatpickr-weekday {
     bottom: -18px;
     right: -35px;
 }
-/*# sourceMappingURL=app.min.css.map */
+
+@media only screen and (min-width: 769px) {
+    .myDivhide {
+        display: none;
+    }
+}
+@media only screen and (max-width: 769px) {
+    .myDivhide {
+        display: block;
+    }
+}

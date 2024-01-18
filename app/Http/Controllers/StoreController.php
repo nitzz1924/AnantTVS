@@ -83,9 +83,11 @@ class StoreController extends Controller
                 'customerstate' => $req->customerstate,
                 'customercountry' => $req->customercountry,
                 'customeraddress' => $req->customeraddress,
+                'password' => bcrypt('12345678'),
             ]);
             return back()->with('success', 'Customer Added Successfully..!!!!');
         } catch (\Exception $c) {
+            //  return redirect()->route('viewaddcustomer')->with('error', $c->getMessage());
             return redirect()->route('viewaddcustomer')->with('error', 'Customer Not Added Try Again...');
         }
     }
