@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 use App\Models\BuyVehicle;
+use App\Models\Lead;
 use App\Models\Master;
 use App\Models\Vehicle;
 use App\Models\Customer;
@@ -11,6 +12,38 @@ use Auth;
 
 class ViewController extends Controller
 {
+    public function dashboard()
+    {
+        $vehiclescount = Vehicle::count();
+        $vehiclelist = Vehicle::get();
+        $masterdata = Master::where('type','=','Vehicle')->get();
+        $arrnew = array();
+        foreach ($masterdata as $master) {
+            $vehicletypecount = Vehicle::where('type', '=', $master->value)->count();
+            $arrnew[] = [
+                'value' => $master->value,
+                'count' => $vehicletypecount,
+            ];
+        }
+        $vehilecounttotal = json_encode($arrnew);
+        $arraytwo = array();
+        foreach ($vehiclelist as $vehicles) {
+            $vehicletypecount = BuyVehicle::where('vehicle_id', '=', $vehicles->id)->count();
+            $arraytwo[] = [
+                'value' => $vehicles->name,
+                'count' => $vehicletypecount,
+            ];
+        }
+        $vechiletypecount = json_encode($arraytwo);
+        // dd($jsonData);
+
+        $BuyVehiclescount = BuyVehicle::count();
+        $Customerscount = Customer::count();
+        $leadcount = Lead::count();
+        $allleads = Lead::orderByDesc('created_at')->get();
+        // dd($vehiclescount);
+        return view('dashboard', compact('allleads','vehilecounttotal','vechiletypecount','vehiclescount','BuyVehiclescount','Customerscount','leadcount'));
+    }
     public function viewmaster()
     {
         $modelInstance = new User();

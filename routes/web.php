@@ -17,9 +17,7 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', [ViewController::class,'dashboard'])->name('dashboard');
 });
 
 
@@ -33,7 +31,6 @@ Route::get('/viewallcustomers', [ViewController::class, 'viewallcustomers'])->na
 Route::get('/viewbuyvehicles/{id}', [ViewController::class, 'viewbuyvehicles'])->name('viewbuyvehicles');
 Route::get('/viewuservehicles/{id}', [ViewController::class, 'viewuservehicles'])->name('viewuservehicles');
 Route::get('/viewvehicledetailpage/{id}', [ViewController::class, 'viewvehicledetailpage'])->name('viewvehicledetailpage');
-
 
 
 //Store Routes
@@ -85,3 +82,6 @@ Route::get('/paymentpage',[UserViewsController::class,'paymentpage'])->name('pay
 
 //Login Routes
 Route::post('/loginuser', [AuthenticationController::class, 'loginuser'])->name('loginuser');
+Route::get('/logoutuser',[AuthenticationController::class,'logout'])->name('logoutuser');  //Admin
+Route::get('/logoutuserpanel',[AuthenticationController::class,'logoutuserpanel'])->name('logoutuserpanel');  //Admin
+

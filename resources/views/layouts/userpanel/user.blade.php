@@ -32,9 +32,11 @@
     <link rel="stylesheet" href="{{ asset('assets/libs/gridjs/theme/mermaid.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/libs/dropzone/dropzone.css') }}" type="text/css" />
     <link rel="stylesheet" href="{{ asset('assets/libs/filepond/filepond.min.css') }}" type="text/css" />
-    <link rel="stylesheet" href="{{ asset('assets/libs/filepond-plugin-image-preview/filepond-plugin-image-preview.min.css') }}">
+    <link rel="stylesheet"
+        href="{{ asset('assets/libs/filepond-plugin-image-preview/filepond-plugin-image-preview.min.css') }}">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
 </head>
 
 <body class="font-sans antialiased">
@@ -48,7 +50,7 @@
                 <div class="navbar-header">
                     <div class="d-flex">
                         <!-- LOGO -->
-                        <div class="navbar-brand-box horizontal-logo">
+                        {{-- <div class="navbar-brand-box horizontal-logo">
                             <a href="#" class="logo logo-dark">
                                 <span class="logo-sm">
                                     <h3 class="text-dark p-2 fw-bold mt-3">User Panel</h3>
@@ -65,7 +67,7 @@
                                     <h3 class="text-dark p-2 fw-bold">User Panel</h3>
                                 </span>
                             </a>
-                        </div>
+                        </div> --}}
 
                         <button type="button"
                             class="btn btn-sm px-3 fs-16 header-item vertical-menu-btn topnav-hamburger"
@@ -211,14 +213,18 @@
                             </button>
                             <div class="dropdown-menu dropdown-menu-end">
                                 <!-- item-->
-                                <h6 class="dropdown-header">Welcome Nitesh</h6>
-                                <a class="dropdown-item" href="/viewuserprofile/{{ $user = Auth::guard('customer')->user()->id }}"><i
+                                @if (Auth::check())
+                                    <h6 class="dropdown-header">Welcome {{ Auth::user()->name }}</h6>
+                                @endif
+
+                                <a class="dropdown-item"
+                                    href="/viewuserprofile/{{ $user = Auth::guard('customer')->user()->id }}"><i
                                         class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span
                                         class="align-middle">Profile</span></a>
-                                <form method="POST" action="{{ route('logout') }}" x-data>
+                                <form method="POST" action="{{ route('logoutuserpanel') }}" x-data>
                                     @csrf
-                                    <x-jet-responsive-nav-link class="dropdown-item" href="{{ route('logout') }}"
-                                        @click.prevent="$root.submit();">
+                                    <x-jet-responsive-nav-link class="dropdown-item"
+                                        href="{{ route('logoutuserpanel') }}" @click.prevent="$root.submit();">
                                         <span
                                             class="mdi mdi-logout text-muted fs-16 align-middle me-1">{{ __('Log Out') }}</span>
                                     </x-jet-responsive-nav-link>
@@ -419,7 +425,8 @@
     <script src="{{ asset('assets/libs/filepond-plugin-file-encode/filepond-plugin-file-encode.min.js') }}"></script>
     <script src="{{ asset('assets/js/pages/form-file-upload.init.js') }}"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-     <!-- swiper js -->
-     <script src="{{asset('assets/libs/swiper/swiper-bundle.min.js')}}"></script>
-     <script src="{{asset('assets/js/pages/profile.init.js')}}"></script>
+    <!-- swiper js -->
+    <script src="{{ asset('assets/libs/swiper/swiper-bundle.min.js') }}"></script>
+    <script src="{{ asset('assets/js/pages/profile.init.js') }}"></script>
+
 </html>

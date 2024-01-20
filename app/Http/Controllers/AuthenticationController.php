@@ -10,7 +10,6 @@ class AuthenticationController extends Controller
 {
     public function loginuser(Request $request)
     {
-
         $credentials = $request->only('customerphoneno', 'password');
         $data = Customer::where('customerphoneno', '=', $credentials)->first();
 
@@ -20,6 +19,19 @@ class AuthenticationController extends Controller
             return redirect()->route('viewuserpanelhome');
         }
         return redirect()->route('viewloginpage')->with('error', 'Invalid credentials');
+    }
+
+    public function logout()
+    {
+        \Session::flush();
+        Auth::guard('customer')->logout();
+        return redirect()->route('login');
+    }
+    public function logoutuserpanel()
+    {
+        \Session::flush();
+        Auth::guard('customer')->logout();
+        return redirect()->route('viewloginpage');
     }
 
 }
