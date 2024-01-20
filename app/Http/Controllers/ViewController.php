@@ -1,6 +1,5 @@
 <?php
 namespace App\Http\Controllers;
-
 use App\Models\BuyVehicle;
 use App\Models\Master;
 use App\Models\Vehicle;
@@ -9,6 +8,7 @@ use App\Models\SliderImages;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Auth;
+
 class ViewController extends Controller
 {
     public function viewmaster()
@@ -79,7 +79,7 @@ class ViewController extends Controller
 
     public function viewvehicledetailpage($id)
     {
-        $buyvehiclesdata = BuyVehicle::join('vehicles','buy_vehicles.vehicle_id', '=', 'vehicles.id')
+        $buyvehiclesdata = BuyVehicle::join('vehicles', 'buy_vehicles.vehicle_id', '=', 'vehicles.id')
             ->select('buy_vehicles.*', 'vehicles.*')
             ->where('buy_vehicles.id', $id)
             ->get();
@@ -112,11 +112,11 @@ class ViewController extends Controller
     //USER PANEL VIEWS
     public function viewuserpanelhome()
     {
-
+        $user = Auth::guard('customer')->user();
         $sliderimages = SliderImages::where('type', 'userhomeslider')->get();
         $vehiclesdata = Vehicle::get();
         //dd($sliderimages);
-        return view('userpanelviews.home', compact('sliderimages','vehiclesdata'));
+        return view('userpanelviews.home', compact('sliderimages', 'vehiclesdata', 'user'));
     }
 
     public function viewloginpage()

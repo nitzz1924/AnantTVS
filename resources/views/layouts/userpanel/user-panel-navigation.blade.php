@@ -1,23 +1,26 @@
-
 <div id="scrollbar">
     <div class="container-fluid">
         <div id="two-column-menu">
         </div>
         <ul class="navbar-nav" id="navbar-nav">
+
             <li class="menu-title"><span data-key="t-menu">Menu</span></li>
             <li class="nav-item">
-                <a class="nav-link menu-link" href="#" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
+                <a class="nav-link menu-link" href="{{ route('viewuserpanelhome') }}" role="button" aria-expanded="false"
+                    aria-controls="sidebarDashboards">
                     <i class="bx bxs-dashboard"></i> <span>Dashboard</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link menu-link" href="#" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
-                    <i class="bx bxs-dashboard"></i> <span>Vehicles List</span>
+                <a class="nav-link menu-link" href="{{ route('allvehicleslist') }}" role="button" aria-expanded="false"
+                    aria-controls="sidebarDashboards">
+                    <i class="bx bxs-car"></i> <span>Vehicles List</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link menu-link" href="#" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
-                    <i class="bx bxs-dashboard"></i> <span>Payment</span>
+                <a class="nav-link menu-link" href="{{route('paymentpage')}}" role="button" aria-expanded="false"
+                    aria-controls="sidebarDashboards">
+                    <i class="bx bx-rupee"></i> <span>Payment</span>
                 </a>
             </li>
             {{-- <li class="nav-item">

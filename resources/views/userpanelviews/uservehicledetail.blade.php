@@ -1,5 +1,9 @@
 {{-- -----------------------------------------------🙏JAI SHREE RAM🚩------------------------------------------------------------- --}}
-<x-app-layout>
+@extends('layouts.userpanel.user')
+@push('title')
+    <title>Detail Page</title>
+@endpush
+@section('content')
     <div class="page-content">
         <div class="container-fluid">
             <div class="row">
@@ -84,8 +88,8 @@
                                                             class="text-body fw-medium">Zoetic Fashion</span>
                                                     </div>
                                                     <div class="vr"></div>
-                                                    <div class="text-muted">Published : <span
-                                                            class="text-body fw-medium">26 Mar, 2021</span>
+                                                    <div class="text-muted">Published : <span class="text-body fw-medium">26
+                                                            Mar, 2021</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -196,8 +200,7 @@
                                                     </li>
                                                     <li class="nav-item">
                                                         <a class="nav-link" id="nav-detail-tab" data-bs-toggle="tab"
-                                                            href="#nav-detail" role="tab"
-                                                            aria-controls="nav-detail"
+                                                            href="#nav-detail" role="tab" aria-controls="nav-detail"
                                                             aria-selected="false">Details</a>
                                                     </li>
                                                     <li class="nav-item">
@@ -710,4 +713,4 @@
         <!-- container-fluid -->
     </div>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-</x-app-layout>
+@endsection

@@ -42,7 +42,7 @@ Route::post('/createsubmaster', [MasterController::class, 'createsubmaster'])->n
 Route::post('/createvehicle', [StoreController::class, 'createvehicle'])->name('createvehicle');
 Route::post('/createcustomer', [StoreController::class, 'createcustomer'])->name('createcustomer');
 Route::post('/createbuyvehicle', [StoreController::class, 'createbuyvehicle'])->name('createbuyvehicle');
-Route::post('/createlead', [StoreController::class,'createlead'])->name('createlead');
+Route::post('/createlead', [StoreController::class, 'createlead'])->name('createlead');
 
 
 //Delete Routes
@@ -73,13 +73,15 @@ Route::get('/vehicles', [ViewController::class, 'frontendvehiclespage'])->name('
 //--------------------USER PANEL ROUTING--------------------------------------------------------
 
 //view Routes
-Route::get('/viewuserpanelhome', [ViewController::class,'viewuserpanelhome'])->name('viewuserpanelhome');
-Route::get('/viewloginpage', [ViewController::class,'viewloginpage'])->name('viewloginpage');
+Route::get('/viewuserpanelhome', [ViewController::class, 'viewuserpanelhome'])->name('viewuserpanelhome');
+Route::get('/viewloginpage', [ViewController::class, 'viewloginpage'])->name('viewloginpage');
 
-Route::get('/uservehicledetailview/{id}', [UserViewsController::class,'uservehicledetailview'])->name('uservehicledetailview');
-Route::get('/alluservehiclesview',[UserViewsController::class,'alluservehiclesview'])->name('alluservehiclesview');
-Route::get('/allvehicleslist', [UserViewsController::class,'allvehicleslist'])->name('allvehicleslist');
+Route::get('/viewuserprofile/{id}', [UserViewsController::class, 'viewuserprofile'])->name('viewuserprofile');
+Route::get('/uservehicledetailview/{id}', [UserViewsController::class, 'uservehicledetailview'])->name('uservehicledetailview');
+Route::get('/alluservehiclesview', [UserViewsController::class, 'alluservehiclesview'])->name('alluservehiclesview');
+Route::get('/allvehicleslist', [UserViewsController::class, 'allvehicleslist'])->name('allvehicleslist');
+Route::get('/paymentpage',[UserViewsController::class,'paymentpage'])->name('paymentpage');
 
 
 //Login Routes
-Route::post('/loginuser',[AuthenticationController::class,'loginuser'])->name('loginuser');
+Route::post('/loginuser', [AuthenticationController::class, 'loginuser'])->name('loginuser');

@@ -76,24 +76,25 @@
                             <div class="card-body">
                                 <p class="fw-medium mb-0 float-end"><i class="mdi mdi-heart text-danger align-middle"></i>
                                     {{ $row->type }} </p>
-                                <h5 class="text-success"><i class="mdi mdi-ethereum"></i> {{ $row->price }} </h5>
+                                <h5 class="text-success"><i class="bi bi-currency-rupee"></i> {{ $row->price }} </h5>
                                 <h6 class="fs-16 mb-3"><a href="apps-nft-item-details.html"
                                         class="text-body">{{ $row->name }}</a></h6>
-                                <a href="#" class="booking-link">
+
+                                {{-- <a href="#" class="booking-link" id="modalunique{{ $row->id }}">
                                     <span class="rounded-3 bg-white text-info border border-info p-2 openModalBtnnew"
                                         data-bs-toggle="modal" data-bs-target="#exampleModal"
                                         data-record-id="{{ json_encode($row) }}">
                                         Book Now
                                     </span>
-                                </a>
-                                <div>
-                                    <span class="text-muted float-end">Available: 436</span>
-                                    <span class="text-muted">Sold: 4187</span>
-                                    <div class="progress progress-sm mt-2">
-                                        <div class="progress-bar progress-bar-striped bg-success" role="progressbar"
-                                            style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
-                                        </div>
-                                    </div>
+                                </a> --}}
+                                <div class="text-end">
+                                    <a href="#" class="booking-link" id="modalunique{{ $row->id }}">
+                                        <span class="rounded-3 bg-white text-info border border-info p-2 openModalBtnnew"
+                                            data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                            data-record-id="{{ json_encode($row) }}">
+                                            Book Now
+                                        </span>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -115,7 +116,6 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary ">Save Changes</button>
                 </div>
 
             </div><!-- /.modal-content -->
@@ -129,7 +129,7 @@
                     <h1 class="modal-title fs-5" id="exampleModalLabel">Book your Vehicle</h1>
                     {{-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> --}}
                 </div>
-                <div class="modal-body" id="modalbody">
+                <div class="modal-body" id="modalbodynew">
                     {{-- Modal Body Appends Here --}}
                 </div>
                 <div class="modal-footer">
@@ -249,7 +249,7 @@
             $('.openModalBtnnew').on('click', function() {
                 var recordId = $(this).data('record-id');
                 console.log(recordId);
-                $('#modalbody').empty();
+                $('#modalbodynew').empty();
                 var modal = `
 
                 <form action="{{ route('createlead') }}" method="POST" id="leadform">
@@ -305,7 +305,7 @@
 
                 </form>
             `;
-                $('#modalbody').append(modal);
+                $('#modalbodynew').append(modal);
             });
         });
     </script>

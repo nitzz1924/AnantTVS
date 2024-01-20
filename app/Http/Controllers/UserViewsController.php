@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 use App\Models\BuyVehicle;
 use Illuminate\Http\Request;
 use App\Models\Vehicle;
+use App\Models\Master;
+use App\Models\Customer;
+use App\Models\SliderImages;
 use Auth;
 class UserViewsController extends Controller
 {
@@ -37,5 +40,18 @@ class UserViewsController extends Controller
     {
         $allvehicles = Vehicle::paginate(10);
         return view('userpanelviews.userallvehiclespage', compact('allvehicles'));
+    }
+
+    public function viewuserprofile($id)
+    {
+        $allcustomers = Customer::where('id','=', $id)->get();
+        return view('userpanelviews.userprofile', compact('allcustomers'));
+    }
+
+    public function paymentpage()
+    {
+        $sliderimages = SliderImages::where('type', 'userhomeslider')->get();
+        $masterdata = Master::where('type', '=', 'Payment Button')->get();
+        return view('userpanelviews.paymentpage', compact('sliderimages','masterdata'));
     }
 }
