@@ -17,7 +17,7 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('/dashboard', [ViewController::class,'dashboard'])->name('dashboard');
+    Route::get('/dashboard', [ViewController::class, 'dashboard'])->name('dashboard');
 });
 
 
@@ -77,11 +77,11 @@ Route::get('/viewuserprofile/{id}', [UserViewsController::class, 'viewuserprofil
 Route::get('/uservehicledetailview/{id}', [UserViewsController::class, 'uservehicledetailview'])->name('uservehicledetailview');
 Route::get('/alluservehiclesview', [UserViewsController::class, 'alluservehiclesview'])->name('alluservehiclesview');
 Route::get('/allvehicleslist', [UserViewsController::class, 'allvehicleslist'])->name('allvehicleslist');
-Route::get('/paymentpage',[UserViewsController::class,'paymentpage'])->name('paymentpage');
+Route::get('/paymentpage', [UserViewsController::class, 'paymentpage'])->name('paymentpage');
 
 
 //Login Routes
 Route::post('/loginuser', [AuthenticationController::class, 'loginuser'])->name('loginuser');
-Route::get('/logoutuser',[AuthenticationController::class,'logout'])->name('logoutuser');  //Admin
-Route::get('/logoutuserpanel',[AuthenticationController::class,'logoutuserpanel'])->name('logoutuserpanel');  //Admin
+Route::get('/logoutuser', [AuthenticationController::class, 'logout'])->name('logoutuser');  //Admin
+Route::get('/logoutuserpanel', [AuthenticationController::class, 'logoutuserpanel'])->name('logoutuserpanel');  //Admin
 

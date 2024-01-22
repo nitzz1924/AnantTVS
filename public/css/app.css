@@ -980,7 +980,7 @@ select {
   margin-top: 0.8571429em;
 }
 .prose {
-  --tw-prose-body: #374151;
+  --tw-prose-body: #f2f7ff;
   --tw-prose-headings: #111827;
   --tw-prose-lead: #4b5563;
   --tw-prose-links: #111827;
@@ -1498,9 +1498,10 @@ select {
   border-color: transparent;
 }
 .bg-gray-100 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
-}
+    --tw-bg-opacity: 1;
+    background: url('website-assets/images/bikewhite.png') center/cover;
+  }
+
 .bg-gray-200 {
   --tw-bg-opacity: 1;
   background-color: rgb(229 231 235 / var(--tw-bg-opacity));
