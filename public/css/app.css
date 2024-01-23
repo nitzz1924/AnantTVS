@@ -1499,7 +1499,7 @@ select {
 }
 .bg-gray-100 {
     --tw-bg-opacity: 1;
-    background: url('website-assets/images/bikewhite.png') center/cover;
+    background: #5f80b4;
   }
 
 .bg-gray-200 {

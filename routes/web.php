@@ -44,6 +44,8 @@ Route::post('/createlead', [StoreController::class, 'createlead'])->name('create
 
 //Delete Routes
 Route::get('/deletemastercat/{id}/{type}', [MasterController::class, 'deletemaster'])->name('deletemaster');
+Route::get('/deleteparticularcustomer/{id}', [EditController::class, 'deleteparticularcustomer'])->name('deleteparticularcustomer');
+Route::get('/deleteparticularvehicle/{id}', [EditController::class, 'deleteparticularvehicle'])->name('deleteparticularvehicle');
 
 
 //AJAX ROUTES

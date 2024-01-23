@@ -96,6 +96,13 @@
                                                                 Vehicles
                                                             </a>
                                                         </li>
+                                                        <li>
+                                                            <a href="/deleteparticularcustomer/{{$row->id}}" class="dropdown-item remove-item-btn">
+                                                                <i
+                                                                    class=" ri-delete-bin-fill
+                                                                    align-bottom me-2 text-muted"></i>Remove
+                                                            </a>
+                                                        </li>
                                                     </ul>
                                                 </div>
                                             </td>

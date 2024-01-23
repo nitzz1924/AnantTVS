@@ -21,6 +21,11 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card">
+                        @if ($mymess = Session::get('success'))
+                            <div class="alert border-0 alert-success text-center" role="alert" id="successAlert">
+                                <strong>{{ $mymess }}</strong>
+                            </div>
+                        @endif
                         <div class="card-header align-items-center d-flex">
                             <h4 class="card-title mb-0 flex-grow-1">All Vehicles</h4>
                             <div class="flex-shrink-0">
@@ -78,11 +83,44 @@
                                                 </div>
                                             </td>
                                             <td>
+                                                <div class="dropdown d-inline-block">
+                                                    <button class="btn btn-soft-secondary btn-sm dropdown"
+                                                        type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                        <i class="ri-more-fill align-middle"></i>
+                                                    </button>
+                                                    <ul class="dropdown-menu dropdown-menu-end">
+                                                        <li><a href="#" data-bs-target="#myModal"
+                                                                data-record-id="{{ json_encode($row) }}"
+                                                                id="openModalBtnone" data-bs-toggle="modal"
+                                                                class="dropdown-item openModalBtn"><i
+                                                                    class="ri-eye-fill align-bottom me-2 text-muted"></i>
+                                                                View</a></li>
+                                                        {{-- <li><a class="dropdown-item edit-item-btn" href="/editcustomer/{{$row->id}}"><i
+                                                                    class="ri-pencil-fill align-bottom me-2 text-muted"></i>
+                                                                Edit</a></li> --}}
+                                                        {{-- <li>
+                                                            <a href="/viewuservehicles/{{$row->id}}" class="dropdown-item remove-item-btn">
+                                                                <i
+                                                                    class="ri-car-fill align-bottom me-2 text-muted"></i>All
+                                                                Vehicles
+                                                            </a>
+                                                        </li> --}}
+                                                        <li>
+                                                            <a href="/deleteparticularvehicle/{{$row->id}}" class="dropdown-item remove-item-btn">
+                                                                <i
+                                                                    class=" ri-delete-bin-fill
+                                                                    align-bottom me-2 text-muted"></i>Remove
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                            {{-- <td>
                                                 <button class="btn btn-outline-primary openModalBtn"
                                                     id="openModalBtnone" data-bs-toggle="modal"
                                                     data-bs-target="#myModal"
                                                     data-record-id="{{ json_encode($row) }}">View</button>
-                                            </td>
+                                            </td> --}}
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -115,6 +153,15 @@
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
+    <script>
+        setTimeout(function() {
+            $('#successAlert').fadeOut('slow');
+        }, 2000);
+
+        setTimeout(function() {
+            $('#dangerAlert').fadeOut('slow');
+        }, 2000);
+    </script>
     <script>
         $(document).ready(function() {
             $('[id^="toggle-"]').change(function() {

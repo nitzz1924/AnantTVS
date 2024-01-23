@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\BuyVehicle;
+use App\Models\Vehicle;
 use Illuminate\Http\Request;
 use App\Models\Customer;
 
@@ -75,5 +76,21 @@ class EditController extends Controller
         } catch (\Exception $e) {
             return back()->with('error', "Not Updated.! Try Again..");
         }
+    }
+
+    //Delete Particular Customer
+    public function deleteparticularcustomer($id)
+    {
+        $customers = Customer::find($id);
+        $customers->delete();
+        return redirect()->route('viewallcustomers')->with('success', "Customer Deleted..!!!");
+    }
+    //Delete Particular Vehicle
+    public function deleteparticularvehicle($id)
+    {
+        $vehicles = Vehicle::find($id);
+        // dd($vehicles);
+        $vehicles->delete();
+        return redirect()->route('viewvehicles')->with('success', "Vehicle Deleted..!!!");
     }
 }
