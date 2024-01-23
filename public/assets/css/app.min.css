@@ -16183,9 +16183,20 @@ span.flatpickr-weekday {
     .myDivhide {
         display: none;
     }
+    .close-btn{
+        display: none;
+    }
 }
 @media only screen and (max-width: 769px) {
     .myDivhide {
         display: block;
     }
+
+    .close-btn{
+        position: absolute;
+        top:10px;
+        right: 20px;
+        display: block;
+    }
 }
+

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-layout="vertical" data-topbar="light"
+    data-sidebar-size="lg" data-sidebar="light" data-sidebar-image="none" data-preloader="disable">
 
 <head>
     <meta charset="utf-8">
@@ -197,41 +198,52 @@
                             </div>
                         </div>
 
-
                         <div class="dropdown ms-sm-3 header-item topbar-user">
                             <button type="button" class="btn" id="page-header-user-dropdown"
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="d-flex align-items-center">
                                     <img class="rounded-circle header-profile-user"
-                                        src="assets/images/users/avatar-1.jpg" alt="Header Avatar">
+                                        src="{{ asset('website-assets/images/logo.png') }}" alt="Header Avatar" />
                                     <span class="text-start ms-xl-2">
-                                        <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">
-                                            Nitesh</span>
-                                        <span class="d-none d-xl-block ms-1 fs-12 user-name-sub-text">Founder</span>
+                                        @if (Auth::user())
+                                            <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">
+                                                {{ Auth::user()->name }}
+                                            </span>
+                                        @else
+                                            <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">
+                                                Guest User
+                                            </span>
+                                        @endif
                                     </span>
                                 </span>
                             </button>
                             <div class="dropdown-menu dropdown-menu-end">
                                 <!-- item-->
-                                @if (Auth::check())
+                                @if (Auth::user())
                                     <h6 class="dropdown-header">Welcome {{ Auth::user()->name }}</h6>
+                                @else
+                                    <h6 class="dropdown-header">Welcome Guest User</h6>
                                 @endif
-
-                                <a class="dropdown-item"
-                                    href="/viewuserprofile/{{ $user = Auth::guard('customer')->user()->id }}"><i
-                                        class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span
+                                <a class="dropdown-item" href="pages-profile.html"><i
+                                        class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i><span
                                         class="align-middle">Profile</span></a>
-                                <form method="POST" action="{{ route('logoutuserpanel') }}" x-data>
+                                <div class="dropdown-divider"></div>
+                                <!-- Authentication -->
+                                <form method="POST" action="{{ route('logoutuser') }}" x-data>
                                     @csrf
-                                    <x-jet-responsive-nav-link class="dropdown-item"
-                                        href="{{ route('logoutuserpanel') }}" @click.prevent="$root.submit();">
+
+                                    <x-jet-responsive-nav-link class="dropdown-item" href="{{ route('logoutuser') }}"
+                                        @click.prevent="$root.submit();">
                                         <span
                                             class="mdi mdi-logout text-muted fs-16 align-middle me-1">{{ __('Log Out') }}</span>
                                     </x-jet-responsive-nav-link>
                                 </form>
-                                {{-- <a class="dropdown-item" href="auth-logout-basic.html"><i
-                                        class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span
-                                        class="align-middle" data-key="t-logout">Logout</span></a> --}}
+                                {{--
+                              <a class="dropdown-item" href="auth-logout-basic.html"
+                                ><i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i>
+                                <span class="align-middle" data-key="t-logout">Logout</span></a
+                              >
+                              --}}
                             </div>
                         </div>
                     </div>
@@ -269,24 +281,22 @@
         </div><!-- /.modal -->
         <!-- ========== App Menu ========== -->
         <div class="app-menu navbar-menu">
-            <!-- LOGO -->
-            <div class="navbar-brand-box">
-                <!-- Dark Logo-->
+            <div class="navbar-brand-box"  style="background-color: #5f80b4; !important">
                 <a href="#" class="logo logo-dark">
                     <span class="logo-sm">
-                        <h2 class="text-dark p-2 fw-bold mt-3">User Panel</h2>
+                        <img src="{{asset('website-assets/images/logo.png')}}" alt="" height="17">
                     </span>
                     <span class="logo-lg">
-                        <h2 class="text-dark p-2 fw-bold mt-3">User Panel</h2>
+                        <img src="{{asset('website-assets/images/logo.png')}}" alt="" height="50">
                     </span>
                 </a>
                 <!-- Light Logo-->
-                <a href="#" class="logo logo-light">
+                <a href="#" class="logo logo-light" style="background-color: black;">
                     <span class="logo-sm">
-                        <h2 class="text-dark p-2 fw-bold mt-3">User Panel</h2>
+                        <img src="{{asset('website-assets/images/logo.png')}}" alt="" height="17">
                     </span>
                     <span class="logo-lg">
-                        <h2 class="text-dark p-2 fw-bold mt-3">User Panel</h2>
+                        <img src="{{asset('website-assets/images/logo.png')}}" alt="" height="50">
                     </span>
                 </a>
                 <button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover"
