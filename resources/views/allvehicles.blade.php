@@ -53,9 +53,9 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($allvehicles as $row)
+                                    @foreach ($allvehicles as $index => $row)
                                         <tr>
-                                            <th scope="row" class="fw-semibold">{{ $row->id }}</th>
+                                            <th scope="row" class="fw-semibold">{{ $index + 1 }}</th>
                                             <td>
                                                 @if ($row->image)
                                                     @php

@@ -13,10 +13,7 @@
     <!-- Scripts -->
     {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
 
-    <link rel="icon" sizes="192x192" href="{{ asset('website-assets/images/logo.png') }}">
-    <!--* favicon & bookmark -->
-    <link rel="shortcut icon" href="https://sacredthemes.net/wheels/images/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="https://sacredthemes.net/wheels/images/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('website-assets/images/logo.png') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('website-assets/frontend-css/animate.css') }}" type="text/css" />
