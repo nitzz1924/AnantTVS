@@ -6,9 +6,9 @@
 <script src="{{asset('assets/js/pages/plugins/lord-icon-2.1.0.js')}}"></script>
 <script src="{{asset('assets/js/plugins.js')}}"></script>
 
-<script src="{{asset('assets/libs/particles.js/particles.js')}}"></script>
+{{-- <script src="{{asset('assets/libs/particles.js/particles.js')}}"></script>
 <!-- particles app js -->
-<script src="{{asset('assets/js/pages/particles.app.js')}}"></script>
+<script src="{{asset('assets/js/pages/particles.app.js')}}"></script> --}}
 
 <!-- password-addon init -->
 <script src="{{asset('assets/js/pages/password-addon.init.js')}}"></script>

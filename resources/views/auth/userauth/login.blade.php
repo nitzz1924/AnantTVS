@@ -6,15 +6,7 @@
 @section('main-section')
     <div class="auth-page-wrapper pt-5">
         <!-- auth page bg -->
-        <div class="auth-one-bg-position auth-one-bg" id="auth-particles">
-            <div class="bg-overlay"></div>
-
-            <div class="shape">
-                <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink"
-                    viewBox="0 0 1440 120">
-                    <path d="M 0,36 C 144,53.6 432,123.2 720,124 C 1008,124.8 1296,56.8 1440,40L1440 140L0 140z"></path>
-                </svg>
-            </div>
+        <div class="auth-one-bg-position auth-one-bg">
         </div>
         <div class="auth-page-content">
             <div class="container">
@@ -26,7 +18,7 @@
                                     <img src="{{ asset('website-assets/images/logo.png') }}" alt="" height="50">
                                 </a>
                             </div>
-                            <p class="mt-3 fs-15 fw-medium">A FLEET OF EXCELLENCE</p>
+                            <p class="mt-3 fs-15 fw-medium text-black">A FLEET OF EXCELLENCE</p>
                         </div>
                     </div>
                 </div>

@@ -205,9 +205,9 @@
                                     <img class="rounded-circle header-profile-user"
                                         src="{{ asset('website-assets/images/logo.png') }}" alt="Header Avatar" />
                                     <span class="text-start ms-xl-2">
-                                        @if (Auth::user())
+                                        @if (Auth::guard('customer')->user())
                                             <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">
-                                                {{ Auth::user()->name }}
+                                                {{ Auth::guard('customer')->user()->customername }}
                                             </span>
                                         @else
                                             <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">
@@ -219,31 +219,30 @@
                             </button>
                             <div class="dropdown-menu dropdown-menu-end">
                                 <!-- item-->
-                                @if (Auth::user())
-                                    <h6 class="dropdown-header">Welcome {{ Auth::user()->name }}</h6>
+                                @if (Auth::guard('customer')->user())
+                                    <h6 class="dropdown-header">Welcome {{ Auth::guard('customer')->user()->customername }}</h6>
                                 @else
-                                    <h6 class="dropdown-header">Welcome Guest User</h6>
+                                    <h6 class="dropdown-header">Welcome {{ Auth::guard('customer')->user()->customername }}</h6>
                                 @endif
                                 <a class="dropdown-item" href="pages-profile.html"><i
                                         class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i><span
                                         class="align-middle">Profile</span></a>
                                 <div class="dropdown-divider"></div>
                                 <!-- Authentication -->
-                                <form method="POST" action="{{ route('logoutuser') }}" x-data>
+                                <form method="POST" action="{{ route('logoutuserpanel') }}" x-data>
                                     @csrf
-
-                                    <x-jet-responsive-nav-link class="dropdown-item" href="{{ route('logoutuser') }}"
+                                    <x-jet-responsive-nav-link class="dropdown-item" href="{{ route('logoutuserpanel') }}"
                                         @click.prevent="$root.submit();">
                                         <span
                                             class="mdi mdi-logout text-muted fs-16 align-middle me-1">{{ __('Log Out') }}</span>
                                     </x-jet-responsive-nav-link>
                                 </form>
-                                {{--
+{{--
                               <a class="dropdown-item" href="auth-logout-basic.html"
                                 ><i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i>
                                 <span class="align-middle" data-key="t-logout">Logout</span></a
-                              >
-                              --}}
+                              > --}}
+
                             </div>
                         </div>
                     </div>
@@ -320,12 +319,28 @@
             <main>
                 @yield('content')
             </main>
-            <div class="container-fluid card myDivhide" style="position: fixed; top: 92%;">
+            <footer class="footer" id="customfooter">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <script>
+                                document.write(new Date().getFullYear())
+                            </script> © Anant TVS.
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="text-sm-end d-none d-sm-block">
+                                Developed by YUVMEDIA
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            <div class="footer myDivhide" style="position: fixed; top: 92%;">
                 <div class="row justify-content-center d-flex">
                     <div class="col-xl-4 col-4">
                         <div class="card-height-20">
                             <div class="">
-                                <div class="flex-grow-1 p-3 mt-3">
+                                <div class="flex-grow-1">
                                     <a href="#">
                                         <h5 class="mb-3"><i class="bi bi-house"></i>&nbsp;Home</h5>
                                     </a>
@@ -336,8 +351,8 @@
                     <div class="col-xl-4 col-4">
                         <div class="card-height-20">
                             <div class="">
-                                <div class="flex-grow-1 p-3 mt-3">
-                                    <a href="#">
+                                <div class="flex-grow-1">
+                                    <a href="{{route('alluservehiclesview')}}">
                                         <h5 class="mb-3"><i class="bi bi-car-front"></i>&nbsp;Vehicles</h5>
                                     </a>
                                 </div>
@@ -347,9 +362,9 @@
                     <div class="col-xl-4 col-4">
                         <div class="card-height-20">
                             <div class="">
-                                <div class="flex-grow-1 p-3 mt-3">
-                                    <a href="#">
-                                        <h5 class="mb-3"><i class="bi bi-credit-card"></i>&nbsp;Payment</h5>
+                                <div class="flex-grow-1">
+                                    <a href="{{route('paymentpage')}}">
+                                        <h5 class="mb-3"><i class="bi bi-credit-card"></i>&nbsp;Pay</h5>
                                     </a>
                                 </div>
                             </div>

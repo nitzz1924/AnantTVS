@@ -85,5 +85,5 @@ Route::get('/paymentpage', [UserViewsController::class, 'paymentpage'])->name('p
 //Login Routes
 Route::post('/loginuser', [AuthenticationController::class, 'loginuser'])->name('loginuser');
 Route::get('/logoutuser', [AuthenticationController::class, 'logout'])->name('logoutuser');  //Admin
-Route::get('/logoutuserpanel', [AuthenticationController::class, 'logoutuserpanel'])->name('logoutuserpanel');  //Admin
+Route::get('/logoutuserpanel', [AuthenticationController::class, 'logoutuserpanel'])->name('logoutuserpanel');
 
