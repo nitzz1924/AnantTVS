@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Auth;
 use App\Models\Customer;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Hash;
 class AuthenticationController extends Controller
 {
     public function loginuser(Request $request)
@@ -32,6 +32,22 @@ class AuthenticationController extends Controller
         \Session::flush();
         Auth::guard('customer')->logout();
         return redirect()->route('viewloginpage');
+    }
+
+    public function changepassword(Request $request)
+    {
+        // dd($request->newpassword);
+        $userdata = Auth::user();
+        // dd($userdata);
+        if(Hash::check($request->oldpassword, $userdata->password)){
+            $userdata->update([
+                'password'=>Hash::make($request->newpassword),
+            ]);
+            return redirect()->route('viewadminprofile')->with('success', 'Password Changed successfully..!!!!');
+        }
+        else{
+            return redirect()->route('viewadminprofile')->with('error', 'Fail to reset try again...');
+        }
     }
 
 }

@@ -31,6 +31,7 @@ Route::get('/viewallcustomers', [ViewController::class, 'viewallcustomers'])->na
 Route::get('/viewbuyvehicles/{id}', [ViewController::class, 'viewbuyvehicles'])->name('viewbuyvehicles');
 Route::get('/viewuservehicles/{id}', [ViewController::class, 'viewuservehicles'])->name('viewuservehicles');
 Route::get('/viewvehicledetailpage/{id}', [ViewController::class, 'viewvehicledetailpage'])->name('viewvehicledetailpage');
+Route::get('/viewadminprofile', [ViewController::class,'viewadminprofile'])->name('viewadminprofile');
 
 
 //Store Routes
@@ -41,6 +42,8 @@ Route::post('/createcustomer', [StoreController::class, 'createcustomer'])->name
 Route::post('/createbuyvehicle', [StoreController::class, 'createbuyvehicle'])->name('createbuyvehicle');
 Route::post('/createlead', [StoreController::class, 'createlead'])->name('createlead');
 
+//Password Change Route
+Route::post('/changepassword',[AuthenticationController::class,'changepassword'])->name('changepassword');
 
 //Delete Routes
 Route::get('/deletemastercat/{id}/{type}', [MasterController::class, 'deletemaster'])->name('deletemaster');

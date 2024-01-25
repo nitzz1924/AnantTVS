@@ -1,5 +1,6 @@
 <?php
 namespace App\Http\Controllers;
+
 use App\Models\BuyVehicle;
 use App\Models\Lead;
 use App\Models\Master;
@@ -16,7 +17,7 @@ class ViewController extends Controller
     {
         $vehiclescount = Vehicle::count();
         $vehiclelist = Vehicle::get();
-        $masterdata = Master::where('type','=','Vehicle')->get();
+        $masterdata = Master::where('type', '=', 'Vehicle')->get();
         $arrnew = array();
         foreach ($masterdata as $master) {
             $vehicletypecount = Vehicle::where('type', '=', $master->value)->count();
@@ -42,7 +43,7 @@ class ViewController extends Controller
         $leadcount = Lead::count();
         $allleads = Lead::orderByDesc('created_at')->get();
         // dd($vehiclescount);
-        return view('dashboard', compact('allleads','vehilecounttotal','vechiletypecount','vehiclescount','BuyVehiclescount','Customerscount','leadcount'));
+        return view('dashboard', compact('allleads', 'vehilecounttotal', 'vechiletypecount', 'vehiclescount', 'BuyVehiclescount', 'Customerscount', 'leadcount'));
     }
     public function viewmaster()
     {
@@ -119,6 +120,13 @@ class ViewController extends Controller
         return view('vehicledetailpage', compact('buyvehiclesdata'));
     }
 
+    public function viewadminprofile()
+    {
+        $user = Auth::user();
+        // dd($user);
+        return view('adminprofile', compact('user'));
+    }
+
     //WEBSITE VIEWS
 
     public function frontendhomepage()
@@ -146,10 +154,14 @@ class ViewController extends Controller
     public function viewuserpanelhome()
     {
         $user = Auth::guard('customer')->user();
-        $sliderimages = SliderImages::where('type', 'userhomeslider')->get();
-        $vehiclesdata = Vehicle::get();
-        //dd($sliderimages);
-        return view('userpanelviews.home', compact('sliderimages', 'vehiclesdata', 'user'));
+        if (Auth::guard('customer')->check()) {
+            $sliderimages = SliderImages::where('type', 'userhomeslider')->get();
+            $vehiclesdata = Vehicle::get();
+            //dd($sliderimages);
+            return view('userpanelviews.home', compact('sliderimages', 'vehiclesdata', 'user'));
+        } else {
+            return view('auth.userauth.login');
+        }
     }
 
     public function viewloginpage()

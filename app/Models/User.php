@@ -13,6 +13,9 @@ use Auth;
 
 class User extends Authenticatable
 {
+    protected $fillable = [
+        'name', 'email', 'password'
+    ];
     public function checkID()
     {
         if(Auth::check()){
