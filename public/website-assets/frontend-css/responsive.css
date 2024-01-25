@@ -36,7 +36,6 @@
 	.pricing-text{right: calc((100% - 1170px) / 2); top:100px; }
 	.morevideo-slider.owl-carousel .owl-video-play-icon{height: 60px; width: 60px; margin-left: -30px; margin-top: -30px; background-size: 24px;}
 	.design-video-slider.owl-carousel .owl-video-play-icon{height: 60px; width: 60px; margin-left: -30px; margin-top: -30px; background-size: 24px;}
-	.site-navigation > ul.header-social-media{display:none; }
 	.features-middle-img{padding:60px 0px 0px; }
 	.content-box .text h3{font-size:18px;}
 	.bus-layout.testimonial-wrapper .quote-text{padding: 40px 30px;}
@@ -153,12 +152,13 @@
 	.text-block p br{display:none;}
 	.container-fluid{padding-right:15px; padding-left:15px;}
 	.img-wrapper{margin-bottom:30px; }
+    .site-navigation > ul.header-social-media{display:none; }
 	.morevideo-slider{margin-left: 0;}
 	table.specifications td, table.specifications th{font-size:16px; }
 	.morevideo-slider .owl-nav{margin-top: 25px; left: 0; margin-left: 0; position: relative;}
 	.main-container > section{padding: 50px 0px;}
-	
-	
+
+
 	.h1, h1{font-size:2rem }
 	.color-variation-slider .owl-dots button.owl-dot{height: 32px; width: 32px;}
 	.design-video-slider{margin-left:0%; width: 100%;}
@@ -268,4 +268,4 @@
 
 @media only screen and (max-height:450px) {
 
-} 
+}
