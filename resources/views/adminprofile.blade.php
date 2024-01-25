@@ -119,4 +119,14 @@
         </div>
         <!-- container-fluid -->
     </div>
+    <script>
+        setTimeout(function() {
+            $('#successAlert').fadeOut('slow');
+        }, 2000);
+
+        setTimeout(function() {
+            $('#dangerAlert').fadeOut('slow');
+        }, 2000);
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </x-app-layout>

@@ -89,7 +89,7 @@
                                                         <i class="ri-more-fill align-middle"></i>
                                                     </button>
                                                     <ul class="dropdown-menu dropdown-menu-end">
-                                                        <li><a href="#" data-bs-target="#myModal"
+                                                        <li><a href="" data-bs-target="#myModal"
                                                                 data-record-id="{{ json_encode($row) }}"
                                                                 id="openModalBtnone" data-bs-toggle="modal"
                                                                 class="dropdown-item openModalBtn"><i
@@ -153,6 +153,7 @@
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>
         setTimeout(function() {
             $('#successAlert').fadeOut('slow');
@@ -190,11 +191,9 @@
                 });
 
                 if ($(this).prop('checked')) {
-                    // Checkbox is checked, set text to "Enabled"
                     labelElement.text('Enabled');
                     switchElement.removeClass('form-switch-danger').addClass('form-switch-success');
                 } else {
-                    // Checkbox is unchecked, set text to "Disabled"
                     labelElement.text('Disabled');
                     switchElement.removeClass('form-switch-success').addClass('form-switch-danger');
                 }
@@ -236,7 +235,6 @@
                             </div>
                         </div>
                     </div>`;
-
                 $('#modalbody').append(columntwo);
 
                 $('.slider').slick({
@@ -265,5 +263,4 @@
             });
         });
     </script>
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI/=" crossorigin="anonymous"></script>
 </x-app-layout>

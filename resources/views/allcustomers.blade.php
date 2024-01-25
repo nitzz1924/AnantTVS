@@ -139,6 +139,9 @@
         </div><!-- /.modal-dialog -->
 
     </div><!-- /.modal -->
+
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>
         setTimeout(function() {
             $('#successAlert').fadeOut('slow');
@@ -168,10 +171,31 @@
                     </div>`;
 
                 $('#modalbody').append(columntwo);
+
+                $('.slider').slick({
+                    dots: true,
+                    arrows: true,
+                    infinite: true,
+                    speed: 500,
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    autoplay: true,
+                    autoplaySpeed: 1000,
+                    responsive: [{
+                            breakpoint: 768,
+                            settings: {
+                                slidesToShow: 2,
+                            }
+                        },
+                        {
+                            breakpoint: 576,
+                            settings: {
+                                slidesToShow: 1,
+                            }
+                        }
+                    ]
+                });
             });
         });
     </script>
-
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI/
-                                        =" crossorigin="anonymous"></script>
 </x-app-layout>
