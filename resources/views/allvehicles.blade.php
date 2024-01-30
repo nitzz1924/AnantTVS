@@ -64,7 +64,6 @@
                                                     @endphp
                                                     <img src="{{ asset($firstImagePath) }}" alt="Thumbnail"
                                                         width="100px">
-                                                    {{-- {{ basename($firstImagePath) }} --}}
                                                 @endif
                                             </td>
                                             <td>{{ $row->name }}</td>
@@ -95,9 +94,9 @@
                                                                 class="dropdown-item openModalBtn"><i
                                                                     class="ri-eye-fill align-bottom me-2 text-muted"></i>
                                                                 View</a></li>
-                                                        {{-- <li><a class="dropdown-item edit-item-btn" href="/editcustomer/{{$row->id}}"><i
+                                                        <li><a class="dropdown-item edit-item-btn" href="/editvehicle/{{$row->id}}"><i
                                                                     class="ri-pencil-fill align-bottom me-2 text-muted"></i>
-                                                                Edit</a></li> --}}
+                                                                Edit</a></li>
                                                         {{-- <li>
                                                             <a href="/viewuservehicles/{{$row->id}}" class="dropdown-item remove-item-btn">
                                                                 <i

@@ -138,6 +138,8 @@
             </div>
         </div>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>
         setTimeout(function() {
             $('#successAlert').fadeOut('slow');
@@ -168,5 +170,4 @@
             });
         });
     </script>
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </x-app-layout>

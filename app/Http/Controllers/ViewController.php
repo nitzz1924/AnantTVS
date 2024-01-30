@@ -101,7 +101,6 @@ class ViewController extends Controller
             ->select('buy_vehicles.*', 'vehicles.image as vehicleImage', 'vehicles.name as vehicleName', 'vehicles.discription as vehicleDis', 'vehicles.modelno as vehicleModel')
             ->where('buy_vehicles.customer_id', $id)
             ->get();
-
         if ($buyvehiclesdata->isEmpty()) {
             return back()->with('error', 'no records found..!!!!');
         } else {
@@ -125,6 +124,11 @@ class ViewController extends Controller
         $user = Auth::user();
         // dd($user);
         return view('adminprofile', compact('user'));
+    }
+
+    public function vieweditaddedvehicle()
+    {
+        return view('editaddedvehicle');
     }
 
     //WEBSITE VIEWS

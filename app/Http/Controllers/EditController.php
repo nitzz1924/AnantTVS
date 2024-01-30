@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\BuyVehicle;
 use App\Models\Vehicle;
+use App\Models\Master;
 use Illuminate\Http\Request;
 use App\Models\Customer;
 
@@ -92,5 +93,30 @@ class EditController extends Controller
         // dd($vehicles);
         $vehicles->delete();
         return redirect()->route('viewvehicles')->with('success', "Vehicle Deleted..!!!");
+    }
+
+    public function editvehicle($id)
+    {
+        $vehicles = Vehicle::where('id', '=', $id)->get();
+        $masterdata = Master::where('type', '=', 'Vehicle')->get();
+        $masterdatacolor = Master::where('type', '=', 'color')->get();
+        // dd($vehicles);
+        return view('editaddedvehicle', compact('vehicles'));
+    }
+
+    public function updatevehicle(Request $request)
+    {
+        // dd($request->all());
+        try{
+            Vehicle::where('id',$request->vehicleid)->update([
+                'name'=>$request->name,
+                'modelno'=>$request->modelno,
+                'price'=>$request->price,
+                'discription'=>$request->discription,
+            ]);
+            return back()->with('success', 'Vehicle Updated..!!');
+        }catch (\Exception $v) {
+            return redirect()->route('vieweditaddedvehicle')->with('error', 'Not Updated Try Again...');
+        }
     }
 }

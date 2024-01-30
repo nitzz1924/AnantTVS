@@ -69,7 +69,7 @@
                                                                     alt="200x200"
                                                                     src="{{ asset('website-assets/images/raiderblue.webp') }}"></a>
                                                             <a href="{{ route('alluservehiclesview') }}"
-                                                                class=" text-black waves-effect waves-light mt-2"><i
+                                                                class=" text-black waves-effect waves-light mt-2 fs-5"><i
                                                                     class="bi bi-car-front-fill"></i>&nbsp;My Vehicles</a>
                                                         </div>
                                                     </div>
@@ -80,7 +80,7 @@
                                                                     alt="200x200"
                                                                     src="{{ asset('website-assets/images/profile.png') }}"></a>
                                                             <a href="/viewuserprofile/{{ $user->id }}"
-                                                                class=" text-black waves-effect waves-light mt-2"><i
+                                                                class=" text-black waves-effect waves-light mt-2 fs-5"><i
                                                                     class="bi bi-person-fill"></i>&nbsp;Profile</a>
                                                         </div>
                                                     </div>
@@ -91,8 +91,8 @@
                                                                     alt="200x200"
                                                                     src="{{ asset('website-assets/images/all.png') }}"></a>
                                                             <a href="{{ route('allvehicleslist') }}"
-                                                                class=" text-black waves-effect waves-light mt-2"><i
-                                                                    class="bi bi-car-front-fill"></i>&nbsp;All Vehicles</a>
+                                                                class=" text-black waves-effect waves-light mt-2 fs-5"><i
+                                                                    class="bi bi-car-front-fill"></i>&nbsp;Buy Vehicle</a>
                                                         </div>
                                                     </div>
                                                     <div class="col-xxl-3 col-6">
@@ -101,7 +101,7 @@
                                                                     class="img-thumbnail rounded-circle avatar-xl"
                                                                     alt="200x200"src="{{ asset('website-assets/images/payment.png') }}"></a>
                                                             <a href="{{ route('paymentpage') }}"
-                                                                class=" text-black waves-effect waves-light mt-2"><i
+                                                                class=" text-black waves-effect waves-light mt-2 fs-5"><i
                                                                     class="bi bi-currency-rupee"></i>&nbsp;Make Payment</a>
                                                         </div>
                                                     </div>
