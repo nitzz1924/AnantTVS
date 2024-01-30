@@ -111,49 +111,17 @@
                                                 <div class="col-lg-3 col-sm-6">
                                                     <div class="p-2 border border-dashed rounded">
                                                         <div class="d-flex align-items-center">
-                                                            <div class="avatar-sm me-2">
-                                                                <div
-                                                                    class="avatar-title rounded bg-transparent text-success fs-24">
-                                                                    <i class="ri-stack-fill"></i>
-                                                                </div>
-                                                            </div>
+
                                                             <div class="flex-grow-1">
-                                                                <p class="text-muted mb-1">Available Stocks :</p>
-                                                                <h5 class="mb-0">1,230</h5>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- end col -->
-                                                <div class="col-lg-3 col-sm-6">
-                                                    <div class="p-2 border border-dashed rounded">
-                                                        <div class="d-flex align-items-center">
-                                                            <div class="avatar-sm me-2">
-                                                                <div
-                                                                    class="avatar-title rounded bg-transparent text-success fs-24">
-                                                                    <i class="ri-stack-fill"></i>
+                                                                <p class="text-danger mb-1">Set Number Plate Status</p>
+                                                                <div class="form-check form-switch form-switch-success">
+                                                                    <input class="form-check-input" type="checkbox"
+                                                                        data-id='{{ $value->buyvehicleid }}' role="switch"
+                                                                        id="toggle-{{ $value->buyvehicleid }}"
+                                                                        {{ $value->numberplatestatus == '1' ? 'checked' : 0 }}>
+                                                                    <label class="form-check-label"
+                                                                        for="toggle-{{ $value->buyvehicleid }}">{{ $value->numberplatestatus == '1' ? 'Available' : 'In Process' }}</label>
                                                                 </div>
-                                                            </div>
-                                                            <div class="flex-grow-1">
-                                                                <p class="text-muted mb-1">Available Stocks :</p>
-                                                                <h5 class="mb-0">1,230</h5>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- end col -->
-                                                <div class="col-lg-3 col-sm-6">
-                                                    <div class="p-2 border border-dashed rounded">
-                                                        <div class="d-flex align-items-center">
-                                                            <div class="avatar-sm me-2">
-                                                                <div
-                                                                    class="avatar-title rounded bg-transparent text-success fs-24">
-                                                                    <i class="ri-inbox-archive-fill"></i>
-                                                                </div>
-                                                            </div>
-                                                            <div class="flex-grow-1">
-                                                                <p class="text-muted mb-1">Total Revenue :</p>
-                                                                <h5 class="mb-0">$60,645</h5>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -210,8 +178,7 @@
                                                                         @endphp
                                                                         <th scope="row">Status</th>
                                                                         <td>
-                                                                            <span
-                                                                                class="{{ $Statusclass }}">{{ $Status }}</span>
+                                                                            <span class="{{ $Statusclass }}">{{ $Status }}</span>
                                                                         </td>
                                                                     </tr>
                                                                     <tr>
@@ -356,5 +323,42 @@
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('[id^="toggle-"]').change(function() {
+                var switchElement = $(this).closest('.form-switch');
+                var labelElement = switchElement.find('.form-check-label');
+                var status = $(this).prop('checked') ? 1 : 0; // setting status
+                var dataId = $(this).data('id'); // data actual ID
+
+                //Updating Status
+                $.ajax({
+                    url: '/updatenumberplatestatus',
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    data: {
+                        id: dataId, // dynamically getting data id
+                        status: status
+                    },
+                    success: function(response) {
+                        console.log(response);
+                    },
+                    error: function(error) {
+                        console.error(error);
+                    }
+                });
+
+                if ($(this).prop('checked')) {
+                    labelElement.text('Available');
+                    switchElement.removeClass('form-switch-danger').addClass('form-switch-success');
+                } else {
+                    labelElement.text('In Process');
+                    switchElement.removeClass('form-switch-success').addClass('form-switch-danger');
+                }
+            });
+        });
+    </script>
 
 </x-app-layout>

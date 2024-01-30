@@ -57,6 +57,7 @@ Route::get('/getmastercatajax/{selectedCat}', [MasterController::class, 'getmast
 Route::post('/updatestatus', [StoreController::class, 'updatestatus'])->name('updatestatus');
 Route::get('/ajaxvehicleshow/{id}', [StoreController::class, 'ajaxvehicleshow'])->name('ajaxvehicleshow');
 Route::get('/filtervehicle/{selectedtype}', [StoreController::class, 'filtervehicle'])->name('filtervehicle');
+Route::post('/updatenumberplatestatus', [StoreController::class, 'updatenumberplatestatus'])->name('updatenumberplatestatus');
 
 //Edit Routes
 Route::get('/editcustomer/{id}', [EditController::class, 'editcustomer'])->name('editcustomer');

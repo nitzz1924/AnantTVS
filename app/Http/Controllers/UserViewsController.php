@@ -19,7 +19,7 @@ class UserViewsController extends Controller
             ->get();
 
         if ($buyvehiclesdata->isEmpty()) {
-            return back()->with('error', 'no records found..!!!!');
+           return view('userpanelviews.userallvehicles', compact('buyvehiclesdata'));
         } else {
             return view('userpanelviews.userallvehicles', compact('buyvehiclesdata'));
         }

@@ -81,6 +81,15 @@
                                                         for="toggle-{{ $row->id }}">{{ $row->status == '1' ? 'Enabled' : 'disabled' }}</label>
                                                 </div>
                                             </td>
+                                            {{-- <td>
+                                                <div class="form-check form-switch form-switch-success">
+                                                    <input class="form-check-input" type="text"
+                                                        data-id='{{ $row->id }}' role="switch" id=""
+                                                        {{ $row->numberplatestatus == '1' ? 'checked' : null }}>
+                                                    <label class="form-check-label"
+                                                        for="toggle-{{ $row->id }}">{{ $row->status == '1' ? 'Enabled' : 'disabled' }}</label>
+                                                </div>
+                                            </td> --}}
                                             <td>
                                                 <div class="dropdown d-inline-block">
                                                     <button class="btn btn-soft-secondary btn-sm dropdown"
@@ -94,7 +103,8 @@
                                                                 class="dropdown-item openModalBtn"><i
                                                                     class="ri-eye-fill align-bottom me-2 text-muted"></i>
                                                                 View</a></li>
-                                                        <li><a class="dropdown-item edit-item-btn" href="/editvehicle/{{$row->id}}"><i
+                                                        <li><a class="dropdown-item edit-item-btn"
+                                                                href="/editvehicle/{{ $row->id }}"><i
                                                                     class="ri-pencil-fill align-bottom me-2 text-muted"></i>
                                                                 Edit</a></li>
                                                         {{-- <li>
@@ -105,7 +115,8 @@
                                                             </a>
                                                         </li> --}}
                                                         <li>
-                                                            <a href="/deleteparticularvehicle/{{$row->id}}" class="dropdown-item remove-item-btn">
+                                                            <a href="/deleteparticularvehicle/{{ $row->id }}"
+                                                                class="dropdown-item remove-item-btn">
                                                                 <i
                                                                     class=" ri-delete-bin-fill
                                                                     align-bottom me-2 text-muted"></i>Remove

@@ -37,7 +37,7 @@ class StoreController extends Controller
                     $image_name = md5(rand(1000, 10000));
                     $extension = strtolower($file->getClientOriginalExtension());
                     $image_fullname = $image_name . '.' . $extension;
-                    $uploaded_path = "uploads/vehicle/";
+                    $uploaded_path = "uploads/vehicle/";    //for live server add 'public/uploads/vehicle/'
                     $image_url = $uploaded_path . $image_fullname;
                     $file->move($uploaded_path, $image_fullname);
                     $image[] = $image_url;
@@ -59,6 +59,17 @@ class StoreController extends Controller
         $data->status = $status;
         $data->save();
         return response()->json(['message' => 'Status updated successfully']);
+    }
+
+    public function updatenumberplatestatus(Request $req)
+    {
+
+        $id = $req->id;
+        $status = $req->status;
+        $data = BuyVehicle::find($id);
+        $data->numberplatestatus = $status;
+        $data->save();
+        return response()->json(['message' => 'Number Plate Status updated']);
     }
 
     public function createcustomer(Request $req)
@@ -139,6 +150,7 @@ class StoreController extends Controller
                 'rcimage' => $imagePath,
                 'invoiceimage' => $imagePathinvoice,
                 'insuranceimage' => $imagePathinsurance,
+                'numberplatestatus' => null,
             ]);
             return redirect()->route('viewallcustomers')->with('success', 'Vechile Buyed!!!!');
         } catch (\Exception $bv) {

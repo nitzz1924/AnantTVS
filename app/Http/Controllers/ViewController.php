@@ -97,15 +97,19 @@ class ViewController extends Controller
 
     public function viewuservehicles($id)
     {
+        $customerid = $id;
+        $customer = Customer::where('id',$customerid)->get();
+        // dd($customer);
         $buyvehiclesdata = BuyVehicle::join('vehicles', 'vehicles.id', '=', 'buy_vehicles.vehicle_id')
             ->select('buy_vehicles.*', 'vehicles.image as vehicleImage', 'vehicles.name as vehicleName', 'vehicles.discription as vehicleDis', 'vehicles.modelno as vehicleModel')
             ->where('buy_vehicles.customer_id', $id)
             ->get();
+        // dd($buyvehiclesdata);
         if ($buyvehiclesdata->isEmpty()) {
             return back()->with('error', 'no records found..!!!!');
         } else {
             // Process the retrieved records
-            return view('uservehicles', compact('buyvehiclesdata'));
+            return view('uservehicles', compact('buyvehiclesdata','customer'));
         }
 
     }
@@ -113,7 +117,7 @@ class ViewController extends Controller
     public function viewvehicledetailpage($id)
     {
         $buyvehiclesdata = BuyVehicle::join('vehicles', 'buy_vehicles.vehicle_id', '=', 'vehicles.id')
-            ->select('buy_vehicles.*', 'vehicles.*')
+            ->select('buy_vehicles.*', 'vehicles.*','buy_vehicles.id as buyvehicleid',)
             ->where('buy_vehicles.id', $id)
             ->get();
         return view('vehicledetailpage', compact('buyvehiclesdata'));
