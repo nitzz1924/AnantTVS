@@ -82,8 +82,10 @@ Route::get('/vehicles', [ViewController::class, 'frontendvehiclespage'])->name('
 //view Routes
 Route::get('/viewuserpanelhome', [ViewController::class, 'viewuserpanelhome'])->name('viewuserpanelhome');
 Route::get('/viewloginpage', [ViewController::class, 'viewloginpage'])->name('viewloginpage');
+Route::get('/viewuserprofilenavigation/{id}', [ViewController::class, 'viewuserprofilenavigation'])->name('viewuserprofilenavigation');
 
-Route::get('/viewuserprofile/{id}', [UserViewsController::class, 'viewuserprofile'])->name('viewuserprofile');
+
+Route::get('/viewuserprofile', [UserViewsController::class, 'viewuserprofile'])->name('viewuserprofile');
 Route::get('/uservehicledetailview/{id}', [UserViewsController::class, 'uservehicledetailview'])->name('uservehicledetailview');
 Route::get('/alluservehiclesview', [UserViewsController::class, 'alluservehiclesview'])->name('alluservehiclesview');
 Route::get('/allvehicleslist', [UserViewsController::class, 'allvehicleslist'])->name('allvehicleslist');

@@ -75,11 +75,11 @@
                                                     </div>
                                                     <div class="col-xxl-3 col-6">
                                                         <div class="text-center mt-2">
-                                                            <a href="/viewuserprofile/{{ $user->id }}"><img
+                                                            <a href="/viewuserprofile"><img
                                                                     class="img-thumbnail rounded-circle avatar-xl"
                                                                     alt="200x200"
                                                                     src="{{ asset('website-assets/images/profile.png') }}"></a>
-                                                            <a href="/viewuserprofile/{{ $user->id }}"
+                                                            <a href="/viewuserprofile"
                                                                 class=" text-black waves-effect waves-light mt-2 fs-5"><i
                                                                     class="bi bi-person-fill"></i>&nbsp;Profile</a>
                                                         </div>

@@ -171,6 +171,15 @@ class ViewController extends Controller
             return view('auth.userauth.login');
         }
     }
+    // public function viewuserprofilenavigation()
+    // {
+    //     $user = Auth::guard('customer')->user();
+    //     if (Auth::guard('customer')->check()) {
+    //         return view('layouts.userpanel.user-panel-navigation', compact('user'));
+    //     } else {
+    //         return view('auth.userauth.login');
+    //     }
+    // }
 
     public function viewloginpage()
     {

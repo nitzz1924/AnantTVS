@@ -81,37 +81,23 @@
                                                     <h4>{{ $value->name }}</h4>
                                                 @endforeach
                                                 <div class="hstack gap-3 flex-wrap">
-                                                    <div><a href="#" class="text-primary d-block">Tommy
-                                                            Hilfiger</a></div>
                                                     <div class="vr"></div>
                                                     <div class="text-muted">Seller : <span
-                                                            class="text-body fw-medium">Zoetic Fashion</span>
+                                                            class="text-body fw-medium">Anant TVS</span>
                                                     </div>
                                                     <div class="vr"></div>
-                                                    <div class="text-muted">Published : <span class="text-body fw-medium">26
-                                                            Mar, 2021</span>
+                                                    <div class="text-muted">Published : <span class="text-body fw-medium">{{ $value->created_at }}</span>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="flex-shrink-0">
-                                                <div>
-                                                    <a href="/editbuyvehicle/{{ $value->id }}" class="btn btn-light"
-                                                        data-bs-toggle="tooltip" data-bs-placement="top"
-                                                        title="Re-Upload Documents"><i
-                                                            class="ri-pencil-fill align-bottom"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="d-flex flex-wrap gap-2 align-items-center mt-3">
-                                            <div class="text-muted fs-16">
-                                                <span class="mdi mdi-star text-warning"></span>
-                                                <span class="mdi mdi-star text-warning"></span>
-                                                <span class="mdi mdi-star text-warning"></span>
-                                                <span class="mdi mdi-star text-warning"></span>
-                                                <span class="mdi mdi-star text-warning"></span>
-                                            </div>
-                                            <div class="text-muted">( 5.50k Customer Review )</div>
+                                            <!--<div class="flex-shrink-0">-->
+                                            <!--    <div>-->
+                                            <!--        <a href="/editbuyvehicle/{{ $value->id }}" class="btn btn-light"-->
+                                            <!--            data-bs-toggle="tooltip" data-bs-placement="top"-->
+                                            <!--            title="Re-Upload Documents"><i-->
+                                            <!--                class="ri-pencil-fill align-bottom"></i></a>-->
+                                            <!--    </div>-->
+                                            <!--</div>-->
                                         </div>
 
                                         @foreach ($buyvehiclesdata as $value)
@@ -136,49 +122,13 @@
                                                 <div class="col-lg-3 col-sm-6">
                                                     <div class="p-2 border border-dashed rounded">
                                                         <div class="d-flex align-items-center">
-                                                            <div class="avatar-sm me-2">
-                                                                <div
-                                                                    class="avatar-title rounded bg-transparent text-success fs-24">
-                                                                    <i class="ri-stack-fill"></i>
-                                                                </div>
-                                                            </div>
+
                                                             <div class="flex-grow-1">
-                                                                <p class="text-muted mb-1">Available Stocks :</p>
-                                                                <h5 class="mb-0">1,230</h5>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- end col -->
-                                                <div class="col-lg-3 col-sm-6">
-                                                    <div class="p-2 border border-dashed rounded">
-                                                        <div class="d-flex align-items-center">
-                                                            <div class="avatar-sm me-2">
-                                                                <div
-                                                                    class="avatar-title rounded bg-transparent text-success fs-24">
-                                                                    <i class="ri-stack-fill"></i>
+                                                                <p class="text-success mb-1">Number Plate Status</p>
+                                                                <div class="form-check form-switch form-switch-success">
+                                                                    <label class="form-check-label"
+                                                                        for="toggle-{{ $value->buyvehicleid }}">{{ $value->numberplatestatus == '1' ? 'Available' : 'In Process' }}</label>
                                                                 </div>
-                                                            </div>
-                                                            <div class="flex-grow-1">
-                                                                <p class="text-muted mb-1">Available Stocks :</p>
-                                                                <h5 class="mb-0">1,230</h5>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- end col -->
-                                                <div class="col-lg-3 col-sm-6">
-                                                    <div class="p-2 border border-dashed rounded">
-                                                        <div class="d-flex align-items-center">
-                                                            <div class="avatar-sm me-2">
-                                                                <div
-                                                                    class="avatar-title rounded bg-transparent text-success fs-24">
-                                                                    <i class="ri-inbox-archive-fill"></i>
-                                                                </div>
-                                                            </div>
-                                                            <div class="flex-grow-1">
-                                                                <p class="text-muted mb-1">Total Revenue :</p>
-                                                                <h5 class="mb-0">$60,645</h5>
                                                             </div>
                                                         </div>
                                                     </div>

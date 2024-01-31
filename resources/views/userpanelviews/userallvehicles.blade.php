@@ -17,6 +17,7 @@
                 </div>
             </div>
 
+
             <div class="row">
                 @foreach ($buyvehiclesdata as $row)
                     <div class="col-lg-4">
@@ -35,23 +36,41 @@
                                         <div class="">
                                             <h5 class="mt-0">{{ $row->vehicleName }}</h5>
                                             <p>{{ $cutString = substr($row->vehicleDis, 0, 50) }}</p>
-                                            <a href="/uservehicledetailview/{{ $row->id }}"
-                                                class="fs-6 badge rounded-pill bg-primary-subtle text-primary p-2">More
-                                                Details</a>&nbsp;
                                             @php
-                                                $txt = $row->rcnumber == null ? 'RC not available' : 'RC available';
-                                                $class = $row->rcnumber != null ? 'badge rounded-pill bg-success' : 'badge rounded-pill bg-danger';
+                                                $txt = $row->rcnumber == null ? 'RC not updated' : 'RC updated';
+                                                $class = $row->rcnumber != null ? 'badge rounded-pill bg-success-subtle text-success fs-6' : 'badge rounded-pill bg-danger';
 
-                                                $Insurance = $row->insuranceid == null ? 'Insurance not available' : 'Insurance available';
-                                                $classInsurance = $row->insuranceid != null ? 'badge rounded-pill bg-success' : 'badge rounded-pill bg-danger';
+                                                $Insurance = $row->insuranceid == null ? 'Insurance not updated' : 'Insurance updated';
+                                                $classInsurance = $row->insuranceid != null ? 'badge rounded-pill bg-success-subtle text-success fs-6' : 'badge rounded-pill bg-danger';
 
-                                                $Invoice = $row->invoicenumber == null ? 'Invoice not available' : 'Invoice available';
-                                                $classInvoice = $row->invoicenumber != null ? 'badge rounded-pill bg-success' : 'badge rounded-pill bg-danger';
+                                                $Invoice = $row->invoicenumber == null ? 'Invoice not updated' : 'Invoice updated';
+                                                $classInvoice = $row->invoicenumber != null ? 'badge rounded-pill bg-success-subtle text-success fs-6' : 'badge rounded-pill bg-danger';
                                             @endphp
-                                            &nbsp;<span class="{{ $class }} p-2">{{ $txt }}</span>
-                                            &nbsp;<span class="{{ $classInsurance }} p-2">{{ $Insurance }}</span><br>
-                                            &nbsp;<span class="{{ $classInvoice }} p-2 mt-2">{{ $Invoice }}</span>
+                                           <span class="{{ $class }} p-2">{{ $txt }}</span>
+                                           <span class="{{ $classInsurance }} p-2">{{ $Insurance }}</span>
+                                           <span class="{{ $classInvoice }} p-2 mt-2">{{ $Invoice }}</span>
                                         </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between mt-1 align-items-center">
+
+                                        <div>
+                                            <div>Number Plate: </div>
+                                            @php
+                                                $Status = $row->numberplatestatus == null ? 'In process' : 'Available';
+                                                $Statusclass = $row->numberplatestatus != null ? 'badge bg-success-subtle text-success badge-border ' : 'badge bg-danger-subtle text-danger badge-border';
+                                            @endphp
+                                            <span class="{{ $Statusclass }}">{{ $Status }}</span>
+                                        </div>
+                                        <div>
+
+
+                                            <a href="/uservehicledetailview/{{ $row->id }}"
+                                                class="fs-6 btn bg-primary-subtle text-primary p-2">More
+                                                Details</a>
+                                        </div>
+
+
+
                                     </div>
                                 </div>
                             </div>

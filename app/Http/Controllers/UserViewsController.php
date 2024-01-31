@@ -42,9 +42,10 @@ class UserViewsController extends Controller
         return view('userpanelviews.userallvehiclespage', compact('allvehicles'));
     }
 
-    public function viewuserprofile($id)
+    public function viewuserprofile()
     {
-        $allcustomers = Customer::where('id','=', $id)->get();
+        $user = Auth::guard('customer')->user();
+        $allcustomers = Customer::where('id','=', $user->id)->get();
         return view('userpanelviews.userprofile', compact('allcustomers'));
     }
 

@@ -14,13 +14,25 @@
             <li class="nav-item">
                 <a class="nav-link menu-link" href="{{ route('allvehicleslist') }}" role="button" aria-expanded="false"
                     aria-controls="sidebarDashboards">
-                    <i class="bx bxs-car"></i> <span>Vehicles List</span>
+                    <i class="bx bxs-car"></i> <span>Buy Vehicle</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link menu-link" href="{{route('paymentpage')}}" role="button" aria-expanded="false"
                     aria-controls="sidebarDashboards">
                     <i class="bx bx-rupee"></i> <span>Payment</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link menu-link" href="{{route('alluservehiclesview')}}" role="button" aria-expanded="false"
+                    aria-controls="sidebarDashboards">
+                    <i class="bx bxs-car"></i> <span>My Vehicles</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link menu-link" href="{{route('viewuserprofile')}}" role="button" aria-expanded="false"
+                    aria-controls="sidebarDashboards">
+                    <i class="bx bxs-user"></i> <span>My Profile</span>
                 </a>
             </li>
             {{-- <li class="nav-item">
