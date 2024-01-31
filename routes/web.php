@@ -69,7 +69,6 @@ Route::post('/updatevehicle', [EditController::class, 'updatevehicle'])->name('u
 
 
 //Frontend-Routes
-
 Route::get('/home', [ViewController::class, 'frontendhomepage'])->name('frontendhomepage');
 Route::get('/about', [ViewController::class, 'frontendaboutpage'])->name('frontendaboutpage');
 Route::get('/contact', [ViewController::class, 'frontendcontactpage'])->name('frontendcontactpage');
