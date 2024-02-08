@@ -12,7 +12,6 @@
 
     <!-- Scripts -->
     {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
-
     <link rel="shortcut icon" href="{{ asset('website-assets/images/logo.png') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
@@ -25,14 +24,11 @@
     <link rel="stylesheet" href="{{ asset('website-assets/frontend-css/style.css') }}" type="text/css" />
     <link rel="stylesheet" href="{{ asset('website-assets/frontend-css/responsive.css') }}" type="text/css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-    <link rel="stylesheet" type="text/css"
-        href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
 </head>
 
 <body>
     <div class="wrapper" id="top">
-        <header class="main-header menu-absolute transparent light-header">
+        {{-- <header class="main-header menu-absolute transparent light-header">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-3 logo">
@@ -69,14 +65,14 @@
                     </div>
                 </div>
             </div>
-        </header>
+        </header> --}}
 
         <div class="main">
             @yield('content')
         </div>
 
         <footer class="site-footer">
-            <div class="footer-widget-area">
+            {{-- <div class="footer-widget-area">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-4 col-md-6 col-sm-6">
@@ -163,10 +159,10 @@
                                     </div>
                                 </div>
                             </div>
-                        </div> --}}
+                        </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <div class="copyright text-center">
                 <div class="container">
                     <div class="copyright-text">© 2024 Anant Tvs. Developed by
@@ -176,6 +172,8 @@
             </div>
         </footer>
         <script src="{{ asset('js/app.js') }}"></script>
+        {{-- <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script> --}}
+        <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
         <script src="{{ asset('website-assets/frontend-js/jquery.min.js') }}"></script>
 
         {{-- <script src="{{ asset('website-assets/frontend-js/bootstrap.min.js') }}"></script> --}}
@@ -187,14 +185,14 @@
 
         <!--* Theme Base, Components and Settings -->
         <script src="{{ asset('website-assets/frontend-js/theme.js') }}"></script>
-        <script src="{{ asset('website-assets/frontend-js/jquery.min.latest.js') }}"></script>
-        <script src="https://sacredthemes.net/wheels/js/jquery.min.latest.js"></script>
+        {{-- <script src="{{ asset('website-assets/frontend-js/jquery.min.latest.js') }}"></script> --}}
+        {{-- <script src="https://sacredthemes.net/wheels/js/jquery.min.latest.js"></script> --}}
         <!--* Theme Custom -->
         <script src="{{ asset('website-assets/frontend-js/custom.js') }}"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
         </script>
-        <script src="https://sacredthemes.net/wheels/script.js"></script>
+        {{-- <script src="https://sacredthemes.net/wheels/script.js"></script> --}}
         <script>
             (function(e) {
                 e.fn.circle = function(t) {
