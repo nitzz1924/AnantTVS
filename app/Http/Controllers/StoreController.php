@@ -172,7 +172,7 @@ class StoreController extends Controller
                 'name'=> $req->name,
                 'phoneno'=> $req->phoneno,
             ]);
-            return back()->with('success', 'Thanks For Visiting..!!!');
+            return back()->with('success', 'We will reach you soon..!!!');
         }catch(\Exception $e){
             return back()->with('error', $e->getMessage());
         }

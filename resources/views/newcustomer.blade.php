@@ -148,10 +148,14 @@
                             </div>
                         </div>
                         <div class="col-lg-6">
-
                             <div class="text-center section-title">
                                 <h1 class="text-white" style=" font-size: 50px !Important;">Avail Offers</h1>
                                 <div class="divider"></div>
+                            </div>
+                            <div class="d-flex justify-content-center mb-3 p-2" >
+                                    <div class="alert border-0 alert-success text-center d-none" role="alert" id="successAlert" >
+                                        <strong>We will reach you soon..!!!</strong>
+                                    </div>
                             </div>
                             <form action="{{ route('createlead') }}" method="POST" id="leadform">
                                 @csrf
@@ -159,7 +163,7 @@
                                     <div class="col-lg-6">
                                         <div class="mb-3">
                                             <input type="text" name="name" class="form-control  rounded-pill"
-                                                id="exampleFormControlInput1" placeholder="Enter name *">
+                                                id="exampleFormControlInput1" placeholder="Enter name *" required>
                                             <input type="hidden" name="leadid" value="0">
                                         </div>
                                     </div>
@@ -171,7 +175,7 @@
                                     </div>
                                     <div class="col-lg-12 col-6">
                                         <div class="d-grid gap-2 w-100">
-                                            <button class="btn btn-success" type="submit" id="submitbtn">Submit</button>
+                                            <button class="btn btn-success" type="button" id="submitbtn">Submit</button>
                                         </div>
                                     </div>
                                 </div>
@@ -279,6 +283,41 @@
 
 
         <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+        <script>
+            document.getElementById("submitbtn").addEventListener("click", function(event) {
+                event.preventDefault(); // Prevent default form submission behavior
+
+                // Perform form submission using AJAX
+                var form = document.getElementById("leadform");
+                var formData = new FormData(form);
+
+                // Example AJAX request
+                var xhr = new XMLHttpRequest();
+                xhr.open(form.method, form.action, true);
+                xhr.onload = function() {
+                    // Handle response
+                    if (xhr.status === 200) {
+                        alert("We Will reach you soon..!!!");
+                        document.getElementById("successAlert").class="d-block";
+                    } else {
+                        // If there was an error, handle it here
+                    }
+                };
+                xhr.onerror = function() {
+                    // Handle connection errors
+                };
+                xhr.send(formData);
+            });
+        </script>
+        {{-- <script>
+            setTimeout(function() {
+                $('#successAlert').fadeOut('slow');
+            }, 2000);
+
+            setTimeout(function() {
+                $('#dangerAlert').fadeOut('slow');
+            }, 5000);
+        </script> --}}
         <script>
             var swiper = new Swiper(".mySwiper", {
                 slidesPerView: 3,

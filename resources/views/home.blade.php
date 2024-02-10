@@ -25,7 +25,7 @@
                             <div class="col-md-4 mt-2 mb-2">
                                 <a class="text-white btn btn-light btn-sm border border-light w-100"
                                     href="{{ route('newcustomer') }}" style="background-color: #003487;">
-                                  New Customer
+                                    New Customer
                                 </a>
                             </div>
                         </div>
@@ -123,59 +123,45 @@
         </section>
         <!--* Enviornment impact section end -->
 
-        <!--* Features Section Start -->
-        <section class="containernew" id="servicesoverlay">
-            <section class="services section-bg" id="services">
-                <div class="section-header">
-                    <h3 class="text-white">Services</h3>
-                    <p class="text-white" style="opacity: 0.9">Laudem latine persequeris id sed, ex fabulas delectus quo. No
-                        vel partiendo abhorreant
-                        vituperatoribus.</p>
+        <section class="pt-5 pb-5" id="herosectionbgnew">
+            <div class="container">
+                <div class="row justify-content-center mb-5">
+                    <h1 class="text-center text-uppercase" style="color:#ffffff; font-size: 50px; opacity:0.9">Services</h1>
                 </div>
-                <div class="container">
-
-                    <div class="row">
-                        <div class="col-md-6 col-lg-4">
-                            <div class="box border border-danger">
-                                <div class="icon" style="background-color: red">
-                                    <img src="{{ asset('website-assets/images/bycicle.png') }}" alt=""
-                                    class=" rounded">
-                                </div>
-                                <h4 class="title"><a href="">Models</a></h4>
-
-                                <p class="description">Laudem latine persequeris id sed, ex fabulas delectus quo. No vel
-                                    partiendo abhorreant vituperatoribus.</p>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-4">
-                            <div class="box border border-danger">
-                                <div class="icon" style="background: #000;">
-                                    <i class="fa fa-clipboard service-icon" style="color: #c59c35;"></i>
-                                </div>
-
-                                <h4 class="title"><a href="">Request</a></h4>
-
-                                <p class="description">Laudem latine persequeris id sed, ex fabulas delectus quo. No vel
-                                    partiendo abhorreant vituperatoribus.</p>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-4">
-                            <div class="box border border-danger">
-                                <div class="icon" style="background: #000;">
-                                    <i class="fa fa-chart-bar service-icon" style="color: #c59c35;"></i>
-                                </div>
-
-                                <h4 class="title"><a href="">Test Rides</a></h4>
-
-                                <p class="description">Laudem latine persequeris id sed, ex fabulas delectus quo. No vel
-                                    partiendo abhorreant vituperatoribus.</p>
-                            </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 margin-30px-bottom xs-margin-20px-bottom">
+                        <div class="services-block-three">
+                            <a href="javascript:void(0)">
+                                <h2>Models</h2>
+                                <p class="xs-font-size13 xs-line-height-22">Exhaustive technology of implementing multi
+                                    purpose projects is putting your project</p>
+                            </a>
                         </div>
                     </div>
+                    <div class="col-lg-4 col-md-6 margin-30px-bottom xs-margin-20px-bottom">
+                        <div class="services-block-three">
+                            <a href="javascript:void(0)">
+                                <h2>Request</h2>
+                                <p class="xs-font-size13 xs-line-height-22">Exhaustive technology of implementing multi
+                                    purpose projects is putting your project successful.</p>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="services-block-three col-lg-4 col-md-6 margin-30px-bottom xs-margin-20px-bottom">
+                        <div class="services-block-three">
+                            <a href="javascript:void(0)">
+                                <h2>Test Rides</h2>
+                                <p class="xs-font-size13 xs-line-height-22">Exhaustive technology of implementing multi
+                                    purpose projects is putting your project successful.</p>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- end -->
                 </div>
-            </section>
+            </div>
         </section>
-        <!--* Features Section End -->
 
 
 
