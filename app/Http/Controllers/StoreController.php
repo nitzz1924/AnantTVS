@@ -169,13 +169,8 @@ class StoreController extends Controller
             ]);
 
             $lead = Lead::create([
-                'leadid'=> $req->leadid,
                 'name'=> $req->name,
                 'phoneno'=> $req->phoneno,
-                'email'=> $req->email,
-                'city'=> $req->city,
-                'state'=> $req->state,
-                'country'=> $req->country,
             ]);
             return back()->with('success', 'Thanks For Visiting..!!!');
         }catch(\Exception $e){

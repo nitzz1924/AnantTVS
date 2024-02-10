@@ -154,6 +154,11 @@ class ViewController extends Controller
         $allvehicles = Vehicle::paginate(4);
         return view('vehicles', compact('allvehicles'));
     }
+    public function newcustomer()
+    {
+        $allvehicles = Vehicle::paginate(4);
+        return view('newcustomer',compact('allvehicles'));
+    }
 
     //WEBSITE VIEWS ENDS
 

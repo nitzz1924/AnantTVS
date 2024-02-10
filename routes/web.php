@@ -74,6 +74,7 @@ Route::get('/home', [ViewController::class, 'frontendhomepage'])->name('frontend
 Route::get('/about', [ViewController::class, 'frontendaboutpage'])->name('frontendaboutpage');
 Route::get('/contact', [ViewController::class, 'frontendcontactpage'])->name('frontendcontactpage');
 Route::get('/vehicles', [ViewController::class, 'frontendvehiclespage'])->name('frontendvehiclespage');
+Route::get('/newcustomer', [ViewController::class, 'newcustomer'])->name('newcustomer');
 
 
 
