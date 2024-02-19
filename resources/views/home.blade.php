@@ -3,62 +3,109 @@
 @section('content')
     <div class="main-container">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+        <style>
+            .whatsapp-icon {
+                position: fixed;
+                bottom: 20px;
+                /* Adjust as needed */
+                left: 20px;
+                /* Adjust as needed */
+                z-index: 9999;
+                /* Ensure it's above other elements */
+            }
+
+            /* Fixed Call icon */
+            .call-icon {
+                position: fixed;
+                bottom: 20px;
+                /* Adjust as needed */
+                right: 20px;
+                /* Adjust as needed */
+                z-index: 9999;
+                /* Ensure it's above other elements */
+            }
+        </style>
         <!--* Hero Section Start -->
+        <header class="main-header transparent">
+
+            <div class="d-flex justify-content-center">
+                <a href="{{ route('frontendhomepage') }}" title="Wheels Bicycle">
+                    <img src="{{ asset('website-assets/images/anantlogo.jpg') }}" alt=""
+                        class="img-fluid rounded-pill" height="300px" width="100px">
+                </a>
+            </div>
+            {{-- <div class="container">
+                <div class="row">
+                    <div class="col-sm-3 logo">
+                        <div class="d-block d-md-none " style="position: absolute; top: 32px;left: 217px;">
+                            <a href="{{route('viewloginpage')}}"><span class="rounded-pill bg-danger text-white py-2 px-3">Log in</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div> --}}
+        </header>
         <section id="herosectionbg" class="light-text d-flex justify-content-center align-items-center"
-            style="position: relative; height: 100%; background-color: black; background-image: url({{ asset('website-assets/images/anantshowroom.jpg') }}); background-repeat: no-repeat;background-position: right; background-size: cover;">
+            style="position: relative; height: 100vh; background-color: rgb(255, 255, 255);" >
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-md-5 col-md-12 wow fadeInLeft  text-center">
-                        <div class="d-flex justify-content-center mb-3">
+                        {{-- <div class="d-flex justify-content-center mb-3">
                             <img src="{{ asset('website-assets/images/anantlogo.jpg') }}" alt=""
                                 class="img-fluid rounded-pill" height="200px" width="200px">
-                        </div>
+                        </div> --}}
                         <h1 class="large-heading"><span>Welcome to Anant TVS</span></h1>
-                        <h2 class=""> Adarsh Nagar, Ajmer, Rajasthan 305001</h2>
+                        <h2 class="">Opposite IBM Office, Aadarsh Nagar,Ajmer 305002</h2>
                         <div class=" d-flex justify-content-center mt-2 row">
-                            <div class="col-md-4 mt-2 mb-1">
-                                <a class="text-white btn btn-light btn-sm border border-light  w-100 "
-                                    href="{{ route('viewloginpage') }}" style="background-color: #003487;">
-                                    Existing Customer
-                                </a>
+                            <div class="col-md-4 mt-2 mb-2">
+                                <div class="card p-3 rounded">
+                                    <div class="card-body">
+                                      <h5 class="card-title text-start" style="color: #003487;">Not a New Customer.?</h5>
+                                      <p class="card-text text-start" style="color: #003487;">With supporting text below as a natural lead-in to additional content.</p>
+                                      <a href="{{ route('newcustomer') }}" class=" btn btn-dark btn-sm border border-light w-100" style="background-color: #dd0707;">Let's Begin</a>
+                                    </div>
+                                  </div>
                             </div>
                             <div class="col-md-4 mt-2 mb-2">
-                                <a class="text-white btn btn-light btn-sm border border-light w-100"
-                                    href="{{ route('newcustomer') }}" style="background-color: #003487;">
-                                    New Customer
-                                </a>
+                                <div class="card p-3 rounded">
+                                    <div class="card-body">
+                                      <h5 class="card-title text-start" style="color: #003487;">Exiting Customer</h5>
+                                      <p class="card-text text-start" style="color: #003487;">With supporting text below as a natural lead-in to additional content.</p>
+                                      <a href="{{ route('viewloginpage') }}" class=" btn btn-dark btn-sm border border-light w-100" style="background-color: #003487;">Login</a>
+                                    </div>
+                                  </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+        <a href="https://wa.me/7240667788" class="whatsapp-icon">
+            <img src="{{ asset('website-assets/images/whatsapp-icon.png') }}" height="50px" width="50px" alt="" class="rounded">
+        </a>
 
+        <!-- Call icon -->
+        <a href="tel:+917414055555" class="call-icon">
+            <img src="{{ asset('website-assets/images/call.png') }}" height="50px" width="50px" alt="" class="rounded">
+        </a>
         <!--* Hero Section End -->
 
         <!--* About Section Start -->
-        <section id="herosectionbgnew" class="about-section mb-0"
+        {{-- <section id="herosectionbgnew" class="about-section mb-0"
             style=" background-image: url({{ asset('website-assets/images/TVS-Metaverse.jpg') }}); background-repeat: no-repeat;background-position: left; background-size: cover; background-attachment:fixed;">
             <div class="container">
                 <div class="row align-items-center bicycle-img wow fadeInLeft">
                     <div class="col-md-6">
                         <div class="heading-wrapper">
-                            <h1 class="text-white"><span>About Us
+                            <h1 class="text-black"><span>About Us
                                 </span></h1>
                         </div>
-                        <div class="text-white">
+                        <div class="text-black">
                             <p>
                                 ANANT TECHWHEELS LLP is a LLP incorporated in the state of Ajmer having CIN Number ACA-6340
                                 formed on 18-04-2023. It Deals in Maintenance and repair of motor vehicles. Its Registered
                                 office is located at C/O MANMEET SINGH, ANANT AUTO OPP IBM COLONY, ADARSH NAGAR Ajmer Ajmer
                                 Rajasthan-305001
 
-                            </p>
-                            <p>
-                                Price: TVS Raider 125 price for its variant - Raider 125 Single Seat - Disc is estimated at
-                                Rs. 97,054. The price for the other variants - Raider 125 Disc, Raider 125 Super Squad
-                                Edition and Raider 125 SmartXonnect are Rs. 97,998, Rs. 1,01,161 and Rs. 1,06,573. The
-                                mentioned Raider 125 prices are the average ex-showroom.
                             </p>
                         </div>
                     </div>
@@ -71,15 +118,12 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> --}}
         <!--* About Section End -->
 
 
-
-
-
         <!--* Enviornment impact section start -->
-        <section id="higlightoverlay" class="light-text" style="position: relative; height: 100%;">
+        {{-- <section id="higlightoverlay" class="light-text" style="position: relative; height: 100%;">
             <div class="container">
                 <h1 class="text-center text-uppercase" style="color:#ffffff; font-size: 50px; opacity:0.9">Highlights</h1>
                 <div class="row" style="">
@@ -120,51 +164,171 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> --}}
         <!--* Enviornment impact section end -->
 
-        <section class="pt-5 pb-5" id="herosectionbgnew">
+        {{-- <section class="pt-5 pb-5" id="herosectionbgnew">
             <div class="container">
                 <div class="row justify-content-center mb-5">
-                    <h1 class="text-center text-uppercase" style="color:#ffffff; font-size: 50px; opacity:0.9">Services</h1>
+                    <h1 class="text-center text-uppercase" style="color:#000000; font-size: 50px; opacity:0.9">Services
+                    </h1>
                 </div>
             </div>
+
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-4 col-md-6 margin-30px-bottom xs-margin-20px-bottom">
-                        <div class="services-block-three">
-                            <a href="javascript:void(0)">
-                                <h2>Models</h2>
-                                <p class="xs-font-size13 xs-line-height-22">Exhaustive technology of implementing multi
-                                    purpose projects is putting your project</p>
-                            </a>
+                    <div class="col-lg-4">
+                        <div class="card h-100">
+                            <img src="{{ asset('website-assets/images/testridetwo.webp') }}" alt=""
+                                class="img-fluid rounded card-img-top cardcustomstyle">
+                            <div class="card-body">
+                                <h5 class="card-title">Test Ride</h5>
+                                <p class="card-text">Take the vehicle out on the road and assess its handling, acceleration,
+                                    braking, and overall performance.</p>
+                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-6 margin-30px-bottom xs-margin-20px-bottom">
-                        <div class="services-block-three">
-                            <a href="javascript:void(0)">
-                                <h2>Request</h2>
-                                <p class="xs-font-size13 xs-line-height-22">Exhaustive technology of implementing multi
-                                    purpose projects is putting your project successful.</p>
-                            </a>
+                    <div class="col-lg-4">
+                        <div class="card h-100">
+                            <img src="{{ asset('website-assets/images/financingcar.jpg') }}" alt=""
+                                class="img-fluid rounded card-img-top cardcustomstyle">
+                            <div class="card-body">
+                                <h5 class="card-title">Financing Options</h5>
+                                <p class="card-text">Financing plays a crucial role in making your dream vehicle a reality, but navigating the different options can feel overwhelming.</p>
+                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                            </div>
                         </div>
                     </div>
-                    <div class="services-block-three col-lg-4 col-md-6 margin-30px-bottom xs-margin-20px-bottom">
-                        <div class="services-block-three">
-                            <a href="javascript:void(0)">
-                                <h2>Test Rides</h2>
-                                <p class="xs-font-size13 xs-line-height-22">Exhaustive technology of implementing multi
-                                    purpose projects is putting your project successful.</p>
-                            </a>
+                    <div class="col-lg-4">
+                        <div class="card h-100">
+                            <img src="{{ asset('website-assets/images/insurance.webp') }}" alt=""
+                                class="img-fluid rounded card-img-top cardcustomstyle">
+                            <div class="card-body">
+                                <h5 class="card-title">Insurance Service</h5>
+                                <p class="card-text">Vehicle insurance is a crucial aspect of ownership, protecting you
+                                    financially in case of accidents, theft, or other unforeseen events.</p>
+                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card h-100 mt-4">
+                            <img src="{{ asset('website-assets/images/one.jpg') }}" alt=""
+                                class="img-fluid rounded card-img-top cardcustomstyle">
+                            <div class="card-body">
+                                <h5 class="card-title">Service and Maintainance</h5>
+                                <p class="card-text">Whether you're a casual cruiser or a dedicated road warrior, regular bike service and maintenance are essential for a safe, enjoyable, and efficient ride. </p>
+                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card h-100 mt-4">
+                            <img src="{{ asset('website-assets/images/one.jpg') }}" alt=""
+                                class="img-fluid rounded card-img-top cardcustomstyle">
+                            <div class="card-body">
+                                <h5 class="card-title">Customer Support</h5>
+                                <p class="card-text">Customer support plays a crucial role in any business's success. It's about more than just resolving issues; it's about building trust, loyalty, and positive brand experiences.</p>
+                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                            </div>
                         </div>
                     </div>
                     <!-- end -->
                 </div>
             </div>
-        </section>
+        </section> --}}
+
+        {{--
+        <section id="about" class="about-section mb-0 mt-0">
+            <div class="container">
+                <div class="row align-items-center bicycle-img wow">
+                    <div class="section-header text-center text-uppercase">
+                        <h1 style="color: #000000;">Discover Your Ride</h1>
+
+                        <p class="text-white">Drive the Future, Today. Elevate Your Drive.</p>
+                    </div>
+
+                    @foreach ($allvehicles->chunk(4) as $vehicleChunk)
+                        <div class="row">
+                            @foreach ($vehicleChunk as $row)
+                                <div class="col-lg-3 mt-3">
+                                    <div class="card cardcustomup">
+                                        @php
+                                            $imagePaths = explode(',', $row->image);
+                                            $firstImagePath = $imagePaths[0];
+                                        @endphp
+                                        <img src="{{ asset($firstImagePath) }}" alt="" class="img-fluid"
+                                            style="aspect-ratio: 4/4;">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between p-2">
+                                                <h5 class="card-title" style="color: #1b2682">{{ $row->name }}</h5>
+                                                <p class="card-text">
+                                                    <a href="http://127.0.0.1:8000/newcustomer/#leadformsection"
+                                                        class="booking-link">
+                                                        <span class="p-2 rounded" id="submitbtn">
+                                                            Book Now
+                                                        </span>
+                                                    </a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    @endforeach
+                </div>
+                <div class="pagination mt-5 p-3 justify-content-center">
+                    {{ $allvehicles->links('pagination::bootstrap-4') }}
+                </div>
+            </div>
+        </section> --}}
 
 
-
+        {{-- <section id="impact"
+            class="light-text mt-0"style="position: relative; height: 100%; background-color: #ffffff; ">
+            <div class="container">
+                <h1 class="text-center text-uppercase" style="color:#000000; font-size: 50px;">DISCOVER YOUR RIDE</h1>
+                <div class="divider"></div>
+                <div class="row" style="">
+                    <div class="my-lg-5 col-lg-12  col-10 d-flex justify-content-center">
+                        <div class="swiper mySwiper">
+                            <div class="swiper-wrapper">
+                                @foreach ($allvehicles as $row)
+                                    <div class="card cardcustomup swiper-slide">
+                                        <div class="">
+                                            @php
+                                                $imagePaths = explode(',', $row->image);
+                                                $firstImagePath = $imagePaths[0];
+                                            @endphp
+                                            <img src="{{ asset($firstImagePath) }}" alt="" class="img-fluid"
+                                                style="aspect-ratio: 4/4;">
+                                            <div class="card-body">
+                                                <div class="d-flex justify-content-between p-2">
+                                                    <h5 class="card-title" style="color: #1b2682">{{ $row->name }}
+                                                    </h5>
+                                                    <p class="card-text">
+                                                        <a href="http://127.0.0.1:8000/newcustomer/#leadformsection"
+                                                            class="booking-link">
+                                                            <span class="p-2 rounded" id="submitbtn">
+                                                                Book Now
+                                                            </span>
+                                                        </a>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                            <div class="swiper-pagination mt-5 text-white"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section> --}}
+        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
         <script>
             var swiper = new Swiper(".mySwiper", {

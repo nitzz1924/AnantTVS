@@ -43,6 +43,8 @@ Route::post('/createvehicle', [StoreController::class, 'createvehicle'])->name('
 Route::post('/createcustomer', [StoreController::class, 'createcustomer'])->name('createcustomer');
 Route::post('/createbuyvehicle', [StoreController::class, 'createbuyvehicle'])->name('createbuyvehicle');
 Route::post('/createlead', [StoreController::class, 'createlead'])->name('createlead');
+Route::post('/createtestride', [StoreController::class, 'createtestride'])->name('createtestride');
+Route::post('/makerequest', [StoreController::class, 'makerequest'])->name('makerequest');
 
 //Password Change Route
 Route::post('/changepassword', [AuthenticationController::class, 'changepassword'])->name('changepassword');
@@ -70,6 +72,7 @@ Route::post('/updatevehicle', [EditController::class, 'updatevehicle'])->name('u
 
 
 //Frontend-Routes
+Route::get('/', [ViewController::class, 'frontendhomepage'])->name('frontendhomepage');
 Route::get('/home', [ViewController::class, 'frontendhomepage'])->name('frontendhomepage');
 Route::get('/about', [ViewController::class, 'frontendaboutpage'])->name('frontendaboutpage');
 Route::get('/contact', [ViewController::class, 'frontendcontactpage'])->name('frontendcontactpage');

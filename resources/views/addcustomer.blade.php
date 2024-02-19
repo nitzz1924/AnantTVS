@@ -39,7 +39,7 @@
                                             Customers</button></a>
                                 </div>
                             </div>
-                        </div><!-- end card header -->
+                        </div>
                         <div class="card-body">
                             <div class="live-preview">
                                 <form action="{{ route('createcustomer') }}" method="POST">

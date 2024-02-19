@@ -28,44 +28,7 @@
 
 <body>
     <div class="wrapper" id="top">
-        {{-- <header class="main-header menu-absolute transparent light-header">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-3 logo">
-                        <a href="{{ route('frontendhomepage') }}" title="Wheels Bicycle">
-                            <img class="regular-logo img-fluid" src="{{ asset('website-assets/images/logo.png') }}"
-                                alt="bicycle">
-                            <img class="sticky-logo img-fluid" src="{{ asset('website-assets/images/logo.png') }}"
-                                alt="bicycle">
-                        </a>
-                        <div class="d-block d-md-none " style="position: absolute; top: 32px;left: 217px;">
-                            <a href="{{route('viewloginpage')}}"><span class="rounded-pill bg-danger text-white py-2 px-3">Log in</span></a>
-                        </div>
-                        <div class="menu-icon">
-                            <span class="top"></span>
-                            <span class="middle"></span>
-                            <span class="bottom"></span>
-                        </div>
-                    </div>
-                    <div class="col-sm-9 menu-conainer">
-                        <nav class="site-navigation">
-                            <ul class="main-menu">
-                                <li><a href="{{ route('frontendhomepage') }}">Home</a></li>
-                                <li><a href="{{ route('frontendaboutpage') }}">About</a></li>
-                                <li><a href="{{ route('frontendvehiclespage') }}">Vehicles</a></li>
-                                <li><a href="{{ route('frontendcontactpage') }}">Contact</a></li>
-                            </ul>
-                            <ul class="header-social-media">
-                                <li><a href="#"><i class="bi bi-facebook"></i></a></li>
-                                <li><a href="#"><i class="bi bi-instagram"></i></a></li>
-                                <li><a href="{{ route('viewloginpage') }}"><span
-                                            class="rounded-pill bg-danger text-white py-2 px-3">Log in</span></a></li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </header> --}}
+
 
         <div class="main">
             @yield('content')
@@ -163,13 +126,13 @@
                     </div>
                 </div>
             </div> --}}
-            <div class="copyright text-center">
+            {{-- <div class="copyright text-center">
                 <div class="container">
                     <div class="copyright-text">© 2024 Anant Tvs. Developed by
                         <a target="_blank" href="http://yuvmedia.in/">YUVMEDIA</a>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </footer>
         <script src="{{ asset('js/app.js') }}"></script>
         {{-- <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script> --}}

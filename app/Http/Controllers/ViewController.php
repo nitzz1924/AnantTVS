@@ -98,7 +98,7 @@ class ViewController extends Controller
     public function viewuservehicles($id)
     {
         $customerid = $id;
-        $customer = Customer::where('id',$customerid)->get();
+        $customer = Customer::where('id', $customerid)->get();
         // dd($customer);
         $buyvehiclesdata = BuyVehicle::join('vehicles', 'vehicles.id', '=', 'buy_vehicles.vehicle_id')
             ->select('buy_vehicles.*', 'vehicles.image as vehicleImage', 'vehicles.name as vehicleName', 'vehicles.discription as vehicleDis', 'vehicles.modelno as vehicleModel')
@@ -109,7 +109,7 @@ class ViewController extends Controller
             return back()->with('error', 'no records found..!!!!');
         } else {
             // Process the retrieved records
-            return view('uservehicles', compact('buyvehiclesdata','customer'));
+            return view('uservehicles', compact('buyvehiclesdata', 'customer'));
         }
 
     }
@@ -117,7 +117,7 @@ class ViewController extends Controller
     public function viewvehicledetailpage($id)
     {
         $buyvehiclesdata = BuyVehicle::join('vehicles', 'buy_vehicles.vehicle_id', '=', 'vehicles.id')
-            ->select('buy_vehicles.*', 'vehicles.*','buy_vehicles.id as buyvehicleid',)
+            ->select('buy_vehicles.*', 'vehicles.*', 'buy_vehicles.id as buyvehicleid', )
             ->where('buy_vehicles.id', $id)
             ->get();
         return view('vehicledetailpage', compact('buyvehiclesdata'));
@@ -139,7 +139,8 @@ class ViewController extends Controller
 
     public function frontendhomepage()
     {
-        return view('home');
+        $allvehicles = Vehicle::paginate(4);
+        return view('home', compact('allvehicles'));
     }
     public function frontendaboutpage()
     {
@@ -157,7 +158,8 @@ class ViewController extends Controller
     public function newcustomer()
     {
         $allvehicles = Vehicle::paginate(4);
-        return view('newcustomer',compact('allvehicles'));
+        $masterdata = Master::where('type', '=', 'Vehicle')->get();
+        return view('newcustomer', compact('allvehicles','masterdata'));
     }
 
     //WEBSITE VIEWS ENDS

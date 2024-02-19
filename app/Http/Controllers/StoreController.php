@@ -6,6 +6,8 @@ use App\Models\BuyVehicle;
 use App\Models\Customer;
 use App\Models\Lead;
 use App\Models\Vehicle;
+use App\Models\TestRide;
+use App\Models\MakeRequest;
 use Illuminate\Http\Request;
 
 class StoreController extends Controller
@@ -163,18 +165,50 @@ class StoreController extends Controller
     public function createlead(Request $req)
     {
         // dd($req->all());
-        try{
+        try {
             $req->validate([
-                'phoneno'=>'required'
+                'phoneno' => 'required'
             ]);
 
             $lead = Lead::create([
-                'name'=> $req->name,
-                'phoneno'=> $req->phoneno,
+                'name' => $req->name,
+                'phoneno' => $req->phoneno,
             ]);
             return back()->with('success', 'We will reach you soon..!!!');
-        }catch(\Exception $e){
+        } catch (\Exception $e) {
             return back()->with('error', $e->getMessage());
         }
-}
+    }
+
+    public function createtestride(Request $request)
+    {
+        // dd($request->all());
+        try {
+
+            $testride = TestRide::create([
+                'customername' => $request->customername,
+                'customerphoneno' => $request->customerphoneno,
+                'type' => $request->type,
+                'vehicle' => $request->vehicle,
+            ]);
+            return back()->with('success', 'We will reach you soon..!!!');
+        } catch (\Exception $e) {
+            return back()->with('error', $e->getMessage());
+        }
+    }
+
+    public function makerequest(Request $req)
+    {
+         //dd($req->all());
+        try {
+
+            $requestdata = MakeRequest::create([
+                'requestphoneno' => $req->requestphoneno,
+                'requestcomments' => $req->requestcomments,
+            ]);
+            return back()->with('success', 'We will reach you soon..!!!');
+        } catch (\Exception $e) {
+            return back()->with('error', $e->getMessage());
+        }
+    }
 }
