@@ -396,6 +396,7 @@
                             <div class="col-lg-4 col-sm-6">
                                 <select name="country" class="form-control">
                                     <option value="">Select Country</option>
+
                                     <option value="Country 1">Country 1</option>
                                     <option value="Country 2">Country 2</option>
                                     <option value="Country 3">Country 3</option>
@@ -421,6 +422,5 @@
                 </div>
             </div>
         </section>
-        <!--* Dealer Section end -->
     </div>
 @endsection

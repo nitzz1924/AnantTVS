@@ -254,7 +254,7 @@
                                             $imagePaths = explode(',', $row->image);
                                             $firstImagePath = $imagePaths[0];
                                         @endphp
-                                        <img src="{{ asset($firstImagePath) }}" alt="" class="img-fluid">
+                                          <img src="{{ asset($firstImagePath) }}" alt="" class="img-fluid"  style="aspect-ratio: 4/4;">
                                         <div class="card-body">
                                             <div class="d-flex justify-content-between p-2">
                                                 <h5 class="card-title" style="color: #1b2682">{{ $row->name }}</h5>
