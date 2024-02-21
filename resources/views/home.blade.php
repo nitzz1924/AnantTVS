@@ -3,47 +3,21 @@
 @section('content')
     <div class="main-container">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-        <style>
-            .whatsapp-icon {
-                position: fixed;
-                bottom: 20px;
-                /* Adjust as needed */
-                left: 20px;
-                /* Adjust as needed */
-                z-index: 9999;
-                /* Ensure it's above other elements */
-            }
-
-            /* Fixed Call icon */
-            .call-icon {
-                position: fixed;
-                bottom: 20px;
-                /* Adjust as needed */
-                right: 20px;
-                /* Adjust as needed */
-                z-index: 9999;
-                /* Ensure it's above other elements */
-            }
-        </style>
         <!--* Hero Section Start -->
         <header class="main-header transparent">
-
-            <div class="d-flex justify-content-center">
+            <div class="d-flex justify-content-center align-items-center">
                 <a href="{{ route('frontendhomepage') }}" title="Wheels Bicycle">
                     <img src="{{ asset('website-assets/images/anantlogo.jpg') }}" alt="" class="img-fluid rounded-pill"
                         height="300px" width="100px">
                 </a>
-            </div>
-            {{-- <div class="container">
-                <div class="row">
-                    <div class="col-sm-3 logo">
-                        <div class="d-block d-md-none " style="position: absolute; top: 32px;left: 217px;">
-                            <a href="{{route('viewloginpage')}}"><span class="rounded-pill bg-danger text-white py-2 px-3">Log in</span></a>
-                        </div>
-                    </div>
+                <div class="social-icons ms-auto px-5">
+                    <a href="https://www.facebook.com/profile.php?id=61550693320353" class="social-icon"><i class="bi bi-facebook"></i></a>
+                    <a href="https://www.youtube.com/channel/UCHHlaC5J25Kpb6DPo7dCOag" class="social-icon ms-2"><i class="bi bi-youtube"></i></a>
+                    <a href="Instagram: https://www.instagram.com/anant_tvs_ajmer/?hl=en" class="social-icon ms-2"><i class="bi bi-instagram"></i></a>
                 </div>
-            </div> --}}
+            </div>
         </header>
+
         <section id="herosectionbg" class="light-text d-flex justify-content-center align-items-start align-items-md-center"
             style="position: relative; height: 100vh; background-color: rgb(255, 255, 255);">
             <div class="container">
@@ -85,6 +59,16 @@
                 </div>
             </div>
         </section>
+
+        {{-- <footer class="site-footer">
+            <div class="copyright text-center">
+                <div class="container">
+                    <div class="copyright-text">© 2024 Anant Tvs. Developed by
+                        <a target="_blank" href="http://yuvmedia.in/">YUVMEDIA</a>
+                    </div>
+                </div>
+            </div>
+        </footer> --}}
         <a href="https://wa.me/7240667788" class="whatsapp-icon">
             <img src="{{ asset('website-assets/images/whatsapp-icon.png') }}" height="50px" width="50px" alt=""
                 class="rounded">

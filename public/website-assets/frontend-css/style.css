@@ -4525,6 +4525,7 @@ table.specifications tr:last-child th {
 
 .cardcustomup {
     transition: all 0.2s ease-in-out;
+    border-radius: 10%;
 }
 
 .cardcustomup:hover {
@@ -4904,4 +4905,26 @@ a:active {
 .cardcustomstyle {
     object-fit: cover;
     height: 300px
+}
+
+
+.whatsapp-icon {
+    position: fixed;
+    bottom: 20px;
+    /* Adjust as needed */
+    left: 20px;
+    /* Adjust as needed */
+    z-index: 9999;
+    /* Ensure it's above other elements */
+}
+
+/* Fixed Call icon */
+.call-icon {
+    position: fixed;
+    bottom: 20px;
+    /* Adjust as needed */
+    right: 20px;
+    /* Adjust as needed */
+    z-index: 9999;
+    /* Ensure it's above other elements */
 }

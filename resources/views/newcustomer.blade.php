@@ -114,26 +114,6 @@
                 font-weight: lighter;
             }
 
-            .whatsapp-icon {
-                position: fixed;
-                bottom: 20px;
-                /* Adjust as needed */
-                left: 20px;
-                /* Adjust as needed */
-                z-index: 9999;
-                /* Ensure it's above other elements */
-            }
-
-            /* Fixed Call icon */
-            .call-icon {
-                position: fixed;
-                bottom: 20px;
-                /* Adjust as needed */
-                right: 20px;
-                /* Adjust as needed */
-                z-index: 9999;
-                /* Ensure it's above other elements */
-            }
 
             .otp-fields {
                 display: flex;
@@ -167,23 +147,18 @@
                 text-decoration: none;
             }
         </style>
-        <header class="main-header transparent border border-bottom-1">
-
-            <div class="d-flex justify-content-center">
+        <header class="main-header transparent">
+            <div class="d-flex justify-content-center align-items-center">
                 <a href="{{ route('frontendhomepage') }}" title="Wheels Bicycle">
-                    <img src="{{ asset('website-assets/images/logofinal.png') }}" alt="" class="img-fluid"
+                    <img src="{{ asset('website-assets/images/anantlogo.jpg') }}" alt="" class="img-fluid rounded-pill"
                         height="300px" width="100px">
                 </a>
-            </div>
-            {{-- <div class="container">
-                <div class="row">
-                    <div class="col-sm-3 logo">
-                        <div class="d-block d-md-none " style="position: absolute; top: 32px;left: 217px;">
-                            <a href="{{route('viewloginpage')}}"><span class="rounded-pill bg-danger text-white py-2 px-3">Log in</span></a>
-                        </div>
-                    </div>
+                <div class="social-icons ms-auto px-5">
+                    <a href="https://www.facebook.com/profile.php?id=61550693320353" class="social-icon"><i class="bi bi-facebook"></i></a>
+                    <a href="https://www.youtube.com/channel/UCHHlaC5J25Kpb6DPo7dCOag" class="social-icon ms-2"><i class="bi bi-youtube"></i></a>
+                    <a href="Instagram: https://www.instagram.com/anant_tvs_ajmer/?hl=en" class="social-icon ms-2"><i class="bi bi-instagram"></i></a>
                 </div>
-            </div> --}}
+            </div>
         </header>
         <div class="container-fluid position-relative">
             <div class="row">
@@ -632,14 +607,14 @@
                                             $firstImagePath = $imagePaths[0];
                                         @endphp
                                         <img src="{{ asset($firstImagePath) }}" alt="" class="img-fluid"
-                                            style="aspect-ratio: 4/4;">
+                                            style="aspect-ratio: 4/3; border-top-left-radius: 20px; border-top-right-radius: 20px;">
                                         <div class="card-body">
                                             <div class="d-flex justify-content-between p-2">
-                                                <h5 class="card-title" style="color: #1b2682">{{ $row->name }}</h5>
+                                                <h5 class="card-title fw-light" style="color: #1b2682">{{ $row->name }}</h5>
                                                 <p class="card-text">
                                                     <a href="http://127.0.0.1:8000/newcustomer/#leadformsection"
                                                         class="booking-link">
-                                                        <span class="p-2 rounded" id="submitbtn">
+                                                        <span class="p-2" id="submitbtn">
                                                             Book Now
                                                         </span>
                                                     </a>
