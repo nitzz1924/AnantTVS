@@ -43,11 +43,14 @@ Route::post('/createvehicle', [StoreController::class, 'createvehicle'])->name('
 Route::post('/createcustomer', [StoreController::class, 'createcustomer'])->name('createcustomer');
 Route::post('/createbuyvehicle', [StoreController::class, 'createbuyvehicle'])->name('createbuyvehicle');
 Route::post('/createlead', [StoreController::class, 'createlead'])->name('createlead');
-Route::post('/createtestride', [StoreController::class, 'createtestride'])->name('createtestride');
-Route::post('/makerequest', [StoreController::class, 'makerequest'])->name('makerequest');
 
-//Password Change Route
+
+//Authentication Routes
 Route::post('/changepassword', [AuthenticationController::class, 'changepassword'])->name('changepassword');
+Route::post('/verifyotp', [AuthenticationController::class, 'verifyotp'])->name('verifyotp');
+Route::post('/verifytestrideotp', [AuthenticationController::class, 'verifytestrideotp'])->name('verifytestrideotp');
+Route::post('/verifymakerequestotp', [AuthenticationController::class, 'verifymakerequestotp'])->name('verifymakerequestotp');
+
 
 //Delete Routes
 Route::get('/deletemastercat/{id}/{type}', [MasterController::class, 'deletemaster'])->name('deletemaster');
@@ -61,6 +64,10 @@ Route::post('/updatestatus', [StoreController::class, 'updatestatus'])->name('up
 Route::get('/ajaxvehicleshow/{id}', [StoreController::class, 'ajaxvehicleshow'])->name('ajaxvehicleshow');
 Route::get('/filtervehicle/{selectedtype}', [StoreController::class, 'filtervehicle'])->name('filtervehicle');
 Route::post('/updatenumberplatestatus', [StoreController::class, 'updatenumberplatestatus'])->name('updatenumberplatestatus');
+Route::post('/form_submit', [StoreController::class, 'form_submit']);
+Route::post('/create_testride', [StoreController::class, 'create_testride']);
+Route::post('/create_makerequest', [StoreController::class, 'create_makerequest']);
+
 
 //Edit Routes
 Route::get('/editcustomer/{id}', [EditController::class, 'editcustomer'])->name('editcustomer');

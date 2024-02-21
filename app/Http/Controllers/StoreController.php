@@ -180,35 +180,53 @@ class StoreController extends Controller
         }
     }
 
-    public function createtestride(Request $request)
+    public function form_submit(Request $req)
     {
-        // dd($request->all());
-        try {
-
-            $testride = TestRide::create([
-                'customername' => $request->customername,
-                'customerphoneno' => $request->customerphoneno,
-                'type' => $request->type,
-                'vehicle' => $request->vehicle,
-            ]);
-            return back()->with('success', 'We will reach you soon..!!!');
-        } catch (\Exception $e) {
-            return back()->with('error', $e->getMessage());
-        }
+        // dd($req->all());
+        $randomNumber = rand(100000, 999999);
+        $data = new Lead;
+        $data->name=$req->input('newcustomername');
+        $data->phoneno=$req->input('newcustomerphone');
+        $data->randomno=$randomNumber;
+        $data->save();
+        $responseData = [
+            'msg' => 'success',
+            'data' => $data->toArray(),
+        ];
+        return response()->json($responseData);
     }
 
-    public function makerequest(Request $req)
+    public function create_testride(Request $request)
     {
-         //dd($req->all());
-        try {
+        // return $request->post();
+        $randomNumber = rand(100000, 999999);
+        $data = new TestRide;
+        $data->customername=$request->input('customername');
+        $data->customerphoneno=$request->input('customerphoneno');
+        $data->type=$request->input('type');
+        $data->vehicle=$request->input('vehicle');
+        $data->randomno=$randomNumber;
+        $data->save();
+        $responseDatatest = [
+            'msg' => 'success',
+            'data' => $data->toArray(),
+        ];
+        return response()->json($responseDatatest);
+    }
 
-            $requestdata = MakeRequest::create([
-                'requestphoneno' => $req->requestphoneno,
-                'requestcomments' => $req->requestcomments,
-            ]);
-            return back()->with('success', 'We will reach you soon..!!!');
-        } catch (\Exception $e) {
-            return back()->with('error', $e->getMessage());
-        }
+    public function create_makerequest(Request $req)
+    {
+         // return $req->post();
+         $randomNumber = rand(100000, 999999);
+         $data = new MakeRequest;
+         $data->requestphoneno=$req->input('requestphoneno');
+         $data->requestcomments=$req->input('requestcomments');
+         $data->randomno=$randomNumber;
+         $data->save();
+         $responseDatareq = [
+             'msg' => 'success',
+             'data' => $data->toArray(),
+         ];
+         return response()->json($responseDatareq);
     }
 }

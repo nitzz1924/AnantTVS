@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 18, 2024 at 02:29 PM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.1
+-- Generation Time: Feb 21, 2024 at 08:16 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -44,7 +43,7 @@ CREATE TABLE `buy_vehicles` (
   `insuranceimage` text DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `buy_vehicles`
@@ -75,7 +74,7 @@ CREATE TABLE `customers` (
   `password` varchar(255) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `customers`
@@ -95,11 +94,11 @@ INSERT INTO `customers` (`id`, `customername`, `customerphoneno`, `customeremail
 
 CREATE TABLE `failed_jobs` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `uuid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `uuid` varchar(255) NOT NULL,
+  `connection` text NOT NULL,
+  `queue` text NOT NULL,
+  `payload` longtext NOT NULL,
+  `exception` longtext NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -111,23 +110,49 @@ CREATE TABLE `failed_jobs` (
 
 CREATE TABLE `leads` (
   `id` int(11) NOT NULL,
-  `leadid` varchar(255) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `phoneno` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `city` varchar(255) NOT NULL,
-  `state` varchar(255) NOT NULL,
-  `country` varchar(255) NOT NULL,
+  `leadid` varchar(255) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `phoneno` varchar(255) DEFAULT NULL,
+  `randomno` varchar(255) NOT NULL,
+  `verifystatus` varchar(255) NOT NULL DEFAULT '0',
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `leads`
 --
 
-INSERT INTO `leads` (`id`, `leadid`, `name`, `phoneno`, `email`, `city`, `state`, `country`, `created_at`, `updated_at`) VALUES
-(4, '13', 'Anshul', '1111111118', 'nitzz@gmail.com', 'Ajmer', 'Rajasthan', 'India', '2024-01-16 07:46:59', '2024-01-16 07:46:59');
+INSERT INTO `leads` (`id`, `leadid`, `name`, `phoneno`, `randomno`, `verifystatus`, `created_at`, `updated_at`) VALUES
+(22, NULL, 'admin', '9999999999', '', '0', '2024-02-10 04:32:51', '2024-02-10 04:32:51'),
+(23, NULL, 'Anshul', '9999999999', '', '0', '2024-02-10 04:33:42', '2024-02-10 04:33:42'),
+(24, NULL, 'admin', '9999999999', '', '0', '2024-02-10 04:37:16', '2024-02-10 04:37:16'),
+(72, NULL, 'Nitesh', '8209165518', '336064', '1', '2024-02-20 06:10:29', '2024-02-20 06:10:53'),
+(73, NULL, 'shakti', '8794651987', '941713', '0', '2024-02-20 06:11:37', '2024-02-20 06:11:37');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `make_requests`
+--
+
+CREATE TABLE `make_requests` (
+  `id` int(11) NOT NULL,
+  `requestphoneno` varchar(255) NOT NULL,
+  `requestcomments` text NOT NULL,
+  `randomno` varchar(255) NOT NULL,
+  `verifystatus` varchar(255) NOT NULL DEFAULT '0',
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `make_requests`
+--
+
+INSERT INTO `make_requests` (`id`, `requestphoneno`, `requestcomments`, `randomno`, `verifystatus`, `created_at`, `updated_at`) VALUES
+(1, '8209165518', 'dsfsdfdsf', '', '0', '2024-02-19 07:10:21', '2024-02-19 07:10:21'),
+(6, '8209165518', 'this is nitesh', '415584', '1', '2024-02-20 07:48:34', '2024-02-20 07:48:49');
 
 -- --------------------------------------------------------
 
@@ -144,7 +169,7 @@ CREATE TABLE `masters` (
   `status` varchar(255) NOT NULL DEFAULT 'A',
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `masters`
@@ -152,19 +177,20 @@ CREATE TABLE `masters` (
 
 INSERT INTO `masters` (`id`, `parent_id`, `label`, `value`, `type`, `status`, `created_at`, `updated_at`) VALUES
 (10, '1', 'Vehicle', 'Vehicle', 'Master', 'A', '2023-12-30 02:53:53', '2023-12-30 02:53:53'),
-(26, '1', 'Bike', 'Bike', 'Vehicle', 'A', '2023-12-30 04:18:24', '2023-12-30 04:18:24'),
 (27, '1', 'PPC', 'PPC', 'Pumps', 'A', '2023-12-30 04:18:55', '2023-12-30 04:18:55'),
 (28, '1', 'Plastic', 'Plastic', 'Pumps', 'A', '2023-12-30 04:19:09', '2023-12-30 04:19:09'),
-(29, '1', 'Cars', 'Cars', 'Vehicle', 'A', '2023-12-30 05:55:05', '2023-12-30 05:55:05'),
 (31, '1', 'Python', 'Python', 'Coding', 'A', '2023-12-31 23:48:00', '2023-12-31 23:48:00'),
-(32, '1', 'Scooty', 'Scooty', 'Vehicle', 'A', '2024-01-02 00:11:54', '2024-01-02 00:11:54'),
 (33, '1', 'Color', 'Color', 'Master', 'A', '2024-01-02 23:13:47', '2024-01-02 23:13:47'),
 (34, '1', 'Black', 'Black', 'Color', 'A', '2024-01-02 23:14:00', '2024-01-02 23:14:00'),
 (35, '1', 'Dark Blue', 'Dark Blue', 'Color', 'A', '2024-01-02 23:14:13', '2024-01-02 23:14:13'),
 (37, '1', 'Payment Button', 'Payment Button', 'Master', 'A', '2024-01-17 01:40:24', '2024-01-17 01:40:24'),
 (38, '1', 'Pay Now', 'link', 'Payment Button', 'A', '2024-01-17 01:40:53', '2024-01-17 01:40:53'),
 (39, '1', 'Payment with Paytm', 'link', 'Payment Button', 'A', '2024-01-17 01:42:18', '2024-01-17 01:42:18'),
-(40, '1', 'Payment with PhonePe', 'link', 'Payment Button', 'A', '2024-01-17 01:42:42', '2024-01-17 01:42:42');
+(40, '1', 'Payment with PhonePe', 'link', 'Payment Button', 'A', '2024-01-17 01:42:42', '2024-01-17 01:42:42'),
+(46, '1', 'Motorcycles', 'Motorcycles', 'Vehicle', 'A', '2024-02-21 01:32:33', '2024-02-21 01:32:33'),
+(47, '1', 'Scooters', 'Scooters', 'Vehicle', 'A', '2024-02-21 01:32:42', '2024-02-21 01:32:42'),
+(48, '1', 'Mopeds', 'Mopeds', 'Vehicle', 'A', '2024-02-21 01:32:50', '2024-02-21 01:32:50'),
+(49, '1', 'Electric', 'Electric', 'Vehicle', 'A', '2024-02-21 01:32:58', '2024-02-21 01:32:58');
 
 -- --------------------------------------------------------
 
@@ -174,7 +200,7 @@ INSERT INTO `masters` (`id`, `parent_id`, `label`, `value`, `type`, `status`, `c
 
 CREATE TABLE `migrations` (
   `id` int(10) UNSIGNED NOT NULL,
-  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `migration` varchar(255) NOT NULL,
   `batch` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -197,8 +223,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 --
 
 CREATE TABLE `password_resets` (
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `token` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -210,11 +236,11 @@ CREATE TABLE `password_resets` (
 
 CREATE TABLE `personal_access_tokens` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `tokenable_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tokenable_type` varchar(255) NOT NULL,
   `tokenable_id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `abilities` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(255) NOT NULL,
+  `token` varchar(64) NOT NULL,
+  `abilities` text DEFAULT NULL,
   `last_used_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -227,11 +253,11 @@ CREATE TABLE `personal_access_tokens` (
 --
 
 CREATE TABLE `sessions` (
-  `id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` varchar(255) NOT NULL,
   `user_id` bigint(20) UNSIGNED DEFAULT NULL,
-  `ip_address` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `user_agent` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `payload` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ip_address` varchar(45) DEFAULT NULL,
+  `user_agent` text DEFAULT NULL,
+  `payload` text NOT NULL,
   `last_activity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -240,7 +266,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('hSQgLHzoXse94JihBC2y7vOtLLTyZeLKfVfdLvhl', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiTXpxRkMyMlRJZEFzNkVXWFhxaDBoVDBoNVFScW9aYXpCdjFtdHY4SSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mzc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hbGx2ZWhpY2xlc2xpc3QiO31zOjU1OiJsb2dpbl9jdXN0b21lcl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjY7fQ==', 1705582145);
+('lT9AJeEOXpjzpBkR3HwJwj2muzGsUek1f0rktvLf', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoiQWFva01TM3NHSklBMDZVTUE4cjlYTnQwYzh5bkozemEzN09lTkVqWSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzM6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9uZXdjdXN0b21lciI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6MzoidXJsIjthOjA6e31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6MjE6InBhc3N3b3JkX2hhc2hfc2FuY3R1bSI7czo2MDoiJDJ5JDEwJDUzMDd3ZWQxSklJMTh1eXJlZC4vdGVWbEFqZHNELlBSNjdYVUd6QW5oamcuLmFMMzJFSE9PIjt9', 1708499561);
 
 -- --------------------------------------------------------
 
@@ -254,7 +280,7 @@ CREATE TABLE `slider_images` (
   `images` varchar(255) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `slider_images`
@@ -266,21 +292,48 @@ INSERT INTO `slider_images` (`id`, `type`, `images`, `created_at`, `updated_at`)
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `test_rides`
+--
+
+CREATE TABLE `test_rides` (
+  `id` int(11) NOT NULL,
+  `customername` varchar(255) NOT NULL,
+  `customerphoneno` varchar(255) NOT NULL,
+  `type` varchar(255) NOT NULL,
+  `vehicle` varchar(255) NOT NULL,
+  `randomno` varchar(255) NOT NULL,
+  `verifystatus` varchar(255) NOT NULL DEFAULT '0',
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `test_rides`
+--
+
+INSERT INTO `test_rides` (`id`, `customername`, `customerphoneno`, `type`, `vehicle`, `randomno`, `verifystatus`, `created_at`, `updated_at`) VALUES
+(1, 'Dinesh', '8209165518', 'Bike', 'FZ', '', '0', '2024-02-19 06:32:28', '2024-02-19 06:32:28'),
+(17, 'Kane', '2222222222', 'Scooty', 'Activa 4G', '282160', '1', '2024-02-20 07:06:20', '2024-02-20 07:06:36'),
+(18, 'Kane', '2222222222', 'Bike', 'R15', '361810', '0', '2024-02-21 01:04:34', '2024-02-21 01:04:34');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `two_factor_secret` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `two_factor_recovery_codes` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `password` varchar(255) NOT NULL,
+  `two_factor_secret` text DEFAULT NULL,
+  `two_factor_recovery_codes` text DEFAULT NULL,
   `two_factor_confirmed_at` timestamp NULL DEFAULT NULL,
-  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `remember_token` varchar(100) DEFAULT NULL,
   `current_team_id` bigint(20) UNSIGNED DEFAULT NULL,
-  `profile_photo_path` varchar(2048) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `profile_photo_path` varchar(2048) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -310,19 +363,18 @@ CREATE TABLE `vehicles` (
   `discription` text NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `vehicles`
 --
 
 INSERT INTO `vehicles` (`id`, `name`, `type`, `modelno`, `price`, `color`, `image`, `status`, `discription`, `created_at`, `updated_at`) VALUES
-(8, 'Swift Desire', 'Cars', '201H156', '10000', 'Black', 'uploads/vehicle/94f4ede62112b790c91d5e64fdb09cb8.jpg,uploads/vehicle/243f6a5292350cc163601aac9ad3e854.jpg', '0', 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tenetur quod voluptatibus est repellendus in minima error harum perspiciatis dolores quia! Natus omnis odit, explicabo magni ab possimus ratione suscipit enim deleniti recusandae libero laboriosam ', '2024-01-01 03:28:57', '2024-01-01 07:57:31'),
-(9, 'Maruti 800', 'Cars', '201H12', '10000', 'Black', 'uploads/vehicle/800.webp', '0', 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tenetur quod voluptatibus est repellendus in minima error harum perspiciatis dolores quia! Natus omnis odit, explicabo magni ab possimus ratione suscipit enim deleniti recusandae libero laboriosam illo laudantium eum! Quod fuga a dolorem cupiditate, officia nesciunt aut, temporibus soluta odit aspernatur voluptates.', '2024-01-01 03:58:45', '2024-01-04 07:23:06'),
-(10, 'R15', 'Bike', '201H111', '100000', 'Black', 'uploads/vehicle/cfd2b32e4caf5678c34b631f56c03686.jpg,uploads/vehicle/74888d4e8f1b989420edfb5b19659c77.jpg', '0', 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tenetur quod voluptatibus est repellendus in minima error harum perspiciatis dolores quia! Natus omnis odit, explicabo magni ab possimus ratione suscipit enim deleniti recusandae libero laboriosam illo laudantium eum! Quod fuga a dolorem cupiditate, officia nesciunt aut, temporibus soluta odit aspernatur voluptates.', '2024-01-01 07:02:25', '2024-01-01 23:10:10'),
-(11, 'Activa 4G', 'Scooty', '401H1588', '60000', 'Brown', 'uploads/vehicle/b6e32320fa6bc5a588b90183b95dc028.jpg,uploads/vehicle/5b8e9841e87fb8fc590434f5d933c92c.jpg', '0', 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tenetur quod voluptatibus est repellendus in minima error harum perspiciatis dolores quia! Natus omnis odit, explicabo magni ab possimus ratione suscipit enim deleniti recusandae libero laboriosam', '2024-01-02 00:13:04', '2024-01-02 01:18:36'),
-(12, 'Pulsar 220', 'Bike', '201H133', '1500000', 'Black', 'uploads/vehicle/58e16dc760ca166c476403499ff5c59b.webp,uploads/vehicle/243f6a5292350cc163601aac9ad3e854.jpg', '0', 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Assumenda blanditiis, quam natus odio, molestias consequatur quod, soluta fugit et nobis fuga. Iure, nulla magnam veritatis doloribus pariatur, harum eos sequi voluptas animi tempore voluptatibus. Repellat quae corrupti dicta quibusdam eos, itaque at cupiditate temporibus dolores iusto hic ducimus error eligendi?', '2024-01-04 00:43:05', '2024-01-04 06:24:34'),
-(13, 'FZ', 'Bike', '205GYX', '120000', 'Black', 'uploads/vehicle/58e16dc760ca166c476403499ff5c59b.webp,uploads/vehicle/243f6a5292350cc163601aac9ad3e854.jpg', '0', 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Assumenda blanditiis, quam natus odio, molestias consequatur quod, soluta fugit et nobis fuga. Iure, nulla magnam veritatis doloribus pariatur, harum eos sequi voluptas animi tempore voluptatibus. Repellat quae corrupti dicta quibusdam eos, itaque at cupiditate temporibus dolores iusto hic ducimus error eligendi?', '2024-01-04 04:37:34', '2024-01-04 06:24:35');
+(14, 'TVS Jupiter 125', 'Scooters', 'null', '00000', 'Black', 'uploads/vehicle/731c83db8d2ff01bdc000083fd3c3740.jpg', '1', 'this is jupiter', '2024-02-21 01:37:52', '2024-02-21 01:37:52'),
+(15, 'TVS Raider', 'Motorcycles', 'null', '0000', 'Black', 'uploads/vehicle/6b5ce5a5aa1b506c66ece16c4cd9138d.jpg', '1', 'this is raider', '2024-02-21 01:39:02', '2024-02-21 01:39:02'),
+(16, 'TVS Ronin', 'Motorcycles', 'null', '00000', 'Black', 'uploads/vehicle/1d49780520898fe37f0cd6b41c5311bf.jpg', '1', 'this is ronin', '2024-02-21 01:40:01', '2024-02-21 01:40:01'),
+(17, 'TVS iQube', 'Scooters', 'null', '00000', 'Dark Blue', 'uploads/vehicle/e334fd9dac68f13fa1a57796148cf812.jpg', '1', 'this is IQube', '2024-02-21 01:41:36', '2024-02-21 01:41:36'),
+(18, 'TVS Scooty Pep', 'Scooters', 'null', '00000', 'Black', 'uploads/vehicle/f1903f234d3ba4da38a18aa25751457d.jpg', '1', 'this is scooty', '2024-02-21 01:42:20', '2024-02-21 01:42:20');
 
 --
 -- Indexes for dumped tables
@@ -351,6 +403,12 @@ ALTER TABLE `failed_jobs`
 -- Indexes for table `leads`
 --
 ALTER TABLE `leads`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `make_requests`
+--
+ALTER TABLE `make_requests`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -394,6 +452,12 @@ ALTER TABLE `slider_images`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `test_rides`
+--
+ALTER TABLE `test_rides`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -432,13 +496,19 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `leads`
 --
 ALTER TABLE `leads`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+
+--
+-- AUTO_INCREMENT for table `make_requests`
+--
+ALTER TABLE `make_requests`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `masters`
 --
 ALTER TABLE `masters`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -459,6 +529,12 @@ ALTER TABLE `slider_images`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `test_rides`
+--
+ALTER TABLE `test_rides`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
@@ -468,7 +544,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `vehicles`
 --
 ALTER TABLE `vehicles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

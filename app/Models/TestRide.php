@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class TestRide extends Model
 {
-    protected $fillable = ['id','customername','customerphoneno','type','vehicle'] ;
+    protected $fillable = ['id','customername','customerphoneno','type','vehicle','randomno','verifystatus'] ;
 }

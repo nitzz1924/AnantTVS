@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class MakeRequest extends Model
 {
-    protected $fillable = ['id','requestphoneno','requestcomments'];
+    protected $fillable = ['id','requestphoneno','requestcomments','randomno','verifystatus'];
 }

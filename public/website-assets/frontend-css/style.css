@@ -2064,7 +2064,7 @@ textarea {
     height: auto;
     border: 2px solid #cccccc;
     background: #ffffff;
-    margin-bottom: 15px;
+    /* margin-bottom: 15px; */
 }
 
 .transparent-field .form-control {
@@ -4905,4 +4905,3 @@ a:active {
     object-fit: cover;
     height: 300px
 }
-

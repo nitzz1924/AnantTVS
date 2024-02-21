@@ -30,8 +30,8 @@
 
             <div class="d-flex justify-content-center">
                 <a href="{{ route('frontendhomepage') }}" title="Wheels Bicycle">
-                    <img src="{{ asset('website-assets/images/anantlogo.jpg') }}" alt=""
-                        class="img-fluid rounded-pill" height="300px" width="100px">
+                    <img src="{{ asset('website-assets/images/anantlogo.jpg') }}" alt="" class="img-fluid rounded-pill"
+                        height="300px" width="100px">
                 </a>
             </div>
             {{-- <div class="container">
@@ -44,8 +44,8 @@
                 </div>
             </div> --}}
         </header>
-        <section id="herosectionbg" class="light-text d-flex justify-content-center align-items-center"
-            style="position: relative; height: 100vh; background-color: rgb(255, 255, 255);" >
+        <section id="herosectionbg" class="light-text d-flex justify-content-center align-items-start align-items-md-center"
+            style="position: relative; height: 100vh; background-color: rgb(255, 255, 255);">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-md-5 col-md-12 wow fadeInLeft  text-center">
@@ -54,25 +54,31 @@
                                 class="img-fluid rounded-pill" height="200px" width="200px">
                         </div> --}}
                         <h1 class="large-heading"><span>Welcome to Anant TVS</span></h1>
-                        <h2 class="">Opposite IBM Office, Aadarsh Nagar,Ajmer 305002</h2>
+                        <h2 class=" mobile-headings">Opposite IBM Office, Aadarsh Nagar,Ajmer 305002</h2>
                         <div class=" d-flex justify-content-center mt-2 row">
                             <div class="col-md-4 mt-2 mb-2">
                                 <div class="card p-3 rounded">
                                     <div class="card-body">
-                                      <h5 class="card-title text-start" style="color: #003487;">Not a New Customer.?</h5>
-                                      <p class="card-text text-start" style="color: #003487;">With supporting text below as a natural lead-in to additional content.</p>
-                                      <a href="{{ route('newcustomer') }}" class=" btn btn-dark btn-sm border border-light w-100" style="background-color: #dd0707;">Let's Begin</a>
+                                        <h5 class="card-title text-start" style="color: #003487;">Not a New Customer.?</h5>
+                                        <p class="card-text text-start" style="color: #003487;">With supporting text below
+                                            as a natural lead-in to additional content.</p>
+                                        <a href="{{ route('newcustomer') }}"
+                                            class=" btn btn-dark btn-sm border border-light w-100"
+                                            style="background-color: #dd0707;">Let's Begin</a>
                                     </div>
-                                  </div>
+                                </div>
                             </div>
                             <div class="col-md-4 mt-2 mb-2">
                                 <div class="card p-3 rounded">
                                     <div class="card-body">
-                                      <h5 class="card-title text-start" style="color: #003487;">Exiting Customer</h5>
-                                      <p class="card-text text-start" style="color: #003487;">With supporting text below as a natural lead-in to additional content.</p>
-                                      <a href="{{ route('viewloginpage') }}" class=" btn btn-dark btn-sm border border-light w-100" style="background-color: #003487;">Login</a>
+                                        <h5 class="card-title text-start" style="color: #003487;">Exiting Customer</h5>
+                                        <p class="card-text text-start" style="color: #003487;">With supporting text below
+                                            as a natural lead-in to additional content.</p>
+                                        <a href="{{ route('viewloginpage') }}"
+                                            class=" btn btn-dark btn-sm border border-light w-100"
+                                            style="background-color: #003487;">Login</a>
                                     </div>
-                                  </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -80,12 +86,14 @@
             </div>
         </section>
         <a href="https://wa.me/7240667788" class="whatsapp-icon">
-            <img src="{{ asset('website-assets/images/whatsapp-icon.png') }}" height="50px" width="50px" alt="" class="rounded">
+            <img src="{{ asset('website-assets/images/whatsapp-icon.png') }}" height="50px" width="50px" alt=""
+                class="rounded">
         </a>
 
         <!-- Call icon -->
         <a href="tel:+917414055555" class="call-icon">
-            <img src="{{ asset('website-assets/images/call.png') }}" height="50px" width="50px" alt="" class="rounded">
+            <img src="{{ asset('website-assets/images/call.png') }}" height="50px" width="50px" alt=""
+                class="rounded">
         </a>
         <!--* Hero Section End -->
 
