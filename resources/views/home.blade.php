@@ -24,7 +24,7 @@
         </header>
 
         <section id="herosectionbg" class="light-text d-flex justify-content-center align-items-start align-items-md-center"
-            style="position: relative; height: 100vh; background-color: rgb(255, 255, 255);">
+            style="position: relative; height: 733px; background-color: rgb(255, 255, 255);">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-md-5 col-md-12 wow fadeInLeft  text-center">

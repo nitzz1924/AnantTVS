@@ -238,13 +238,13 @@
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="mb-3">
-                                        <input type="text" name="newcustomername" class="form-control  rounded-pill"
+                                        <input type="text" name="newcustomername" class="form-control"
                                             id="exampleFormControlInput1" placeholder="Enter your name *" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="mb-3">
-                                        <input type="text" name="newcustomerphone" class="form-control  rounded-pill"
+                                        <input type="text" name="newcustomerphone" class="form-control"
                                             id="exampleFormControlInput1" placeholder="Enter phone no *" pattern="[0-9]*"
                                             maxlength="10" required>
                                     </div>
@@ -434,7 +434,7 @@
                                         $firstImagePath = $imagePaths[0];
                                     @endphp
                                     <img src="{{ asset($firstImagePath) }}" alt="" class="img-fluid"
-                                        style=" border-top-left-radius: 20px; border-top-right-radius: 20px;">
+                                        style=" border-top-left-radius: 10px; border-top-right-radius: 10px;">
                                     <div class="card-body">
                                         <div class="p-1 text-center">
                                             <h4 class="card-title" style="color: #1b2682">
@@ -526,14 +526,14 @@
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <input type="text" name="customername"
-                                                        class="form-control  rounded-pill" id="exampleFormControlInput1"
+                                                        class="form-control" id="exampleFormControlInput1"
                                                         placeholder="Enter your name *" required>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <input type="text" name="customerphoneno"
-                                                        class="form-control  rounded-pill" id="exampleFormControlInput1"
+                                                        class="form-control" id="exampleFormControlInput1"
                                                         placeholder="Enter phone no *" required>
                                                 </div>
                                             </div>
@@ -629,7 +629,7 @@
                                             <div class="col-lg-12">
                                                 <div class="mb-3">
                                                     <input type="text" name="requestphoneno"
-                                                        class="form-control  rounded-pill" id="exampleFormControlInput1"
+                                                        class="form-control" id="exampleFormControlInput1"
                                                         placeholder="Enter phone no *" required>
                                                 </div>
                                             </div>
@@ -785,12 +785,13 @@
                     disableOnInteraction: false,
                 },
                 loop: true,
+                speed: 2000,
                 spaceBetween: 30,
                 grabCursor: true,
-                pagination: {
-                    el: ".swiper-pagination",
-                    clickable: true,
-                },
+                // pagination: {
+                //     el: ".swiper-pagination",
+                //     clickable: true,
+                // },
                 breakpoints: {
                     300: {
                         slidesPerView: 1,
