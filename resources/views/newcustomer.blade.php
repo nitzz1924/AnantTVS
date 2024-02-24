@@ -20,7 +20,7 @@
 
             .section-title .divider {
                 position: relative;
-                border-bottom: 1px solid #000000;
+                border-bottom: 1px solid #ffffff;
                 margin-bottom: 30px;
                 margin-top: 30px;
             }
@@ -109,10 +109,30 @@
                 background-attachment: fixed;
                 position: relative;
             }
-
-            .textstyle {
-                font-weight: lighter;
+            .custombackground {
+                position: relative;
             }
+
+            /* .custombackground::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: #030594bd;
+            } */
+
+            .custombackground {
+                background-image: url('/website-assets/images/background (1).png');
+                background-repeat: no-repeat;
+                background-position: center;
+                background-attachment: none;
+                background-size: cover;
+                position: relative;
+            }
+
+
 
 
             .otp-fields {
@@ -146,34 +166,51 @@
                 color: #3498db;
                 text-decoration: none;
             }
+
+            .social-icon {
+                color: #003487;
+            }
+
+            .whatsappbtn{
+                background-color: #13920a !important;
+                color: white !important;
+            }
+            .enquirbtn{
+                background-color: #003487 !important;
+                color: white !important;
+            }
         </style>
         <header class="main-header transparent">
-            <div class="d-flex justify-content-center align-items-center">
+            <div class=" mt-3 d-flex justify-content-center align-items-center ms-3">
                 <a href="{{ route('frontendhomepage') }}" title="Wheels Bicycle">
-                    <img src="{{ asset('website-assets/images/anantlogo.jpg') }}" alt="" class="img-fluid rounded-pill"
-                        height="300px" width="100px">
+                    <img src="{{ asset('website-assets/images/logomerge.png') }}" alt="" class="img-fluid rounded-pill"
+                        height="400px" width="200px">
                 </a>
-                <div class="social-icons ms-auto px-5">
-                    <a href="https://www.facebook.com/profile.php?id=61550693320353" class="social-icon"><i class="bi bi-facebook"></i></a>
-                    <a href="https://www.youtube.com/channel/UCHHlaC5J25Kpb6DPo7dCOag" class="social-icon ms-2"><i class="bi bi-youtube"></i></a>
-                    <a href="Instagram: https://www.instagram.com/anant_tvs_ajmer/?hl=en" class="social-icon ms-2"><i class="bi bi-instagram"></i></a>
+                <div class="social-iconsnew ms-auto px-5">
+                    <a href="https://www.facebook.com/profile.php?id=61550693320353" class="social-icon"><i
+                            class="bi bi-facebook"></i></a>
+                    <a href="https://www.youtube.com/channel/UCHHlaC5J25Kpb6DPo7dCOag" class="social-icon ms-2"><i
+                            class="bi bi-youtube"></i></a>
+                    <a href="Instagram: https://www.instagram.com/anant_tvs_ajmer/?hl=en" class="social-icon ms-2"><i
+                            class="bi bi-instagram"></i></a>
                 </div>
             </div>
         </header>
-        <div class="container-fluid position-relative">
-
+        <div class="container-fluid position-relative" style="background-color: #003487">
             <div class="row">
-                <div class="col-sm-12">
+                <div class="col-sm-12 mt-3" id="customheroofnewcustomer">
                     <!-- Section Title -->
                     <div class="section-title">
-                        <h1 class="textstyle large-heading">Welcome to Anant TVS</h1>
+                        <h1 class="large-heading"><span class="text-white">Welcome</span></h1>
+                        <h1 class="large-heading"><span class="text-white">to</span></h1>
+                        <h1 class="large-heading"><span class="text-white">Anant TVS</span></h1>
                         <div class="divider"></div>
-                        <p class="text-black">Opposite IBM Office, Aadarsh Nagar,Ajmer 305002</p>
+                        <p class="text-white">Opposite IBM Office, Aadarsh Nagar,Ajmer 305002</p>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="card p-3 mt-0 border border-0" id="herosectionbgnew">
+        <div class="card p-3 mt-0 border border-0 custombackground" id="enquirysection">
             <div class="row">
                 <div class="col-lg-12 p-3 d-grid align-items-center justify-content-center">
                     <div class="card p-3 p-md-5 my-5">
@@ -194,7 +231,7 @@
                                     Ride?
                                 </h1>
                                 <p class="text-black text-center mb-2">
-                                    Please drop your complete details, we will give your test ride at your doorstep.
+                                    Existing offer for you please drop details
                                 </p>
                                 <div class="divider text-black"></div>
                             </div>
@@ -249,25 +286,28 @@
                 </div>
             </div>
         </div>
-        <div class="container pb-5 mt-3">
+        <div class="pb-5">
             <section id="about" class="about-section">
-                <div class="container">
-                    <div class="row bicycle-img wow fadeInLeft">
+                <div class="p-0 p-md-3" style="background-color: #003487;">
+                    <div class="row bicycle-img wow fadeInLeft mx-0 mx-md-5">
                         <div class="col-md-6">
-                            <div class="d-grid align-items-center h-100">
+                            <div class="d-grid align-items-center h-100 mx-3">
                                 <div class="heading-wrapper">
-                                    <h1 class="" style="color: #dd0707;"><span>About Us</span></h1>
-                                    ANANT TECHWHEELS LLP is a LLP incorporated in the state of Ajmer having CIN Number
-                                    ACA-6340
-                                    formed on 18-04-2023. It Deals in Sales, Services & Spares of two wheelers.
+                                    <h1 class="" style="color: #ffffff;"><span>About Us</span></h1>
+                                    <p class="text-justify text-white">
+                                        ANANT TECHWHEELS LLP is a LLP incorporated in the state of Ajmer having CIN Number
+                                        ACA-6340
+                                        formed on 18-04-2023. It Deals in Sales, Services & Spares of two wheelers.
+                                    </p>
+                                    <p class="text-justify text-white">
+                                        TVS Motor manufactures the largest range of two-wheelers, starting from mopeds, to scooters, commuter motorcycles, to racing inspired bikes like the TVS Apache series and the TVS Apache RR310. Whatever your requirement be, we have one for everyone.
+                                    </p>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-6 py-3">
-                            <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14293.330219913156!2d74.6535324!3d26.4127428!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396be1f23a1fd2c5%3A0xd5c6dab4c668c5a0!2sTVS%20Showroom%20(Anant%20Techwheels%20LLP)!5e0!3m2!1sen!2sin!4v1708339508950!5m2!1sen!2sin"
-                                class="w-100 w-md-50" height="400px" style="border:0;" allowfullscreen=""
-                                loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <div class="col-md-6 py-3">
+                            <img src="{{ asset('website-assets/images/finalshowroom.png') }}" alt=""
+                            class="img-fluid">
                         </div>
                     </div>
                 </div>
@@ -275,7 +315,7 @@
 
         </div>
         <!--* About Section Start -->
-        <div class="container-fluid p-3 p-md-5" id="herosectionbg">
+        {{-- <div class="container-fluid p-3 p-md-5" id="herosectionbg">
             <section id="about" class="about-section">
                 <div class="container" id="leadformsection">
                     <div class="row align-items-center  fadeInLeft">
@@ -314,7 +354,8 @@
                                         </div>
                                         <div class="col-lg-12">
                                             <div class="d-grid gap-2 w-100">
-                                                <button class="btn btn-success" type="button" id="submitbtn">Submit</button>
+                                                <button class="btn btn-success" type="button"
+                                                    id="submitbtn">Submit</button>
                                             </div>
                                         </div>
                                     </div>
@@ -325,7 +366,7 @@
                 </div>
             </section>
 
-        </div>
+        </div> --}}
         <!--* About Section End -->
 
         <!--* Enviornment impact section start -->
@@ -375,15 +416,69 @@
         </section>
         <!--* Enviornment impact section end -->
 
-        <section id="testride" class="p-3 p-md-5" style="background-color: #4143ae">
+        <section id="about" class="about-section mb-0 mt-0">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class=" text-center ">
+                        <h1 class="mobile-heading  text-uppercase" style="color: #000000;">Vehicles</h1>
+                        <p class="text-black">Drive the Future, Today. Elevate Your Drive.</p>
+                    </div>
+
+                    <div class="swiper mySwiper mt-3 pt-5">
+                        <div class="swiper-wrapper">
+                            @foreach ($allvehicles as $row)
+                            <div class="swiper-slide">
+                                <div class="card cardcustomup">
+                                    @php
+                                        $imagePaths = explode(',', $row->image);
+                                        $firstImagePath = $imagePaths[0];
+                                    @endphp
+                                    <img src="{{ asset($firstImagePath) }}" alt="" class="img-fluid"
+                                        style=" border-top-left-radius: 20px; border-top-right-radius: 20px;">
+                                    <div class="card-body">
+                                        <div class="p-1 text-center">
+                                            <h4 class="card-title" style="color: #1b2682">
+                                                {{ $row->name }}</h4><br>
+
+                                        </div>
+                                        <div class="d-flex justify-content-center">
+                                            <p class="card-text">
+                                                <a href="#enquirysection"
+                                                    class="booking-link">
+                                                    <span class="p-2 enquirbtn rounded">
+                                                        Enquiry Now
+                                                    </span>
+                                                </a>
+                                            </p>
+                                            <p class="card-text ms-3">
+                                                <a href="https://wa.me/+917240667788?text=Enquiry%20from%20Anant%20TVS%20Ajmer%20for%20{{$row->name}}"
+                                                    class="booking-link">
+                                                    <span class="p-2 whatsappbtn rounded">
+                                                        WhatsApp
+                                                    </span>
+                                                </a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
+                        </div>
+                        <div class="swiper-pagination mt-5 text-white"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="testride" class="p-3 p-md-5" style="background-color: #003487">
             <div class="container py-3" id="leadformsection">
-                    <ul class="nav nav-pills mb-0" id="pills-tab" role="tablist">
-                    <li class="nav-item" role="presentation">
+                <ul class="nav nav-pills mb-0 d-flex justify-content-center" id="pills-tab" role="tablist">
+                    <li class="nav-item mt-2" role="presentation">
                         <button class="active bg-white text-dark border border-0" id="pills-home-tab"
                             data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab"
                             aria-controls="pills-home" aria-selected="true">Test Ride</button>
                     </li>
-                    <li class="nav-item" role="presentation">
+                    <li class="nav-item mt-2" role="presentation">
                         <button class="bg-white text-dark border border-0 ms-3" id="pills-profile-tab"
                             data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab"
                             aria-controls="pills-profile" aria-selected="false">Request for Specific</button>
@@ -394,9 +489,9 @@
                         aria-labelledby="pills-home-tab" tabindex="0">
                         <div class="card p-3 mt-1">
                             <div class="row">
-                                <div class="col-lg-6">
+                                <div class="col-lg-6 d-grid align-content-center">
                                     <div class="">
-                                        <img src="{{ asset('website-assets/images/testridetwo.jpg') }}" alt=""
+                                        <img src="{{ asset('website-assets/images/RANGE CREATIVE.png') }}" alt=""
                                             class="img-fluid">
                                     </div>
                                 </div>
@@ -465,8 +560,7 @@
                                             </div>
                                             <div class="col-lg-12">
                                                 <div class="d-grid gap-2 w-100">
-                                                    <button class="btn btn-success" type="submit" id="submitbtn">Your
-                                                        First
+                                                    <button class="btn btn-success" type="submit" id="submitbtn">Free Test
                                                         Ride</button>
                                                 </div>
                                             </div>
@@ -590,49 +684,7 @@
         </section>
 
 
-        <section id="about" class="about-section mb-0 mt-0">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class=" text-center ">
-                        <h1 class="mobile-heading  text-uppercase" style="color: #000000;">Vehicles</h1>
-                        <p class="text-black">Drive the Future, Today. Elevate Your Drive.</p>
-                    </div>
 
-                    @foreach ($allvehicles->chunk(4) as $vehicleChunk)
-                        <div class="row">
-                            @foreach ($vehicleChunk as $row)
-                                <div class="col-lg-3 mt-3">
-                                    <div class="card cardcustomup">
-                                        @php
-                                            $imagePaths = explode(',', $row->image);
-                                            $firstImagePath = $imagePaths[0];
-                                        @endphp
-                                        <img src="{{ asset($firstImagePath) }}" alt="" class="img-fluid"
-                                            style="aspect-ratio: 4/3; border-top-left-radius: 20px; border-top-right-radius: 20px;">
-                                        <div class="card-body">
-                                            <div class="d-flex justify-content-between p-2">
-                                                <h5 class="card-title fw-light" style="color: #1b2682">{{ $row->name }}</h5>
-                                                <p class="card-text">
-                                                    <a href="http://127.0.0.1:8000/newcustomer/#leadformsection"
-                                                        class="booking-link">
-                                                        <span class="p-2" id="submitbtn">
-                                                            Book Now
-                                                        </span>
-                                                    </a>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
-                    @endforeach
-                </div>
-                <div class="pagination mt-5 p-3 justify-content-center">
-                    {{ $allvehicles->links('pagination::bootstrap-4') }}
-                </div>
-            </div>
-        </section>
 
 
         <a href="https://wa.me/7240667788" class="whatsapp-icon">

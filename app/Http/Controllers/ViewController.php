@@ -157,7 +157,7 @@ class ViewController extends Controller
     }
     public function newcustomer()
     {
-        $allvehicles = Vehicle::paginate(4);
+        $allvehicles = Vehicle::get();
         $masterdata = Master::where('type', '=', 'Vehicle')->get();
         return view('newcustomer', compact('allvehicles','masterdata'));
     }

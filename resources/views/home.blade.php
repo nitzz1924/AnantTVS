@@ -2,15 +2,20 @@
 @extends('layouts.frontend.website')
 @section('content')
     <div class="main-container">
+        <style>
+            .social-icon{
+                color: #003487;
+            }
+        </style>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
         <!--* Hero Section Start -->
         <header class="main-header transparent">
-            <div class="d-flex justify-content-center align-items-center">
+            <div class="mt-3 d-flex justify-content-center align-items-center ms-3">
                 <a href="{{ route('frontendhomepage') }}" title="Wheels Bicycle">
-                    <img src="{{ asset('website-assets/images/anantlogo.jpg') }}" alt="" class="img-fluid rounded-pill"
-                        height="300px" width="100px">
+                    <img src="{{ asset('website-assets/images/logomerge.png') }}" alt="" class="img-fluid rounded-pill"
+                        height="400px" width="200px">
                 </a>
-                <div class="social-icons ms-auto px-5">
+                <div class="social-iconsnew ms-auto px-5">
                     <a href="https://www.facebook.com/profile.php?id=61550693320353" class="social-icon"><i class="bi bi-facebook"></i></a>
                     <a href="https://www.youtube.com/channel/UCHHlaC5J25Kpb6DPo7dCOag" class="social-icon ms-2"><i class="bi bi-youtube"></i></a>
                     <a href="Instagram: https://www.instagram.com/anant_tvs_ajmer/?hl=en" class="social-icon ms-2"><i class="bi bi-instagram"></i></a>
@@ -27,17 +32,19 @@
                             <img src="{{ asset('website-assets/images/anantlogo.jpg') }}" alt=""
                                 class="img-fluid rounded-pill" height="200px" width="200px">
                         </div> --}}
-                        <h1 class="large-heading"><span>Welcome to Anant TVS</span></h1>
+                        <h1 class="large-heading"><span>Welcome</span></h1>
+                        <h1 class="large-heading"><span>to</span></h1>
+                        <h1 class="large-heading"><span>Anant TVS</span></h1>
                         <h2 class=" mobile-headings">Opposite IBM Office, Aadarsh Nagar,Ajmer 305002</h2>
                         <div class=" d-flex justify-content-center mt-2 row">
                             <div class="col-md-4 mt-2 mb-2">
                                 <div class="card p-3 rounded">
                                     <div class="card-body">
-                                        <h5 class="card-title text-start" style="color: #003487;">Not a New Customer.?</h5>
-                                        <p class="card-text text-start" style="color: #003487;">With supporting text below
-                                            as a natural lead-in to additional content.</p>
+                                        <h5 class="card-title text-center" style="color: #003487;">New Customer?</h5>
+                                        {{-- <p class="card-text text-center" style="color: #003487;">With supporting text below
+                                            as a natural lead-in to additional content.</p> --}}
                                         <a href="{{ route('newcustomer') }}"
-                                            class=" btn btn-dark btn-sm border border-light w-100"
+                                            class=" btn btn-dark btn-sm border border-light w-100 mt-2"
                                             style="background-color: #dd0707;">Let's Begin</a>
                                     </div>
                                 </div>
@@ -45,11 +52,11 @@
                             <div class="col-md-4 mt-2 mb-2">
                                 <div class="card p-3 rounded">
                                     <div class="card-body">
-                                        <h5 class="card-title text-start" style="color: #003487;">Exiting Customer</h5>
-                                        <p class="card-text text-start" style="color: #003487;">With supporting text below
-                                            as a natural lead-in to additional content.</p>
+                                        <h5 class="card-title text-center" style="color: #003487;">Exiting Customer</h5>
+                                        {{-- <p class="card-text text-start" style="color: #003487;">With supporting text below
+                                            as a natural lead-in to additional content.</p> --}}
                                         <a href="{{ route('viewloginpage') }}"
-                                            class=" btn btn-dark btn-sm border border-light w-100"
+                                            class=" btn btn-dark btn-sm border border-light w-100 mt-2"
                                             style="background-color: #003487;">Login</a>
                                     </div>
                                 </div>
