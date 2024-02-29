@@ -76,7 +76,8 @@
                             <div class="card-body">
                                 <p class="fw-medium mb-0 float-end"><i class="mdi mdi-heart text-danger align-middle"></i>
                                     {{ $row->type }} </p>
-                                <h5 class="text-success"><i class="bi bi-currency-rupee"></i> {{ $row->price }} </h5>
+                                <p class="text-success">Ex-showroom</p>
+                                <h5 class="text-success"><i class="bi bi-currency-rupee"></i>{{ $row->price }} </h5>
                                 <h6 class="fs-16 mb-3"><a href="apps-nft-item-details.html"
                                         class="text-body">{{ $row->name }}</a></h6>
 
@@ -123,22 +124,22 @@
     </div><!-- /.modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
-            @csrf
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Book your Vehicle</h1>
-                    {{-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> --}}
+            <form action="{{ route('createlead') }}" method="POST" id="leadform">
+                @csrf
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Book your Vehicle</h1>
+                        {{-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> --}}
+                    </div>
+                    <div class="modal-body" id="modalbodynew">
+                        {{-- Modal Body Appends Here --}}
+                    </div>
+                    <div class="modal-footer">
+                        <button data-bs-dismiss="modal" class="rounded-3 bg-danger text-white p-2 border border-danger">Close</span></a>
+                        <button class="rounded-3 bg-success text-white border btn-sm border-success p-2" type="submit">Book Now</button>
+                    </div>
                 </div>
-                <div class="modal-body" id="modalbodynew">
-                    {{-- Modal Body Appends Here --}}
-                </div>
-                <div class="modal-footer">
-                    <a href="#"><span class="rounded-3 bg-danger text-white p-2"
-                            data-bs-dismiss="modal">Close</span></a>
-                    <a href="#" onclick="leadform()"><span
-                            class="rounded-3 bg-success text-white border border-success p-2">Book Now<span></a>
-                </div>
-            </div>
+            </form>
         </div>
     </div>
     <script>
@@ -252,15 +253,14 @@
                 $('#modalbodynew').empty();
                 var modal = `
 
-                <form action="{{ route('createlead') }}" method="POST" id="leadform">
-                    @csrf
             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="mb-3">
                                         <label for="exampleFormControlInput1" class="form-label fw-bold">Name</label>
                                         <input type="text" name="name" class="form-control custominput"
-                                            id="exampleFormControlInput1" placeholder="enter name">
+                                            id="exampleFormControlInput1" placeholder="enter name" value="{{ $user->customername }}">
                                             <input type="hidden" name="leadid" value="{{ $row->id }}">
+                                            <input type="hidden" name="customerstatus" value="Existing">
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-12">
@@ -268,42 +268,10 @@
                                         <label for="exampleFormControlInput1" class="form-label fw-bold">Phone
                                             No.</label><span class="fw-bold text-danger">*</span>
                                         <input type="text" name="phoneno" class="form-control custominput"
-                                            id="exampleFormControlInput1" placeholder="enter phone no" required>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-12">
-                                    <div class="mb-3">
-                                        <label for="exampleFormControlInput1" class="form-label  fw-bold">Email
-                                            address</label>
-                                        <input type="email" name="email" class="form-control custominput"
-                                            id="exampleFormControlInput1" placeholder="enter email">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-12">
-                                    <div class="mb-3">
-                                        <label for="exampleFormControlInput1" class="form-label  fw-bold">City</label>
-                                        <input type="text" name="city" class="form-control custominput"
-                                            id="exampleFormControlInput1" placeholder="enter city">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-12">
-                                    <div class="mb-3">
-                                        <label for="exampleFormControlInput1" class="form-label  fw-bold">State</label>
-                                        <input type="text" name="state" class="form-control custominput"
-                                            id="exampleFormControlInput1" placeholder="enter state">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-12">
-                                    <div class="mb-3">
-                                        <label for="exampleFormControlInput1"
-                                            class="form-label  fw-bold">Country</label>
-                                        <input type="text" name="country" class="form-control custominput"
-                                            id="exampleFormControlInput1" placeholder="enter country">
+                                            id="exampleFormControlInput1" placeholder="enter phone no" value="{{ $user->customerphoneno }}" required>
                                     </div>
                                 </div>
                             </div>
-
-                </form>
             `;
                 $('#modalbodynew').append(modal);
             });

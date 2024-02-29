@@ -157,9 +157,15 @@ class ViewController extends Controller
     }
     public function newcustomer()
     {
-        $allvehicles = Vehicle::get();
+        $allvehicles = Vehicle::where('status', '=', '1')->get();
         $masterdata = Master::where('type', '=', 'Vehicle')->get();
         return view('newcustomer', compact('allvehicles','masterdata'));
+    }
+
+    public function viewleads()
+    {
+        $leaddata = Lead::orderByDesc('created_at')->paginate(10);
+        return view('all_leads',compact('leaddata'));
     }
 
     //WEBSITE VIEWS ENDS

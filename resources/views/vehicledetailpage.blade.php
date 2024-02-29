@@ -5,12 +5,12 @@
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                        <h4 class="mb-sm-0">Product Details</h4>
+                        <h4 class="mb-sm-0">Anant TVS</h4>
 
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
-                                <li class="breadcrumb-item"><a href="javascript: void(0);">Ecommerce</a></li>
-                                <li class="breadcrumb-item active">Product Details</li>
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Anant TVS</a></li>
+                                <li class="breadcrumb-item active">Vehicle Detail</li>
                             </ol>
                         </div>
 
@@ -34,7 +34,8 @@
                                                         @endphp
                                                         @foreach ($imagePaths as $img)
                                                             <div class="swiper-slide">
-                                                                <img src="{{ asset($img) }}" alt="" class="img-fluid d-block" />
+                                                                <img src="{{ asset($img) }}" alt=""
+                                                                    class="img-fluid d-block" />
                                                             </div>
                                                         @endforeach
                                                     @endif
@@ -56,15 +57,13 @@
                                                     <h4>{{ $value->name }}</h4>
                                                 @endforeach
                                                 <div class="hstack gap-3 flex-wrap">
-                                                    <div><a href="#" class="text-primary d-block">Tommy
-                                                            Hilfiger</a></div>
+                                                    <div><a href="#"
+                                                            class="text-primary d-block">{{ $value->name }}</a></div>
                                                     <div class="vr"></div>
-                                                    <div class="text-muted">Seller : <span
-                                                            class="text-body fw-medium">Zoetic Fashion</span>
-                                                    </div>
+                                                    <div class="text-muted">Seller : Anant TVS</div>
                                                     <div class="vr"></div>
                                                     <div class="text-muted">Published : <span
-                                                            class="text-body fw-medium">26 Mar, 2021</span>
+                                                            class="text-body fw-medium">{{ $value->created_at }}</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -92,7 +91,7 @@
                                         @foreach ($buyvehiclesdata as $value)
                                             <div class="row mt-4">
                                                 <div class="col-lg-3 col-sm-6">
-                                                    <div class="p-2 border border-dashed rounded">
+                                                    <div class="p-2 ">
                                                         <div class="d-flex align-items-center">
                                                             <div class="avatar-sm me-2">
                                                                 <div
@@ -109,20 +108,19 @@
                                                 </div>
                                                 <!-- end col -->
                                                 <div class="col-lg-3 col-sm-6">
-                                                    <div class="p-2 border border-dashed rounded">
-                                                        <div class="d-flex align-items-center">
-
-                                                            <div class="flex-grow-1">
-                                                                <p class="text-danger mb-1">Set Number Plate Status</p>
-                                                                <div class="form-check form-switch form-switch-success">
-                                                                    <input class="form-check-input" type="checkbox"
-                                                                        data-id='{{ $value->buyvehicleid }}' role="switch"
-                                                                        id="toggle-{{ $value->buyvehicleid }}"
-                                                                        {{ $value->numberplatestatus == '1' ? 'checked' : 0 }}>
-                                                                    <label class="form-check-label"
-                                                                        for="toggle-{{ $value->buyvehicleid }}">{{ $value->numberplatestatus == '1' ? 'Available' : 'In Process' }}</label>
-                                                                </div>
-                                                            </div>
+                                                    <div class="">
+                                                        <div class="flex-grow-1">
+                                                            <p class="text-success mb-1">Set Number Plate Status</p>
+                                                            <select name="statustype"
+                                                                class="form-select mb-3"aria-label="Default select example"
+                                                                id="numberplatestatus">
+                                                                <option value="">Choose....</option>
+                                                                <option value="inproces">In Process</option>
+                                                                <option value="available">Available</option>
+                                                                <option value="fitted">Fitted</option>
+                                                            </select>
+                                                            <input type="hidden" name="recordid"
+                                                                value="{{ $value->buyvehicleid }}" id="recordid">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -143,8 +141,7 @@
                                                     </li>
                                                     <li class="nav-item">
                                                         <a class="nav-link" id="nav-detail-tab" data-bs-toggle="tab"
-                                                            href="#nav-detail" role="tab"
-                                                            aria-controls="nav-detail"
+                                                            href="#nav-detail" role="tab" aria-controls="nav-detail"
                                                             aria-selected="false">Details</a>
                                                     </li>
                                                     <li class="nav-item">
@@ -178,7 +175,8 @@
                                                                         @endphp
                                                                         <th scope="row">Status</th>
                                                                         <td>
-                                                                            <span class="{{ $Statusclass }}">{{ $Status }}</span>
+                                                                            <span
+                                                                                class="{{ $Statusclass }}">{{ $Status }}</span>
                                                                         </td>
                                                                     </tr>
                                                                     <tr>
@@ -325,22 +323,22 @@
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>
         $(document).ready(function() {
-            $('[id^="toggle-"]').change(function() {
-                var switchElement = $(this).closest('.form-switch');
-                var labelElement = switchElement.find('.form-check-label');
-                var status = $(this).prop('checked') ? 1 : 0; // setting status
-                var dataId = $(this).data('id'); // data actual ID
+            $('#numberplatestatus').change(function() {
+                var selectedStatus = $(this).val();
+                var recordId = $('#recordid').val();
+                console.log(recordId);
+                console.log(selectedStatus);
 
                 //Updating Status
                 $.ajax({
                     url: '/updatenumberplatestatus',
                     method: 'POST',
+                    data: {
+                        status: selectedStatus,
+                        record_id: recordId
+                    },
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    data: {
-                        id: dataId, // dynamically getting data id
-                        status: status
                     },
                     success: function(response) {
                         console.log(response);
@@ -349,14 +347,6 @@
                         console.error(error);
                     }
                 });
-
-                if ($(this).prop('checked')) {
-                    labelElement.text('Available');
-                    switchElement.removeClass('form-switch-danger').addClass('form-switch-success');
-                } else {
-                    labelElement.text('In Process');
-                    switchElement.removeClass('form-switch-success').addClass('form-switch-danger');
-                }
             });
         });
     </script>

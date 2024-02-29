@@ -240,6 +240,7 @@
                                     <div class="mb-3">
                                         <input type="text" name="newcustomername" class="form-control"
                                             id="exampleFormControlInput1" placeholder="Enter your name *" required>
+                                            <input type="hidden" name="customerstatus" value="New"/>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
@@ -429,11 +430,11 @@
                             @foreach ($allvehicles as $row)
                             <div class="swiper-slide">
                                 <div class="card cardcustomup">
-                                    @php
+                                    {{-- @php
                                         $imagePaths = explode(',', $row->image);
                                         $firstImagePath = $imagePaths[0];
-                                    @endphp
-                                    <img src="{{ asset($firstImagePath) }}" alt="" class="img-fluid"
+                                    @endphp --}}
+                                    <img src="{{ asset("uploads/vehicle/".$row->bannerimage) }}" alt="" class="img-fluid"
                                         style=" border-top-left-radius: 10px; border-top-right-radius: 10px;">
                                     <div class="card-body">
                                         <div class="p-1 text-center">

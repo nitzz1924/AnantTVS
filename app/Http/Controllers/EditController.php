@@ -97,6 +97,12 @@ class EditController extends Controller
 
     public function editvehicle($id)
     {
+        // $imagePath = null;
+        // if ($request->hasFile('uploadrc')) {
+        //     $image = $request->file('uploadrc');
+        //     $imagePath = time() . '.' . $image->getClientOriginalExtension();
+        //     $image->move(public_path('uploads'), $imagePath);
+        // }
         $vehicles = Vehicle::where('id', '=', $id)->get();
         $masterdata = Master::where('type', '=', 'Vehicle')->get();
         $masterdatacolor = Master::where('type', '=', 'color')->get();
@@ -107,12 +113,34 @@ class EditController extends Controller
     public function updatevehicle(Request $request)
     {
         // dd($request->all());
+        $imagePath = null;
+        if ($request->hasFile('bannerimage')) {
+            $image = $request->file('bannerimage');
+            $imagePath = time() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path("uploads/vehicle/"), $imagePath);
+        }
+
+        // Mutiple image upload
+        $image = array();
+        if($files = $request->file('image')){
+            foreach ($files as $file) {
+                $image_name = md5(rand(1000, 10000));
+                $extension = strtolower($file->getClientOriginalExtension());
+                $image_fullname = $image_name.'.'.$extension;
+                $uploaded_path = "public/uploads/";
+                $image_url = $uploaded_path.$image_fullname;
+                $file->move($uploaded_path, $image_fullname);
+                $image[] = $image_url;
+            }
+        }
+        $request->image = count($image) > 0 ? implode(',', $image) : null;
         try{
             Vehicle::where('id',$request->vehicleid)->update([
                 'name'=>$request->name,
                 'modelno'=>$request->modelno,
                 'price'=>$request->price,
                 'discription'=>$request->discription,
+                'bannerimage' => $imagePath==null?$request->pbannerimg:$imagePath,
             ]);
             return back()->with('success', 'Vehicle Updated..!!');
         }catch (\Exception $v) {

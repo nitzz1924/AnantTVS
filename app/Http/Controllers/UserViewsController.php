@@ -38,8 +38,9 @@ class UserViewsController extends Controller
 
     public function allvehicleslist()
     {
-        $allvehicles = Vehicle::paginate(10);
-        return view('userpanelviews.userallvehiclespage', compact('allvehicles'));
+        $user = Auth::guard('customer')->user();
+        $allvehicles = Vehicle::where('status', '=', '1')->paginate(10);
+        return view('userpanelviews.userallvehiclespage', compact('allvehicles','user'));
     }
 
     public function viewuserprofile()

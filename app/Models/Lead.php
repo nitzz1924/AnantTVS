@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Lead extends Model
 {
-    protected $fillable = ['name', 'phoneno', 'randomno','verifystatus'];
+    protected $fillable = ['name', 'phoneno', 'randomno','verifystatus','customerstatus'];
 }

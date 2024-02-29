@@ -75,14 +75,14 @@
                                                     placeholder="enter model no" name="modelno">
                                             </div>
                                         </div>
-                                        <div class="col-lg-4 col-md-6">
+                                        <div class="col-lg-3 col-md-6">
                                             <div>
                                                 <label for="placeholderInput" class="form-label">Price</label>
                                                 <input type="text" class="form-control" id="placeholderInput"
                                                     placeholder="enter price" name="price">
                                             </div>
                                         </div>
-                                        <div class="col-lg-4 col-md-6">
+                                        <div class="col-lg-3 col-md-6">
                                             <div>
                                                 <label for="placeholderInput" class="form-label">Vehicle Color</label>
                                                 <select name="color" class="form-select mb-3"
@@ -96,9 +96,16 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="col-lg-4 col-md-6">
+                                        <div class="col-lg-3 col-md-6">
                                             <div>
-                                                <label for="placeholderInput" class="form-label">Vehicle Images</label>
+                                                <label for="placeholderInput" class="form-label">Thumbnail Image</label>
+                                                <input type="file" class="form-control" id="image"
+                                                    placeholder="enter color" name="bannerimage">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 col-md-6">
+                                            <div>
+                                                <label for="placeholderInput" class="form-label">Gallery Images</label>
                                                 <input type="file" class="form-control" id="image"
                                                     placeholder="enter color" name="image[]" multiple>
                                             </div>

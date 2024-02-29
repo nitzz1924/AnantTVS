@@ -38,39 +38,66 @@
                                             <p>{{ $cutString = substr($row->vehicleDis, 0, 50) }}</p>
                                             @php
                                                 $txt = $row->rcnumber == null ? 'RC not updated' : 'RC updated';
-                                                $class = $row->rcnumber != null ? 'badge rounded-pill bg-success-subtle text-success fs-6' : 'badge rounded-pill bg-danger';
+                                                $class =
+                                                    $row->rcnumber != null
+                                                        ? 'badge rounded-pill bg-success-subtle text-success fs-6'
+                                                        : 'badge rounded-pill bg-danger';
 
-                                                $Insurance = $row->insuranceid == null ? 'Insurance not updated' : 'Insurance updated';
-                                                $classInsurance = $row->insuranceid != null ? 'badge rounded-pill bg-success-subtle text-success fs-6' : 'badge rounded-pill bg-danger';
+                                                $Insurance =
+                                                    $row->insuranceid == null
+                                                        ? 'Insurance not updated'
+                                                        : 'Insurance updated';
+                                                $classInsurance =
+                                                    $row->insuranceid != null
+                                                        ? 'badge rounded-pill bg-success-subtle text-success fs-6'
+                                                        : 'badge rounded-pill bg-danger';
 
-                                                $Invoice = $row->invoicenumber == null ? 'Invoice not updated' : 'Invoice updated';
-                                                $classInvoice = $row->invoicenumber != null ? 'badge rounded-pill bg-success-subtle text-success fs-6' : 'badge rounded-pill bg-danger';
+                                                $Invoice =
+                                                    $row->invoicenumber == null
+                                                        ? 'Invoice not updated'
+                                                        : 'Invoice updated';
+                                                $classInvoice =
+                                                    $row->invoicenumber != null
+                                                        ? 'badge rounded-pill bg-success-subtle text-success fs-6'
+                                                        : 'badge rounded-pill bg-danger';
                                             @endphp
-                                           <span class="{{ $class }} p-2">{{ $txt }}</span>
-                                           <span class="{{ $classInsurance }} p-2">{{ $Insurance }}</span>
-                                           <span class="{{ $classInvoice }} p-2 mt-2">{{ $Invoice }}</span>
+                                            <span class="{{ $class }} p-2">{{ $txt }}</span>
+                                            <span class="{{ $classInsurance }} p-2">{{ $Insurance }}</span>
+                                            <span class="{{ $classInvoice }} p-2 mt-2">{{ $Invoice }}</span>
                                         </div>
                                     </div>
                                     <div class="d-flex justify-content-between mt-1 align-items-center">
-
                                         <div>
-                                            <div>Number Plate: </div>
+                                            <div>Number Plate Status: </div>
                                             @php
-                                                $Status = $row->numberplatestatus == null ? 'In process' : 'Available';
-                                                $Statusclass = $row->numberplatestatus != null ? 'badge bg-success-subtle text-success badge-border ' : 'badge bg-danger-subtle text-danger badge-border';
+                                                $Status = '';
+                                                $Statusclass = '';
+
+                                                switch($row->numberplatestatus) {
+                                                    case 'inproces':
+                                                        $Status = 'In process';
+                                                        $Statusclass = 'badge bg-secondary-subtle text-secondary badge-border';
+                                                        break;
+                                                    case 'available':
+                                                        $Status = 'Available';
+                                                        $Statusclass = 'badge bg-success-subtle text-success badge-border';
+                                                        break;
+                                                    case 'fitted':
+                                                        $Status = 'Fitted';
+                                                        $Statusclass = 'badge bg-info-subtle text-info badge-border';
+                                                        break;
+                                                    default:
+                                                        $Status = 'In process';
+                                                        $Statusclass = 'badge bg-warning-subtle text-warning badge-border';
+                                                }
                                             @endphp
                                             <span class="{{ $Statusclass }}">{{ $Status }}</span>
                                         </div>
                                         <div>
-
-
-                                            <a href="/uservehicledetailview/{{ $row->id }}"
+                                          <a href="/uservehicledetailview/{{ $row->id }}"
                                                 class="fs-6 btn bg-primary-subtle text-primary p-2">More
                                                 Details</a>
                                         </div>
-
-
-
                                     </div>
                                 </div>
                             </div>

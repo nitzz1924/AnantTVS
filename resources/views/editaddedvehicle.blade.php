@@ -97,11 +97,20 @@
                                                     placeholder="enter price" name="price" value="{{$row->price}}">
                                             </div>
                                         </div>
+                                        <div class="col-lg-3 col-md-6">
+                                            <div>
+                                                <label for="placeholderInput" class="form-label">Thumbnail Image</label>
+                                                <input type="file" class="form-control" id="image"
+                                                    placeholder="enter color" name="bannerimage">
+                                                    <input type="hidden" name="pbannerimg" value="{{$row->bannerimage}}">
+                                            </div>
+                                        </div>
                                         <div class="col-lg-4 col-md-6">
                                             <div>
                                                 <label for="placeholderInput" class="form-label">Vehicle Images</label>
                                                 <input type="file" class="form-control" id="image"
                                                     placeholder="enter color" name="image[]" multiple>
+                                                    <input type="hidden" name="pgalleryimgs" value="{{$row->bannerimage}}">
                                             </div>
                                         </div>
                                         <div class="col-xxl-12 col-md-6">

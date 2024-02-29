@@ -52,15 +52,33 @@
                                         </div>
                                     </div>
                                     <div class="d-flex justify-content-between mt-1 align-items-center">
-
                                         <div>
-                                            <div>Number Plate: </div>
+                                            <div>Number Plate Status: </div>
                                             @php
-                                                $Status = $row->numberplatestatus == null ? 'In process' : 'Available';
-                                                $Statusclass = $row->numberplatestatus != null ? 'badge bg-success-subtle text-success badge-border ' : 'badge bg-danger-subtle text-danger badge-border';
+                                                $Status = '';
+                                                $Statusclass = '';
+
+                                                switch($row->numberplatestatus) {
+                                                    case 'inproces':
+                                                        $Status = 'In process';
+                                                        $Statusclass = 'badge bg-secondary-subtle text-secondary badge-border';
+                                                        break;
+                                                    case 'available':
+                                                        $Status = 'Available';
+                                                        $Statusclass = 'badge bg-success-subtle text-success badge-border';
+                                                        break;
+                                                    case 'fitted':
+                                                        $Status = 'Fitted';
+                                                        $Statusclass = 'badge bg-info-subtle text-info badge-border';
+                                                        break;
+                                                    default:
+                                                        $Status = 'In process';
+                                                        $Statusclass = 'badge bg-warning-subtle text-warning badge-border';
+                                                }
                                             @endphp
                                             <span class="{{ $Statusclass }}">{{ $Status }}</span>
                                         </div>
+
                                         <div>
 
 
@@ -68,9 +86,6 @@
                                                 class="fs-6 btn bg-primary-subtle text-primary p-2">More
                                                 Details</a>
                                         </div>
-
-
-
                                     </div>
                                 </div>
                             </div>

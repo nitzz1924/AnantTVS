@@ -30,7 +30,7 @@
                             <h4 class="card-title mb-0 flex-grow-1">All Vehicles</h4>
                             <div class="flex-shrink-0">
                                 <div class="form-check form-switch form-switch-right form-switch-md">
-                                    <a href="{{ route('viewaddcustomer') }}"><button type="button"
+                                    <a href="{{ route('viewaddvehicle') }}"><button type="button"
                                             class="btn btn-secondary waves-effect waves-light">Go
                                             Back</button></a>
                                 </div>
@@ -57,12 +57,12 @@
                                         <tr>
                                             <th scope="row" class="fw-semibold">{{ $index + 1 }}</th>
                                             <td>
-                                                @if ($row->image)
-                                                    @php
+                                                @if ($row->bannerimage)
+                                                    {{-- @php
                                                         $imagePaths = explode(',', $row->image);
                                                         $firstImagePath = $imagePaths[0];
-                                                    @endphp
-                                                    <img src="{{ asset($firstImagePath) }}" alt="Thumbnail"
+                                                    @endphp --}}
+                                                    <img src="{{asset("uploads/vehicle/".$row->bannerimage) }}" alt="Thumbnail"
                                                         width="100px">
                                                 @endif
                                             </td>
@@ -156,8 +156,7 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary ">Save Changes</button>
+                    <button type="button" class="btn btn-danger btn-sm" data-bs-dismiss="modal">Close</button>
                 </div>
 
             </div><!-- /.modal-content -->

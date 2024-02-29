@@ -126,8 +126,33 @@
                                                             <div class="flex-grow-1">
                                                                 <p class="text-success mb-1">Number Plate Status</p>
                                                                 <div class="form-check form-switch form-switch-success">
-                                                                    <label class="form-check-label"
-                                                                        for="toggle-{{ $value->buyvehicleid }}">{{ $value->numberplatestatus == '1' ? 'Available' : 'In Process' }}</label>
+                                                                    <div class="d-flex justify-content-between mt-1 align-items-center">
+                                                                        <div>
+                                                                            @php
+                                                                                $Status = '';
+                                                                                $Statusclass = '';
+
+                                                                                switch($value->numberplatestatus) {
+                                                                                    case 'inproces':
+                                                                                        $Status = 'In process';
+                                                                                        $Statusclass = 'badge bg-secondary-subtle text-secondary badge-border';
+                                                                                        break;
+                                                                                    case 'available':
+                                                                                        $Status = 'Available';
+                                                                                        $Statusclass = 'badge bg-success-subtle text-success badge-border';
+                                                                                        break;
+                                                                                    case 'fitted':
+                                                                                        $Status = 'Fitted';
+                                                                                        $Statusclass = 'badge bg-info-subtle text-info badge-border';
+                                                                                        break;
+                                                                                    default:
+                                                                                        $Status = 'In process';
+                                                                                        $Statusclass = 'badge bg-warning-subtle text-warning badge-border';
+                                                                                }
+                                                                            @endphp
+                                                                            {{ $Status }}
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>

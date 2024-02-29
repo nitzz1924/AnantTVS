@@ -32,6 +32,15 @@ class StoreController extends Controller
             $data->color = $req->color;
             $data->discription = $req->discription;
             $data->status = 1;
+
+             //Single Image Upload
+            if ($req->hasFile('bannerimage')) {
+                $bannerimage = $req->file('bannerimage');
+                $bannerimagePath = time() . '.' . $bannerimage->getClientOriginalExtension();
+                $bannerimage->move(public_path("uploads/vehicle/"), $bannerimagePath);
+                $data->bannerimage = $bannerimagePath;
+            }
+
             //Mutiple Image Upload
             $image = array();
             if ($files = $req->file('image')) {
@@ -66,9 +75,13 @@ class StoreController extends Controller
     public function updatenumberplatestatus(Request $req)
     {
 
-        $id = $req->id;
+        $id = $req->record_id;
         $status = $req->status;
         $data = BuyVehicle::find($id);
+        if (!$data) {
+            return response()->json(['error' => 'Record not found'], 404);
+        }
+        // Update the status
         $data->numberplatestatus = $status;
         $data->save();
         return response()->json(['message' => 'Number Plate Status updated']);
@@ -164,15 +177,16 @@ class StoreController extends Controller
 
     public function createlead(Request $req)
     {
-        // dd($req->all());
         try {
             $req->validate([
                 'phoneno' => 'required'
             ]);
-
             $lead = Lead::create([
+                'customerstatus'=>$req->customerstatus,
                 'name' => $req->name,
                 'phoneno' => $req->phoneno,
+                'randomno' => "1234",
+                'verifystatus'=> "1",
             ]);
             return back()->with('success', 'We will reach you soon..!!!');
         } catch (\Exception $e) {
@@ -187,6 +201,7 @@ class StoreController extends Controller
         $data = new Lead;
         $data->name=$req->input('newcustomername');
         $data->phoneno=$req->input('newcustomerphone');
+        $data->customerstatus = $req->input('customerstatus');
         $data->randomno=$randomNumber;
         $data->save();
         $responseData = [

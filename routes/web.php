@@ -34,6 +34,7 @@ Route::get('/viewuservehicles/{id}', [ViewController::class, 'viewuservehicles']
 Route::get('/viewvehicledetailpage/{id}', [ViewController::class, 'viewvehicledetailpage'])->name('viewvehicledetailpage');
 Route::get('/viewadminprofile', [ViewController::class, 'viewadminprofile'])->name('viewadminprofile');
 Route::get('/vieweditaddedvehicle', [ViewController::class, 'vieweditaddedvehicle'])->name('vieweditaddedvehicle');
+Route::get('/leads', [ViewController::class, 'viewleads'])->name('viewleads');
 
 
 //Store Routes

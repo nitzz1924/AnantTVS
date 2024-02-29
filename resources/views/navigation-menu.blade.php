@@ -10,49 +10,15 @@
                     aria-controls="sidebarDashboards">
                     <i class="bx bxs-dashboard"></i> <span>Dashboard</span>
                 </a>
-                {{-- <div class="collapse menu-dropdown" id="sidebarDashboards">
-                    <ul class="nav nav-sm flex-column">
-                        <li class="nav-item">
-                            <a href="dashboard-analytics.html" class="nav-link" data-key="t-analytics"> Analytics </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="dashboard-crm.html" class="nav-link" data-key="t-crm"> CRM </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="index.html" class="nav-link" data-key="t-ecommerce"> Ecommerce </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="dashboard-crypto.html" class="nav-link" data-key="t-crypto"> Crypto </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="dashboard-projects.html" class="nav-link" data-key="t-projects"> Projects </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="dashboard-nft.html" class="nav-link" data-key="t-nft"> NFT</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="dashboard-job.html" class="nav-link" data-key="t-job">Job</a>
-                        </li>
-                    </ul>
-                </div> --}}
-            </li> <!-- end Dashboard Menu -->
-
-            <li class="nav-item">
-                <a class="nav-link menu-link" href="#sidebarLayouts" data-bs-toggle="collapse" role="button"
-                    aria-expanded="false" aria-controls="sidebarLayouts">
-                    <i class="bx bx-layout"></i><span data-key="t-layouts">Master</span>
-                </a>
-                <div class="collapse menu-dropdown" id="sidebarLayouts">
-                    <ul class="nav nav-sm flex-column">
-                        <li class="nav-item">
-                            <a href="{{ route('viewmaster') }}" class="nav-link">Add Master</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('viewsubmaster') }}" class="nav-link">Add Sub-Master</a>
-                        </li>
-                    </ul>
-                </div>
             </li>
+            <li class="nav-item">
+                <a class="nav-link menu-link" href="{{route('viewleads')}}" role="button" aria-expanded="false"
+                    aria-controls="sidebarDashboards">
+                    <i class="bx bx-bell"></i><span>All Leads</span>
+                </a>
+            </li>
+
+
             <li class="nav-item">
                 <a class="nav-link menu-link" href="#sidebarLayoutsone" data-bs-toggle="collapse" role="button"
                     aria-expanded="false" aria-controls="sidebarLayoutsone">
@@ -81,6 +47,22 @@
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('viewallcustomers') }}" class="nav-link">All Customers</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link menu-link" href="#sidebarLayouts" data-bs-toggle="collapse" role="button"
+                    aria-expanded="false" aria-controls="sidebarLayouts">
+                    <i class="bx bx-layout"></i><span data-key="t-layouts">Master</span>
+                </a>
+                <div class="collapse menu-dropdown" id="sidebarLayouts">
+                    <ul class="nav nav-sm flex-column">
+                        <li class="nav-item">
+                            <a href="{{ route('viewmaster') }}" class="nav-link">Add Master</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('viewsubmaster') }}" class="nav-link">Add Sub-Master</a>
                         </li>
                     </ul>
                 </div>

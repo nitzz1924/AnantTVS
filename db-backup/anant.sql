@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 21, 2024 at 08:16 AM
+-- Generation Time: Feb 29, 2024 at 11:03 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -40,6 +40,7 @@ CREATE TABLE `buy_vehicles` (
   `rcimage` text DEFAULT NULL,
   `invoiceimage` text DEFAULT NULL,
   `status` varchar(255) NOT NULL DEFAULT '0',
+  `numberplatestatus` varchar(255) NOT NULL DEFAULT 'inproces',
   `insuranceimage` text DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
@@ -49,12 +50,13 @@ CREATE TABLE `buy_vehicles` (
 -- Dumping data for table `buy_vehicles`
 --
 
-INSERT INTO `buy_vehicles` (`id`, `customer_id`, `vehicle_id`, `vehicletype`, `chassisnumber`, `color`, `rcnumber`, `invoicenumber`, `insuranceid`, `rcimage`, `invoiceimage`, `status`, `insuranceimage`, `created_at`, `updated_at`) VALUES
-(5, '1', '12', 'Bike', '201HAR8', 'Black', '123456', '12345', '12345', '1704350557.webp', '1704350557.webp', '0', '1704350557.webp', '2024-01-04 01:12:37', '2024-01-05 07:13:02'),
-(6, '3', '8', 'Cars', '201Y', 'Black', '133455', 'RRR', 'EEE', '1704441068.pdf', '1704441068.pdf', '0', '1704441068.pdf', '2024-01-04 01:34:08', '2024-01-05 02:21:08'),
-(7, '1', '9', 'Cars', '201GAAA', 'Dark Blue', '1288AAAA', 'AAA', 'BBB', 'C:\\xampp\\tmp\\php9913.tmp', 'C:\\xampp\\tmp\\php9914.tmp', '0', 'C:\\xampp\\tmp\\php9925.tmp', '2024-01-04 02:15:43', '2024-01-05 02:04:17'),
-(8, '3', '13', 'Bike', '301Ydfgdf', 'White', '123AA', 'AAA', 'BBB', '1704444187.pdf', '1704444187.pdf', '0', '1704444187.pdf', '2024-01-04 04:42:50', '2024-01-05 03:13:07'),
-(10, '6', '13', 'Bike', 'QQQQ2', 'Black', '12345689109', 'AAA', 'BBB', '1705570981.jpg', '1705570981.jpg', '0', '1705570981.jpg', '2024-01-18 04:13:02', '2024-01-18 04:13:02');
+INSERT INTO `buy_vehicles` (`id`, `customer_id`, `vehicle_id`, `vehicletype`, `chassisnumber`, `color`, `rcnumber`, `invoicenumber`, `insuranceid`, `rcimage`, `invoiceimage`, `status`, `numberplatestatus`, `insuranceimage`, `created_at`, `updated_at`) VALUES
+(5, '1', '12', 'Bike', '201HAR8', 'Black', '123456', '12345', '12345', '1704350557.webp', '1704350557.webp', '0', 'In Process', '1704350557.webp', '2024-01-04 01:12:37', '2024-01-05 07:13:02'),
+(6, '3', '8', 'Cars', '201Y', 'Black', '133455', 'RRR', 'EEE', '1704441068.pdf', '1704441068.pdf', '0', 'In Process', '1704441068.pdf', '2024-01-04 01:34:08', '2024-01-05 02:21:08'),
+(7, '1', '9', 'Cars', '201GAAA', 'Dark Blue', '1288AAAA', 'AAA', 'BBB', 'C:\\xampp\\tmp\\php9913.tmp', 'C:\\xampp\\tmp\\php9914.tmp', '0', 'In Process', 'C:\\xampp\\tmp\\php9925.tmp', '2024-01-04 02:15:43', '2024-01-05 02:04:17'),
+(8, '3', '13', 'Bike', '301Ydfgdf', 'White', '123AA', 'AAA', 'BBB', '1704444187.pdf', '1704444187.pdf', '0', 'In Process', '1704444187.pdf', '2024-01-04 04:42:50', '2024-01-05 03:13:07'),
+(10, '6', '13', 'Bike', 'QQQQ2', 'Black', '12345689109', 'AAA', 'BBB', '1705570981.jpg', '1705570981.jpg', '0', 'In Process', '1705570981.jpg', '2024-01-18 04:13:02', '2024-01-18 04:13:02'),
+(11, '1', '15', 'Motorcycles', '121212ddd', 'Dark Blue', '1232qqq', '4565465', '321321ttt4443331221', '1709187565.pdf', '1709187565.pdf', '0', 'fitted', '1709187565.pdf', '2024-02-29 00:49:25', '2024-02-29 01:53:11');
 
 -- --------------------------------------------------------
 
@@ -83,7 +85,6 @@ CREATE TABLE `customers` (
 INSERT INTO `customers` (`id`, `customername`, `customerphoneno`, `customeremailaddress`, `customercity`, `customerstate`, `customercountry`, `customeraddress`, `password`, `created_at`, `updated_at`) VALUES
 (1, 'Nitesh Sharma', '8209165518', 'nitzz@gmail.com', 'Ajmer', 'Rajasthan', 'India', 'this is me', '$2y$10$5307wed1JII18uyred./teVlAjdsD.PR67XUGzAnhjg..aL32EHOO', '2024-01-02 05:26:43', '2024-01-18 06:09:37'),
 (2, 'Kishan Gopal', '8209167518', 'kishan@gmail.com', 'Jaipur', 'Rajasthan', 'India', 'This is K', '', '2024-01-02 06:34:58', '2024-01-18 05:24:07'),
-(3, 'Anshul Kumar', '8209775518', 'anshul@gmail.com', 'Ajmer', 'Rajasthan', 'India', 'This is Anshul', '12345678', '2024-01-02 06:45:08', '2024-01-18 08:49:13'),
 (6, 'Roman Reings', '2222222222', 'roman@gmail.com', 'Ajmer', 'Raj', 'India', 'sadas', '$2y$10$4G7CJnoIEhlnHZeLGxsSWuk.c6v7J3ey2VeGHrz7tWYMiEFHKLVI2', '2024-01-18 01:28:35', '2024-01-18 01:28:35');
 
 -- --------------------------------------------------------
@@ -115,6 +116,7 @@ CREATE TABLE `leads` (
   `phoneno` varchar(255) DEFAULT NULL,
   `randomno` varchar(255) NOT NULL,
   `verifystatus` varchar(255) NOT NULL DEFAULT '0',
+  `customerstatus` varchar(255) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -123,12 +125,12 @@ CREATE TABLE `leads` (
 -- Dumping data for table `leads`
 --
 
-INSERT INTO `leads` (`id`, `leadid`, `name`, `phoneno`, `randomno`, `verifystatus`, `created_at`, `updated_at`) VALUES
-(22, NULL, 'admin', '9999999999', '', '0', '2024-02-10 04:32:51', '2024-02-10 04:32:51'),
-(23, NULL, 'Anshul', '9999999999', '', '0', '2024-02-10 04:33:42', '2024-02-10 04:33:42'),
-(24, NULL, 'admin', '9999999999', '', '0', '2024-02-10 04:37:16', '2024-02-10 04:37:16'),
-(72, NULL, 'Nitesh', '8209165518', '336064', '1', '2024-02-20 06:10:29', '2024-02-20 06:10:53'),
-(73, NULL, 'shakti', '8794651987', '941713', '0', '2024-02-20 06:11:37', '2024-02-20 06:11:37');
+INSERT INTO `leads` (`id`, `leadid`, `name`, `phoneno`, `randomno`, `verifystatus`, `customerstatus`, `created_at`, `updated_at`) VALUES
+(75, NULL, 'Roman Reings', '2222222222', '1234', '1', 'existing', '2024-02-29 00:37:09', '2024-02-29 00:37:09'),
+(79, NULL, 'Hela', '8209165518', '304468', '0', 'new', '2024-02-29 00:46:27', '2024-02-29 00:46:27'),
+(80, NULL, 'Roman Reings', '2222222222', '1234', '1', 'existing', '2024-02-29 01:54:40', '2024-02-29 01:54:40'),
+(81, NULL, 'Roman Reings', '6969696969', '1234', '1', 'existing', '2024-02-29 02:58:56', '2024-02-29 02:58:56'),
+(82, NULL, 'Dinesh', '8545856598', '1234', '1', 'existing', '2024-02-29 08:34:50', '2024-02-29 08:34:50');
 
 -- --------------------------------------------------------
 
@@ -190,7 +192,8 @@ INSERT INTO `masters` (`id`, `parent_id`, `label`, `value`, `type`, `status`, `c
 (46, '1', 'Motorcycles', 'Motorcycles', 'Vehicle', 'A', '2024-02-21 01:32:33', '2024-02-21 01:32:33'),
 (47, '1', 'Scooters', 'Scooters', 'Vehicle', 'A', '2024-02-21 01:32:42', '2024-02-21 01:32:42'),
 (48, '1', 'Mopeds', 'Mopeds', 'Vehicle', 'A', '2024-02-21 01:32:50', '2024-02-21 01:32:50'),
-(49, '1', 'Electric', 'Electric', 'Vehicle', 'A', '2024-02-21 01:32:58', '2024-02-21 01:32:58');
+(49, '1', 'Electric', 'Electric', 'Vehicle', 'A', '2024-02-21 01:32:58', '2024-02-21 01:32:58'),
+(50, '1', 'peral-white', 'peral-white', 'Color', 'A', '2024-02-24 05:05:15', '2024-02-24 05:05:15');
 
 -- --------------------------------------------------------
 
@@ -266,7 +269,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('lT9AJeEOXpjzpBkR3HwJwj2muzGsUek1f0rktvLf', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoiQWFva01TM3NHSklBMDZVTUE4cjlYTnQwYzh5bkozemEzN09lTkVqWSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzM6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9uZXdjdXN0b21lciI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6MzoidXJsIjthOjA6e31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6MjE6InBhc3N3b3JkX2hhc2hfc2FuY3R1bSI7czo2MDoiJDJ5JDEwJDUzMDd3ZWQxSklJMTh1eXJlZC4vdGVWbEFqZHNELlBSNjdYVUd6QW5oamcuLmFMMzJFSE9PIjt9', 1708499561);
+('6Z1BTNnh8QmHNQiax6JBwpp0WMdfb9Ubxh7Gr574', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36', 'YTo3OntzOjk6Il9wcmV2aW91cyI7YToxOntzOjM6InVybCI7czozMToiaHR0cDovLzEyNy4wLjAuMTo4MDAwL2Rhc2hib2FyZCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NjoiX3Rva2VuIjtzOjQwOiJFVHZzRFR3eVZBTkg4ZFpacURPdzBUTUduQkFyQm9NaEJMNWVXY3oxIjtzOjU1OiJsb2dpbl9jdXN0b21lcl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjY7czozOiJ1cmwiO2E6MDp7fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7czoyMToicGFzc3dvcmRfaGFzaF9zYW5jdHVtIjtzOjYwOiIkMnkkMTAkNTMwN3dlZDFKSUkxOHV5cmVkLi90ZVZsQWpkc0QuUFI2N1hVR3pBbmhqZy4uYUwzMkVIT08iO30=', 1709200950);
 
 -- --------------------------------------------------------
 
@@ -358,6 +361,7 @@ CREATE TABLE `vehicles` (
   `modelno` varchar(255) NOT NULL,
   `price` varchar(255) NOT NULL,
   `color` varchar(255) NOT NULL,
+  `bannerimage` varchar(255) NOT NULL,
   `image` varchar(255) NOT NULL,
   `status` varchar(255) NOT NULL,
   `discription` text NOT NULL,
@@ -369,12 +373,14 @@ CREATE TABLE `vehicles` (
 -- Dumping data for table `vehicles`
 --
 
-INSERT INTO `vehicles` (`id`, `name`, `type`, `modelno`, `price`, `color`, `image`, `status`, `discription`, `created_at`, `updated_at`) VALUES
-(14, 'TVS Jupiter 125', 'Scooters', 'null', '00000', 'Black', 'uploads/vehicle/731c83db8d2ff01bdc000083fd3c3740.jpg', '1', 'this is jupiter', '2024-02-21 01:37:52', '2024-02-21 01:37:52'),
-(15, 'TVS Raider', 'Motorcycles', 'null', '0000', 'Black', 'uploads/vehicle/6b5ce5a5aa1b506c66ece16c4cd9138d.jpg', '1', 'this is raider', '2024-02-21 01:39:02', '2024-02-21 01:39:02'),
-(16, 'TVS Ronin', 'Motorcycles', 'null', '00000', 'Black', 'uploads/vehicle/1d49780520898fe37f0cd6b41c5311bf.jpg', '1', 'this is ronin', '2024-02-21 01:40:01', '2024-02-21 01:40:01'),
-(17, 'TVS iQube', 'Scooters', 'null', '00000', 'Dark Blue', 'uploads/vehicle/e334fd9dac68f13fa1a57796148cf812.jpg', '1', 'this is IQube', '2024-02-21 01:41:36', '2024-02-21 01:41:36'),
-(18, 'TVS Scooty Pep', 'Scooters', 'null', '00000', 'Black', 'uploads/vehicle/f1903f234d3ba4da38a18aa25751457d.jpg', '1', 'this is scooty', '2024-02-21 01:42:20', '2024-02-21 01:42:20');
+INSERT INTO `vehicles` (`id`, `name`, `type`, `modelno`, `price`, `color`, `bannerimage`, `image`, `status`, `discription`, `created_at`, `updated_at`) VALUES
+(15, 'TVS Raider', 'Motorcycles', 'null', '0000', 'Black', '1709200030.png', 'uploads/vehicle/6b5ce5a5aa1b506c66ece16c4cd9138d.jpg', '1', 'this is raider', '2024-02-21 01:39:02', '2024-02-29 09:47:10'),
+(16, 'TVS Ronin', 'Motorcycles', 'null', '00000', 'Black', '1709200060.jpg', 'uploads/vehicle/1d49780520898fe37f0cd6b41c5311bf.jpg', '1', 'this is ronin', '2024-02-21 01:40:01', '2024-02-29 09:47:40'),
+(17, 'TVS iQube', 'Scooters', 'null', '00000', 'Dark Blue', '1709200090.jpg', 'uploads/vehicle/e334fd9dac68f13fa1a57796148cf812.jpg', '1', 'this is IQube', '2024-02-21 01:41:36', '2024-02-29 09:48:10'),
+(18, 'TVS Scooty Pep', 'Scooters', 'null', '00000', 'Black', '1709200124.jpg', 'uploads/vehicle/f1903f234d3ba4da38a18aa25751457d.jpg', '0', 'this is scooty', '2024-02-21 01:42:20', '2024-02-29 09:48:44'),
+(19, 'TVS Radeon', 'Motorcycles', 'null', '00000', 'peral-white', '1709200139.webp', 'uploads/vehicle/32bd403625078f55a266b487534aa95b.webp', '1', 'This is TVS Radeon', '2024-02-24 05:05:52', '2024-02-29 09:48:59'),
+(21, 'Raider 150', 'Motorcycles', 'null', '00000', 'Black', '1709199632.webp', 'uploads/vehicle/a1d7311f2a312426d710e1c617fcbc8c.png,uploads/vehicle/7c9d0b1f96aebd7b5eca8c3edaa19ebb.webp,uploads/vehicle/872dd316eb8a432cbc63f141e2d68ded.png', '1', 'dfsd', '2024-02-29 09:31:03', '2024-02-29 09:56:50'),
+(22, 'Jupiter 125', 'Scooters', 'null', '00000', 'Black', '1709200729.jpg', 'uploads/vehicle/ec16c57ed363c5ca91a3e5e5b88fe502.png,uploads/vehicle/c563c2c394023a07d56ad6b3eb09537a.jpg', '1', 'this is jupiter', '2024-02-29 09:58:49', '2024-02-29 09:58:49');
 
 --
 -- Indexes for dumped tables
@@ -478,7 +484,7 @@ ALTER TABLE `vehicles`
 -- AUTO_INCREMENT for table `buy_vehicles`
 --
 ALTER TABLE `buy_vehicles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `customers`
@@ -496,7 +502,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `leads`
 --
 ALTER TABLE `leads`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
 
 --
 -- AUTO_INCREMENT for table `make_requests`
@@ -508,7 +514,7 @@ ALTER TABLE `make_requests`
 -- AUTO_INCREMENT for table `masters`
 --
 ALTER TABLE `masters`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -544,7 +550,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `vehicles`
 --
 ALTER TABLE `vehicles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
