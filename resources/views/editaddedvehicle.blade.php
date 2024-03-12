@@ -43,18 +43,21 @@
                         <div class="card-body">
                             <div class="live-preview">
                                 @foreach ($vehicles as $row)
-                                <form action="{{route('updatevehicle')}}" method="POST" enctype="multipart/form-data">
-                                    @csrf
-                                    <div class="row gy-4">
-                                        <div class="col-lg-4 col-md-6">
-                                            <div>
-                                                <label for="placeholderInput" class="form-label">Vehicle Name</label>
-                                                <input type="text" class="form-control" id="placeholderInput"
-                                                    placeholder="enter name" name="name" value="{{$row->name}}">
-                                                <input type="hidden" name="vehicleid" value="{{$row->id}}">
+                                    <form action="{{ route('updatevehicle') }}" method="POST"
+                                        enctype="multipart/form-data">
+                                        @csrf
+                                        <div class="row gy-4">
+                                            <div class="col-lg-4 col-md-6">
+                                                <div>
+                                                    <label for="placeholderInput" class="form-label">Vehicle
+                                                        Name</label>
+                                                    <input type="text" class="form-control" id="placeholderInput"
+                                                        placeholder="enter name" name="name"
+                                                        value="{{ $row->name }}">
+                                                    <input type="hidden" name="vehicleid" value="{{ $row->id }}">
+                                                </div>
                                             </div>
-                                        </div>
-                                        {{-- <div class="col-lg-4 col-md-6">
+                                            {{-- <div class="col-lg-4 col-md-6">
                                             <div>
                                                 <label for="placeholderInput" class="form-label">Select Master
                                                     Category</label>
@@ -69,14 +72,15 @@
                                                 </select>
                                             </div>
                                         </div> --}}
-                                        <div class="col-lg-4 col-md-6">
-                                            <div>
-                                                <label for="placeholderInput" class="form-label">Model No.</label>
-                                                <input type="text" class="form-control" id="placeholderInput"
-                                                    placeholder="enter model no" name="modelno" value="{{$row->modelno}}">
+                                            <div class="col-lg-4 col-md-6">
+                                                <div>
+                                                    <label for="placeholderInput" class="form-label">Model No.</label>
+                                                    <input type="text" class="form-control" id="placeholderInput"
+                                                        placeholder="enter model no" name="modelno"
+                                                        value="{{ $row->modelno }}">
+                                                </div>
                                             </div>
-                                        </div>
-                                        {{-- <div class="col-lg-4 col-md-6">
+                                            {{-- <div class="col-lg-4 col-md-6">
                                             <div>
                                                 <label for="placeholderInput" class="form-label">Vehicle Color</label>
                                                 <select name="color" class="form-select mb-3"
@@ -90,42 +94,47 @@
                                                 </select>
                                             </div>
                                         </div> --}}
-                                        <div class="col-lg-4 col-md-6">
-                                            <div>
-                                                <label for="placeholderInput" class="form-label">Price</label>
-                                                <input type="text" class="form-control" id="placeholderInput"
-                                                    placeholder="enter price" name="price" value="{{$row->price}}">
+                                            <div class="col-lg-4 col-md-6">
+                                                <div>
+                                                    <label for="placeholderInput" class="form-label">Price</label>
+                                                    <input type="text" class="form-control" id="placeholderInput"
+                                                        placeholder="enter price" name="price"
+                                                        value="{{ $row->price }}">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-md-6">
+                                                <div>
+                                                    <label for="placeholderInput" class="form-label">Thumbnail
+                                                        Image</label>
+                                                    <input type="file" class="form-control" id="image"
+                                                        placeholder="enter color" name="bannerimage">
+                                                    <input type="hidden" name="pbannerimg"
+                                                        value="{{ $row->bannerimage }}">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4 col-md-6">
+                                                <div>
+                                                    <label for="placeholderInput" class="form-label">Vehicle
+                                                        Images</label>
+                                                    <input type="file" class="form-control" id="image"
+                                                        placeholder="enter color" name="image[]" multiple>
+                                                    <input type="hidden" name="pgalleryimgs"
+                                                        value="{{ $row->image }}">
+                                                </div>
+                                            </div>
+                                            <div class="col-xxl-12 col-md-6">
+                                                <div>
+                                                    <label for="exampleFormControlTextarea5" class="form-label">Vehicle
+                                                        Discription</label>
+                                                    <textarea name="discription" class="form-control" id="exampleFormControlTextarea5" rows="3">{{ $row->discription }}</textarea>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-3 col-md-6">
-                                            <div>
-                                                <label for="placeholderInput" class="form-label">Thumbnail Image</label>
-                                                <input type="file" class="form-control" id="image"
-                                                    placeholder="enter color" name="bannerimage">
-                                                    <input type="hidden" name="pbannerimg" value="{{$row->bannerimage}}">
-                                            </div>
+                                        <div class="card-footer">
+                                            <button type="submit"
+                                                class="btn btn-success waves-effect waves-light float-end">Update</button>
                                         </div>
-                                        <div class="col-lg-4 col-md-6">
-                                            <div>
-                                                <label for="placeholderInput" class="form-label">Vehicle Images</label>
-                                                <input type="file" class="form-control" id="image"
-                                                    placeholder="enter color" name="image[]" multiple>
-                                                    <input type="hidden" name="pgalleryimgs" value="{{$row->bannerimage}}">
-                                            </div>
-                                        </div>
-                                        <div class="col-xxl-12 col-md-6">
-                                            <div>
-                                                <label for="exampleFormControlTextarea5" class="form-label">Vehicle
-                                                    Discription</label>
-                                                <textarea name="discription" class="form-control" id="exampleFormControlTextarea5" rows="3">{{$row->discription}}</textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card-footer">
-                                        <button type="submit"
-                                            class="btn btn-success waves-effect waves-light float-end">Update</button>
-                                    </div>
-                                </form>
+                                    </form>
                                 @endforeach
                             </div>
                         </div>

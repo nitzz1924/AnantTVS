@@ -127,13 +127,13 @@ class EditController extends Controller
                 $image_name = md5(rand(1000, 10000));
                 $extension = strtolower($file->getClientOriginalExtension());
                 $image_fullname = $image_name.'.'.$extension;
-                $uploaded_path = "public/uploads/";
+                $uploaded_path = "public/uploads/vehicle/";
                 $image_url = $uploaded_path.$image_fullname;
                 $file->move($uploaded_path, $image_fullname);
                 $image[] = $image_url;
             }
         }
-        $request->image = count($image) > 0 ? implode(',', $image) : null;
+        $slideimgs = count($image) > 0 ? implode(',', $image) : null;
         try{
             Vehicle::where('id',$request->vehicleid)->update([
                 'name'=>$request->name,
@@ -141,6 +141,7 @@ class EditController extends Controller
                 'price'=>$request->price,
                 'discription'=>$request->discription,
                 'bannerimage' => $imagePath==null?$request->pbannerimg:$imagePath,
+                'image' => $slideimgs==null?$request->pgalleryimgs:$slideimgs,
             ]);
             return back()->with('success', 'Vehicle Updated..!!');
         }catch (\Exception $v) {
