@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\BuyVehicle;
 use App\Models\Customer;
 use App\Models\Lead;
+use App\Models\Master;
 use App\Models\Vehicle;
 use App\Models\TestRide;
 use App\Models\MakeRequest;
@@ -243,5 +244,29 @@ class StoreController extends Controller
              'data' => $data->toArray(),
          ];
          return response()->json($responseDatareq);
+    }
+
+    public function updateimages(Request $req)
+    {
+        $id = $req->input('id');
+        $index = $req->input('index');
+        $vehicledata = Vehicle::find($id);
+        $image = $vehicledata->image;
+
+        //converted to array
+        $imageArray = explode(',', $vehicledata->image);
+        unset($imageArray[$index]);
+
+        //converted to string
+        $imageArray = implode(',',$imageArray);
+
+
+        try{
+            Vehicle::where('id',$id)->update([
+                'image'=>$imageArray
+            ]);
+        }catch (\Exception $e) {
+            dd($e->getMessage());
+        }
     }
 }

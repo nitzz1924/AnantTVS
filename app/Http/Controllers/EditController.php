@@ -107,7 +107,7 @@ class EditController extends Controller
         $masterdata = Master::where('type', '=', 'Vehicle')->get();
         $masterdatacolor = Master::where('type', '=', 'color')->get();
         // dd($vehicles);
-        return view('editaddedvehicle', compact('vehicles'));
+        return view('editaddedvehicle', compact('vehicles','masterdatacolor'));
     }
 
     public function updatevehicle(Request $request)
@@ -133,19 +133,30 @@ class EditController extends Controller
                 $image[] = $image_url;
             }
         }
+        $vehiclesdata = Vehicle::find($request->vehicleid);
         $slideimgs = count($image) > 0 ? implode(',', $image) : null;
+
+        $allstrings = $slideimgs == null
+            ? ($vehiclesdata->image ?? null)
+            : ($vehiclesdata->image == null
+                ? $slideimgs
+                : $slideimgs . ',' . $vehiclesdata->image);
         try{
+
             Vehicle::where('id',$request->vehicleid)->update([
                 'name'=>$request->name,
                 'modelno'=>$request->modelno,
                 'price'=>$request->price,
                 'discription'=>$request->discription,
+                'color'=>$request->colors,
                 'bannerimage' => $imagePath==null?$request->pbannerimg:$imagePath,
-                'image' => $slideimgs==null?$request->pgalleryimgs:$slideimgs,
+                'image' => $allstrings,
             ]);
             return back()->with('success', 'Vehicle Updated..!!');
         }catch (\Exception $v) {
             return redirect()->route('vieweditaddedvehicle')->with('error', 'Not Updated Try Again...');
         }
     }
+
+
 }

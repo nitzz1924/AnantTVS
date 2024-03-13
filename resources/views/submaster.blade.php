@@ -51,15 +51,15 @@
                                         <div class="col-xxl-3 col-md-6">
                                             <div>
                                                 <label for="placeholderInput" class="form-label">Label</label>
-                                                <input type="text" class="form-control" id="placeholderInput"
-                                                    placeholder="enter label" name="label">
+                                                <input type="text" class="form-control" id="labelval"
+                                                    placeholder="enter label" name="label" onchange="labelValue()">
                                             </div>
                                         </div>
-                                        <div class="col-xxl-3 col-md-6">
+                                        <div class="col-xxl-3 col-md-6 d-none">
                                             <div>
                                                 <label for="placeholderInput" class="form-label">Value</label>
-                                                <input type="text" class="form-control" id="placeholderInput"
-                                                    placeholder="enter value" name="value">
+                                                <input type="text" class="form-control" id="valueval"
+                                                    placeholder="enter value" name="value" value="">
                                             </div>
                                         </div>
                                         <div class="col-xxl-3 col-md-6">
@@ -148,5 +148,12 @@
                 }
             });
         });
+    </script>
+    <script>
+        function labelValue()
+        {
+            var label = document.getElementById('labelval').value;
+            document.getElementById('valueval').value = label;
+        }
     </script>
 </x-app-layout>

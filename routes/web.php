@@ -68,6 +68,7 @@ Route::post('/updatenumberplatestatus', [StoreController::class, 'updatenumberpl
 Route::post('/form_submit', [StoreController::class, 'form_submit']);
 Route::post('/create_testride', [StoreController::class, 'create_testride']);
 Route::post('/create_makerequest', [StoreController::class, 'create_makerequest']);
+Route::post('/updateimages', [StoreController::class, 'updateimages']);
 
 
 //Edit Routes
