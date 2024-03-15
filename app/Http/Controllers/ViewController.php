@@ -71,7 +71,10 @@ class ViewController extends Controller
     public function viewvehicles()
     {
         $allvehicles = Vehicle::paginate(10);
-        return view('allvehicles', compact('allvehicles'));
+        $modelInstance = new User();
+        $res = $modelInstance->checkID();
+        $masterdata = Master::where('parent_id', '=', $res)->where('type', '=', 'Master')->get();
+        return view('allvehicles', compact('allvehicles','masterdata'));
     }
 
     public function viewaddcustomer()

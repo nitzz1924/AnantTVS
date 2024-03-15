@@ -115,8 +115,8 @@
                                                             </a>
                                                         </li> --}}
                                                         <li>
-                                                            <a href="/deleteparticularvehicle/{{ $row->id }}"
-                                                                class="dropdown-item remove-item-btn">
+                                                            <a href="#"
+                                                                class="dropdown-item remove-item-btn"  id="sa-warning{{ $row->id }}">
                                                                 <i
                                                                     class=" ri-delete-bin-fill
                                                                     align-bottom me-2 text-muted"></i>Remove
@@ -162,6 +162,25 @@
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            @foreach ($allvehicles as $row)
+                document.getElementById("sa-warning{{ $row->id }}").addEventListener("click", function() {
+                    Swal.fire({
+                        title: "Are you sure?",
+                        text: "You want to delete this Vehicle..?",
+                        icon: "warning",
+                        showCancelButton: true,
+                        confirmButtonClass: "btn btn-primary w-xs me-2 mt-2",
+                        cancelButtonClass: "btn btn-danger w-xs mt-2",
+                        confirmButtonText: '<a href="/deleteparticularvehicle/{{ $row->id }}" class="text-white">Yes, delete it!</a>',
+                        buttonsStyling: false,
+                        showCloseButton: true,
+                    });
+                });
+            @endforeach
+        });
+    </script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>
         setTimeout(function() {

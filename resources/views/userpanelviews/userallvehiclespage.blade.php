@@ -129,13 +129,12 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h1 class="modal-title fs-5" id="exampleModalLabel">Book your Vehicle</h1>
-                        {{-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> --}}
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body" id="modalbodynew">
                         {{-- Modal Body Appends Here --}}
                     </div>
                     <div class="modal-footer">
-                        <button data-bs-dismiss="modal" class="rounded-3 bg-danger text-white p-2 border border-danger">Close</span></a>
                         <button class="rounded-3 bg-success text-white border btn-sm border-success p-2" type="submit">Book Now</button>
                     </div>
                 </div>

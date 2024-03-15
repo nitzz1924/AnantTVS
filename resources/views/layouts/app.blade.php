@@ -30,6 +30,8 @@
     <link href="{{ asset('assets/css/custom.min.css') }}" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+    <!-- Sweet Alert css-->
+    <link href="{{asset('assets/libs/sweetalert2/sweetalert2.min.css')}}" rel="stylesheet" type="text/css" />
 </head>
 
 <body class="font-sans antialiased">
@@ -240,6 +242,12 @@
 
     <!-- Dashboard init -->
     <script src="{{ asset('assets/js/pages/dashboard-ecommerce.init.js') }}"></script>
+
+    <!-- Sweet Alerts js -->
+    <script src="{{asset('assets/libs/sweetalert2/sweetalert2.min.js')}}"></script>
+
+    <!-- Sweet alert init js-->
+    <script src="{{asset('assets/js/pages/sweetalerts.init.js')}}"></script>
 
     <!-- App js -->
     <script src="{{ asset('assets/js/app.js') }}"></script>

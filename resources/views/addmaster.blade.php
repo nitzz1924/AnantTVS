@@ -55,6 +55,7 @@
                                                 <button type="submit"
                                                     class="btn btn-success waves-effect waves-light">Add</button>
                                             </div>
+                                            {{-- <button type="button" class="btn btn-primary btn-sm">Click me</button> --}}
                                         </div>
                                     </div>
                                 </form>
@@ -97,12 +98,13 @@
                                             <td>{{ $row->value }}</td>
                                             <td>{{ $row->type }}</td>
                                             <td>{{ $row->status }}</td>
-                                            <td><a href="/deletemastercat/{{ $row->id }}/masterpage"><button
-                                                        class="btn btn-outline-danger btn-sm">delete</button></a></td>
+                                            <td><a href="#"><button class="btn btn-outline-danger btn-sm"
+                                                        id="sa-warning{{ $row->id }}">delete</button></a></td>
                                         </tr>
                                     @endforeach
                                 </tbody>
                             </table>
+                            {{-- /deletemastercat/{{ $row->id }}/masterpage --}}
                         </div>
                     </div>
                 </div>
@@ -110,8 +112,25 @@
         </div>
     </div>
     <script>
-        function labelValue()
-        {
+        document.addEventListener("DOMContentLoaded", function() {
+            @foreach ($masterdata as $row)
+                document.getElementById("sa-warning{{ $row->id }}").addEventListener("click", function() {
+                    Swal.fire({
+                        title: "Are you sure?",
+                        text: "You want to delete this master..?",
+                        icon: "warning",
+                        showCancelButton: true,
+                        confirmButtonClass: "btn btn-primary w-xs me-2 mt-2",
+                        cancelButtonClass: "btn btn-danger w-xs mt-2",
+                        confirmButtonText: '<a href="/deletemastercat/{{ $row->id }}/masterpage" class="text-white">Yes, delete it!</a>',
+                        buttonsStyling: false,
+                        showCloseButton: true,
+                    });
+                });
+            @endforeach
+        });
+
+        function labelValue() {
             var label = document.getElementById('labelval').value;
             document.getElementById('valueval').value = label;
         }
