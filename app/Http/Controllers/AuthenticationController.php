@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Lead;
 use App\Models\MakeRequest;
 use App\Models\TestRide;

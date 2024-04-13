@@ -179,6 +179,10 @@
                 background-color: #003487 !important;
                 color: white !important;
             }
+
+            .cardimg{
+                height: 250px;
+            }
         </style>
         <header class="main-header transparent">
             <div class=" mt-3 d-flex justify-content-center align-items-center ms-3">
@@ -313,7 +317,6 @@
                     </div>
                 </div>
             </section>
-
         </div>
         <!--* About Section Start -->
         {{-- <div class="container-fluid p-3 p-md-5" id="herosectionbg">
@@ -434,7 +437,7 @@
                                         $imagePaths = explode(',', $row->image);
                                         $firstImagePath = $imagePaths[0];
                                     @endphp --}}
-                                    <img src="{{ asset("uploads/vehicle/".$row->bannerimage) }}" alt="" class="img-fluid"
+                                    <img src="{{ asset("uploads/vehicle/".$row->bannerimage) }}" alt="" class="img-fluid cardimg"
                                         style=" border-top-left-radius: 10px; border-top-right-radius: 10px;">
                                     <div class="card-body">
                                         <div class="p-1 text-center">

@@ -129,7 +129,6 @@
                                 <!-- Authentication -->
                                 <form method="POST" action="{{ route('logoutuser') }}" x-data>
                                     @csrf
-
                                     <x-jet-responsive-nav-link class="dropdown-item" href="{{ route('logoutuser') }}"
                                         @click.prevent="$root.submit();">
                                         <span
