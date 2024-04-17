@@ -167,7 +167,7 @@ class ViewController extends Controller
 
     public function viewleads()
     {
-        $leaddata = Lead::orderByDesc('created_at')->paginate(10);
+        $leaddata = Lead::orderByDesc('created_at')->get();
         return view('all_leads',compact('leaddata'));
     }
 

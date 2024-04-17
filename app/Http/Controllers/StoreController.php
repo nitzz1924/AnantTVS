@@ -87,6 +87,19 @@ class StoreController extends Controller
         $data->save();
         return response()->json(['message' => 'Number Plate Status updated']);
     }
+    public function updateleadstatus(Request $req)
+    {
+        $id = $req->record_id;
+        $status = $req->status;
+        $data = Lead::find($id);
+        if (!$data) {
+            return response()->json(['error' => 'Record not found'], 404);
+        }
+        // Update the status
+        $data->leadstatus = $status;
+        $data->save();
+        return response()->json(['message' => 'Lead Status updated']);
+    }
 
     public function createcustomer(Request $req)
     {
@@ -268,5 +281,13 @@ class StoreController extends Controller
         }catch (\Exception $e) {
             dd($e->getMessage());
         }
+    }
+
+    public function datefilterleads(Request $req)
+    {
+        $datefrom = $req->input('datefrom');
+        $dateto = $req->input('dateto');
+        $data = Lead::whereBetween('created_at',[$datefrom,$dateto])->get();
+        return response()->json($data);
     }
 }

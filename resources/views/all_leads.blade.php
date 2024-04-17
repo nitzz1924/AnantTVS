@@ -1,9 +1,13 @@
-{{-- -----------------------------------------------🙏JAI SHREE RAM🚩------------------------------------------------------------- --}}
+{{-- -----------------------------------------------🙏JAI SHREE
+RAM🚩------------------------------------------------------------- --}}
 <x-app-layout>
     <div class="page-content">
         <link rel="stylesheet" href="https://cdn.datatables.net/2.0.1/css/dataTables.dataTables.css">
         <style>
-           table.dataTable th.dt-type-numeric, table.dataTable th.dt-type-date, table.dataTable td.dt-type-numeric, table.dataTable td.dt-type-date{
+            table.dataTable th.dt-type-numeric,
+            table.dataTable th.dt-type-date,
+            table.dataTable td.dt-type-numeric,
+            table.dataTable td.dt-type-date {
                 text-align: left !important;
             }
         </style>
@@ -23,7 +27,40 @@
                     </div>
                 </div>
             </div>
-
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title mb-0">Filter</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="listjs-table" id="customerList">
+                                <form>
+                                    <div class="row g-4 mb-3">
+                                        <div
+                                            class="col-sm-auto d-flex justify-content-sm-start gap-2 align-items-end flex-wrap">
+                                            <div>
+                                                <label for="exampleInputdate" class="form-label">From</label>
+                                                <input type="date" name="datefrom" class="form-control"
+                                                    id="datefrom">
+                                            </div>
+                                            <div>
+                                                <label for="exampleInputdate" class="form-label">To</label>
+                                                <input type="date" name="dateto" class="form-control"
+                                                    id="dateto">
+                                            </div>
+                                            <div>
+                                                <button type="button" class="btn btn-success add-btn datebtn"><i
+                                                        class="ri-search-eye-line align-bottom me-1"></i>Search</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card">
@@ -51,23 +88,17 @@
                                         <th scope="col">Customer Name</th>
                                         <th scope="col">Mobile No.</th>
                                         <th scope="col">Customer Status</th>
+                                        <th scope="col">Update Status</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    @foreach ($leaddata as $index => $row)
-                                        <tr>
-                                            <th scope="row" class="fw-semibold">{{ $index + 1 }}</th>
-                                            <td>{{ $row->created_at->format('d/M/y | h:i A') }}</td>
-                                            <td>{{ $row->name }}</td>
-                                            <td>{{ $row->phoneno }}</td>
-                                            <td>{{ $row->customerstatus }}</td>
-                                        </tr>
-                                    @endforeach
+                                <tbody id="tablebody">
+                                    {{-- Body Appends Here --}}
                                 </tbody>
                             </table>
-                            <div class="pagination justify-content-end">
-                                {{ $leaddata->links('pagination::bootstrap-4') }} <!--Pagination-->
-                            </div>
+                            {{-- <div class="pagination justify-content-end">
+                                {{ $leaddata->links('pagination::bootstrap-4') }}
+                                <!--Pagination-->
+                            </div> --}}
                         </div>
                     </div>
                 </div>
@@ -77,14 +108,7 @@
 
 
 
-    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
- <script src="https://cdn.datatables.net/2.0.1/js/dataTables.js"></script>
- <script src="https://cdn.datatables.net/buttons/3.0.0/js/dataTables.buttons.js"></script>
- <script src="https://cdn.datatables.net/buttons/3.0.0/js/buttons.dataTables.js"></script>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
- <script src="https://cdn.datatables.net/buttons/3.0.0/js/buttons.html5.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script>
         $(document).ready(function() {
             $('#example').DataTable({
@@ -92,13 +116,96 @@
                     topStart: {
                         buttons: ['copy', 'csv', 'excel', 'pdf', 'print']
                     }
-                }
+                },
+
             });
-
-
         });
     </script>
+    <script>
+        $(document).ready(function() {
+            $('.datebtn').on('click', function() {
+                var datefrom = $('#datefrom').val();
+                var dateto = $('#dateto').val();
+                console.log(datefrom);
+                console.log(dateto);
 
+                $.ajax({
+                    url: '/datefilterleads',
+                    method: 'POST',
+                    data: {
+                        datefrom: datefrom,
+                        dateto: dateto
+                    },
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(response) {
+                        console.log(response);
+                        $('#tablebody').empty();
+                        response.forEach(function(row) {
+                            var formattedDate = new Date(row.created_at)
+                                .toLocaleDateString('en-GB', {
+                                    day: 'numeric',
+                                    month: 'short',
+                                    year: 'numeric'
+                                });
+                            var newRow = `
+                        <tr>
+                            <th scope="row" class="fw-semibold">${row.id}</th>
+                            <td>${formattedDate}</td>
+                            <td>${row.name}</td>
+                            <td>${row.phoneno}</td>
+                            <td>${row.customerstatus}</td>
+                            <td>
+                                <select class="form-select leadstatus" id="inputGroupSelect01_${row.id}">
+                                    <option selected>Choose...</option>
+                                    <option value="Closed" ${row.leadstatus == 'Closed' ? 'selected' : ''}>Closed</option>
+                                    <option value="Purchased" ${row.leadstatus == 'Purchased' ? 'selected' : ''}>Purchased</option>
+                                    <option value="Booked" ${row.leadstatus == 'Booked' ? 'selected' : ''}>Booked</option>
+                                </select>
+                                <input type="hidden" name="leadid" value="${row.id}" class="leadid">
+                            </td>
+                        </tr>
+                    `;
+                            $('#tablebody').append(newRow);
+                        });
+                    },
+                    error: function(error) {
+                        console.error(error);
+                    }
+                });
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('.leadstatus').change(function() {
+                var selectedStatus = $(this).val();
+                var leadid = $(this).closest('td').find('#leadid').val();
+                console.log(leadid);
+                console.log(selectedStatus);
+
+                //Updating Lead Status
+                $.ajax({
+                    url: '/updateleadstatus',
+                    method: 'POST',
+                    data: {
+                        status: selectedStatus,
+                        record_id: leadid
+                    },
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(response) {
+                        console.log(response);
+                    },
+                    error: function(error) {
+                        console.error(error);
+                    }
+                });
+            });
+        });
+    </script>
     <script>
         setTimeout(function() {
             $('#successAlert').fadeOut('slow');
@@ -108,4 +215,5 @@
             $('#dangerAlert').fadeOut('slow');
         }, 2000);
     </script>
+
 </x-app-layout>

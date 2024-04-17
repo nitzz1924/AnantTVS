@@ -70,7 +70,6 @@ Route::post('/create_testride', [StoreController::class, 'create_testride']);
 Route::post('/create_makerequest', [StoreController::class, 'create_makerequest']);
 Route::post('/updateimages', [StoreController::class, 'updateimages']);
 
-
 //Edit Routes
 Route::get('/editcustomer/{id}', [EditController::class, 'editcustomer'])->name('editcustomer');
 Route::post('/updatecustomer', [EditController::class, 'updatecustomer'])->name('updatecustomer');
@@ -110,3 +109,7 @@ Route::post('/loginuser', [AuthenticationController::class, 'loginuser'])->name(
 Route::get('/logoutuser', [AuthenticationController::class, 'logout'])->name('logoutuser');  //Admin
 Route::get('/logoutuserpanel', [AuthenticationController::class, 'logoutuserpanel'])->name('logoutuserpanel');
 
+
+//New Udpates Routes
+Route::post('/updateleadstatus', [StoreController::class, 'updateleadstatus'])->name('updateleadstatus');
+Route::post('/datefilterleads', [StoreController::class, 'datefilterleads'])->name('datefilterleads');
