@@ -290,4 +290,12 @@ class StoreController extends Controller
         $data = Lead::whereBetween('created_at',[$datefrom,$dateto])->get();
         return response()->json($data);
     }
+    public function datefiltercustomers(Request $req)
+    {
+        $datefrom = $req->input('datefrom');
+        $dateto = $req->input('dateto');
+        $customerdata = Customer::whereBetween('created_at',[$datefrom,$dateto])->get();
+        return response()->json($customerdata);
+    }
+
 }

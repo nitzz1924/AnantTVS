@@ -168,7 +168,11 @@ class ViewController extends Controller
     public function viewleads()
     {
         $leaddata = Lead::orderByDesc('created_at')->get();
-        return view('all_leads',compact('leaddata'));
+        $leadscount = Lead::count();
+        $bookedleads = Lead::where('leadstatus','=','Booked')->get()->count();
+        $purchasedleads = Lead::where('leadstatus','=','Purchased')->get()->count();
+        $closedleads = Lead::where('leadstatus','=','Closed')->get()->count();
+        return view('all_leads',compact('leaddata','leadscount','bookedleads','purchasedleads','closedleads'));
     }
 
     //WEBSITE VIEWS ENDS

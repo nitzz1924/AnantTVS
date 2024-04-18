@@ -1499,7 +1499,8 @@ select {
 }
 .bg-gray-100 {
     --tw-bg-opacity: 1;
-    background: #5f80b4;
+    background: url(/assets/images/bikefinalbg.jpg);
+    background-position: center;
   }
 
 .bg-gray-200 {

@@ -113,3 +113,4 @@ Route::get('/logoutuserpanel', [AuthenticationController::class, 'logoutuserpane
 //New Udpates Routes
 Route::post('/updateleadstatus', [StoreController::class, 'updateleadstatus'])->name('updateleadstatus');
 Route::post('/datefilterleads', [StoreController::class, 'datefilterleads'])->name('datefilterleads');
+Route::post('/datefiltercustomers', [StoreController::class, 'datefiltercustomers'])->name('datefiltercustomers');

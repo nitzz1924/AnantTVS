@@ -1,6 +1,17 @@
-{{-- -----------------------------------------------🙏JAI SHREE RAM🚩------------------------------------------------------------- --}}
+{{-- -----------------------------------------------🙏JAI SHREE
+RAM🚩------------------------------------------------------------- --}}
 <x-app-layout>
     <div class="page-content">
+        <link rel="stylesheet" href="https://cdn.datatables.net/2.0.1/css/dataTables.dataTables.css">
+        <style>
+            table.dataTable th.dt-type-numeric,
+            table.dataTable th.dt-type-date,
+            table.dataTable td.dt-type-numeric,
+            table.dataTable td.dt-type-date {
+                text-align: left !important;
+            }
+        </style>
+        <link rel="stylesheet" href="https://cdn.datatables.net/buttons/3.0.0/css/buttons.dataTables.css">
         <div class="container-fluid">
             <!-- start page title -->
             <div class="row">
@@ -16,33 +27,65 @@
                     </div>
                 </div>
             </div>
-
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title mb-0">Filter</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="listjs-table" id="customerList">
+                                <form>
+                                    <div class="row g-4 mb-3">
+                                        <div
+                                            class="col-sm-auto d-flex justify-content-sm-start gap-2 align-items-end flex-wrap">
+                                            <div>
+                                                <label for="exampleInputdate" class="form-label">From</label>
+                                                <input type="date" name="datefrom" class="form-control" id="datefrom">
+                                            </div>
+                                            <div>
+                                                <label for="exampleInputdate" class="form-label">To</label>
+                                                <input type="date" name="dateto" class="form-control" id="dateto">
+                                            </div>
+                                            <div>
+                                                <button type="button" class="btn btn-success add-btn datebtn"><i
+                                                        class="ri-search-eye-line align-bottom me-1"></i>Search</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card">
                         @if ($mymess = Session::get('success'))
-                            <div class="alert border-0 alert-success text-center" role="alert" id="successAlert">
-                                <strong>{{ $mymess }}</strong>
-                            </div>
+                        <div class="alert border-0 alert-success text-center" role="alert" id="successAlert">
+                            <strong>{{ $mymess }}</strong>
+                        </div>
                         @endif
                         @if ($mymess = Session::get('error'))
-                            <div class="alert border-0 alert-danger text-center" role="alert" id="dangerAlert">
-                                <strong>{{ $mymess }}</strong>
-                            </div>
+                        <div class="alert border-0 alert-danger text-center" role="alert" id="dangerAlert">
+                            <strong>{{ $mymess }}</strong>
+                        </div>
                         @endif
                         <div class="card-header align-items-center d-flex">
                             <h4 class="card-title mb-0 flex-grow-1">All Customers</h4>
                             <div class="flex-shrink-0">
                                 <div class="form-check form-switch form-switch-right form-switch-md">
-                                    {{-- <a href="{{ route('createcustomer') }}"><button type="button"class="btn btn-secondary waves-effect waves-light">Go Back</button></a> --}}
-                                    <a href="{{ route('viewaddcustomer') }}"><button
-                                            type="button"class="btn btn-success waves-effect waves-light">Add New
+                                    {{-- <a href="{{ route('createcustomer') }}"><button type="button"
+                                            class="btn btn-secondary waves-effect waves-light">Go Back</button></a> --}}
+                                    <a href="{{ route('viewaddcustomer') }}"><button type="button"
+                                            class="btn btn-success waves-effect waves-light">Add New
                                             Customer</button></a>
                                 </div>
                             </div>
                         </div>
                         <div class="card-body table-responsive">
-                            <table class="table table-nowrap table-bordered text-center">
+                            <table id="example" class="table table-nowrap table-bordered" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th scope="col">ID</th>
@@ -53,65 +96,68 @@
                                         <th scope="col">State</th>
                                         <th scope="col">Country</th>
                                         <th scope="col">Address</th>
-                                        <th colspan="3">Action</th>
+                                        <th>Action</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    @foreach ($allcustomers as $row)
-                                        <tr>
-                                            <th scope="row" class="fw-semibold">{{ $row->id }}</th>
-                                            <td>{{ $row->customername }}</td>
-                                            <td>{{ $row->customerphoneno }}</td>
-                                            <td>{{ $row->customeremailaddress }}</td>
-                                            <td>{{ $row->customercity }}</td>
-                                            <td>{{ $row->customerstate }}</td>
-                                            <td>{{ $row->customercountry }}</td>
-                                            <td>{{ $row->customeraddress }}</td>
-                                            <td>
-                                                <a href="/viewbuyvehicles/{{ $row->id }}">
-                                                    <button class="btn btn-outline-success" id="openModalBtnone">Buy
-                                                        Vehicle</button>
-                                                </a>
-                                            </td>
-                                            <td>
-                                                <div class="dropdown d-inline-block">
-                                                    <button class="btn btn-soft-secondary btn-sm dropdown"
-                                                        type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                        <i class="ri-more-fill align-middle"></i>
-                                                    </button>
-                                                    <ul class="dropdown-menu dropdown-menu-end">
-                                                        <li><a href="#" data-bs-target="#myModal"
-                                                                data-record-id="{{ json_encode($row) }}"
-                                                                id="openModalBtnone" data-bs-toggle="modal"
-                                                                class="dropdown-item openModalBtn"><i
-                                                                    class="ri-eye-fill align-bottom me-2 text-muted"></i>
-                                                                View</a></li>
-                                                        <li><a class="dropdown-item edit-item-btn" href="/editcustomer/{{$row->id}}"><i
-                                                                    class="ri-pencil-fill align-bottom me-2 text-muted"></i>
-                                                                Edit</a></li>
-                                                        <li>
-                                                            <a href="/viewuservehicles/{{$row->id}}" class="dropdown-item remove-item-btn">
-                                                                <i
-                                                                    class="ri-car-fill align-bottom me-2 text-muted"></i>All
-                                                                Vehicles
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" class="dropdown-item remove-item-btn" id="sa-warning{{ $row->id }}">
-                                                                <i
-                                                                    class=" ri-delete-bin-fill
+                                <tbody id="tablebody">
+                                    @foreach ($allcustomers as $index => $row)
+                                    <tr>
+                                        <th scope="row" class="fw-semibold">{{ $index + 1 }}</th>
+                                        <td>{{ $row->customername }}</td>
+                                        <td>{{ $row->customerphoneno }}</td>
+                                        <td>{{ $row->customeremailaddress }}</td>
+                                        <td>{{ $row->customercity }}</td>
+                                        <td>{{ $row->customerstate }}</td>
+                                        <td>{{ $row->customercountry }}</td>
+                                        <td>{{ $row->customeraddress }}</td>
+                                        <td>
+                                            <a href="/viewbuyvehicles/{{ $row->id }}">
+                                                <button class="btn btn-outline-success" id="openModalBtnone">Buy
+                                                    Vehicle</button>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <div class="dropdown d-inline-block">
+                                                <button class="btn btn-soft-secondary btn-sm dropdown" type="button"
+                                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                                    <i class="ri-more-fill align-middle"></i>
+                                                </button>
+                                                <ul class="dropdown-menu dropdown-menu-end">
+                                                    <li><a href="#" data-bs-target="#myModal"
+                                                            data-record-id="{{ json_encode($row) }}"
+                                                            id="openModalBtnone" data-bs-toggle="modal"
+                                                            class="dropdown-item openModalBtn"><i
+                                                                class="ri-eye-fill align-bottom me-2 text-muted"></i>
+                                                            View</a></li>
+                                                    <li><a class="dropdown-item edit-item-btn"
+                                                            href="/editcustomer/{{$row->id}}"><i
+                                                                class="ri-pencil-fill align-bottom me-2 text-muted"></i>
+                                                            Edit</a></li>
+                                                    <li>
+                                                        <a href="/viewuservehicles/{{$row->id}}"
+                                                            class="dropdown-item remove-item-btn">
+                                                            <i class="ri-car-fill align-bottom me-2 text-muted"></i>All
+                                                            Vehicles
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#" class="dropdown-item remove-item-btn"
+                                                            id="sa-warning{{ $row->id }}">
+                                                            <i class=" ri-delete-bin-fill
                                                                     align-bottom me-2 text-muted"></i>Remove
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </td>
-                                        </tr>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
                                     @endforeach
                                 </tbody>
                             </table>
                             <div class="pagination justify-content-end">
-                                {{ $allcustomers->links('pagination::bootstrap-4') }} <!--Pagination-->
+                                {{ $allcustomers->links('pagination::bootstrap-4') }}
+                                <!--Pagination-->
                             </div>
                         </div>
                     </div>
@@ -159,7 +205,77 @@
             @endforeach
         });
     </script>
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.datebtn').on('click', function() {
+                var datefrom = $('#datefrom').val();
+                var dateto = $('#dateto').val();
+
+                $.ajax({
+                    url: '/datefiltercustomers',
+                    method: 'POST',
+                    data: {
+                        datefrom: datefrom,
+                        dateto: dateto
+                    },
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(response) {
+                        console.log(response);
+                        $('#tablebody').empty();
+                        $.each(response, function(index, row) {
+                            var newRow = `
+                                <tr>
+                                    <th scope="row" class="fw-semibold">${index + 1}</th>
+                                    <td>${row.customername}</td>
+                                    <td>${row.customerphoneno}</td>
+                                    <td>${row.customeremailaddress}</td>
+                                    <td>${row.customercity}</td>
+                                    <td>${row.customerstate}</td>
+                                    <td>${row.customercountry}</td>
+                                    <td>${row.customeraddress}</td>
+                                    <td>
+                                        <a href="/viewbuyvehicles/${row.id}">
+                                            <button class="btn btn-outline-success" id="openModalBtnone">Buy Vehicle</button>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <div class="dropdown d-inline-block">
+                                            <button class="btn btn-soft-secondary btn-sm dropdown" type="button"
+                                                data-bs-toggle="dropdown" aria-expanded="false">
+                                                <i class="ri-more-fill align-middle"></i>
+                                            </button>
+                                            <ul class="dropdown-menu dropdown-menu-end">
+                                                <li><a href="#" data-bs-target="#myModal" data-record-id="${JSON.stringify(row)}"
+                                                        id="openModalBtnone" data-bs-toggle="modal"
+                                                        class="dropdown-item openModalBtn"><i
+                                                            class="ri-eye-fill align-bottom me-2 text-muted"></i>View</a></li>
+                                                <li><a class="dropdown-item edit-item-btn"
+                                                        href="/editcustomer/${row.id}"><i
+                                                            class="ri-pencil-fill align-bottom me-2 text-muted"></i>Edit</a></li>
+                                                <li><a href="/viewuservehicles/${row.id}" class="dropdown-item remove-item-btn">
+                                                        <i class="ri-car-fill align-bottom me-2 text-muted"></i>All Vehicles</a>
+                                                </li>
+                                                <li><a href="#" class="dropdown-item remove-item-btn"
+                                                        id="sa-warning${row.id}"><i class="ri-delete-bin-fill
+                                                            align-bottom me-2 text-muted"></i>Remove</a></li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>`;
+                            $('#tablebody').append(newRow);
+                        });
+                    },
+                    error: function(error) {
+                        console.error(error);
+                    }
+                });
+            });
+        });
+    </script>
+
     <script>
         setTimeout(function() {
             $('#successAlert').fadeOut('slow');
@@ -213,6 +329,18 @@
                         }
                     ]
                 });
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('#example').DataTable({
+                layout: {
+                    topStart: {
+                        buttons: ['copy', 'csv', 'excel', 'pdf', 'print']
+                    }
+                },
+
             });
         });
     </script>
