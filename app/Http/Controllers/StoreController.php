@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Validation\ValidationException;
 use App\Models\BuyVehicle;
 use App\Models\Customer;
 use App\Models\Lead;
@@ -10,7 +10,6 @@ use App\Models\Vehicle;
 use App\Models\TestRide;
 use App\Models\MakeRequest;
 use Illuminate\Http\Request;
-
 class StoreController extends Controller
 {
     public function createvehicle(Request $req)
@@ -143,7 +142,7 @@ class StoreController extends Controller
 
         try {
             $req->validate([
-                'chassisnumber' => 'unique:buy_vehicles',
+                // 'chassisnumber' => 'unique:buy_vehicles',
                 'rcnumber' => 'unique:buy_vehicles',
             ]);
             $imagePath = null;
@@ -185,12 +184,13 @@ class StoreController extends Controller
         } catch (\Exception $bv) {
             // return redirect()->route('viewallcustomers')->with('error', $bv->getMessage());
 
-            return redirect()->route('viewallcustomers')->with('error', 'Vehicle Not Buyed Try Again...');
+            return redirect()->route('viewbuyvehicles')->with('error', 'Vehicle Not Buyed Try Again...');
         }
     }
 
     public function createlead(Request $req)
     {
+        // dd($req->all());
         try {
             $req->validate([
                 'phoneno' => 'required'
@@ -199,6 +199,7 @@ class StoreController extends Controller
                 'customerstatus'=>$req->customerstatus,
                 'name' => $req->name,
                 'phoneno' => $req->phoneno,
+                'vehiclename' => $req->vehiclename,
                 'randomno' => "1234",
                 'verifystatus'=> "1",
             ]);

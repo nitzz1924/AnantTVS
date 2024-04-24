@@ -1,4 +1,5 @@
-{{-- -----------------------------------------------🙏JAI SHREE RAM🚩------------------------------------------------------------- --}}
+{{-- -----------------------------------------------🙏JAI SHREE
+RAM🚩------------------------------------------------------------- --}}
 <x-app-layout>
     <div class="page-content">
         <div class="container-fluid">
@@ -24,8 +25,8 @@
                             <h4 class="card-title mb-0 flex-grow-1">Buy Vehicle</h4>
                             {{-- <div class="flex-shrink-0">
                                 <div class="form-check form-switch form-switch-right form-switch-md">
-                                    <a href=""><button
-                                            type="button"class="btn btn-primary waves-effect waves-light btn-sm">Show
+                                    <a href=""><button type="button"
+                                            class="btn btn-primary waves-effect waves-light btn-sm">Show
                                             Vehicles</button></a>
                                 </div>
                             </div> --}}
@@ -44,9 +45,9 @@
                                                     aria-label="Default select example" id="vehicletypeid">
                                                     <option value="">select vehicle type</option>
                                                     @foreach ($masterdata as $row)
-                                                        <option value="{{ $row->value }}">
-                                                            {{ $row->value }}
-                                                        </option>
+                                                    <option value="{{ $row->value }}">
+                                                        {{ $row->value }}
+                                                    </option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -64,7 +65,7 @@
                                         </div>
                                         <div class="col-lg-3 col-md-6">
                                             <div>
-                                                <label for="placeholderInput" class="form-label">Chassis Number</label>
+                                                <label for="placeholderInput" class="form-label">Chassis Number&nbsp;&nbsp;<span class="text-danger">(Must be Unique)</span></label>
                                                 <input type="text" class="form-control" id="placeholderInput"
                                                     placeholder="enter chassis number" name="chassisnumber">
                                             </div>
@@ -76,9 +77,9 @@
                                                     aria-label="Default select example" id="vehicletypeid">
                                                     <option value="">select color</option>
                                                     @foreach ($mastercolor as $row)
-                                                        <option value="{{ $row->value }}">
-                                                            {{ $row->value }}
-                                                        </option>
+                                                    <option value="{{ $row->value }}">
+                                                        {{ $row->value }}
+                                                    </option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -89,9 +90,13 @@
                                     <div class="row  p-2">
                                         <div class="col-lg-4 card p-2 border border-1">
                                             <div>
-                                                <label for="placeholderInput" class="form-label">RC Number</label>
+                                                <label for="placeholderInput" class="form-label">RC
+                                                    Number</label>
                                                 <input type="text" class="form-control" id="placeholderInput"
                                                     placeholder="enter RC Number" name="rcnumber">
+                                                @error('rcnumber')
+                                                <div class="text-danger">{{ $message }}</div>
+                                                @enderror
                                                 <div class="mt-3">
                                                     <label for="placeholderInput" class="form-label">Upload RC</label>
                                                     <input type="file" class="form-control" id="image"

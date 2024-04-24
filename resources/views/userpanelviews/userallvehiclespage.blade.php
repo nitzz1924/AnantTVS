@@ -259,6 +259,7 @@
                                         <input type="text" name="name" class="form-control custominput"
                                             id="exampleFormControlInput1" placeholder="enter name" value="{{ $user->customername }}">
                                             <input type="hidden" name="leadid" value="{{ $row->id }}">
+                                            <input type="hidden" name="vehiclename" value="${recordId.name}">
                                             <input type="hidden" name="customerstatus" value="Existing">
                                     </div>
                                 </div>

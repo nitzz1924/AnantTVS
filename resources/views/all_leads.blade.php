@@ -214,6 +214,7 @@
                                         <th scope="col">Customer Name</th>
                                         <th scope="col">Mobile No.</th>
                                         <th scope="col">Customer Status</th>
+                                        <th scope="col">Vehicle Name</th>
                                         <th scope="col">Update Lead Status</th>
                                     </tr>
                                 </thead>
@@ -225,6 +226,7 @@
                                         <td>{{$row->name}}</td>
                                         <td>{{$row->phoneno}}</td>
                                         <td>{{$row->customerstatus}}</td>
+                                        <td>{{$row->vehiclename}}</td>
                                         <td>
                                             <select class="form-select leadstatus"
                                                 id="inputGroupSelect01_${{$row->id}}">

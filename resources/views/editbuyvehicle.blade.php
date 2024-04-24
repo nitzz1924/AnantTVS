@@ -45,6 +45,7 @@
                                 <form action="{{ route('updatedocuments') }}" method="POST"
                                     enctype="multipart/form-data">
                                     @csrf
+                                    @foreach ($vehicle as $row)
                                     <div class="row gy-4">
                                         <div class="col-lg-3 col-md-6">
                                             <div>
@@ -76,7 +77,7 @@
                                             <div>
                                                 <label for="placeholderInput" class="form-label">Chassis Number</label>
                                                 <input type="text" class="form-control" id="placeholderInput"
-                                                    placeholder="enter chassis number" name="chassisnumber" disabled>
+                                                    placeholder="enter chassis number" value="{{ $row->chassisnumber }}" name="chassisnumber" disabled>
                                             </div>
                                         </div>
                                         <div class="col-lg-3 col-md-6">
@@ -96,7 +97,6 @@
                                     </div>
 
                                     <h4 class="card-title mb-0 flex-grow-1 text-center mt-3">Information</h4>
-                                    @foreach ($vehicle as $row)
                                         <div class="row  p-2">
                                             <div class="col-lg-4 card p-2 border border-1">
                                                 <div>

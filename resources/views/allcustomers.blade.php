@@ -89,6 +89,7 @@ RAM🚩------------------------------------------------------------- --}}
                                 <thead>
                                     <tr>
                                         <th scope="col">ID</th>
+                                        <th scope="col">Date Created</th>
                                         <th scope="col">Name</th>
                                         <th scope="col">Mobile No.</th>
                                         <th scope="col">E-Mail</th>
@@ -104,6 +105,7 @@ RAM🚩------------------------------------------------------------- --}}
                                     @foreach ($allcustomers as $index => $row)
                                     <tr>
                                         <th scope="row" class="fw-semibold">{{ $index + 1 }}</th>
+                                        <td>{{ $row->created_at->format('d/m/y') }}</td>
                                         <td>{{ $row->customername }}</td>
                                         <td>{{ $row->customerphoneno }}</td>
                                         <td>{{ $row->customeremailaddress }}</td>
@@ -155,10 +157,10 @@ RAM🚩------------------------------------------------------------- --}}
                                     @endforeach
                                 </tbody>
                             </table>
-                            <div class="pagination justify-content-end">
+                            {{-- <div class="pagination justify-content-end">
                                 {{ $allcustomers->links('pagination::bootstrap-4') }}
                                 <!--Pagination-->
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>
@@ -229,6 +231,7 @@ RAM🚩------------------------------------------------------------- --}}
                             var newRow = `
                                 <tr>
                                     <th scope="row" class="fw-semibold">${index + 1}</th>
+                                    <td><?php echo date('d/m/y', strtotime($row['created_at'])); ?></td>
                                     <td>${row.customername}</td>
                                     <td>${row.customerphoneno}</td>
                                     <td>${row.customeremailaddress}</td>
