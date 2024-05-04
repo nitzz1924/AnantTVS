@@ -126,7 +126,7 @@
             var selectedCat = $(this).val();
             console.log(selectedCat);
             $.ajax({
-                type: 'GET',
+                type: 'GET'sideimages-container,
                 url: '/getmastercatajax/' + selectedCat,
                 success: function(data) {
                     console.log(data);

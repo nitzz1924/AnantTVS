@@ -81,9 +81,7 @@
                                                         aria-label="Default select example" id="">
                                                         <option disabled>...Choose Color...</option>
                                                         @foreach ($masterdatacolor as $rowmaster)
-                                                            <option
-                                                                {{ $rowmaster->label == $row->color ? 'selected' : '' }}
-                                                                value="{{ $rowmaster->label }}">
+                                                            <option {{ $rowmaster->label == $row->color ? 'selected' : '' }}  value="{{ $rowmaster->label }}">
                                                                 {{ $rowmaster->label }}
                                                             </option>
                                                         @endforeach
