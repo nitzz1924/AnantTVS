@@ -17,6 +17,12 @@
                     <i class="bx bx-bell"></i><span>All Leads</span>
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link menu-link" href="{{route('vehiclestock')}}" role="button" aria-expanded="false"
+                    aria-controls="sidebarDashboards">
+                    <i class="bx bx-book-content"></i><span>Vehicle Stock</span>
+                </a>
+            </li>
 
 
             <li class="nav-item">

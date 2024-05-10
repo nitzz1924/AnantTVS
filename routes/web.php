@@ -7,6 +7,8 @@ use App\Http\Controllers\StoreController;
 use App\Http\Controllers\UserViewsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ViewController;
+use App\Http\Controllers\ExcelImportController;
+
 
 Route::get('/', function () {
     return view('home');
@@ -114,3 +116,9 @@ Route::get('/logoutuserpanel', [AuthenticationController::class, 'logoutuserpane
 Route::post('/updateleadstatus', [StoreController::class, 'updateleadstatus'])->name('updateleadstatus');
 Route::post('/datefilterleads', [StoreController::class, 'datefilterleads'])->name('datefilterleads');
 Route::post('/datefiltercustomers', [StoreController::class, 'datefiltercustomers'])->name('datefiltercustomers');
+
+
+//Latest Udpate Routes
+Route::get('/vehiclestock',[ViewController::class,'vehiclestock'])->name('vehiclestock');
+Route::get('/import-excel', [ExcelImportController::class,'index'])->name('import.excel');
+Route::post('/import-excel', [ExcelImportController::class,'import']);

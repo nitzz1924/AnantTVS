@@ -8,6 +8,7 @@ use App\Models\Vehicle;
 use App\Models\Customer;
 use App\Models\SliderImages;
 use App\Models\User;
+use App\Models\VehicleStock;
 use Illuminate\Http\Request;
 use Auth;
 
@@ -94,8 +95,9 @@ class ViewController extends Controller
         $masterdata = Master::where('type', '=', 'vehicle')->get();
         $mastercolor = Master::where('type', '=', 'color')->get();
         $vehicleid = Vehicle::pluck('id');
+        $exceldata = VehicleStock::get();
         // dd($vehicleid);
-        return view('buyvehicle', compact('masterdata', 'mastercolor', 'customerid', 'vehicleid'));
+        return view('buyvehicle', compact('masterdata', 'mastercolor', 'customerid', 'vehicleid','exceldata'));
     }
 
     public function viewuservehicles($id)
@@ -205,4 +207,12 @@ class ViewController extends Controller
     {
         return view('auth.userauth.login');
     }
+
+    public function vehiclestock()
+    {
+        $exceldata = VehicleStock::get();
+        return view('vehiclestock',compact('exceldata'));
+    }
+
+
 }

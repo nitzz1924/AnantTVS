@@ -54,7 +54,7 @@
                         <!--end row-->
 
                         <div class="row">
-                            <div class="col-xl-3 col-md-6">
+                            <div class="col-xl-2 col-md-6">
                                 <div class="card card-animate">
                                     <div class="card-body">
                                         <div class="d-flex align-items-center">
@@ -85,7 +85,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xl-3 col-md-6">
+                            <div class="col-xl-2 col-md-6">
                                 <!-- card -->
                                 <div class="card card-animate">
                                     <div class="card-body">
@@ -117,7 +117,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xl-3 col-md-6">
+                            <div class="col-xl-2 col-md-6">
                                 <!-- card -->
                                 <div class="card card-animate">
                                     <div class="card-body">
@@ -149,7 +149,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xl-3 col-md-6">
+                            <div class="col-xl-2 col-md-6">
                                 <!-- card -->
                                 <div class="card card-animate">
                                     <div class="card-body">
