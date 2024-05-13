@@ -122,3 +122,4 @@ Route::post('/datefiltercustomers', [StoreController::class, 'datefiltercustomer
 Route::get('/vehiclestock',[ViewController::class,'vehiclestock'])->name('vehiclestock');
 Route::get('/import-excel', [ExcelImportController::class,'index'])->name('import.excel');
 Route::post('/import-excel', [ExcelImportController::class,'import']);
+Route::get('/showstockdetails/{selectedValue}', [ViewController::class,'showstockdetails'])->name('showstockdetails');

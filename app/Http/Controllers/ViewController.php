@@ -42,9 +42,11 @@ class ViewController extends Controller
         $BuyVehiclescount = BuyVehicle::count();
         $Customerscount = Customer::count();
         $leadcount = Lead::count();
+        $instock = VehicleStock::where('status','=', 0)->count();
+        $outofstock = VehicleStock::where('status','=', 1)->count();
         $allleads = Lead::orderByDesc('created_at')->get();
         // dd($vehiclescount);
-        return view('dashboard', compact('allleads', 'vehilecounttotal', 'vechiletypecount', 'vehiclescount', 'BuyVehiclescount', 'Customerscount', 'leadcount'));
+        return view('dashboard', compact('allleads', 'vehilecounttotal', 'vechiletypecount', 'vehiclescount', 'BuyVehiclescount', 'Customerscount', 'leadcount','instock','outofstock'));
     }
     public function viewmaster()
     {
@@ -215,4 +217,10 @@ class ViewController extends Controller
     }
 
 
+    public function showstockdetails($selectedValue)
+    {
+        $stockdata = VehicleStock::where('frameno',$selectedValue)->where('status','=',0)->get();
+        // dd($stockdata);
+        return response()->json($stockdata[0]);
+    }
 }

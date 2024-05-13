@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\VehicleStock;
 use Illuminate\Validation\ValidationException;
 use App\Models\BuyVehicle;
 use App\Models\Customer;
@@ -142,8 +143,7 @@ class StoreController extends Controller
 
         try {
             $req->validate([
-                // 'chassisnumber' => 'unique:buy_vehicles',
-                'rcnumber' => 'unique:buy_vehicles',
+                'chassisnumber' => 'unique:buy_vehicles',
             ]);
             $imagePath = null;
             $imagePathinvoice = null;
@@ -165,10 +165,9 @@ class StoreController extends Controller
                 $imagePathinsurance = time() . '.' . $image->getClientOriginalExtension();
                 $image->move(public_path('uploads'), $imagePathinsurance);
             }
-
             BuyVehicle::create([
                 'customer_id' => $req->customerid,
-                'vehicle_id' => $req->vehicle,
+                'vehicle_id' => $req->vehiclemodal,
                 'vehicletype' => $req->type,
                 'chassisnumber' => $req->chassisnumber,
                 'color' => $req->color,
@@ -178,13 +177,15 @@ class StoreController extends Controller
                 'rcimage' => $imagePath,
                 'invoiceimage' => $imagePathinvoice,
                 'insuranceimage' => $imagePathinsurance,
-                'numberplatestatus' => null,
             ]);
-            return redirect()->route('viewallcustomers')->with('success', 'Vechile Buyed!!!!');
+            $stockdata = VehicleStock::where('frameno','=',$req->chassisnumber)->first();
+            $stockdata->update([
+                'status' => 1,
+            ]);
+            return redirect()->route('viewallcustomers')->with('success', 'Vehicle Buyed!!!!');
         } catch (\Exception $bv) {
-            // return redirect()->route('viewallcustomers')->with('error', $bv->getMessage());
-
-            return redirect()->route('viewbuyvehicles')->with('error', 'Vehicle Not Buyed Try Again...');
+            return redirect()->route('viewallcustomers')->with('error', $bv->getMessage());
+            //return redirect()->route('viewbuyvehicles')->with('error', 'Vehicle Not Buyed Try Again...');
         }
     }
 

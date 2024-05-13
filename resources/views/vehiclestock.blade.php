@@ -55,6 +55,9 @@ RAM🚩------------------------------------------------------------- --}}
                                         </div>
                                     </div>
                                 </form>
+                                <div class="mt-3">
+                                    <a href="{{asset('uploads/Admin Panel.xlsx')}}" download="AnantTVSVehicleStockExcelDummy">Download Dummy Excel File Here</a>
+                                </div>
                             </div>
                         </div>
                         <div class="card-body table-responsive">

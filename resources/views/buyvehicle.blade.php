@@ -244,69 +244,42 @@ RAM🚩------------------------------------------------------------- --}}
                                         <div class="col-lg-3 col-md-6">
                                             <div class="dropdownsearch">
                                                 <div class="options">
-                                                    <select name="" id="dynamic_select">
+                                                    <select name="chassisnumber" id="dynamic_select">
                                                         <option value="">select frame no</option>
                                                         @foreach ($exceldata as $row)
-                                                        <option value="{{ $row->frameno }}">
-                                                            {{ $row->frameno }}
-                                                        </option>
+                                                            <option value="{{ $row->frameno }}">
+                                                                {{ $row->frameno }}
+                                                            </option>
                                                         @endforeach
 
                                                     </select>
                                                 </div>
                                             </div>
                                         </div>
-                                        {{-- <div class="col-lg-3 col-md-6">
+                                        <div class="col-lg-3 col-md-6">
                                             <div>
-                                                <label for="placeholderInput" class="form-label">Chassis
-                                                    Number&nbsp;&nbsp;<span class="text-danger">(Must be
-                                                        Unique)</span></label>
-                                                <input type="text" class="form-control" id="search"
-                                                    placeholder="enter chassis number" autocomplete="off"
-                                                    name="chassisnumber">
+                                                <label for="placeholderInput" class="form-label">Vehicle Modal</label>
+                                                <input type="text" class="form-control" id="vehiclemodal"
+                                                    placeholder="vehicle modal" name="vehiclemodal">
                                             </div>
-                                            <div id="chassislist"></div>
-                                        </div> --}}
-                                        {{-- <div class="col-lg-3 col-md-6">
+                                        </div>
+                                        <div class="col-lg-3 col-md-6">
                                             <div>
-                                                <label for="placeholderInput" class="form-label">Select Vehicle
+                                                <label for="placeholderInput" class="form-label">Vehicle
                                                     Type</label>
-                                                <select name="type" class="form-select mb-3"
-                                                    aria-label="Default select example" id="vehicletypeid">
-                                                    <option value="">select vehicle type</option>
-                                                    @foreach ($masterdata as $row)
-                                                    <option value="{{ $row->value }}">
-                                                        {{ $row->value }}
-                                                    </option>
-                                                    @endforeach
-                                                </select>
+                                                <input type="text" class="form-control" id="vehicletype"
+                                                    placeholder="vehicle type" name="type" value="">
                                             </div>
-                                        </div> --}}
-                                        <input type="hidden" name="customerid" value="{{ $customerid }}">
-                                        {{-- <div class="col-lg-3 col-md-6">
+                                        </div>
+                                        <input type="hidden" id="customerid" name="customerid"
+                                            value="{{ $customerid }}">
+                                        <div class="col-lg-3 col-md-6">
                                             <div>
-                                                <label for="placeholderInput" class="form-label">Select your
-                                                    Vehicle</label>
-                                                <select name="vehicle" class="form-select mb-3"
-                                                    aria-label="Default select example" id="vehiclenameid">
-
-                                                </select>
+                                                <label for="placeholderInput" class="form-label">Vehicle Color</label>
+                                                <input type="text" class="form-control" id="vehicolor"
+                                                    placeholder="vehicle color" name="color">
                                             </div>
-                                        </div> --}}
-                                        {{-- <div class="col-lg-3 col-md-6">
-                                            <div>
-                                                <label for="placeholderInput" class="form-label">Select Color</label>
-                                                <select name="color" class="form-select mb-3"
-                                                    aria-label="Default select example" id="vehicletypeid">
-                                                    <option value="">select color</option>
-                                                    @foreach ($mastercolor as $row)
-                                                    <option value="{{ $row->value }}">
-                                                        {{ $row->value }}
-                                                    </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div> --}}
+                                        </div>
                                     </div>
 
                                     <h4 class="card-title mb-0 flex-grow-1 text-center mt-3">Information</h4>
@@ -318,7 +291,7 @@ RAM🚩------------------------------------------------------------- --}}
                                                 <input type="text" class="form-control" id="placeholderInput"
                                                     placeholder="enter RC Number" name="rcnumber">
                                                 @error('rcnumber')
-                                                <div class="text-danger">{{ $message }}</div>
+                                                    <div class="text-danger">{{ $message }}</div>
                                                 @enderror
                                                 <div class="mt-3">
                                                     <label for="placeholderInput" class="form-label">Upload RC</label>
@@ -389,7 +362,7 @@ RAM🚩------------------------------------------------------------- --}}
 
             $('.dropdown-select ul').before(
                 '<div class="dd-search"><input id="txtSearchValue" autocomplete="off" onkeyup="filter()" class="dd-searchbox" type="text"></div>'
-                );
+            );
         }
 
         // Event listeners
@@ -480,19 +453,6 @@ RAM🚩------------------------------------------------------------- --}}
         $(document).ready(function() {
             create_custom_dropdowns();
         });
-
-
-
-        $(function() {
-            // bind change event to select
-            $('#dynamic_select').on('change', function() {
-                var url = $(this).val(); // get selected value
-                if (url) { // require a URL
-                    window.location = url; // redirect
-                }
-                return false;
-            });
-        });
     </script>
 
     <script>
@@ -525,5 +485,22 @@ RAM🚩------------------------------------------------------------- --}}
             });
         });
     </script>
-
+    <script>
+        $(function() {
+            $('#dynamic_select').on('change', function() {
+                var selectedValue = $(this).val();
+                console.log(selectedValue);
+                $.ajax({
+                    url: "/showstockdetails/" + selectedValue,
+                    type: "GET",
+                    success: function(stockdata) {
+                        console.log(stockdata);
+                        $('#vehicletype').val(stockdata.vehiclecategory);
+                        $('#vehicolor').val(stockdata.color);
+                        $('#vehiclemodal').val(stockdata.vehiclemodal);
+                    }
+                });
+            });
+        });
+    </script>
 </x-app-layout>
