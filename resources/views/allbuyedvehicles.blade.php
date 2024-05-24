@@ -25,6 +25,38 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title mb-0">Filter</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="listjs-table" id="customerList">
+                            <form>
+                                <div class="row g-4 mb-3">
+                                    <div
+                                        class="col-sm-auto d-flex justify-content-sm-start gap-2 align-items-end flex-wrap">
+                                        <div>
+                                            <label for="exampleInputdate" class="form-label">From</label>
+                                            <input type="date" name="datefrom" class="form-control" id="datefrom">
+                                        </div>
+                                        <div>
+                                            <label for="exampleInputdate" class="form-label">To</label>
+                                            <input type="date" name="dateto" class="form-control" id="dateto">
+                                        </div>
+                                        <div>
+                                            <button type="button" class="btn btn-success add-btn datebtn"><i
+                                                    class="ri-search-eye-line align-bottom me-1"></i>Search</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="row h-100">
             <div class="col-lg-12">
                 <div class="card tablecard h-100">
@@ -49,7 +81,7 @@
                                     <th scope="col">Insurance-ID</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="buyedvehiclesbody">
                                 @foreach ($allbuyeddata as $index => $row)
                                 <tr>
                                     <td>{{ $index + 1 }}</td>
@@ -75,14 +107,71 @@
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script>
     $(document).ready(function() {
-            $('#example').DataTable({
-                layout: {
-                    topStart: {
-                        buttons: ['copy', 'csv', 'excel', 'pdf', 'print']
-                    }
-                },
+        // Initialize DataTables for each table
+        var dataTableCustomer = $('#example').DataTable({
+            layout: {
+                topStart: {
+                    buttons: ['copy', 'csv', 'excel', 'pdf', 'print']
+                }
+            }
+        });
+        $('.datebtn').on('click', function() {
+            var datefrom = $('#datefrom').val();
+            var dateto = $('#dateto').val();
+            console.log(datefrom);
+            console.log(dateto);
 
+            $.ajax({
+                url: '/datefilterbuyedvehicle',
+                method: 'POST',
+                data: {
+                    datefrom: datefrom,
+                    dateto: dateto,
+                },
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function(response) {
+                    console.log(response);
+                    dataTableCustomer.clear().destroy(); // Properly destroy the existing DataTable instance
+                    $('#buyedvehiclesbody').empty();
+                    response.forEach(function(row, index) {
+                        var formattedDate = new Date(row.created_at)
+                            .toLocaleDateString('en-GB', {
+                                day: 'numeric',
+                                month: 'short',
+                                year: 'numeric'
+                            });
+                        var newRow = `
+                                <tr>
+                                    <td>${index+1}</td>
+                                    <td>${formattedDate}</td>
+                                    <td>${row.customername}</td>
+                                    <td>${row.customerphoneno}</td>
+                                    <td>${row.vehicle_id}</td>
+                                    <td>${row.chassisnumber}</td>
+                                    <td>${row.color}</td>
+                                    <td>${row.rcnumber}</td>
+                                    <td>${row.invoicenumber}</td>
+                                    <td>${row.insuranceid}</td>
+                                </tr>
+                `;
+                        $('#buyedvehiclesbody').append(newRow);
+                    });
+                    // Reinitialize DataTable
+                    dataTableMakeReq = $('#example').DataTable({
+                        layout: {
+                            topStart: {
+                                buttons: ['copy', 'csv', 'excel', 'pdf', 'print']
+                            }
+                        }
+                    });
+                },
+                error: function(error) {
+                    console.error(error);
+                }
             });
         });
+    });
 </script>
 </x-app-layout>

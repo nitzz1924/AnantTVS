@@ -146,7 +146,8 @@ RAM🚩------------------------------------------------------------- --}}
                                         </td>
                                         <td>
                                             <a href="#"><button class="btn btn-outline-danger btn-sm"
-                                                    id="sa-warning{{ $row->id }}"><i class="bx bxs-trash"></i></button></a>
+                                                    id="sa-warning{{ $row->id }}"><i
+                                                        class="bx bxs-trash"></i></button></a>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -184,18 +185,14 @@ RAM🚩------------------------------------------------------------- --}}
     </script>
     <script>
         $(document).ready(function() {
-            $('#example').DataTable({
+            // Initialize DataTables for each table
+            var dataTableCustomer = $('#example').DataTable({
                 layout: {
                     topStart: {
                         buttons: ['copy', 'csv', 'excel', 'pdf', 'print']
                     }
-                },
-
+                }
             });
-        });
-    </script>
-    <script>
-        $(document).ready(function() {
             $('.datebtn').on('click', function() {
                 var datefrom = $('#datefrom').val();
                 var dateto = $('#dateto').val();
@@ -210,13 +207,14 @@ RAM🚩------------------------------------------------------------- --}}
                     data: {
                         datefrom: datefrom,
                         dateto: dateto,
-                        status : value,
+                        status: value,
                     },
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
                     success: function(response) {
                         console.log(response);
+                        dataTableCustomer.clear().destroy(); // Properly destroy the existing DataTable instance
                         $('#vehiclestockbody').empty();
                         response.forEach(function(row, index) {
                             var formattedDate = new Date(row.created_at)
@@ -261,6 +259,14 @@ RAM🚩------------------------------------------------------------- --}}
                         </tr>
                     `;
                             $('#vehiclestockbody').append(newRow);
+                        });
+                        // Reinitialize DataTable
+                        dataTableMakeReq = $('#example').DataTable({
+                            layout: {
+                                topStart: {
+                                    buttons: ['copy', 'csv', 'excel', 'pdf', 'print']
+                                }
+                            }
                         });
                     },
                     error: function(error) {

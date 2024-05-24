@@ -119,6 +119,7 @@ Route::post('/updatemakerequestleads', [StoreController::class, 'updatemakereque
 Route::post('/datefilterleads', [StoreController::class, 'datefilterleads'])->name('datefilterleads');
 Route::post('/datefiltercustomers', [StoreController::class, 'datefiltercustomers'])->name('datefiltercustomers');
 Route::post('/datefilteroutofstock', [StoreController::class, 'datefilteroutofstock'])->name('datefilteroutofstock');
+Route::post('/datefilterbuyedvehicle', [StoreController::class, 'datefilterbuyedvehicle'])->name('datefilterbuyedvehicle');
 Route::get('/deletestock/{id}', [StoreController::class, 'deletestock'])->name('deletestock');
 Route::get('/allbuyedvehicles', [ViewController::class, 'allbuyedvehicles'])->name('allbuyedvehicles');
 

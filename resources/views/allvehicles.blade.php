@@ -1,5 +1,4 @@
-{{-- -----------------------------------------------🙏JAI SHREE
-RAM🚩------------------------------------------------------------- --}}
+{{-- -----------------------------------------------🙏JAI SHREE RAM🚩------------------------------------------------------------- --}}
 <x-app-layout>
     <link rel="stylesheet" href="https://cdn.datatables.net/2.0.1/css/dataTables.dataTables.css">
     <style>
@@ -69,7 +68,7 @@ RAM🚩------------------------------------------------------------- --}}
                                                 $imagePaths = explode(',', $row->image);
                                                 $firstImagePath = $imagePaths[0];
                                                 @endphp --}}
-                                                <img src="{{asset(" uploads/vehicle/".$row->bannerimage) }}"
+                                                <img src="{{asset("uploads/vehicle/".$row->bannerimage) }}"
                                                 alt="Thumbnail"
                                                 width="100px">
                                                 @endif

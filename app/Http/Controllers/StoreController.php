@@ -360,4 +360,16 @@ class StoreController extends Controller
         $data->delete();
         return back()->with('success',"Deleted.>!!!");
     }
+
+    public function datefilterbuyedvehicle(Request $req)
+    {
+        // dd($req->all());
+        $datefrom = $req->input('datefrom');
+        $dateto = $req->input('dateto');
+        $data = BuyVehicle::join('customers','buy_vehicles.customer_id','customers.id')
+        ->select('buy_vehicles.*','customers.customername','customers.customerphoneno')
+        ->whereBetween('buy_vehicles.created_at', [$datefrom, $dateto])->get();
+        // dd($data);
+        return response()->json($data);
+    }
 }
