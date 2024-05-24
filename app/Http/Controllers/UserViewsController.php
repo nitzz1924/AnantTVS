@@ -13,11 +13,11 @@ class UserViewsController extends Controller
     public function alluservehiclesview()
     {
         $user = Auth::guard('customer')->user();
-        $buyvehiclesdata = BuyVehicle::join('vehicles', 'vehicles.id', '=', 'buy_vehicles.vehicle_id')
-            ->select('buy_vehicles.*', 'vehicles.image as vehicleImage', 'vehicles.name as vehicleName', 'vehicles.discription as vehicleDis', 'vehicles.modelno as vehicleModel')
+        $buyvehiclesdata = BuyVehicle::join('vehicle_stocks', 'vehicle_stocks.frameno', '=', 'buy_vehicles.chassisnumber')
+            ->select('buy_vehicles.*', 'vehicle_stocks.vehiclecategory','vehicle_stocks.series','vehicle_stocks.vehiclemodal','vehicle_stocks.color','vehicle_stocks.frameno','vehicle_stocks.engineno',)
             ->where('buy_vehicles.customer_id',  $user->id)
             ->get();
-
+        // dd($buyvehiclesdata);
         if ($buyvehiclesdata->isEmpty()) {
            return view('userpanelviews.userallvehicles', compact('buyvehiclesdata'));
         } else {
@@ -39,7 +39,7 @@ class UserViewsController extends Controller
     public function allvehicleslist()
     {
         $user = Auth::guard('customer')->user();
-        $allvehicles = Vehicle::where('status', '=', '1')->paginate(10);
+        $allvehicles = Vehicle::where('status', '=', '1')->paginate(20);
         return view('userpanelviews.userallvehiclespage', compact('allvehicles','user'));
     }
 

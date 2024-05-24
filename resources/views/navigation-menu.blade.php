@@ -18,12 +18,27 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link menu-link" href="{{route('vehiclestock')}}" role="button" aria-expanded="false"
+                <a class="nav-link menu-link" href="{{route('allbuyedvehicles')}}" role="button" aria-expanded="false"
                     aria-controls="sidebarDashboards">
-                    <i class="bx bx-book-content"></i><span>Vehicle Stock</span>
+                    <i class="bx bx-money"></i><span>Buyed Vehicles</span>
                 </a>
             </li>
-
+            <li class="nav-item">
+                <a class="nav-link menu-link" href="#stockvehicle" data-bs-toggle="collapse" role="button"
+                    aria-expanded="false" aria-controls="stockvehicle">
+                    <i class="bx bx-car"></i><span data-key="t-layouts">Vehicle Stock</span>
+                </a>
+                <div class="collapse menu-dropdown" id="stockvehicle">
+                    <ul class="nav nav-sm flex-column">
+                        <li class="nav-item">
+                            <a href="/vehiclestock/0" class="nav-link">In Stock</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/vehiclestock/1" class="nav-link">Out of Stock</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
 
             <li class="nav-item">
                 <a class="nav-link menu-link" href="#sidebarLayoutsone" data-bs-toggle="collapse" role="button"

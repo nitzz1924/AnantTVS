@@ -39,7 +39,7 @@ class EditController extends Controller
 
     public function editbuyvehicle($id)
     {
-        $vehicle = BuyVehicle::where('vehicle_id', '=', $id)->get();
+        $vehicle = BuyVehicle::where('id', '=', $id)->get();
         return view('editbuyvehicle', compact('vehicle'));
     }
 

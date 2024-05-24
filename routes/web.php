@@ -114,12 +114,17 @@ Route::get('/logoutuserpanel', [AuthenticationController::class, 'logoutuserpane
 
 //New Udpates Routes
 Route::post('/updateleadstatus', [StoreController::class, 'updateleadstatus'])->name('updateleadstatus');
+Route::post('/updatetestrideleadstatus', [StoreController::class, 'updatetestrideleadstatus'])->name('updatetestrideleadstatus');
+Route::post('/updatemakerequestleads', [StoreController::class, 'updatemakerequestleads'])->name('updatemakerequestleads');
 Route::post('/datefilterleads', [StoreController::class, 'datefilterleads'])->name('datefilterleads');
 Route::post('/datefiltercustomers', [StoreController::class, 'datefiltercustomers'])->name('datefiltercustomers');
+Route::post('/datefilteroutofstock', [StoreController::class, 'datefilteroutofstock'])->name('datefilteroutofstock');
+Route::get('/deletestock/{id}', [StoreController::class, 'deletestock'])->name('deletestock');
+Route::get('/allbuyedvehicles', [ViewController::class, 'allbuyedvehicles'])->name('allbuyedvehicles');
 
 
 //Latest Udpate Routes
-Route::get('/vehiclestock',[ViewController::class,'vehiclestock'])->name('vehiclestock');
+Route::get('/vehiclestock/{status}',[ViewController::class,'vehiclestock'])->name('vehiclestock');
 Route::get('/import-excel', [ExcelImportController::class,'index'])->name('import.excel');
 Route::post('/import-excel', [ExcelImportController::class,'import']);
 Route::get('/showstockdetails/{selectedValue}', [ViewController::class,'showstockdetails'])->name('showstockdetails');

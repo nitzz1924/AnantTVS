@@ -1,68 +1,77 @@
-{{-- -----------------------------------------------🙏JAI SHREE RAM🚩------------------------------------------------------------- --}}
+{{-- -----------------------------------------------🙏JAI SHREE
+RAM🚩------------------------------------------------------------- --}}
 <x-app-layout>
-    <div class="page-content">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-12">
-                    <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                        <h4 class="mb-sm-0">Anant TVS</h4>
-                        <div class="page-title-right">
-                            <ol class="breadcrumb m-0">
-                                <li class="breadcrumb-item"><a href="javascript: void(0);">All Vehicles</a></li>
-                                <li class="breadcrumb-item active">All Vehicles</li>
-                            </ol>
-                        </div>
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.1/css/dataTables.dataTables.css">
+    <style>
+        table.dataTable th.dt-type-numeric,
+        table.dataTable th.dt-type-date,
+        table.dataTable td.dt-type-numeric,
+        table.dataTable td.dt-type-date {
+            text-align: left !important;
+        }
+    </style>
+        <div class="page-content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                            <h4 class="mb-sm-0">Anant TVS</h4>
+                            <div class="page-title-right">
+                                <ol class="breadcrumb m-0">
+                                    <li class="breadcrumb-item"><a href="javascript: void(0);">All Vehicles</a></li>
+                                    <li class="breadcrumb-item active">All Vehicles</li>
+                                </ol>
+                            </div>
 
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="card">
-                        @if ($mymess = Session::get('success'))
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            @if ($mymess = Session::get('success'))
                             <div class="alert border-0 alert-success text-center" role="alert" id="successAlert">
                                 <strong>{{ $mymess }}</strong>
                             </div>
-                        @endif
-                        <div class="card-header align-items-center d-flex">
-                            <h4 class="card-title mb-0 flex-grow-1">All Vehicles</h4>
-                            <div class="flex-shrink-0">
-                                <div class="form-check form-switch form-switch-right form-switch-md">
-                                    <a href="{{ route('viewaddvehicle') }}"><button type="button"
-                                            class="btn btn-secondary waves-effect waves-light">Go
-                                            Back</button></a>
+                            @endif
+                            <div class="card-header align-items-center d-flex">
+                                <h4 class="card-title mb-0 flex-grow-1">All Vehicles</h4>
+                                <div class="flex-shrink-0">
+                                    <div class="form-check form-switch form-switch-right form-switch-md">
+                                        <a href="{{ route('viewaddvehicle') }}"><button type="button"
+                                                class="btn btn-secondary waves-effect waves-light">Go
+                                                Back</button></a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="card-body table-responsive">
-                            <table class="table table-nowrap table-bordered text-center">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">ID</th>
-                                        <th scope="col">Image</th>
-                                        <th scope="col">Name</th>
-                                        <th scope="col">Type</th>
-                                        <th scope="col">Model No</th>
-                                        <th scope="col">Price</th>
-                                        <th scope="col">Color</th>
-                                        {{-- <th scope="col">Discription</th> --}}
-                                        <th scope="col">Status</th>
-                                        <th colspan="2">Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($allvehicles as $index => $row)
+                            <div class="card-body table-responsive">
+                                <table id="example" class="table table-nowrap table-bordered" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">ID</th>
+                                            <th scope="col">Image</th>
+                                            <th scope="col">Name</th>
+                                            <th scope="col">Type</th>
+                                            <th scope="col">Model No</th>
+                                            <th scope="col">Price</th>
+                                            <th scope="col">Color</th>
+                                            <th scope="col">Status</th>
+                                            <th colspan="1">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($allvehicles as $index => $row)
                                         <tr>
                                             <th scope="row" class="fw-semibold">{{ $index + 1 }}</th>
                                             <td>
                                                 @if ($row->bannerimage)
-                                                    {{-- @php
-                                                        $imagePaths = explode(',', $row->image);
-                                                        $firstImagePath = $imagePaths[0];
-                                                    @endphp --}}
-                                                    <img src="{{asset("uploads/vehicle/".$row->bannerimage) }}" alt="Thumbnail"
-                                                        width="100px">
+                                                {{-- @php
+                                                $imagePaths = explode(',', $row->image);
+                                                $firstImagePath = $imagePaths[0];
+                                                @endphp --}}
+                                                <img src="{{asset(" uploads/vehicle/".$row->bannerimage) }}"
+                                                alt="Thumbnail"
+                                                width="100px">
                                                 @endif
                                             </td>
                                             <td>{{ $row->name }}</td>
@@ -74,25 +83,25 @@
                                                 <div class="form-check form-switch form-switch-success">
                                                     <input class="form-check-input" type="checkbox"
                                                         data-id='{{ $row->id }}' role="switch"
-                                                        id="toggle-{{ $row->id }}"
-                                                        {{ $row->status == '1' ? 'checked' : null }}>
-                                                    <label class="form-check-label"
-                                                        for="toggle-{{ $row->id }}">{{ $row->status == '1' ? 'Enabled' : 'disabled' }}</label>
+                                                        id="toggle-{{ $row->id }}" {{ $row->status == '1' ? 'checked' :
+                                                    null }}>
+                                                    <label class="form-check-label" for="toggle-{{ $row->id }}">{{
+                                                        $row->status == '1' ? 'Enabled' : 'disabled' }}</label>
                                                 </div>
                                             </td>
                                             {{-- <td>
                                                 <div class="form-check form-switch form-switch-success">
-                                                    <input class="form-check-input" type="text"
-                                                        data-id='{{ $row->id }}' role="switch" id=""
-                                                        {{ $row->numberplatestatus == '1' ? 'checked' : null }}>
-                                                    <label class="form-check-label"
-                                                        for="toggle-{{ $row->id }}">{{ $row->status == '1' ? 'Enabled' : 'disabled' }}</label>
+                                                    <input class="form-check-input" type="text" data-id='{{ $row->id }}'
+                                                        role="switch" id="" {{ $row->numberplatestatus == '1' ?
+                                                    'checked' : null }}>
+                                                    <label class="form-check-label" for="toggle-{{ $row->id }}">{{
+                                                        $row->status == '1' ? 'Enabled' : 'disabled' }}</label>
                                                 </div>
                                             </td> --}}
                                             <td>
                                                 <div class="dropdown d-inline-block">
-                                                    <button class="btn btn-soft-secondary btn-sm dropdown"
-                                                        type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    <button class="btn btn-soft-secondary btn-sm dropdown" type="button"
+                                                        data-bs-toggle="dropdown" aria-expanded="false">
                                                         <i class="ri-more-fill align-middle"></i>
                                                     </button>
                                                     <ul class="dropdown-menu dropdown-menu-end">
@@ -107,62 +116,57 @@
                                                                     class="ri-pencil-fill align-bottom me-2 text-muted"></i>
                                                                 Edit</a></li>
                                                         {{-- <li>
-                                                            <a href="/viewuservehicles/{{$row->id}}" class="dropdown-item remove-item-btn">
+                                                            <a href="/viewuservehicles/{{$row->id}}"
+                                                                class="dropdown-item remove-item-btn">
                                                                 <i
                                                                     class="ri-car-fill align-bottom me-2 text-muted"></i>All
                                                                 Vehicles
                                                             </a>
                                                         </li> --}}
                                                         <li>
-                                                            <a href="#"
-                                                                class="dropdown-item remove-item-btn"  id="sa-warning{{ $row->id }}">
-                                                                <i
-                                                                    class=" ri-delete-bin-fill
+                                                            <a href="#" class="dropdown-item remove-item-btn"
+                                                                id="sa-warning{{ $row->id }}">
+                                                                <i class=" ri-delete-bin-fill
                                                                     align-bottom me-2 text-muted"></i>Remove
                                                             </a>
                                                         </li>
                                                     </ul>
                                                 </div>
                                             </td>
-                                            {{-- <td>
-                                                <button class="btn btn-outline-primary openModalBtn"
-                                                    id="openModalBtnone" data-bs-toggle="modal"
-                                                    data-bs-target="#myModal"
-                                                    data-record-id="{{ json_encode($row) }}">View</button>
-                                            </td> --}}
                                         </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                            <div class="pagination justify-content-end">
-                                {{ $allvehicles->links('pagination::bootstrap-4') }} <!--Pagination-->
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                                {{-- <div class="pagination justify-content-end">
+                                    {{ $allvehicles->links('pagination::bootstrap-4') }}
+                                    <!--Pagination-->
+                                </div> --}}
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div id="myModal" class="modal zoomIn" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true"
-        style="display: none;">
-        <div class="modal-dialog modal-xl modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title" id="modal-heading">Vehicle Details</h4>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> </button>
-                </div>
-                <div class="modal-body" id="modalbody">
+        <div id="myModal" class="modal zoomIn" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true"
+            style="display: none;">
+            <div class="modal-dialog modal-xl modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="modal-heading">Vehicle Details</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> </button>
+                    </div>
+                    <div class="modal-body" id="modalbody">
 
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger btn-sm" data-bs-dismiss="modal">Close</button>
-                </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger btn-sm" data-bs-dismiss="modal">Close</button>
+                    </div>
 
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
             @foreach ($allvehicles as $row)
                 document.getElementById("sa-warning{{ $row->id }}").addEventListener("click", function() {
                     Swal.fire({
@@ -179,19 +183,19 @@
                 });
             @endforeach
         });
-    </script>
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script>
-        setTimeout(function() {
+        </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script>
+            setTimeout(function() {
             $('#successAlert').fadeOut('slow');
         }, 2000);
 
         setTimeout(function() {
             $('#dangerAlert').fadeOut('slow');
         }, 2000);
-    </script>
-    <script>
-        $(document).ready(function() {
+        </script>
+        <script>
+            $(document).ready(function() {
             $('[id^="toggle-"]').change(function() {
                 var switchElement = $(this).closest('.form-switch');
                 var labelElement = switchElement.find('.form-check-label');
@@ -226,9 +230,9 @@
                 }
             });
         });
-    </script>
-    <script>
-        $(document).ready(function() {
+        </script>
+        <script>
+            $(document).ready(function() {
             $('.openModalBtn').on('click', function() {
                 var recordId = $(this).data('record-id');
                 console.log(recordId);
@@ -289,5 +293,17 @@
                 });
             });
         });
-    </script>
+        </script>
+        <script>
+            $(document).ready(function() {
+            $('#example').DataTable({
+                layout: {
+                    topStart: {
+                        buttons: ['copy', 'csv', 'excel', 'pdf', 'print']
+                    }
+                },
+
+            });
+        });
+        </script>
 </x-app-layout>

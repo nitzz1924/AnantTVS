@@ -3,7 +3,9 @@ namespace App\Http\Controllers;
 
 use App\Models\BuyVehicle;
 use App\Models\Lead;
+use App\Models\MakeRequest;
 use App\Models\Master;
+use App\Models\TestRide;
 use App\Models\Vehicle;
 use App\Models\Customer;
 use App\Models\SliderImages;
@@ -42,11 +44,11 @@ class ViewController extends Controller
         $BuyVehiclescount = BuyVehicle::count();
         $Customerscount = Customer::count();
         $leadcount = Lead::count();
-        $instock = VehicleStock::where('status','=', 0)->count();
-        $outofstock = VehicleStock::where('status','=', 1)->count();
+        $instock = VehicleStock::where('status', '=', 0)->count();
+        $outofstock = VehicleStock::where('status', '=', 1)->count();
         $allleads = Lead::orderByDesc('created_at')->get();
         // dd($vehiclescount);
-        return view('dashboard', compact('allleads', 'vehilecounttotal', 'vechiletypecount', 'vehiclescount', 'BuyVehiclescount', 'Customerscount', 'leadcount','instock','outofstock'));
+        return view('dashboard', compact('allleads', 'vehilecounttotal', 'vechiletypecount', 'vehiclescount', 'BuyVehiclescount', 'Customerscount', 'leadcount', 'instock', 'outofstock'));
     }
     public function viewmaster()
     {
@@ -73,11 +75,11 @@ class ViewController extends Controller
 
     public function viewvehicles()
     {
-        $allvehicles = Vehicle::paginate(10);
+        $allvehicles = Vehicle::get();
         $modelInstance = new User();
         $res = $modelInstance->checkID();
         $masterdata = Master::where('parent_id', '=', $res)->where('type', '=', 'Master')->get();
-        return view('allvehicles', compact('allvehicles','masterdata'));
+        return view('allvehicles', compact('allvehicles', 'masterdata'));
     }
 
     public function viewaddcustomer()
@@ -99,24 +101,23 @@ class ViewController extends Controller
         $vehicleid = Vehicle::pluck('id');
         $exceldata = VehicleStock::get();
         // dd($vehicleid);
-        return view('buyvehicle', compact('masterdata', 'mastercolor', 'customerid', 'vehicleid','exceldata'));
+        return view('buyvehicle', compact('masterdata', 'mastercolor', 'customerid', 'vehicleid', 'exceldata'));
     }
 
     public function viewuservehicles($id)
     {
         $customerid = $id;
-        $customer = Customer::where('id', $customerid)->get();
-        // dd($customer);
-        $buyvehiclesdata = BuyVehicle::join('vehicles', 'vehicles.id', '=', 'buy_vehicles.vehicle_id')
-            ->select('buy_vehicles.*', 'vehicles.image as vehicleImage', 'vehicles.name as vehicleName', 'vehicles.discription as vehicleDis', 'vehicles.modelno as vehicleModel')
-            ->where('buy_vehicles.customer_id', $id)
+        $buyvehiclesdata = BuyVehicle::join('vehicle_stocks', 'vehicle_stocks.frameno', '=', 'buy_vehicles.chassisnumber')
+            ->select('buy_vehicles.*', 'vehicle_stocks.vehiclecategory','vehicle_stocks.series','vehicle_stocks.vehiclemodal','vehicle_stocks.color','vehicle_stocks.frameno','vehicle_stocks.engineno',)
+            ->where('buy_vehicles.customer_id',  $customerid)
+            ->distinct()
             ->get();
-        // dd($buyvehiclesdata);
+        //    dd($buyvehiclesdata);
         if ($buyvehiclesdata->isEmpty()) {
             return back()->with('error', 'no records found..!!!!');
         } else {
             // Process the retrieved records
-            return view('uservehicles', compact('buyvehiclesdata', 'customer'));
+            return view('uservehicles', compact('buyvehiclesdata'));
         }
 
     }
@@ -166,17 +167,19 @@ class ViewController extends Controller
     {
         $allvehicles = Vehicle::where('status', '=', '1')->get();
         $masterdata = Master::where('type', '=', 'Vehicle')->get();
-        return view('newcustomer', compact('allvehicles','masterdata'));
+        return view('newcustomer', compact('allvehicles', 'masterdata'));
     }
 
     public function viewleads()
     {
         $leaddata = Lead::orderByDesc('created_at')->get();
         $leadscount = Lead::count();
-        $bookedleads = Lead::where('leadstatus','=','Booked')->get()->count();
-        $purchasedleads = Lead::where('leadstatus','=','Purchased')->get()->count();
-        $closedleads = Lead::where('leadstatus','=','Closed')->get()->count();
-        return view('all_leads',compact('leaddata','leadscount','bookedleads','purchasedleads','closedleads'));
+        $bookedleads = Lead::where('leadstatus', '=', 'Booked')->get()->count();
+        $purchasedleads = Lead::where('leadstatus', '=', 'Purchased')->get()->count();
+        $closedleads = Lead::where('leadstatus', '=', 'Closed')->get()->count();
+        $testrideleads = TestRide::orderByDesc('created_at')->get();
+        $makerequestleads = MakeRequest::orderByDesc('created_at')->get();
+        return view('all_leads', compact('leaddata', 'leadscount', 'bookedleads', 'purchasedleads', 'closedleads','testrideleads','makerequestleads'));
     }
 
     //WEBSITE VIEWS ENDS
@@ -210,17 +213,26 @@ class ViewController extends Controller
         return view('auth.userauth.login');
     }
 
-    public function vehiclestock()
+    public function vehiclestock($status)
     {
-        $exceldata = VehicleStock::get();
-        return view('vehiclestock',compact('exceldata'));
+        $exceldata = VehicleStock::where('status',$status)->get();
+        return view('vehiclestock', compact('exceldata'));
     }
 
 
     public function showstockdetails($selectedValue)
     {
-        $stockdata = VehicleStock::where('frameno',$selectedValue)->where('status','=',0)->get();
+        $stockdata = VehicleStock::where('frameno', $selectedValue)->where('status', '=', 0)->get();
         // dd($stockdata);
+        if ($stockdata->isEmpty()) {
+            return response()->json(['error' => 'No stock data found'], 404);
+        }
         return response()->json($stockdata[0]);
+    }
+
+    public function allbuyedvehicles()
+    {
+        $allbuyeddata = BuyVehicle::join('customers','buy_vehicles');
+        return view('allbuyedvehicles',compact('allbuyeddata'));
     }
 }

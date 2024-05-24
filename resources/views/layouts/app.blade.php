@@ -249,6 +249,8 @@
     <!-- Sweet alert init js-->
     <script src="{{asset('assets/js/pages/sweetalerts.init.js')}}"></script>
 
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
     <!-- App js -->
     <script src="{{ asset('assets/js/app.js') }}"></script>
 
@@ -260,5 +262,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
     <script src="https://cdn.datatables.net/buttons/3.0.0/js/buttons.html5.min.js"></script>
+
+
 
 </html>

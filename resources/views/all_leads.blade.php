@@ -1,7 +1,8 @@
-{{-- -----------------------------------------------🙏JAI SHREE RAM🚩------------------------------------------------------------- --}}
+{{-- -----------------------------------------------🙏JAI SHREE
+RAM🚩------------------------------------------------------------- --}}
 <x-app-layout>
     <div class="page-content">
-        <link rel="stylesheet" href="https://cdn.datatables.net/2.0.1/css/dataTables.dataTables.css">
+        <link rel="stylesheet" href="https://cdn.datatables.net/2.0.7/css/dataTables.dataTables.css">
         <style>
             table.dataTable th.dt-type-numeric,
             table.dataTable th.dt-type-date,
@@ -10,7 +11,7 @@
                 text-align: left !important;
             }
         </style>
-        <link rel="stylesheet" href="https://cdn.datatables.net/buttons/3.0.0/css/buttons.dataTables.css">
+        <link rel="stylesheet" href="https://cdn.datatables.net/datetime/1.5.2/css/dataTables.dateTime.min.css">
         <div class="container-fluid">
             <!-- start page title -->
             <div class="row">
@@ -44,9 +45,8 @@
                             </div>
                             <div class="d-flex align-items-end justify-content-between mt-4">
                                 <div>
-                                    <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span
-                                            class="counter-value"
-                                            data-target="{{$leadscount}}">{{$leadscount}}</span>
+                                    <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span class="counter-value"
+                                            data-target="{{ $leadscount }}">{{ $leadscount }}</span>
                                     </h4>
                                 </div>
                                 <div class="avatar-sm flex-shrink-0">
@@ -76,9 +76,8 @@
                             </div>
                             <div class="d-flex align-items-end justify-content-between mt-4">
                                 <div>
-                                    <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span
-                                            class="counter-value"
-                                            data-target="{{$bookedleads}}">{{$bookedleads}}</span>
+                                    <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span class="counter-value"
+                                            data-target="{{ $bookedleads }}">{{ $bookedleads }}</span>
                                     </h4>
                                 </div>
                                 <div class="avatar-sm flex-shrink-0">
@@ -108,9 +107,8 @@
                             </div>
                             <div class="d-flex align-items-end justify-content-between mt-4">
                                 <div>
-                                    <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span
-                                            class="counter-value"
-                                            data-target="{{$purchasedleads}}">{{$purchasedleads}}</span>
+                                    <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span class="counter-value"
+                                            data-target="{{ $purchasedleads }}">{{ $purchasedleads }}</span>
                                     </h4>
                                 </div>
                                 <div class="avatar-sm flex-shrink-0">
@@ -140,9 +138,8 @@
                             </div>
                             <div class="d-flex align-items-end justify-content-between mt-4">
                                 <div>
-                                    <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span
-                                            class="counter-value"
-                                            data-target="{{$closedleads}}">{{$closedleads}}</span>
+                                    <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span class="counter-value"
+                                            data-target="{{ $closedleads }}">{{ $closedleads }}</span>
                                     </h4>
                                 </div>
                                 <div class="avatar-sm flex-shrink-0">
@@ -169,11 +166,13 @@
                                             class="col-sm-auto d-flex justify-content-sm-start gap-2 align-items-end flex-wrap">
                                             <div>
                                                 <label for="exampleInputdate" class="form-label">From</label>
-                                                <input type="date" name="datefrom" class="form-control" id="datefrom">
+                                                <input type="date" name="datefrom" class="form-control"
+                                                    id="datefrom">
                                             </div>
                                             <div>
                                                 <label for="exampleInputdate" class="form-label">To</label>
-                                                <input type="date" name="dateto" class="form-control" id="dateto">
+                                                <input type="date" name="dateto" class="form-control"
+                                                    id="dateto">
                                             </div>
                                             <div>
                                                 <button type="button" class="btn btn-success add-btn datebtn"><i
@@ -188,68 +187,258 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-xxl-12">
                     <div class="card">
-                        @if ($mymess = Session::get('success'))
-                        <div class="alert border-0 alert-success text-center" role="alert" id="successAlert">
-                            <strong>{{ $mymess }}</strong>
-                        </div>
-                        @endif
-                        @if ($mymess = Session::get('error'))
-                        <div class="alert border-0 alert-danger text-center" role="alert" id="dangerAlert">
-                            <strong>{{ $mymess }}</strong>
-                        </div>
-                        @endif
-                        <div class="card-header align-items-center d-flex">
+                        {{-- <div class="card-header align-items-center d-flex">
                             <h4 class="card-title mb-0 flex-grow-1">All Leads</h4>
                             <div class="flex-shrink-0">
                             </div>
-                        </div>
-                        <div class="card-body table-responsive">
-                            <table id="example" class="table table-nowrap table-bordered" style="width:100%">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">ID</th>
-                                        <th scope="col">Lead Date</th>
-                                        <th scope="col">Customer Name</th>
-                                        <th scope="col">Mobile No.</th>
-                                        <th scope="col">Customer Status</th>
-                                        <th scope="col">Vehicle Name</th>
-                                        <th scope="col">Update Lead Status</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="tablebody">
-                                    @foreach ($leaddata as $index => $row )
-                                    <tr>
-                                        <th scope="row" class="fw-semibold">{{$index + 1}}</th>
-                                        <td>{{$row->created_at->format('d/m/y')}}</td>
-                                        <td>{{$row->name}}</td>
-                                        <td>{{$row->phoneno}}</td>
-                                        <td>{{$row->customerstatus}}</td>
-                                        <td>{{$row->vehiclename}}</td>
-                                        <td>
-                                            <select class="form-select leadstatus"
-                                                id="inputGroupSelect01_${{$row->id}}">
-                                                <option selected>Choose...</option>
-                                                <option value="Closed" {{$row->leadstatus == 'Closed' ? 'selected' :
-                                                    ''}}>Closed</option>
-                                                <option value="Purchased" {{$row->leadstatus == 'Purchased' ? 'selected'
-                                                    : ''}}>Purchased</option>
-                                                <option value="Booked" {{$row->leadstatus == 'Booked' ? 'selected' :
-                                                    ''}}>Booked</option>
-                                            </select>
-                                            <input type="hidden" name="leadid" value="{{$row->id}}" class="leadid">
-                                        </td>
-                                    </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                            {{-- <div class="pagination justify-content-end">
-                                {{ $leaddata->links('pagination::bootstrap-4') }}
-                                <!--Pagination-->
-                            </div> --}}
-                        </div>
+                        </div> --}}
+                        <div class="card-body">
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-pills nav-border-top nav-justified gap-2 mb-3 " role="tablist">
+                                <li class="nav-item waves-effect waves-light">
+                                    <a class="nav-link active tabtype" data-value="customerleads"
+                                        data-bs-toggle="tab" href="#animation-home" role="tab">
+                                        Customer Leads
+                                    </a>
+                                </li>
+                                <li class="nav-item waves-effect waves-light">
+                                    <a class="nav-link tabtype" data-value="testrideleads" data-bs-toggle="tab"
+                                        href="#animation-profile" role="tab">
+                                        Test Ride Leads
+                                    </a>
+                                </li>
+                                <li class="nav-item waves-effect waves-light">
+                                    <a class="nav-link tabtype" data-value="requestleads" data-bs-toggle="tab"
+                                        href="#animation-messages" role="tab">
+                                        Request Leads
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="tab-content text-muted">
+                                <div class="tab-pane active" id="animation-home" role="tabpanel">
+                                    <div class="d-flex">
+                                        <div class="flex-grow-1 ms-2">
+                                            <div class="card">
+                                                @if ($mymess = Session::get('success'))
+                                                    <div class="alert border-0 alert-success text-center"
+                                                        role="alert" id="successAlert">
+                                                        <strong>{{ $mymess }}</strong>
+                                                    </div>
+                                                @endif
+                                                @if ($mymess = Session::get('error'))
+                                                    <div class="alert border-0 alert-danger text-center"
+                                                        role="alert" id="dangerAlert">
+                                                        <strong>{{ $mymess }}</strong>
+                                                    </div>
+                                                @endif
+                                                <div class="card-header align-items-center d-flex">
+                                                    <h4 class="card-title mb-0 flex-grow-1">All Leads</h4>
+                                                    <div class="flex-shrink-0">
+                                                    </div>
+                                                </div>
+                                                <div class="card-body table-responsive">
+                                                    <table id="example" class="table table-nowrap table-bordered"
+                                                        style="width:100%">
+                                                        <thead>
+                                                            <tr>
+                                                                <th scope="col">ID</th>
+                                                                <th scope="col">Lead Date</th>
+                                                                <th scope="col">Customer Name</th>
+                                                                <th scope="col">Mobile No.</th>
+                                                                <th scope="col">Customer Status</th>
+                                                                <th scope="col">Vehicle Name</th>
+                                                                <th scope="col">Update Lead Status</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="tablebody">
+                                                            @foreach ($leaddata as $index => $row)
+                                                                <tr>
+                                                                    <th scope="row" class="fw-semibold">
+                                                                        {{ $index + 1 }}</th>
+                                                                    <td>{{ $row->created_at->format('d/m/y') }}</td>
+                                                                    <td>{{ $row->name }}</td>
+                                                                    <td>{{ $row->phoneno }}</td>
+                                                                    <td>{{ $row->customerstatus }}</td>
+                                                                    <td>{{ $row->vehiclename }}</td>
+                                                                    <td>
+                                                                        <select class="form-select leadstatus"
+                                                                            id="inputGroupSelect01_${{ $row->id }}">
+                                                                            <option selected>Choose...</option>
+                                                                            <option value="Closed"
+                                                                                {{ $row->leadstatus == 'Closed' ? 'selected' : '' }}>
+                                                                                Closed</option>
+                                                                            <option value="Purchased"
+                                                                                {{ $row->leadstatus == 'Purchased' ? 'selected' : '' }}>
+                                                                                Purchased</option>
+                                                                            <option value="Booked"
+                                                                                {{ $row->leadstatus == 'Booked' ? 'selected' : '' }}>
+                                                                                Booked</option>
+                                                                        </select>
+                                                                        <input type="hidden" name="leadid"
+                                                                            value="{{ $row->id }}"
+                                                                            class="leadid">
+                                                                    </td>
+                                                                </tr>
+                                                            @endforeach
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="animation-profile" role="tabpanel">
+                                    <div class="d-flex mt-2">
+                                        <div class="flex-grow-1 ms-2">
+                                            <div class="card">
+                                                @if ($mymess = Session::get('success'))
+                                                    <div class="alert border-0 alert-success text-center"
+                                                        role="alert" id="successAlert">
+                                                        <strong>{{ $mymess }}</strong>
+                                                    </div>
+                                                @endif
+                                                @if ($mymess = Session::get('error'))
+                                                    <div class="alert border-0 alert-danger text-center"
+                                                        role="alert" id="dangerAlert">
+                                                        <strong>{{ $mymess }}</strong>
+                                                    </div>
+                                                @endif
+                                                <div class="card-header align-items-center d-flex">
+                                                    <h4 class="card-title mb-0 flex-grow-1">Test Ride Leads</h4>
+                                                    <div class="flex-shrink-0">
+                                                    </div>
+                                                </div>
+                                                <div class="card-body table-responsive">
+                                                    <table id="exampletestride"
+                                                        class="table table-nowrap table-bordered" style="width:100%">
+                                                        <thead>
+                                                            <tr>
+                                                                <th scope="col">ID</th>
+                                                                <th scope="col">Lead Date</th>
+                                                                <th scope="col">Customer Name</th>
+                                                                <th scope="col">Mobile No.</th>
+                                                                <th scope="col">Type</th>
+                                                                <th scope="col">Vehicle Name</th>
+                                                                <th scope="col">Update Lead Status</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="tablebodytestride">
+                                                            @foreach ($testrideleads as $index => $testride)
+                                                                <tr>
+                                                                    <th scope="row" class="fw-semibold">
+                                                                        {{ $index + 1 }}</th>
+                                                                    <td>{{ $testride->created_at->format('d/m/y') }}
+                                                                    </td>
+                                                                    <td>{{ $testride->customername }}</td>
+                                                                    <td>{{ $testride->customerphoneno }}</td>
+                                                                    <td>{{ $testride->type }}</td>
+                                                                    <td>{{ $testride->vehicle }}</td>
+                                                                    <td>
+                                                                        <select class="form-select testrideleadstatus"
+                                                                            id="inputGroupSelect01_${{ $testride->id }}">
+                                                                            <option selected>Choose...</option>
+                                                                            <option value="Closed"
+                                                                                {{ $testride->leadstatus == 'Closed' ? 'selected' : '' }}>
+                                                                                Closed</option>
+                                                                            <option value="Purchased"
+                                                                                {{ $testride->leadstatus == 'Purchased' ? 'selected' : '' }}>
+                                                                                Purchased</option>
+                                                                            <option value="Booked"
+                                                                                {{ $testride->leadstatus == 'Booked' ? 'selected' : '' }}>
+                                                                                Booked</option>
+                                                                        </select>
+                                                                        <input type="hidden" name="leadid"
+                                                                            value="{{ $testride->id }}"
+                                                                            class="leadid">
+                                                                    </td>
+                                                                </tr>
+                                                            @endforeach
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="animation-messages" role="tabpanel">
+                                    <div class="d-flex mt-2">
+                                        <div class="flex-grow-1 ms-2">
+                                            <div class="card">
+                                                @if ($mymess = Session::get('success'))
+                                                    <div class="alert border-0 alert-success text-center"
+                                                        role="alert" id="successAlert">
+                                                        <strong>{{ $mymess }}</strong>
+                                                    </div>
+                                                @endif
+                                                @if ($mymess = Session::get('error'))
+                                                    <div class="alert border-0 alert-danger text-center"
+                                                        role="alert" id="dangerAlert">
+                                                        <strong>{{ $mymess }}</strong>
+                                                    </div>
+                                                @endif
+                                                <div class="card-header align-items-center d-flex">
+                                                    <h4 class="card-title mb-0 flex-grow-1">Request Leads</h4>
+                                                    <div class="flex-shrink-0">
+                                                    </div>
+                                                </div>
+                                                <div class="card-body table-responsive">
+                                                    <table id="examplemakereq"
+                                                        class="table table-nowrap table-bordered" style="width:100%">
+                                                        <thead>
+                                                            <tr>
+                                                                <th scope="col">ID</th>
+                                                                <th scope="col">Lead Date</th>
+                                                                <th scope="col">Requested Phone Number</th>
+                                                                <th scope="col">Request Comments</th>
+                                                                <th scope="col">Update Lead Status</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="tablebodymakereq">
+                                                            @foreach ($makerequestleads as $index => $makereq)
+                                                                <tr>
+                                                                    <th scope="row" class="fw-semibold">
+                                                                        {{ $index + 1 }}</th>
+                                                                    <td>{{ $makereq->created_at->format('d/m/y') }}
+                                                                    </td>
+                                                                    <td>{{ $makereq->requestphoneno }}</td>
+                                                                    <td>{{ $makereq->requestcomments }}</td>
+                                                                    <td>
+                                                                        <select class="form-select makerequestleads"
+                                                                            id="inputGroupSelect01_${{ $makereq->id }}">
+                                                                            <option selected>Choose...</option>
+                                                                            <option value="Closed"
+                                                                                {{ $makereq->leadstatus == 'Closed' ? 'selected' : '' }}>
+                                                                                Closed</option>
+                                                                            <option value="Purchased"
+                                                                                {{ $makereq->leadstatus == 'Purchased' ? 'selected' : '' }}>
+                                                                                Purchased</option>
+                                                                            <option value="Booked"
+                                                                                {{ $makereq->leadstatus == 'Booked' ? 'selected' : '' }}>
+                                                                                Booked</option>
+                                                                        </select>
+                                                                        <input type="hidden" name="leadid"
+                                                                            value="{{ $makereq->id }}"
+                                                                            class="leadid">
+                                                                    </td>
+                                                                </tr>
+                                                            @endforeach
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- end card-body -->
                     </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+
                 </div>
             </div>
         </div>
@@ -269,63 +458,159 @@
 
             });
         });
-    </script>
-    <script>
         $(document).ready(function() {
-            $('.datebtn').on('click', function() {
-                var datefrom = $('#datefrom').val();
-                var dateto = $('#dateto').val();
-                console.log(datefrom);
-                console.log(dateto);
-
-                $.ajax({
-                    url: '/datefilterleads',
-                    method: 'POST',
-                    data: {
-                        datefrom: datefrom,
-                        dateto: dateto
-                    },
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    success: function(response) {
-                        console.log(response);
-                        $('#tablebody').empty();
-                        response.forEach(function(row) {
-                            var formattedDate = new Date(row.created_at)
-                                .toLocaleDateString('en-GB', {
-                                    day: 'numeric',
-                                    month: 'short',
-                                    year: 'numeric'
-                                });
-                            var newRow = `
-                        <tr>
-                            <th scope="row" class="fw-semibold">${row.id}</th>
-                            <td>${formattedDate}</td>
-                            <td>${row.name}</td>
-                            <td>${row.phoneno}</td>
-                            <td>${row.customerstatus}</td>
-                            <td>
-                                <select class="form-select leadstatus" id="inputGroupSelect01_${row.id}">
-                                    <option selected>Choose...</option>
-                                    <option value="Closed" ${row.leadstatus == 'Closed' ? 'selected' : ''}>Closed</option>
-                                    <option value="Purchased" ${row.leadstatus == 'Purchased' ? 'selected' : ''}>Purchased</option>
-                                    <option value="Booked" ${row.leadstatus == 'Booked' ? 'selected' : ''}>Booked</option>
-                                </select>
-                                <input type="hidden" name="leadid" value="${row.id}" class="leadid">
-                            </td>
-                        </tr>
-                    `;
-                            $('#tablebody').append(newRow);
-                        });
-                    },
-                    error: function(error) {
-                        console.error(error);
+            $('#exampletestride').DataTable({
+                layout: {
+                    topStart: {
+                        buttons: ['copy', 'csv', 'excel', 'pdf', 'print']
                     }
-                });
+                },
+
+            });
+        });
+        $(document).ready(function() {
+            $('#examplemakereq').DataTable({
+                layout: {
+                    topStart: {
+                        buttons: ['copy', 'csv', 'excel', 'pdf', 'print']
+                    }
+                },
+
             });
         });
     </script>
+    {{-- Date Filter Code -----------------------DEKHA Bhul gaya naa tu aagaya naa main kaam --}}
+   <script>
+        $(document).ready(function() {
+    var selectedType = 'customerleads';
+
+    // When a tab is clicked, update the selectedType
+    $('.tabtype').on('click', function() {
+        selectedType = $(this).data('value');
+    });
+
+    $('.datebtn').on('click', function() {
+        var datefrom = $('#datefrom').val();
+        var dateto = $('#dateto').val();
+
+        console.log(datefrom);
+        console.log(dateto);
+        console.log(selectedType);
+
+        $.ajax({
+            url: '/datefilterleads',
+            method: 'POST',
+            data: {
+                datefrom: datefrom,
+                dateto: dateto,
+                type: selectedType,
+            },
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function(response) {
+                console.log("Filtered data : ", response);
+
+                if (selectedType== 'customerleads') {
+                    $('#tablebody').empty();
+                    response.forEach(function(row) {
+                        var formattedDate = new Date(row.created_at).toLocaleDateString('en-GB', {
+                            day: 'numeric',
+                            month: 'short',
+                            year: 'numeric'
+                        });
+                        var newRow = `
+                            <tr>
+                                <th scope="row" class="fw-semibold">${row.id}</th>
+                                <td>${formattedDate}</td>
+                                <td>${row.name}</td>
+                                <td>${row.phoneno}</td>
+                                <td>${row.customerstatus}</td>
+                                <td>${row.vehiclename}</td>
+                                <td>
+                                    <select class="form-select leadstatus" id="inputGroupSelect01_${row.id}">
+                                        <option selected>Choose...</option>
+                                        <option value="Closed" ${row.leadstatus == 'Closed' ? 'selected' : ''}>Closed</option>
+                                        <option value="Purchased" ${row.leadstatus == 'Purchased' ? 'selected' : ''}>Purchased</option>
+                                        <option value="Booked" ${row.leadstatus == 'Booked' ? 'selected' : ''}>Booked</option>
+                                    </select>
+                                    <input type="hidden" name="leadid" value="${row.id}" class="leadid">
+                                </td>
+                            </tr>
+                        `;
+                        $('#tablebody').append(newRow);
+                    });
+                }
+
+                if (selectedType == 'testrideleads') {
+                    $('#tablebodytestride').empty();
+                    response.forEach(function(row) {
+                        var formattedDate = new Date(row.created_at).toLocaleDateString('en-GB', {
+                            day: 'numeric',
+                            month: 'short',
+                            year: 'numeric'
+                        });
+                        var newRow = `
+                            <tr>
+                                <th scope="row" class="fw-semibold">${row.id}</th>
+                                <td>${formattedDate}</td>
+                                <td>${row.customername}</td>
+                                <td>${row.customerphoneno}</td>
+                                <td>${row.type}</td>
+                                <td>${row.vehicle}</td>
+                                <td>
+                                    <select class="form-select leadstatus" id="inputGroupSelect01_${row.id}">
+                                        <option selected>Choose...</option>
+                                        <option value="Closed" ${row.leadstatus == 'Closed' ? 'selected' : ''}>Closed</option>
+                                        <option value="Purchased" ${row.leadstatus == 'Purchased' ? 'selected' : ''}>Purchased</option>
+                                        <option value="Booked" ${row.leadstatus == 'Booked' ? 'selected' : ''}>Booked</option>
+                                    </select>
+                                    <input type="hidden" name="leadid" value="${row.id}" class="leadid">
+                                </td>
+                            </tr>
+                        `;
+                        $('#tablebodytestride').append(newRow);
+                    });
+                }
+
+                if (selectedType == 'requestleads') {
+                    $('#tablebodymakereq').empty();
+                    response.forEach(function(row) {
+                        var formattedDate = new Date(row.created_at).toLocaleDateString('en-GB', {
+                            day: 'numeric',
+                            month: 'short',
+                            year: 'numeric'
+                        });
+                        var newRow = `
+                            <tr>
+                                <th scope="row" class="fw-semibold">${row.id}</th>
+                                <td>${formattedDate}</td>
+                                <td>${row.requestphoneno}</td>
+                                <td>${row.requestcomments}</td>
+                                <td>
+                                    <select class="form-select leadstatus" id="inputGroupSelect01_${row.id}">
+                                        <option selected>Choose...</option>
+                                        <option value="Closed" ${row.leadstatus == 'Closed' ? 'selected' : ''}>Closed</option>
+                                        <option value="Purchased" ${row.leadstatus == 'Purchased' ? 'selected' : ''}>Purchased</option>
+                                        <option value="Booked" ${row.leadstatus == 'Booked' ? 'selected' : ''}>Booked</option>
+                                    </select>
+                                    <input type="hidden" name="leadid" value="${row.id}" class="leadid">
+                                </td>
+                            </tr>
+                        `;
+                        $('#tablebodymakereq').append(newRow);
+                    });
+                }
+            },
+            error: function(error) {
+                console.error(error);
+            }
+        });
+    });
+});
+
+   </script>
+    {{-- Bassss hawaaaaa nickl gaiiii😂😂😂 --}}
     <script>
         $(document).ready(function() {
             var leadid;
@@ -338,6 +623,66 @@
                 //Updating Lead Status
                 $.ajax({
                     url: '/updateleadstatus',
+                    method: 'POST',
+                    data: {
+                        status: selectedStatus,
+                        record_id: leadid
+                    },
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(response) {
+                        console.log(response);
+                    },
+                    error: function(error) {
+                        console.error(error);
+                    }
+                });
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            var leadid;
+            $('.testrideleadstatus').change(function() {
+                var selectedStatus = $(this).val();
+                leadid = $(this).closest('td').find('.leadid').val();
+                console.log(leadid);
+                console.log(selectedStatus);
+
+                //Updating Lead Status
+                $.ajax({
+                    url: '/updatetestrideleadstatus',
+                    method: 'POST',
+                    data: {
+                        status: selectedStatus,
+                        record_id: leadid
+                    },
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(response) {
+                        console.log(response);
+                    },
+                    error: function(error) {
+                        console.error(error);
+                    }
+                });
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            var leadid;
+            $('.makerequestleads').change(function() {
+                var selectedStatus = $(this).val();
+                leadid = $(this).closest('td').find('.leadid').val();
+                console.log(leadid);
+                console.log(selectedStatus);
+
+                //Updating Lead Status
+                $.ajax({
+                    url: '/updatemakerequestleads',
                     method: 'POST',
                     data: {
                         status: selectedStatus,

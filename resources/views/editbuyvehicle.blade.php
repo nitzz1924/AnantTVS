@@ -49,28 +49,17 @@
                                     <div class="row gy-4">
                                         <div class="col-lg-3 col-md-6">
                                             <div>
-                                                <label for="placeholderInput" class="form-label">Select Vehicle
-                                                    Type</label>
-                                                <select name="type" class="form-select mb-3"
-                                                    aria-label="Default select example" id="vehicletypeid" disabled>
-                                                    <option value="">select vehicle type</option>
-                                                    {{-- @foreach ($masterdata as $row)
-                                                        <option value="{{ $row->value }}">
-                                                            {{ $row->value }}
-                                                        </option>
-                                                    @endforeach --}}
-                                                </select>
+                                                <label for="placeholderInput" class="form-label">Vehicle Modal</label>
+                                                <input type="text" class="form-control" id="placeholderInput"
+                                                    placeholder="enter chassis number" value="{{ $row->vehicle_id }}" name="chassisnumber" disabled>
                                             </div>
                                         </div>
                                         {{-- <input type="hidden" name="customerid" value="{{ $customerid }}"> --}}
                                         <div class="col-lg-3 col-md-6">
                                             <div>
-                                                <label for="placeholderInput" class="form-label">Select your
-                                                    Vehicle</label>
-                                                <select name="vehicle" class="form-select mb-3"
-                                                    aria-label="Default select example" id="vehiclenameid" disabled>
-
-                                                </select>
+                                                <label for="placeholderInput" class="form-label">Vehicle Category</label>
+                                                <input type="text" class="form-control" id="placeholderInput"
+                                                    placeholder="enter chassis number" value="{{ $row->vehicletype }}" name="chassisnumber" disabled>
                                             </div>
                                         </div>
                                         <div class="col-lg-3 col-md-6">
@@ -82,16 +71,9 @@
                                         </div>
                                         <div class="col-lg-3 col-md-6">
                                             <div>
-                                                <label for="placeholderInput" class="form-label">Select Color</label>
-                                                <select name="color" class="form-select mb-3"
-                                                    aria-label="Default select example" id="vehicletypeid" disabled>
-                                                    <option value="">select color</option>
-                                                    {{-- @foreach ($mastercolor as $row)
-                                                        <option value="{{ $row->value }}">
-                                                            {{ $row->value }}
-                                                        </option>
-                                                    @endforeach --}}
-                                                </select>
+                                                <label for="placeholderInput" class="form-label">Vehicle Modal</label>
+                                                <input type="text" class="form-control" id="placeholderInput"
+                                                    placeholder="enter chassis number" value="{{ $row->color }}" name="chassisnumber" disabled>
                                             </div>
                                         </div>
                                     </div>

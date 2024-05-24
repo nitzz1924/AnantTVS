@@ -101,6 +101,9 @@
                         </div>
                     </div>
                 @endforeach
+                <div class="pagination justify-content-end">
+                    {{ $allvehicles->links('pagination::bootstrap-4') }} <!--Pagination-->
+                </div>
             </div>
         </div>
     </div>

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\VehicleStock;
 use Illuminate\Validation\ValidationException;
 use App\Models\BuyVehicle;
@@ -11,6 +12,8 @@ use App\Models\Vehicle;
 use App\Models\TestRide;
 use App\Models\MakeRequest;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Concerns\ToArray;
+
 class StoreController extends Controller
 {
     public function createvehicle(Request $req)
@@ -34,7 +37,7 @@ class StoreController extends Controller
             $data->discription = $req->discription;
             $data->status = 1;
 
-             //Single Image Upload
+            //Single Image Upload
             if ($req->hasFile('bannerimage')) {
                 $bannerimage = $req->file('bannerimage');
                 $bannerimagePath = time() . '.' . $bannerimage->getClientOriginalExtension();
@@ -92,6 +95,32 @@ class StoreController extends Controller
         $id = $req->record_id;
         $status = $req->status;
         $data = Lead::find($id);
+        if (!$data) {
+            return response()->json(['error' => 'Record not found'], 404);
+        }
+        // Update the status
+        $data->leadstatus = $status;
+        $data->save();
+        return response()->json(['message' => 'Lead Status updated']);
+    }
+    public function updatetestrideleadstatus(Request $req)
+    {
+        $id = $req->record_id;
+        $status = $req->status;
+        $data = TestRide::find($id);
+        if (!$data) {
+            return response()->json(['error' => 'Record not found'], 404);
+        }
+        // Update the status
+        $data->leadstatus = $status;
+        $data->save();
+        return response()->json(['message' => 'Lead Status updated']);
+    }
+    public function updatemakerequestleads(Request $req)
+    {
+        $id = $req->record_id;
+        $status = $req->status;
+        $data = MakeRequest::find($id);
         if (!$data) {
             return response()->json(['error' => 'Record not found'], 404);
         }
@@ -178,7 +207,7 @@ class StoreController extends Controller
                 'invoiceimage' => $imagePathinvoice,
                 'insuranceimage' => $imagePathinsurance,
             ]);
-            $stockdata = VehicleStock::where('frameno','=',$req->chassisnumber)->first();
+            $stockdata = VehicleStock::where('frameno', '=', $req->chassisnumber)->first();
             $stockdata->update([
                 'status' => 1,
             ]);
@@ -197,12 +226,12 @@ class StoreController extends Controller
                 'phoneno' => 'required'
             ]);
             $lead = Lead::create([
-                'customerstatus'=>$req->customerstatus,
+                'customerstatus' => $req->customerstatus,
                 'name' => $req->name,
                 'phoneno' => $req->phoneno,
                 'vehiclename' => $req->vehiclename,
                 'randomno' => "1234",
-                'verifystatus'=> "1",
+                'verifystatus' => "1",
             ]);
             return back()->with('success', 'We will reach you soon..!!!');
         } catch (\Exception $e) {
@@ -215,10 +244,10 @@ class StoreController extends Controller
         // dd($req->all());
         $randomNumber = rand(100000, 999999);
         $data = new Lead;
-        $data->name=$req->input('newcustomername');
-        $data->phoneno=$req->input('newcustomerphone');
+        $data->name = $req->input('newcustomername');
+        $data->phoneno = $req->input('newcustomerphone');
         $data->customerstatus = $req->input('customerstatus');
-        $data->randomno=$randomNumber;
+        $data->randomno = $randomNumber;
         $data->save();
         $responseData = [
             'msg' => 'success',
@@ -232,11 +261,11 @@ class StoreController extends Controller
         // return $request->post();
         $randomNumber = rand(100000, 999999);
         $data = new TestRide;
-        $data->customername=$request->input('customername');
-        $data->customerphoneno=$request->input('customerphoneno');
-        $data->type=$request->input('type');
-        $data->vehicle=$request->input('vehicle');
-        $data->randomno=$randomNumber;
+        $data->customername = $request->input('customername');
+        $data->customerphoneno = $request->input('customerphoneno');
+        $data->type = $request->input('type');
+        $data->vehicle = $request->input('vehicle');
+        $data->randomno = $randomNumber;
         $data->save();
         $responseDatatest = [
             'msg' => 'success',
@@ -247,18 +276,18 @@ class StoreController extends Controller
 
     public function create_makerequest(Request $req)
     {
-         // return $req->post();
-         $randomNumber = rand(100000, 999999);
-         $data = new MakeRequest;
-         $data->requestphoneno=$req->input('requestphoneno');
-         $data->requestcomments=$req->input('requestcomments');
-         $data->randomno=$randomNumber;
-         $data->save();
-         $responseDatareq = [
-             'msg' => 'success',
-             'data' => $data->toArray(),
-         ];
-         return response()->json($responseDatareq);
+        // return $req->post();
+        $randomNumber = rand(100000, 999999);
+        $data = new MakeRequest;
+        $data->requestphoneno = $req->input('requestphoneno');
+        $data->requestcomments = $req->input('requestcomments');
+        $data->randomno = $randomNumber;
+        $data->save();
+        $responseDatareq = [
+            'msg' => 'success',
+            'data' => $data->toArray(),
+        ];
+        return response()->json($responseDatareq);
     }
 
     public function updateimages(Request $req)
@@ -273,31 +302,62 @@ class StoreController extends Controller
         unset($imageArray[$index]);
 
         //converted to string
-        $imageArray = implode(',',$imageArray);
+        $imageArray = implode(',', $imageArray);
 
 
-        try{
-            Vehicle::where('id',$id)->update([
-                'image'=>$imageArray
+        try {
+            Vehicle::where('id', $id)->update([
+                'image' => $imageArray
             ]);
-        }catch (\Exception $e) {
+        } catch (\Exception $e) {
             dd($e->getMessage());
         }
     }
 
     public function datefilterleads(Request $req)
     {
+
         $datefrom = $req->input('datefrom');
         $dateto = $req->input('dateto');
-        $data = Lead::whereBetween('created_at',[$datefrom,$dateto])->get();
+        $type = $req->input('type');
+        // dd($type);
+        $data = '';
+        if ($type == 'testrideleads') {
+            $data = TestRide::whereBetween('created_at', [$datefrom, $dateto])->get();
+        }
+        if ($type == 'customerleads') {
+            $data = Lead::whereBetween('created_at', [$datefrom, $dateto])->get();
+        } else {
+            $data = Lead::whereBetween('created_at', [$datefrom, $dateto])->get();
+        }
+        if ($type == 'requestleads') {
+            $data = MakeRequest::whereBetween('created_at', [$datefrom, $dateto])->get();
+            // dd($data);
+        }
         return response()->json($data);
     }
     public function datefiltercustomers(Request $req)
     {
         $datefrom = $req->input('datefrom');
         $dateto = $req->input('dateto');
-        $customerdata = Customer::whereBetween('created_at',[$datefrom,$dateto])->get();
+        $customerdata = Customer::whereBetween('created_at', [$datefrom, $dateto])->get();
         return response()->json($customerdata);
     }
 
+    public function datefilteroutofstock(Request $req)
+    {
+        // dd($req->all());
+        $datefrom = $req->input('datefrom');
+        $dateto = $req->input('dateto');
+        $status = $req->input('status');  // haan baii ye jo status hai na ye aaa raha hai apne URL se.....
+        $data = VehicleStock::whereBetween('created_at', [$datefrom, $dateto])->where('status',$status)->get();
+        return response()->json($data);
+    }
+
+    public function deletestock($id)
+    {
+        $data = VehicleStock::find($id);
+        $data->delete();
+        return back()->with('success',"Deleted.>!!!");
+    }
 }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 17, 2024 at 03:13 PM
+-- Generation Time: May 24, 2024 at 09:37 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -34,9 +34,9 @@ CREATE TABLE `buy_vehicles` (
   `vehicletype` varchar(255) NOT NULL,
   `chassisnumber` varchar(255) NOT NULL,
   `color` varchar(255) NOT NULL,
-  `rcnumber` varchar(255) NOT NULL,
-  `invoicenumber` varchar(255) NOT NULL,
-  `insuranceid` varchar(255) NOT NULL,
+  `rcnumber` varchar(255) DEFAULT NULL,
+  `invoicenumber` varchar(255) DEFAULT NULL,
+  `insuranceid` varchar(255) DEFAULT NULL,
   `rcimage` text DEFAULT NULL,
   `invoiceimage` text DEFAULT NULL,
   `status` varchar(255) NOT NULL DEFAULT '0',
@@ -51,14 +51,9 @@ CREATE TABLE `buy_vehicles` (
 --
 
 INSERT INTO `buy_vehicles` (`id`, `customer_id`, `vehicle_id`, `vehicletype`, `chassisnumber`, `color`, `rcnumber`, `invoicenumber`, `insuranceid`, `rcimage`, `invoiceimage`, `status`, `numberplatestatus`, `insuranceimage`, `created_at`, `updated_at`) VALUES
-(5, '1', '12', 'Bike', '201HAR8', 'Black', '123456', '12345', '12345', '1704350557.webp', '1704350557.webp', '0', 'In Process', '1704350557.webp', '2024-01-04 01:12:37', '2024-01-05 07:13:02'),
-(6, '3', '8', 'Cars', '201Y', 'Black', '133455', 'RRR', 'EEE', '1704441068.pdf', '1704441068.pdf', '0', 'In Process', '1704441068.pdf', '2024-01-04 01:34:08', '2024-01-05 02:21:08'),
-(7, '1', '9', 'Cars', '201GAAA', 'Dark Blue', '1288AAAA', 'AAA', 'BBB', 'C:\\xampp\\tmp\\php9913.tmp', 'C:\\xampp\\tmp\\php9914.tmp', '0', 'In Process', 'C:\\xampp\\tmp\\php9925.tmp', '2024-01-04 02:15:43', '2024-01-05 02:04:17'),
-(8, '3', '13', 'Bike', '301Ydfgdf', 'White', '123AA', 'AAA', 'BBB', '1704444187.pdf', '1704444187.pdf', '0', 'In Process', '1704444187.pdf', '2024-01-04 04:42:50', '2024-01-05 03:13:07'),
-(10, '6', '13', 'Bike', 'QQQQ2', 'Black', '12345689109', 'AAA', 'BBB', '1705570981.jpg', '1705570981.jpg', '0', 'In Process', '1705570981.jpg', '2024-01-18 04:13:02', '2024-01-18 04:13:02'),
-(11, '1', '15', 'Motorcycles', '121212ddd', 'Dark Blue', '1232qqq', '4565465', '321321ttt4443331221', '1709187565.pdf', '1709187565.pdf', '0', 'fitted', '1709187565.pdf', '2024-02-29 00:49:25', '2024-02-29 01:53:11'),
-(12, '1', '22', 'Scooters', 'mmbbbfddf222', 'Black', '65765765765', '123213123213', '21321321321', '1709202424.pdf', '1709202424.pdf', '0', 'available', '1709202424.pdf', '2024-02-29 10:27:04', '2024-02-29 12:23:07'),
-(13, '1', '16', 'Motorcycles', '67876899', 'RED', '333wwwww', '333wwwww', '333wwwww', '1712383037.pdf', '1712383037.pdf', '0', 'inproces', '1712383037.pdf', '2024-04-06 05:57:17', '2024-04-17 10:43:52');
+(24, '1', 'TVS XL 100 COM ITS-BSVI', 'Moped', 'MD621CP20R1B01024', 'TVS XL100COMFORT I-TOUCHSTART-OBDIIA G.B', NULL, NULL, NULL, NULL, NULL, '0', 'inproces', NULL, '2024-05-13 13:22:27', '2024-05-13 13:22:27'),
+(25, '1', 'TVS XL 100 COM ITS-BSVI', 'Moped', 'MD621CP20R1B01025', 'TVS XL100COMFORT I-TOUCHSTART-OBDIIA G.B', '12345689109', 'RRR', 'xxxxxxxxx', NULL, NULL, '0', 'inproces', NULL, '2024-05-22 04:41:46', '2024-05-22 04:41:46'),
+(26, '10', 'TVS XL 100 COM ITS-BSVI', 'Moped', 'MD621CP20R1B01028', 'TVS XL100COMFORT I-TOUCHSTART-OBDIIA G.B', '333wwwww', 'yyyyy', 'yyyd4544', NULL, NULL, '0', 'fitted', NULL, '2024-05-23 09:46:37', '2024-05-23 11:37:36');
 
 -- --------------------------------------------------------
 
@@ -87,7 +82,8 @@ CREATE TABLE `customers` (
 INSERT INTO `customers` (`id`, `customername`, `customerphoneno`, `customeremailaddress`, `customercity`, `customerstate`, `customercountry`, `customeraddress`, `password`, `created_at`, `updated_at`) VALUES
 (1, 'Dummy', '1234567890', 'dummy@gmail.com', 'Ajmer', 'Rajasthan', 'India', 'Dummy was here!', '$2y$10$5307wed1JII18uyred./teVlAjdsD.PR67XUGzAnhjg..aL32EHOO', '2024-01-02 05:26:43', '2024-03-09 11:05:55'),
 (7, 'AMRIT', '7665350752', 'amritsankhla64@gmail.com', 'AJMER', 'RAJASTHAN', 'INDIA', 'ADARSH NAGAR,AJMER 305001', '$2y$10$D/hfVQIYfx/Qk/QHekKHOO6kkRwPHBTeCl6PF8wx6rGIeQJUMmBUG', '2024-04-02 07:18:42', '2024-04-02 07:18:42'),
-(9, 'ASLAM MOHAMMAD', '9672912862', 'aslam@gmail.com', 'ajmer', 'rajasthan', 'india', 'TEHSIL PARBATSAR, BHAKRI MAULAS, BHAKRI MAULAS, BHAKHARI, NAGAUR 341512', '$2y$10$AAu3rvEXRGWIgfpZhxCg9OzsiVZlrM8OT/Ek0Zv1V6lQoS3ewIAsy', '2024-04-04 09:59:39', '2024-04-04 09:59:39');
+(9, 'ASLAM MOHAMMAD', '9672912862', 'aslam@gmail.com', 'ajmer', 'rajasthan', 'india', 'TEHSIL PARBATSAR, BHAKRI MAULAS, BHAKRI MAULAS, BHAKHARI, NAGAUR 341512', '$2y$10$AAu3rvEXRGWIgfpZhxCg9OzsiVZlrM8OT/Ek0Zv1V6lQoS3ewIAsy', '2024-04-04 09:59:39', '2024-04-04 09:59:39'),
+(10, 'Anjali', '9898789878', 'anj@gmail.com', 'Ajmer', 'Raj', 'India', 'This is Anjali Address', '$2y$10$vevN38VWESh71R68bB5J.uFdmuEHF9eolBE.CpvP.Aqh16P9WbVRy', '2024-05-23 09:45:46', '2024-05-23 09:45:46');
 
 -- --------------------------------------------------------
 
@@ -115,6 +111,7 @@ CREATE TABLE `leads` (
   `id` int(11) NOT NULL,
   `leadid` varchar(255) DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
+  `vehiclename` varchar(255) DEFAULT NULL,
   `phoneno` varchar(255) DEFAULT NULL,
   `randomno` varchar(255) NOT NULL,
   `verifystatus` varchar(255) NOT NULL DEFAULT '0',
@@ -128,28 +125,13 @@ CREATE TABLE `leads` (
 -- Dumping data for table `leads`
 --
 
-INSERT INTO `leads` (`id`, `leadid`, `name`, `phoneno`, `randomno`, `verifystatus`, `customerstatus`, `leadstatus`, `created_at`, `updated_at`) VALUES
-(88, NULL, 'tarun', '8619042459', '521093', '0', 'New', NULL, '2024-03-09 12:21:34', '2024-03-09 12:21:34'),
-(89, NULL, 'Dummy', '1234567890', '1234', '1', 'Existing', NULL, '2024-03-14 10:07:23', '2024-03-14 10:07:23'),
-(90, NULL, 'Dummy', '1234567890', '1234', '1', 'Existing', NULL, '2024-03-14 10:07:42', '2024-03-14 10:07:42'),
-(91, NULL, 'Dummy', '1234567890', '1234', '1', 'Existing', NULL, '2024-03-14 10:08:16', '2024-03-14 10:08:16'),
-(92, NULL, 'Dummy', '1234567890', '1234', '1', 'Existing', NULL, '2024-03-14 10:09:27', '2024-03-14 10:09:27'),
-(93, NULL, 'tarun', '8619042459', '446156', '0', 'New', NULL, '2024-03-19 11:53:22', '2024-03-19 11:53:22'),
-(94, NULL, 'Aakash', '9664322656', '210069', '0', 'New', NULL, '2024-03-22 15:19:15', '2024-03-22 15:19:15'),
-(95, NULL, 'AMRIT', '7665350752', '865663', '0', 'New', NULL, '2024-04-02 07:27:43', '2024-04-02 07:27:43'),
-(96, NULL, 'AMRIT', '7740816447', '665338', '0', 'New', NULL, '2024-04-02 07:28:51', '2024-04-02 07:28:51'),
-(97, NULL, 'Tarun sharma', '8955532977', '488286', '0', 'New', NULL, '2024-04-04 12:57:52', '2024-04-04 12:57:52'),
-(98, NULL, 'AMRIT', '7665350752', '605792', '0', 'New', NULL, '2024-04-05 05:02:21', '2024-04-05 05:02:21'),
-(99, NULL, 'hemendra kumar sharma', '8619158307', '942678', '0', 'New', 'Purchased', '2024-04-06 06:57:00', '2024-04-17 11:31:20'),
-(100, NULL, 'hemendra kumar sharma', '8619158307', '138001', '0', 'New', NULL, '2024-04-06 06:58:33', '2024-04-06 06:58:33'),
-(101, NULL, 'hemendra kumar sharma', '8619158307', '874027', '0', 'New', NULL, '2024-04-06 07:00:14', '2024-04-06 07:00:14'),
-(102, NULL, 'Saurabh', '9887265565', '790705', '0', 'New', NULL, '2024-04-09 12:47:58', '2024-04-09 12:47:58'),
-(103, NULL, 'hemendra kumar sharma', '8619158307', '497822', '0', 'New', NULL, '2024-04-11 08:50:22', '2024-04-11 08:50:22'),
-(104, NULL, 'rahul', '8409125518', '991075', '0', 'New', NULL, '2024-04-12 11:57:36', '2024-04-12 11:57:36'),
-(105, NULL, 'Raj Kumar Tanwar', '8233103367', '315009', '0', 'New', 'Purchased', '2024-04-13 03:30:30', '2024-04-17 11:29:17'),
-(106, NULL, 'Raj Kumar Tanwar', '8233103367', '704208', '0', 'New', 'Closed', '2024-04-13 03:31:24', '2024-04-17 11:28:18'),
-(107, NULL, 'hemendra kumar sharma', '8619158307', '180378', '0', 'New', 'Closed', '2024-04-13 06:19:01', '2024-04-17 11:25:37'),
-(108, NULL, 'hemendra kumar sharma', '8619158307', '930568', '0', 'New', 'Booked', '2024-04-16 09:54:33', '2024-04-17 11:20:58');
+INSERT INTO `leads` (`id`, `leadid`, `name`, `vehiclename`, `phoneno`, `randomno`, `verifystatus`, `customerstatus`, `leadstatus`, `created_at`, `updated_at`) VALUES
+(88, NULL, 'tarun', '', '8619042459', '521093', '0', 'New', 'Purchased', '2024-03-09 12:21:34', '2024-04-18 09:29:04'),
+(109, NULL, 'Dummy', '', '1234567890', '1234', '1', 'Existing', 'Booked', '2024-04-18 09:21:03', '2024-04-18 09:24:12'),
+(110, NULL, 'Dummy', '', '1234567890', '1234', '1', 'Existing', 'Purchased', '2024-04-18 09:29:15', '2024-04-18 09:29:56'),
+(111, NULL, 'Dummy', '', '1234567890', '1234', '1', 'Existing', 'Closed', '2024-04-18 09:29:20', '2024-04-18 09:47:07'),
+(112, NULL, 'Dummy', '', '1234567890', '1234', '1', 'Existing', 'Choose...', '2024-04-18 09:29:25', '2024-04-23 13:11:54'),
+(113, NULL, 'NiteshAdmin', 'TVS Ronin', '1234567890', '1234', '1', 'Existing', 'Closed', '2024-04-23 13:25:00', '2024-05-22 10:43:57');
 
 -- --------------------------------------------------------
 
@@ -161,6 +143,7 @@ CREATE TABLE `make_requests` (
   `id` int(11) NOT NULL,
   `requestphoneno` varchar(255) NOT NULL,
   `requestcomments` text NOT NULL,
+  `leadstatus` varchar(255) DEFAULT NULL,
   `randomno` varchar(255) NOT NULL,
   `verifystatus` varchar(255) NOT NULL DEFAULT '0',
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
@@ -171,10 +154,11 @@ CREATE TABLE `make_requests` (
 -- Dumping data for table `make_requests`
 --
 
-INSERT INTO `make_requests` (`id`, `requestphoneno`, `requestcomments`, `randomno`, `verifystatus`, `created_at`, `updated_at`) VALUES
-(1, '8209165518', 'dsfsdfdsf', '', '0', '2024-02-19 07:10:21', '2024-02-19 07:10:21'),
-(6, '8209165518', 'this is nitesh', '415584', '1', '2024-02-20 07:48:34', '2024-02-20 07:48:49'),
-(7, '8619158307', 'apache rtr red & black colour full specification & details', '963626', '0', '2024-04-06 07:03:33', '2024-04-06 07:03:33');
+INSERT INTO `make_requests` (`id`, `requestphoneno`, `requestcomments`, `leadstatus`, `randomno`, `verifystatus`, `created_at`, `updated_at`) VALUES
+(1, '8209165518', 'dsfsdfdsf', NULL, '', '0', '2024-02-19 07:10:21', '2024-02-19 07:10:21'),
+(6, '8209165518', 'this is nitesh', NULL, '415584', '1', '2024-02-20 07:48:34', '2024-02-20 07:48:49'),
+(7, '8619158307', 'apache rtr red & black colour full specification & details', NULL, '963626', '0', '2024-04-06 07:03:33', '2024-04-06 07:03:33'),
+(8, '8209165518', 'asdsdasdasssssssssssssssss', 'Purchased', '642551', '1', '2024-05-22 09:55:50', '2024-05-22 10:51:16');
 
 -- --------------------------------------------------------
 
@@ -310,8 +294,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('1fxk2IXt5IEVg1LGOynbDuyBdU2ylRja557Gaia6', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36', 'YTo3OntzOjY6Il90b2tlbiI7czo0MDoiNGxndlR2eHFPUHRRcG1rVVZtM3diMzZsdnBCOGtRQkhMTWdUWmRvOSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9sZWFkcyI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6MzoidXJsIjthOjA6e31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6MjE6InBhc3N3b3JkX2hhc2hfc2FuY3R1bSI7czo2MDoiJDJ5JDEwJERsQWhGcTN3UUZBYy5nWFRRajNTRU9TREdaa0dBeXguTC85Y3doaDlLallPSHFveVBiQlNhIjtzOjU6ImFsZXJ0IjthOjA6e319', 1713357828),
-('LivNqZyQwhARtphcM2XtKvXQbu85jjREIGiFQ7VM', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoidlRrOGJBMkMyOXk4VnZoNUdHOXRjVjdYMlhQeGhQakluaXhUQWhPTiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly9sb2NhbGhvc3Q6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1713348512);
+('ECoDLfJPY7pC5EOm6n71ELHrBuRtpeEfQEZ7OQtb', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36', 'YTo3OntzOjY6Il90b2tlbiI7czo0MDoiN3V6SnBnd25zYmR1ZWpWTlVhbE1lOVRqM2tISkhxUDhVR3A5U256RSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzY6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC92ZWhpY2xlc3RvY2svMSI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6MzoidXJsIjthOjA6e31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6MjE6InBhc3N3b3JkX2hhc2hfc2FuY3R1bSI7czo2MDoiJDJ5JDEwJERsQWhGcTN3UUZBYy5nWFRRajNTRU9TREdaa0dBeXguTC85Y3doaDlLallPSHFveVBiQlNhIjtzOjU6ImFsZXJ0IjthOjA6e319', 1716536138);
 
 -- --------------------------------------------------------
 
@@ -346,6 +329,7 @@ CREATE TABLE `test_rides` (
   `customerphoneno` varchar(255) NOT NULL,
   `type` varchar(255) NOT NULL,
   `vehicle` varchar(255) NOT NULL,
+  `leadstatus` varchar(255) DEFAULT NULL,
   `randomno` varchar(255) NOT NULL,
   `verifystatus` varchar(255) NOT NULL DEFAULT '0',
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
@@ -356,10 +340,10 @@ CREATE TABLE `test_rides` (
 -- Dumping data for table `test_rides`
 --
 
-INSERT INTO `test_rides` (`id`, `customername`, `customerphoneno`, `type`, `vehicle`, `randomno`, `verifystatus`, `created_at`, `updated_at`) VALUES
-(1, 'Dinesh', '8209165518', 'Bike', 'FZ', '', '0', '2024-02-19 06:32:28', '2024-02-19 06:32:28'),
-(17, 'Kane', '2222222222', 'Scooty', 'Activa 4G', '282160', '1', '2024-02-20 07:06:20', '2024-02-20 07:06:36'),
-(18, 'Kane', '2222222222', 'Bike', 'R15', '361810', '0', '2024-02-21 01:04:34', '2024-02-21 01:04:34');
+INSERT INTO `test_rides` (`id`, `customername`, `customerphoneno`, `type`, `vehicle`, `leadstatus`, `randomno`, `verifystatus`, `created_at`, `updated_at`) VALUES
+(1, 'Dinesh', '8209165518', 'Bike', 'FZ', 'Purchased', '', '0', '2024-02-19 06:32:28', '2024-05-22 10:42:04'),
+(17, 'Kane', '2222222222', 'Scooty', 'Activa 4G', NULL, '282160', '1', '2024-02-20 07:06:20', '2024-02-20 07:06:36'),
+(18, 'Kane', '2222222222', 'Bike', 'R15', NULL, '361810', '0', '2024-02-21 01:04:34', '2024-02-21 01:04:34');
 
 -- --------------------------------------------------------
 
@@ -432,6 +416,36 @@ INSERT INTO `vehicles` (`id`, `name`, `type`, `modelno`, `price`, `color`, `bann
 (33, 'APACHE   RTR', 'Motorcycles', '160 2 V', '146243', 'WHITE , BLACK ,RED ,BLUE ,GRAY', '1710498420.png', 'public/uploads/vehicle/0731460a8a5ce1626210cbf4385ae0ef.png,public/uploads/vehicle/af94ed0d6f5acc95f97170e3685f16c0.jpg,public/uploads/vehicle/59ab3ba90ae4b4ab84fe69de7b8e3f5f.jpg,public/uploads/vehicle/51f15efdd170e6043fa02a74882f0470.png', '1', 'Welcome to the world of adrenaline-pumping performance and cutting-edge design with the Apache 160 2V. Crafted to redefine your riding experience, this dynamic motorcycle combines power, style, and precision engineering to deliver an unparalleled journey on the road.\r\n\r\nPerformance:\r\nAt the heart of the Apache 160 2V lies a robust engine, meticulously designed to offer unmatched power and efficiency. Whether you\'re navigating through city streets or conquering winding highways, the Apache 160 2V\'s 160cc engine ensures a seamless blend of exhilarating acceleration and fuel economy. Experience the thrill of responsive throttle control and seamless gear shifts as you command the road with confidence.\r\n\r\nDesign:\r\nSleek and sporty, the Apache 160 2V is a visual masterpiece that commands attention wherever it goes. From its aggressive stance to its aerodynamic contours, every aspect of its design exudes a sense of power and dynamism. With its eye-catching graphics and premium finish, the Apache 160 2V stands out as a symbol of style and sophistication on the streets.\r\n\r\nFeatures:\r\nEquipped with advanced features and cutting-edge technology, the Apache 160 2V offers an unmatched riding experience. Whether it\'s the precision-engineered chassis for enhanced stability or the responsive braking system for superior control, every aspect of this motorcycle is designed to elevate your journey to new heights. With features such as LED lighting, digital instrumentation, and a comfortable seating posture, the Apache 160 2V ensures a ride that\'s as enjoyable as it is exhilarating.\r\n\r\nSafety:\r\nYour safety is our top priority, which is why the Apache 160 2V comes equipped with a range of safety features to keep you protected on every ride. From its robust frame construction to its advanced braking system, every aspect of this motorcycle is engineered to provide you with peace of mind on the road.\r\n\r\nJoin the Apache family today and experience the thrill of riding like never before. Whether you\'re a seasoned rider or a newcomer to the world of motorcycling, the Apache 160 2V promises an unforgettable journey filled with excitement, adventure, and endless possibilities.', '2024-03-15 10:27:00', '2024-03-15 10:27:00'),
 (34, 'I QUBE', 'Electric', 'S', '163100', 'WHITE ,  GRAY , BLUE', '1710500304.jpg', 'public/uploads/vehicle/3a15c7d0bbe60300a39f76f8a5ba6896.jpg,public/uploads/vehicle/80c0e8c4457441901351e4abbcf8c75c.jpg,public/uploads/vehicle/0cc6ee01c82fc49c28706e0918f57e2d.jpg,public/uploads/vehicle/cd6b73b67c77edeaff94e24b961119dd.jpg,public/uploads/vehicle/43b52842663fa6e4100c72751d08de6f.jpg,public/uploads/vehicle/8832ae39136fb470b3fbbf9f47b4570d.png', '1', 'Discover the epitome of eco-friendly urban commuting with the TVS iQube S Electric Scooter. Designed to revolutionize your daily travels, the iQube S combines cutting-edge technology with stylish aesthetics for a truly electrifying riding experience. Say goodbye to fuel emissions and hello to seamless performance as you navigate city streets with ease. Visit our website to learn more about the iQube S and join the electric revolution today.\r\n\r\nElectric scooter\r\nEco-friendly commuting\r\nUrban mobility\r\nSustainable transportation\r\nCutting-edge technology\r\nStylish design\r\nZero emissions\r\nCity travel\r\nSeamless performance\r\nElectric revolution\r\nTVS iQube S\r\nElectric vehicle innovation\r\nGreen transportation\r\nSustainable living\r\nSmart mobility solution', '2024-03-15 10:58:24', '2024-03-15 10:58:24'),
 (35, 'TVS NTORQ 125', 'Scooters', 'RACE XP', '124043', 'BLACK', '1710570981.jpg', 'public/uploads/vehicle/e9b82e4d55c91c6abbf9dedf898172a0.jpg,public/uploads/vehicle/0a65e195cb51418279b6fa8d96847a60.jpg,public/uploads/vehicle/d53697441ef12a45422f6660202f9840.jpg,public/uploads/vehicle/71e9c6620d381d60196ebe694840aaaa.jpg,public/uploads/vehicle/c2839bed26321da8b466c80a032e4714.jpg,public/uploads/vehicle/82f292a22966b857d968fb578ccbead9.jpeg', '1', 'The NTORQ Race XP Edition boasts a sleek and sporty design that exudes confidence and dynamism. With its sharp lines, bold graphics, and eye-catching colors, this scooter is sure to grab attention wherever you go. Whether you\'re cruising through city streets or making a statement at a gathering, the NTORQ Race XP Edition is guaranteed to make heads turn.\r\n\r\nBut it\'s not just about looks – this scooter is packed with power and performance to match its striking appearance. Equipped with an advanced engine and performance-tuned features, the NTORQ Race XP Edition delivers exhilarating acceleration and superior handling, ensuring an adrenaline-pumping ride every time you hit the road.\r\n\r\nStay connected and in control with the latest technology integrated into the NTORQ Race XP Edition. From the intuitive digital console with smartphone connectivity to advanced navigation features, this scooter keeps you informed and entertained throughout your journey.\r\n\r\nSafety is always a top priority, and the NTORQ Race XP Edition is equipped with cutting-edge safety features to give you peace of mind on every ride. With advanced braking systems, superior grip tires, and responsive handling, you can ride confidently knowing that you\'re protected on all fronts.\r\n\r\nExperience the thrill of the ride like never before with the TVS NTORQ Race XP Edition. Whether you\'re a seasoned rider or a newcomer to the world of scooters, this is the ultimate choice for those who demand style, performance, and excitement in every ride. Don\'t just ride – race ahead with the NTORQ Race XP Edition.\r\n\r\nDiscover the unmatched features of the TVS NTORQ Race XP Edition:\r\n\r\nPowerful Performance: Equipped with a high-performance engine, the NTORQ Race XP Edition delivers exhilarating acceleration and dynamic performance, making every ride an adventure.\r\n\r\nSporty Design: With its sleek lines, aggressive styling, and vibrant colors, the NTORQ Race XP Edition stands out from the crowd, turning heads wherever you go.\r\n\r\nAdvanced Technology: Stay connected on the go with the NTORQ Race XP Edition\'s advanced technology features, including a digital console with smartphone connectivity and navigation assistance.\r\n\r\nSuperior Handling: Engineered for precision and control, this scooter offers responsive handling and superior grip, ensuring a smooth and confident ride on any terrain.\r\n\r\nSafety First: Built with safety in mind, the NTORQ Race XP Edition comes equipped with advanced braking systems, superior grip tires, and other safety features to keep you protected on every ride.\r\n\r\nComfortable Ride: Designed with rider comfort in mind, the NTORQ Race XP Edition features ergonomic seating, ample legroom, and adjustable suspension for a smooth and enjoyable riding experience.\r\n\r\nConvenience: Enjoy added convenience with features like USB charging ports, under-seat storage, and remote keyless ignition, making your daily commute or weekend adventure hassle-free.\r\n\r\nCustomizable Experience: Personalize your ride with a range of accessories and customization options available for the NTORQ Race XP Edition, allowing you to make it truly your own.\r\n\r\nExperience the thrill of the ride like never before with the TVS NTORQ Race XP Edition – where style, performance, and technology come together to redefine the scooter experience.', '2024-03-16 06:36:21', '2024-03-16 06:36:21');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vehicle_stocks`
+--
+
+CREATE TABLE `vehicle_stocks` (
+  `id` int(11) NOT NULL,
+  `vehiclecategory` varchar(255) DEFAULT NULL,
+  `series` varchar(255) DEFAULT NULL,
+  `vehiclemodal` varchar(255) DEFAULT NULL,
+  `color` varchar(255) DEFAULT NULL,
+  `frameno` varchar(255) DEFAULT NULL,
+  `engineno` varchar(255) DEFAULT NULL,
+  `status` varchar(255) NOT NULL DEFAULT '0',
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `vehicle_stocks`
+--
+
+INSERT INTO `vehicle_stocks` (`id`, `vehiclecategory`, `series`, `vehiclemodal`, `color`, `frameno`, `engineno`, `status`, `created_at`, `updated_at`) VALUES
+(53, 'Moped', 'XL 101', 'TVS XL 100 COM ITS-BSVI', 'TVS XL100COMFORT I-TOUCHSTART-OBDIIA G.B', 'MD621CP20R1B01025', 'BP2BR1307543', '1', '2024-05-24 07:33:07', '2024-05-24 07:33:40'),
+(54, 'Moped', 'XL 102', 'TVS XL 100 COM ITS-BSVI', 'TVS XL100COMFORT I-TOUCHSTART-OBDIIA G.B', 'MD621CP20R1B01026', 'BP2BR1307544', '1', '2024-05-24 07:33:07', '2024-05-24 07:33:42'),
+(56, 'Moped', 'XL 104', 'TVS XL 100 COM ITS-BSVI', 'TVS XL100COMFORT I-TOUCHSTART-OBDIIA G.B', 'MD621CP20R1B01028', 'BP2BR1307546', '0', '2024-05-24 07:33:07', '2024-05-24 07:33:07'),
+(57, 'Moped', 'XL 105', 'TVS XL 100 COM ITS-BSVI', 'TVS XL100COMFORT I-TOUCHSTART-OBDIIA G.B', 'MD621CP20R1B01029', 'BP2BR1307547', '0', '2024-05-24 07:33:07', '2024-05-24 07:33:07'),
+(58, 'Moped', 'XL 106', 'TVS XL 100 COM ITS-BSVI', 'TVS XL100COMFORT I-TOUCHSTART-OBDIIA G.B', 'MD621CP20R1B01030', 'BP2BR1307548', '0', '2024-05-24 07:33:07', '2024-05-24 07:33:07');
 
 --
 -- Indexes for dumped tables
@@ -528,6 +542,12 @@ ALTER TABLE `vehicles`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `vehicle_stocks`
+--
+ALTER TABLE `vehicle_stocks`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -535,13 +555,13 @@ ALTER TABLE `vehicles`
 -- AUTO_INCREMENT for table `buy_vehicles`
 --
 ALTER TABLE `buy_vehicles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -553,13 +573,13 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `leads`
 --
 ALTER TABLE `leads`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=114;
 
 --
 -- AUTO_INCREMENT for table `make_requests`
 --
 ALTER TABLE `make_requests`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `masters`
@@ -602,6 +622,12 @@ ALTER TABLE `users`
 --
 ALTER TABLE `vehicles`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+
+--
+-- AUTO_INCREMENT for table `vehicle_stocks`
+--
+ALTER TABLE `vehicle_stocks`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

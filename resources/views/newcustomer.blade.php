@@ -656,7 +656,7 @@
                                         @csrf
                                         <h1 class="text-black text-center">
                                             Verify your Account</h1>
-                                        <p id="phonetxtmakerequest"></p>
+                                        <p class="text-center" id="phonetxtmakerequest"></p>
                                         <div class="otp-fields">
                                             <input type="hidden" name="makerequestid" value=""
                                                 id="makerequestid">

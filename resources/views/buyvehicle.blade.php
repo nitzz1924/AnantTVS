@@ -1,5 +1,4 @@
-{{-- -----------------------------------------------🙏JAI SHREE
-RAM🚩------------------------------------------------------------- --}}
+{{-- -----------------------------------------------🙏JAI SHREE RAM🚩------------------------------------------------------------- --}}
 <x-app-layout>
     <style>
         .dropdownsearch {
@@ -341,6 +340,8 @@ RAM🚩------------------------------------------------------------- --}}
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
     <script>
         function create_custom_dropdowns() {
             $('select').each(function(i, select) {
@@ -498,6 +499,17 @@ RAM🚩------------------------------------------------------------- --}}
                         $('#vehicletype').val(stockdata.vehiclecategory);
                         $('#vehicolor').val(stockdata.color);
                         $('#vehiclemodal').val(stockdata.vehiclemodal);
+                    },
+                    error: function(xhr, status, error) {
+                        console.log("Error: ", error);
+                        swal({
+                            title: "Not In Stock",
+                            text: "Try again later..!!",
+                            icon: "warning",
+                            buttons: {
+                                confirm: "OK"
+                            }
+                        });
                     }
                 });
             });

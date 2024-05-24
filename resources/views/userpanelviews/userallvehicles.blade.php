@@ -1,8 +1,13 @@
 {{-- -----------------------------------------------🙏JAI SHREE RAM🚩------------------------------------------------------------- --}}
 @extends('layouts.userpanel.user')
 @section('content')
+<style>
+    .page-content{
+        height: 100vh !important;
+    }
+</style>
     <div class="page-content">
-        <div class="container-fluid">
+        <div class="container-fluid h-100">
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box d-sm-flex align-items-center justify-content-between">
@@ -16,9 +21,7 @@
                     </div>
                 </div>
             </div>
-
-
-            <div class="row">
+            {{-- <div class="row">
                 @foreach ($buyvehiclesdata as $row)
                     <div class="col-lg-4">
                         <div class="card rounded border border-1">
@@ -104,6 +107,82 @@
                         </div>
                     </div>
                 @endforeach
+            </div> --}}
+            <div class="row h-100">
+                <div class="col-lg-12">
+                    <div class="card tablecard h-100">
+                        <div class="card-body table-responsive">
+                            <table class="table table-nowrap table-bordered">
+                                <thead>
+                                    <tr class="text-center">
+                                        <th scope="col">S.No</th>
+                                        <th scope="col">Modal</th>
+                                        <th scope="col">Category</th>
+                                        <th scope="col">Series</th>
+                                        <th scope="col">Color</th>
+                                        <th scope="col">Frame-Number</th>
+                                        <th scope="col">Engine-Number</th>
+                                        <th scope="col">Doc Status</th>
+                                        <th scope="col">HSRP Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($buyvehiclesdata as $index => $row)
+                                    <tr>
+                                        <td>{{ $index + 1 }}</td>
+                                        <td>{{ $row->vehiclemodal }}</td>
+                                        <td>{{ $row->vehiclecategory }}</td>
+                                        <td>{{ $row->series }}</td>
+                                        <td>{{ $row->color }}</td>
+                                        <td>{{ $row->frameno }}</td>
+                                        <td>{{ $row->engineno }}</td>
+                                        <td>
+                                            @php
+                                            $txt = $row->rcnumber == null ? 'RC not updated' : 'RC updated';
+                                            $class = $row->rcnumber != null ? 'badge rounded-pill bg-success-subtle text-success fs-6' : 'badge rounded-pill bg-danger';
+
+                                            $Insurance = $row->insuranceid == null ? 'Insurance not updated' : 'Insurance updated';
+                                            $classInsurance = $row->insuranceid != null ? 'badge rounded-pill bg-success-subtle text-success fs-6' : 'badge rounded-pill bg-danger';
+
+                                            $Invoice = $row->invoicenumber == null ? 'Invoice not updated' : 'Invoice updated';
+                                            $classInvoice = $row->invoicenumber != null ? 'badge rounded-pill bg-success-subtle text-success fs-6' : 'badge rounded-pill bg-danger';
+                                        @endphp
+                                          <span class="{{ $class }} p-2">{{ $txt }}</span>
+                                          <span class="{{ $classInsurance }} p-2">{{ $Insurance }}</span>
+                                          <span class="{{ $classInvoice }} p-2 mt-2">{{ $Invoice }}</span>
+                                        </td>
+                                        <td>
+                                            @php
+                                            $Status = '';
+                                            $Statusclass = '';
+
+                                            switch($row->numberplatestatus) {
+                                                case 'inproces':
+                                                    $Status = 'In process';
+                                                    $Statusclass = 'badge bg-secondary-subtle text-secondary badge-border';
+                                                    break;
+                                                case 'available':
+                                                    $Status = 'Available';
+                                                    $Statusclass = 'badge bg-success-subtle text-success badge-border';
+                                                    break;
+                                                case 'fitted':
+                                                    $Status = 'Fitted';
+                                                    $Statusclass = 'badge bg-info-subtle text-info badge-border';
+                                                    break;
+                                                default:
+                                                    $Status = 'In process';
+                                                    $Statusclass = 'badge bg-warning-subtle text-warning badge-border';
+                                            }
+                                        @endphp
+                                        <span class="{{ $Statusclass }}">{{ $Status }}</span>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
