@@ -20,7 +20,7 @@
             <li class="nav-item">
                 <a class="nav-link menu-link" href="{{route('allbuyedvehicles')}}" role="button" aria-expanded="false"
                     aria-controls="sidebarDashboards">
-                    <i class="bx bx-money"></i><span>Buyed Vehicles</span>
+                    <i class="bx bx-money"></i><span>Sold Vehicles</span>
                 </a>
             </li>
             <li class="nav-item">

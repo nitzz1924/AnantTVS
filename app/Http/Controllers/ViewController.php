@@ -232,7 +232,10 @@ class ViewController extends Controller
 
     public function allbuyedvehicles()
     {
-        $allbuyeddata = BuyVehicle::join('customers','buy_vehicles');
+        $allbuyeddata = BuyVehicle::join('customers','buy_vehicles.customer_id','customers.id')
+        ->select('buy_vehicles.*','customers.customername','customers.customerphoneno')
+        ->get();
+        // dd($allbuyeddata);
         return view('allbuyedvehicles',compact('allbuyeddata'));
     }
 }
