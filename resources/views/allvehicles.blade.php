@@ -48,6 +48,7 @@
                                     <thead>
                                         <tr>
                                             <th scope="col">ID</th>
+                                            <th scope="col">Date</th>
                                             <th scope="col">Image</th>
                                             <th scope="col">Name</th>
                                             <th scope="col">Type</th>
@@ -62,6 +63,7 @@
                                         @foreach ($allvehicles as $index => $row)
                                         <tr>
                                             <th scope="row" class="fw-semibold">{{ $index + 1 }}</th>
+                                            <th scope="row" class="fw-semibold">{{ $row->created_at->format('d/m/y') }}</th>
                                             <td>
                                                 @if ($row->bannerimage)
                                                 {{-- @php
@@ -73,11 +75,11 @@
                                                 width="100px">
                                                 @endif
                                             </td>
-                                            <td>{{ $row->name }}</td>
+                                            <td>{{ substr($row->name,0,30) }}...</td>
                                             <td>{{ $row->type }}</td>
                                             <td>{{ $row->modelno }}</td>
                                             <td>{{ $row->price }}</td>
-                                            <td>{{ $row->color }}</td>
+                                            <td>{{ substr($row->color,0,30) }}...</td>
                                             <td>
                                                 <div class="form-check form-switch form-switch-success">
                                                     <input class="form-check-input" type="checkbox"

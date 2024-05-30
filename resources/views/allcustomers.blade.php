@@ -79,7 +79,7 @@ RAM🚩------------------------------------------------------------- --}}
                                     {{-- <a href="{{ route('createcustomer') }}"><button type="button"
                                             class="btn btn-secondary waves-effect waves-light">Go Back</button></a> --}}
                                     <a href="{{ route('viewaddcustomer') }}"><button type="button"
-                                            class="btn btn-success waves-effect waves-light">Add New
+                                            class="btn btn-success waves-effect waves-light">+ Add New
                                             Customer</button></a>
                                 </div>
                             </div>
@@ -112,10 +112,10 @@ RAM🚩------------------------------------------------------------- --}}
                                         <td>{{ $row->customercity }}</td>
                                         <td>{{ $row->customerstate }}</td>
                                         <td>{{ $row->customercountry }}</td>
-                                        <td>{{ $row->customeraddress }}</td>
+                                        <td>{{ substr($row->customeraddress,0,20) }}...</td>
                                         <td>
                                             <a href="/viewbuyvehicles/{{ $row->id }}">
-                                                <button class="btn btn-outline-success" id="openModalBtnone">Buy
+                                                <button class="btn btn-info btn-sm" id="openModalBtnone">Buy
                                                     Vehicle</button>
                                             </a>
                                         </td>
@@ -173,14 +173,13 @@ RAM🚩------------------------------------------------------------- --}}
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title" id="modal-heading">Customer Details</h4>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> </button>
+                    <!--<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> </button>-->
                 </div>
                 <div class="modal-body" id="modalbody">
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save Changes</button>
+                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Close</button>
                 </div>
 
             </div>
@@ -227,10 +226,16 @@ RAM🚩------------------------------------------------------------- --}}
                         console.log(response);
                         $('#tablebody').empty();
                         $.each(response, function(index, row) {
+                            var formattedDate = new Date(row.created_at)
+                            .toLocaleDateString('en-GB', {
+                                day: 'numeric',
+                                month: 'short',
+                                year: 'numeric'
+                            });
                             var newRow = `
                                 <tr>
                                     <th scope="row" class="fw-semibold">${index + 1}</th>
-                                    <td><?php echo date('d/m/y', strtotime($row['created_at'])); ?></td>
+                                    <td>${formattedDate}</td>
                                     <td>${row.customername}</td>
                                     <td>${row.customerphoneno}</td>
                                     <td>${row.customeremailaddress}</td>
@@ -295,12 +300,12 @@ RAM🚩------------------------------------------------------------- --}}
                 $('#modalbody').empty();
                 var columntwo = `
                     <div class="row">
-                            <div class="col-lg-3"><span class="fw-semibold">Name:<p class="fw-light fs-5">${recordId.customername}</p></span></div>
-                            <div class="col-lg-3"><span class="fw-semibold">Phone:<p class="fw-light fs-5">${recordId.customerphoneno}</p></span></div>
-                            <div class="col-lg-3"><span class="fw-semibold">Email:<p class="fw-light fs-5">${recordId.customeremailaddress}</p></span></div>
-                            <div class="col-lg-3"><span class="fw-semibold">City:<p class="fw-light fs-5">${recordId.customercity}</p></span></div>
-                            <div class="col-lg-3 mt-3"><span class="fw-semibold">State:<p class="fw-light fs-5">${recordId.customerstate}</p></span></div>
-                            <div class="col-lg-3 mt-3"><span class="fw-semibold">Country:<p class="fw-light fs-5">${recordId.customercountry}</p></span></div>
+                            <div class="col-lg-4"><span class="fw-semibold">Name:<p class="fw-light fs-5">${recordId.customername}</p></span></div>
+                            <div class="col-lg-4"><span class="fw-semibold">Phone:<p class="fw-light fs-5">${recordId.customerphoneno}</p></span></div>
+                            <div class="col-lg-4"><span class="fw-semibold">Email:<p class="fw-light fs-5">${recordId.customeremailaddress}</p></span></div>
+                            <div class="col-lg-4"><span class="fw-semibold">City:<p class="fw-light fs-5">${recordId.customercity}</p></span></div>
+                            <div class="col-lg-4 mt-3"><span class="fw-semibold">State:<p class="fw-light fs-5">${recordId.customerstate}</p></span></div>
+                            <div class="col-lg-4 mt-3"><span class="fw-semibold">Country:<p class="fw-light fs-5">${recordId.customercountry}</p></span></div>
                             <div class="col-lg-12 p-3">
                                 <span class="fw-semibold">Description: <p class="fw-light">${recordId.customeraddress}</p></span>
                             </div>

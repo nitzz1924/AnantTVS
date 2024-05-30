@@ -125,6 +125,10 @@ RAM🚩------------------------------------------------------------- --}}
                                                                 href="/editbuyvehicle/{{ $row->id }}"><i
                                                                     class="ri-pencil-fill align-bottom me-2 text-muted"></i>
                                                                 Upload Documents</a></li>
+                                                        <li><a class="dropdown-item edit-item-btn"
+                                                                href="/returnvehicle/{{ $row->id }}"><i
+                                                                    class="ri-arrow-go-back-line align-bottom me-2 text-muted"></i>
+                                                                Return This Vehicle</a></li>
                                                     </ul>
                                                 </div>
                                             </td>
@@ -158,120 +162,89 @@ RAM🚩------------------------------------------------------------- --}}
     </div>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>
+        var buyVehiclesData = @json($buyvehiclesdata);
+    </script>
+
+    <script>
         $(document).ready(function() {
             $('.viemorebtn').on('click', function() {
                 var recordId = $(this).data('record-id');
-                console.log(recordId);
+                var chassiss = recordId.frameno;
+                console.log(chassiss);
                 $('#modalbody').empty();
-                var modalbody = `
-                @foreach ($buyvehiclesdata as $value)
-                                        <div class="row mt-4">
-                                            <!-- end col -->
-                                            <div class="col-lg-3 col-sm-6">
-                                                <div class="">
-                                                    <div class="flex-grow-1">
-                                                        <p class="text-success mb-1">Set HSRP Status</p>
-                                                        <select name="statustype" class="form-select mb-3"
-                                                            aria-label="Default select example" id="numberplatestatus">
-                                                            <option value="">Choose....</option>
-                                                            <option value="inproces" {{ $value->numberplatestatus == 'inproces' ? 'selected' : '' }}>In Process</option>
-                                                            <option value="available"{{ $value->numberplatestatus == 'available' ? 'selected' : '' }}>Available</option>
-                                                            <option value="fitted" {{ $value->numberplatestatus == 'fitted' ? 'selected' : '' }}>Fitted</option>
-                                                        </select>
-                                                        <input type="hidden" name="recordid"
-                                                            value="{{ $value->id }}" id="recordid">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        @endforeach
+                var modalbody = '';
 
-                                        <div class="row">
-                <div class="card">
-                    <div class="mt-4">
-                        <h4 class="text-black-fw-bold mb-3">Download Vehicle Documents</h4>
-                        @foreach ($buyvehiclesdata as $value)
-                        <div class="row">
-                            <div class="col-lg-4">
-                                <div class="card border border-1">
-                                    <div class="card-header">
-                                        <h4 class="card-title mb-0 text-center">RC
-                                            Document</h4>
-                                    </div><!-- end card header -->
-
-                                    <div class="card-body">
-                                        <div class="card border">
-                                            <div class="card-body">
-                                                <h5 class="card-title text-center">
-                                                    {{ $value->rcimage }}</h5>
-                                                <div class="d-flex justify-content-center mt-2">
-                                                    <a href="{{ asset('uploads/' . $value->rcimage) }}"
-                                                        class="btn btn-soft-success waves-effect waves-light btn-sm"
-                                                        download="RC">Download</a>
-                                                </div>
-
-                                            </div>
-                                        </div>
-
+                    buyVehiclesData.forEach(function(value) {
+                        if (value.chassisnumber === chassiss) {
+                            modalbody += `
+                        <div class="row mt-4">
+                            <div class="col-lg-3 col-sm-6">
+                                <div class="">
+                                    <div class="flex-grow-1">
+                                        <p class="text-success mb-1">Set HSRP Status</p>
+                                        <select name="statustype" class="form-select mb-3" aria-label="Default select example" id="numberplatestatus">
+                                            <option value="">Choose....</option>
+                                            <option value="inproces" ${value.numberplatestatus === 'inproces' ? 'selected' : ''}>In Process</option>
+                                            <option value="available" ${value.numberplatestatus === 'available' ? 'selected' : ''}>Available</option>
+                                            <option value="fitted" ${value.numberplatestatus === 'fitted' ? 'selected' : ''}>Fitted</option>
+                                        </select>
+                                        <input type="hidden" name="recordid" value="${value.id}" id="recordid">
                                     </div>
-                                    <!-- end card body -->
                                 </div>
-                                <!-- end card -->
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="card border border-1">
-                                    <div class="card-header">
-                                        <h4 class="card-title mb-0 text-center">Invoice
-                                            Document</h4>
-                                    </div><!-- end card header -->
-
-                                    <div class="card-body">
-                                        <div class="card border">
-                                            <div class="card-body">
-                                                <h5 class="card-title text-center">
-                                                    {{ $value->invoiceimage }}</h5>
-                                                <div class="d-flex justify-content-center mt-2">
-                                                    <a href="{{ asset('uploads/' . $value->invoiceimage) }}"
-                                                        class="btn btn-soft-success waves-effect waves-light btn-sm"
-                                                        download="Invoice">Download</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- end card body -->
-                                </div>
-                                <!-- end card -->
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="card border border-1">
-                                    <div class="card-header">
-                                        <h4 class="card-title mb-0 text-center">
-                                            Insurance Document</h4>
-                                    </div><!-- end card header -->
-
-                                    <div class="card-body">
-                                        <div class="card border">
-                                            <div class="card-body">
-                                                <h5 class="card-title text-center">
-                                                    {{ $value->insuranceimage }}</h5>
-                                                <div class="d-flex justify-content-center mt-2">
-                                                    <a href="{{ asset('uploads/' . $value->insuranceimage) }}"
-                                                        class="btn btn-soft-success waves-effect waves-light btn-sm"
-                                                        download="Insurance">Download</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- end card body -->
-                                </div>
-                                <!-- end card -->
                             </div>
                         </div>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-                `;
+
+                        <div class="row">
+                            <div class="card">
+                                <div class="mt-4">
+                                    <h4 class="text-black-fw-bold mb-3">Download Vehicle Documents</h4>
+                                    <div class="row">
+                                        <div class="col-lg-4">
+                                            <div class="card border border-1">
+                                                <div class="card-header">
+                                                    <h4 class="card-title mb-0 text-center">RC Document</h4>
+                                                </div>
+                                                <div class="card-body">
+                                                            <h5 class="card-title text-center">${value.rcimage}</h5>
+                                                            <div class="d-flex justify-content-center mt-2">
+                                                                <a href="/uploads/${value.rcimage}" class="btn btn-soft-success waves-effect waves-light btn-sm" download="RC">Download</a>
+                                                            </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="card border border-1">
+                                                <div class="card-header">
+                                                    <h4 class="card-title mb-0 text-center">Invoice Document</h4>
+                                                </div>
+                                                <div class="card-body">
+                                                            <h5 class="card-title text-center">${value.invoiceimage}</h5>
+                                                            <div class="d-flex justify-content-center mt-2">
+                                                                <a href="/uploads/${value.invoiceimage}" class="btn btn-soft-success waves-effect waves-light btn-sm" download="Invoice">Download</a>
+                                                            </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="card border border-1">
+                                                <div class="card-header">
+                                                    <h4 class="card-title mb-0 text-center">Insurance Document</h4>
+                                                </div>
+                                                <div class="card-body">
+                                                            <h5 class="card-title text-center">${value.insuranceimage}</h5>
+                                                            <div class="d-flex justify-content-center mt-2">
+                                                                <a href="/uploads/${value.insuranceimage}" class="btn btn-soft-success waves-effect waves-light btn-sm" download="Insurance">Download</a>
+                                                            </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    }
+                    })
                 $('#modalbody').append(modalbody);
 
                 $(document).ready(function() {
@@ -283,20 +256,20 @@ RAM🚩------------------------------------------------------------- --}}
 
                         //Updating Status
                         $.ajax({
-                            url: '/updatenumberplatestatus',
-                            method: 'POST',
-                            data: {
-                                status: selectedStatus,
-                                record_id: recordId
-                            },
-                            headers: {
+                            url: '/updatenumberplatestatus'
+                            , method: 'POST'
+                            , data: {
+                                status: selectedStatus
+                                , record_id: recordId
+                            }
+                            , headers: {
                                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
                                     'content')
-                            },
-                            success: function(response) {
+                            }
+                            , success: function(response) {
                                 console.log(response);
-                            },
-                            error: function(error) {
+                            }
+                            , error: function(error) {
                                 console.error(error);
                             }
                         });
@@ -304,5 +277,6 @@ RAM🚩------------------------------------------------------------- --}}
                 });
             });
         });
+
     </script>
 </x-app-layout>

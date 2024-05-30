@@ -129,3 +129,4 @@ Route::get('/vehiclestock/{status}',[ViewController::class,'vehiclestock'])->nam
 Route::get('/import-excel', [ExcelImportController::class,'index'])->name('import.excel');
 Route::post('/import-excel', [ExcelImportController::class,'import']);
 Route::get('/showstockdetails/{selectedValue}', [ViewController::class,'showstockdetails'])->name('showstockdetails');
+Route::get('/returnvehicle/{id}', [ViewController::class,'returnvehicle'])->name('returnvehicle');

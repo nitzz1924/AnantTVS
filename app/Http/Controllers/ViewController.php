@@ -75,7 +75,7 @@ class ViewController extends Controller
 
     public function viewvehicles()
     {
-        $allvehicles = Vehicle::get();
+        $allvehicles = Vehicle::orderBy('created_at','desc')->get();
         $modelInstance = new User();
         $res = $modelInstance->checkID();
         $masterdata = Master::where('parent_id', '=', $res)->where('type', '=', 'Master')->get();
@@ -89,7 +89,7 @@ class ViewController extends Controller
 
     public function viewallcustomers()
     {
-        $allcustomers = Customer::paginate(10);
+        $allcustomers = Customer::orderBy('created_at','desc')->paginate(10);
         return view('allcustomers', compact('allcustomers'));
     }
 
@@ -112,7 +112,7 @@ class ViewController extends Controller
             ->where('buy_vehicles.customer_id',  $customerid)
             ->distinct()
             ->get();
-        //    dd($buyvehiclesdata);
+        //dd($buyvehiclesdata);
         if ($buyvehiclesdata->isEmpty()) {
             return back()->with('error', 'no records found..!!!!');
         } else {
@@ -215,7 +215,7 @@ class ViewController extends Controller
 
     public function vehiclestock($status)
     {
-        $exceldata = VehicleStock::where('status',$status)->get();
+        $exceldata = VehicleStock::where('status',$status)->orderBy('created_at','desc')->get();
         return view('vehiclestock', compact('exceldata'));
     }
 
@@ -233,9 +233,32 @@ class ViewController extends Controller
     public function allbuyedvehicles()
     {
         $allbuyeddata = BuyVehicle::join('customers','buy_vehicles.customer_id','customers.id')
-        ->select('buy_vehicles.*','customers.customername','customers.customerphoneno')
+        ->select('buy_vehicles.*','customers.customername','customers.customerphoneno')->orderBy('created_at','desc')
         ->get();
         // dd($allbuyeddata);
         return view('allbuyedvehicles',compact('allbuyeddata'));
     }
+
+    public function returnvehicle($id)
+    {
+        $data = BuyVehicle::find($id);
+        $vehicledata = VehicleStock::where('frameno', $data->chassisnumber)->first();
+        if($vehicledata) {
+            $returnvehicle = new VehicleStock();
+            $returnvehicle->vehiclecategory = $data->vehicletype;
+            $returnvehicle->vehiclemodal = $data->vehicle_id;
+            $returnvehicle->color = $data->color;
+            $returnvehicle->series = $vehicledata->series;
+            $returnvehicle->frameno = $data->chassisnumber;
+            $returnvehicle->engineno = $vehicledata->engineno;
+            $returnvehicle->status = 2;
+            $returnvehicle->save();
+            $data->delete();
+
+            return back()->with('success', 'Vehicle returned successfully.');
+        } else {
+            return back()->with('error', 'Associated vehicle data not found.');
+        }
+    }
+
 }

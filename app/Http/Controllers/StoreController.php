@@ -258,7 +258,7 @@ class StoreController extends Controller
 
     public function create_testride(Request $request)
     {
-        // return $request->post();
+        //dd($request->all());
         $randomNumber = rand(100000, 999999);
         $data = new TestRide;
         $data->customername = $request->input('customername');
@@ -323,15 +323,24 @@ class StoreController extends Controller
         // dd($type);
         $data = '';
         if ($type == 'testrideleads') {
-            $data = TestRide::whereBetween('created_at', [$datefrom, $dateto])->get();
+            $data = TestRide::whereDate('created_at', '>=', $datefrom)
+                ->whereDate('created_at', '<=', $dateto)
+                ->orderby('created_at', 'desc')->get();
+            //dd($data);
         }
         if ($type == 'customerleads') {
-            $data = Lead::whereBetween('created_at', [$datefrom, $dateto])->get();
+            $data = Lead::whereDate('created_at', '>=', $datefrom)
+                ->whereDate('created_at', '<=', $dateto)
+                ->orderby('created_at', 'desc')->get();
         } else {
-            $data = Lead::whereBetween('created_at', [$datefrom, $dateto])->get();
+            $data = Lead::whereDate('created_at', '>=', $datefrom)
+                ->whereDate('created_at', '<=', $dateto)
+                ->orderby('created_at', 'desc')->get();
         }
         if ($type == 'requestleads') {
-            $data = MakeRequest::whereBetween('created_at', [$datefrom, $dateto])->get();
+            $data = MakeRequest::whereDate('created_at', '>=', $datefrom)
+                ->whereDate('created_at', '<=', $dateto)
+                ->orderby('created_at', 'desc')->get();
             // dd($data);
         }
         return response()->json($data);
@@ -340,7 +349,9 @@ class StoreController extends Controller
     {
         $datefrom = $req->input('datefrom');
         $dateto = $req->input('dateto');
-        $customerdata = Customer::whereBetween('created_at', [$datefrom, $dateto])->get();
+        $customerdata = Customer::whereDate('created_at', '>=', $datefrom)
+            ->whereDate('created_at', '<=', $dateto)
+            ->orderby('created_at', 'desc')->get();
         return response()->json($customerdata);
     }
 
@@ -350,7 +361,10 @@ class StoreController extends Controller
         $datefrom = $req->input('datefrom');
         $dateto = $req->input('dateto');
         $status = $req->input('status');  // haan baii ye jo status hai na ye aaa raha hai apne URL se.....
-        $data = VehicleStock::whereBetween('created_at', [$datefrom, $dateto])->where('status',$status)->get();
+        $data = VehicleStock::where('status', $status)
+            ->whereDate('created_at', '>=', $datefrom)
+            ->whereDate('created_at', '<=', $dateto)
+            ->orderby('created_at', 'desc')->get();
         return response()->json($data);
     }
 
@@ -358,7 +372,7 @@ class StoreController extends Controller
     {
         $data = VehicleStock::find($id);
         $data->delete();
-        return back()->with('success',"Deleted.>!!!");
+        return back()->with('success', "Deleted.>!!!");
     }
 
     public function datefilterbuyedvehicle(Request $req)
@@ -366,9 +380,11 @@ class StoreController extends Controller
         // dd($req->all());
         $datefrom = $req->input('datefrom');
         $dateto = $req->input('dateto');
-        $data = BuyVehicle::join('customers','buy_vehicles.customer_id','customers.id')
-        ->select('buy_vehicles.*','customers.customername','customers.customerphoneno')
-        ->whereBetween('buy_vehicles.created_at', [$datefrom, $dateto])->get();
+        $data = BuyVehicle::join('customers', 'buy_vehicles.customer_id', 'customers.id')
+            ->select('buy_vehicles.*', 'customers.customername', 'customers.customerphoneno')
+            ->whereDate('buy_vehicles.created_at', '>=', $datefrom)
+            ->whereDate('buy_vehicles.created_at', '<=', $dateto)
+            ->orderby('created_at', 'desc')->get();
         // dd($data);
         return response()->json($data);
     }

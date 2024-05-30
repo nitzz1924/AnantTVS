@@ -166,22 +166,23 @@ RAM🚩------------------------------------------------------------- --}}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            @foreach ($exceldata as $row)
-                document.getElementById("sa-warning{{ $row->id }}").addEventListener("click", function() {
-                    Swal.fire({
-                        title: "Are you sure?",
-                        text: "You want to delete....?",
-                        icon: "warning",
-                        showCancelButton: true,
-                        confirmButtonClass: "btn btn-primary w-xs me-2 mt-2",
-                        cancelButtonClass: "btn btn-danger w-xs mt-2",
-                        confirmButtonText: '<a href="/deletestock/{{ $row->id }}" class="text-white">Yes, delete it!</a>',
-                        buttonsStyling: false,
-                        showCloseButton: true,
-                    });
-                });
+            @foreach($exceldata as $row)
+            document.getElementById("sa-warning{{ $row->id }}").addEventListener("click", function() {
+                Swal.fire({
+                    title: "Are you sure?"
+                    , text: "You want to delete....?"
+                    , icon: "warning"
+                    , showCancelButton: true
+                    , confirmButtonClass: "btn btn-primary w-xs me-2 mt-2"
+                    , cancelButtonClass: "btn btn-danger w-xs mt-2"
+                    , confirmButtonText: '<a href="/deletestock/{{ $row->id }}" class="text-white">Yes, delete it!</a>'
+                    , buttonsStyling: false
+                    , showCloseButton: true
+                , });
+            });
             @endforeach
         });
+
     </script>
     <script>
         $(document).ready(function() {
@@ -202,27 +203,47 @@ RAM🚩------------------------------------------------------------- --}}
                 console.log(dateto);
 
                 $.ajax({
-                    url: '/datefilteroutofstock',
-                    method: 'POST',
-                    data: {
-                        datefrom: datefrom,
-                        dateto: dateto,
-                        status: value,
-                    },
-                    headers: {
+                    url: '/datefilteroutofstock'
+                    , method: 'POST'
+                    , data: {
+                        datefrom: datefrom
+                        , dateto: dateto
+                        , status: value
+                    , }
+                    , headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    success: function(response) {
+                    }
+                    , success: function(response) {
                         console.log(response);
-                        dataTableCustomer.clear().destroy(); // Properly destroy the existing DataTable instance
+                        dataTableCustomer.clear()
+                            .destroy(); // Properly destroy the existing DataTable instance
                         $('#vehiclestockbody').empty();
                         response.forEach(function(row, index) {
                             var formattedDate = new Date(row.created_at)
                                 .toLocaleDateString('en-GB', {
-                                    day: 'numeric',
-                                    month: 'short',
-                                    year: 'numeric'
+                                    day: 'numeric'
+                                    , month: 'short'
+                                    , year: 'numeric'
                                 });
+                            var Status = '';
+                            var Statusclass = '';
+
+                            switch (row.status) {
+                                case 1:
+                                    Status = 'Out of Stock';
+                                    Statusclass =
+                                        'badge bg-danger-subtle text-danger badge-border';
+                                    break;
+                                case 0:
+                                    Status = 'In Stock';
+                                    Statusclass =
+                                        'badge bg-success-subtle text-success badge-border';
+                                    break;
+                                default:
+                                    Status = 'In Stock';
+                                    Statusclass =
+                                        'badge bg-success-subtle text-success badge-border';
+                            }
                             var newRow = `
                         <tr>
                             <th scope="row" class="fw-semibold">${index+1}</th>
@@ -234,28 +255,12 @@ RAM🚩------------------------------------------------------------- --}}
                             <td>${row.frameno}</td>
                             <td>${row.engineno}</td>
                             <td>
-                                var Status = '';
-                                var Statusclass = '';
-
-                                                    switch (row.status) {
-                                                        case 1:
-                                                            Status = 'Out of Stock';
-                                                            Statusclass = 'badge bg-danger-subtle text-danger badge-border';
-                                                            break;
-                                                        case 0:
-                                                            Status = 'In Stock';
-                                                            Statusclass = 'badge bg-success-subtle text-success badge-border';
-                                                            break;
-                                                        default:
-                                                            Status = 'In Stock';
-                                                            Statusclass = 'badge bg-warning-subtle text-warning badge-border';
-                                                    }
-                                                <span class="${Statusclass}">${Status}</span>
-                                            </td>
-                                            <td>
-                                            <a href="#"><button class="btn btn-outline-danger btn-sm"
-                                                id="">delete</button></a>
-                                            </td>
+                                <span class="${Statusclass}">${Status}</span>
+                            </td>
+                            <td>
+                            <a href="#"><button class="btn btn-outline-danger btn-sm"
+                                id="">delete</button></a>
+                            </td>
                         </tr>
                     `;
                             $('#vehiclestockbody').append(newRow);
@@ -268,13 +273,14 @@ RAM🚩------------------------------------------------------------- --}}
                                 }
                             }
                         });
-                    },
-                    error: function(error) {
+                    }
+                    , error: function(error) {
                         console.error(error);
                     }
                 });
             });
         });
+
     </script>
     <script>
         $(document).ready(function() {
@@ -287,24 +293,25 @@ RAM🚩------------------------------------------------------------- --}}
 
                 //Updating Lead Status
                 $.ajax({
-                    url: '/updateleadstatus',
-                    method: 'POST',
-                    data: {
-                        status: selectedStatus,
-                        record_id: leadid
-                    },
-                    headers: {
+                    url: '/updateleadstatus'
+                    , method: 'POST'
+                    , data: {
+                        status: selectedStatus
+                        , record_id: leadid
+                    }
+                    , headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    success: function(response) {
+                    }
+                    , success: function(response) {
                         console.log(response);
-                    },
-                    error: function(error) {
+                    }
+                    , error: function(error) {
                         console.error(error);
                     }
                 });
             });
         });
+
     </script>
     <script>
         setTimeout(function() {
@@ -314,5 +321,6 @@ RAM🚩------------------------------------------------------------- --}}
         setTimeout(function() {
             $('#dangerAlert').fadeOut('slow');
         }, 2000);
+
     </script>
 </x-app-layout>

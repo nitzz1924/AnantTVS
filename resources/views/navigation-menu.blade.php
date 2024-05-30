@@ -36,6 +36,9 @@
                         <li class="nav-item">
                             <a href="/vehiclestock/1" class="nav-link">Out of Stock</a>
                         </li>
+                        <li class="nav-item">
+                            <a href="/vehiclestock/2" class="nav-link">Returned Vehicles</a>
+                        </li>
                     </ul>
                 </div>
             </li>

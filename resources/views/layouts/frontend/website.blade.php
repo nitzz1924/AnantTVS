@@ -242,7 +242,7 @@
             });
         </script>
 
-        <script>
+        {{-- <script>
             let circularProgress = document.querySelector(".circular-progress"),
                 progressValue = document.querySelector(".progress-value");
 
@@ -262,7 +262,7 @@
                     clearInterval(progress);
                 }
             }, speed);
-        </script>
+        </script> --}}
     </div>
 </body>
 

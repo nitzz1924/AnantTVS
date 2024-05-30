@@ -501,7 +501,6 @@
                                 </div>
 
                                 <div class="col-lg-6 p-3 d-grid align-items-center">
-                                    @csrf
                                     @if ($message = Session::get('successtest'))
                                         <div class="alert border-0 alert-success text-center" role="alert"
                                             id="successAlertmsgtest">
@@ -686,11 +685,6 @@
                 </div>
             </div>
         </section>
-
-
-
-
-
         <a href="https://wa.me/7240667788" class="whatsapp-icon">
             <img src="{{ asset('website-assets/images/whatsapp-icon.png') }}" height="50px" width="50px"
                 alt="" class="rounded">
@@ -702,7 +696,7 @@
                 class="rounded">
         </a>
         <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-        <script>
+        {{-- <script>
             document.getElementById("submitbtn").addEventListener("click", function(event) {
                 event.preventDefault(); // Prevent default form submission behavior
 
@@ -724,30 +718,6 @@
                 };
                 xhr.onerror = function() {
                     // Handle connection errors
-                };
-                xhr.send(formData);
-            });
-        </script>
-        {{-- <script>
-            document.getElementById("submitbtnnewnew").addEventListener("click", function(event) {
-                event.preventDefault();
-
-                // Perform form submission using AJAX
-                var form = document.getElementById("otp-form");
-                var formData = new FormData(form);
-
-                // Example AJAX request
-                var xhr = new XMLHttpRequest();
-                xhr.open(form.method, form.action, true);
-                xhr.onload = function() {
-                    if (xhr.status === 200) {
-                        alert("We Will reach you soon..!!!");
-                        document.getElementById("successAlert").style.display="block";
-                    } else {
-                        document.getElementById("dangerAlert").style.display="block";
-                    }
-                };
-                xhr.onerror = function() {
                 };
                 xhr.send(formData);
             });
@@ -841,6 +811,7 @@
         <script>
             jQuery('#testrideform').submit(function(e) {
                 e.preventDefault();
+                console.log("hello");
                 jQuery.ajax({
                     url: "{{ url('create_testride') }}",
                     data: jQuery('#testrideform').serialize(),
@@ -858,7 +829,6 @@
                             );
                             jQuery('#testrideid').val(data.data.id);
                         }
-
                     }
                 });
             });
