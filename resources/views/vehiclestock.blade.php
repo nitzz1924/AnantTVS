@@ -73,7 +73,22 @@ RAM🚩------------------------------------------------------------- --}}
                         </div>
                         @endif
                         <div class="card-header align-items-center  d-flex flex-column flex-sm-row">
-                            <h4 class="card-title mb-0 text-start flex-grow-1">Vehicle Stock</h4>
+                            @php
+                                $urlvalue = basename(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
+                                // echo $urlvalue;
+                                $cardTitle = '';
+
+                                if ($urlvalue == 0) {
+                                    $cardTitle = "In Stock";
+                                } elseif ($urlvalue == 1) {
+                                    $cardTitle = "Out of Stock";
+                                } elseif ($urlvalue == 2) {
+                                    $cardTitle = "Returned Vehicles";
+                                }
+                                @endphp
+                                <h4 class="card-title mb-0 text-start flex-grow-1" id="card-title">
+                                    {{ $cardTitle }}
+                                </h4>
                             <div class="">
                                 <form action="{{ route('import.excel') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
@@ -145,8 +160,8 @@ RAM🚩------------------------------------------------------------- --}}
                                             <span class="{{ $Statusclass }}">{{ $Status }}</span>
                                         </td>
                                         <td>
-                                            <a href="#"><button class="btn btn-outline-danger btn-sm"
-                                                    id="sa-warning{{ $row->id }}"><i
+                                            <a href="#"><button class="btn btn-outline-danger btn-sm  delete-button"
+                                                    id="sa-warning{{ $row->id }}" data-id="{{ $row->id }}"><i
                                                         class="bx bxs-trash"></i></button></a>
                                         </td>
                                     </tr>
@@ -165,25 +180,28 @@ RAM🚩------------------------------------------------------------- --}}
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            @foreach($exceldata as $row)
-            document.getElementById("sa-warning{{ $row->id }}").addEventListener("click", function() {
-                Swal.fire({
-                    title: "Are you sure?"
-                    , text: "You want to delete....?"
-                    , icon: "warning"
-                    , showCancelButton: true
-                    , confirmButtonClass: "btn btn-primary w-xs me-2 mt-2"
-                    , cancelButtonClass: "btn btn-danger w-xs mt-2"
-                    , confirmButtonText: '<a href="/deletestock/{{ $row->id }}" class="text-white">Yes, delete it!</a>'
-                    , buttonsStyling: false
-                    , showCloseButton: true
-                , });
-            });
-            @endforeach
-        });
+        $(document).ready(function() {
+            // $('#example').DataTable();
 
+            // dynamically delete of pop up
+            $(document).on('click', '.delete-button', function() {
+                var recordId = $(this).data('id');
+                console.log(recordId);
+                Swal.fire({
+                    title: "Are you sure?",
+                    text: "You want to delete....?",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonClass: "btn btn-primary w-xs me-2 mt-2",
+                    cancelButtonClass: "btn btn-danger w-xs mt-2",
+                    confirmButtonText: '<a href="/deletestock/' + recordId + '" class="text-white">Yes, delete it!</a>',
+                    buttonsStyling: false,
+                    showCloseButton: true,
+                });
+            });
+        });
     </script>
+
     <script>
         $(document).ready(function() {
             // Initialize DataTables for each table
@@ -203,17 +221,17 @@ RAM🚩------------------------------------------------------------- --}}
                 console.log(dateto);
 
                 $.ajax({
-                    url: '/datefilteroutofstock'
-                    , method: 'POST'
-                    , data: {
-                        datefrom: datefrom
-                        , dateto: dateto
-                        , status: value
-                    , }
-                    , headers: {
+                    url: '/datefilteroutofstock',
+                    method: 'POST',
+                    data: {
+                        datefrom: datefrom,
+                        dateto: dateto,
+                        status: value,
+                    },
+                    headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    }
-                    , success: function(response) {
+                    },
+                    success: function(response) {
                         console.log(response);
                         dataTableCustomer.clear()
                             .destroy(); // Properly destroy the existing DataTable instance
@@ -221,9 +239,9 @@ RAM🚩------------------------------------------------------------- --}}
                         response.forEach(function(row, index) {
                             var formattedDate = new Date(row.created_at)
                                 .toLocaleDateString('en-GB', {
-                                    day: 'numeric'
-                                    , month: 'short'
-                                    , year: 'numeric'
+                                    day: 'numeric',
+                                    month: 'short',
+                                    year: 'numeric'
                                 });
                             var Status = '';
                             var Statusclass = '';
@@ -259,7 +277,7 @@ RAM🚩------------------------------------------------------------- --}}
                             </td>
                             <td>
                             <a href="#"><button class="btn btn-outline-danger btn-sm"
-                                id="">delete</button></a>
+                                id="sa-warning${row.id}">delete</button></a>
                             </td>
                         </tr>
                     `;
@@ -273,14 +291,13 @@ RAM🚩------------------------------------------------------------- --}}
                                 }
                             }
                         });
-                    }
-                    , error: function(error) {
+                    },
+                    error: function(error) {
                         console.error(error);
                     }
                 });
             });
         });
-
     </script>
     <script>
         $(document).ready(function() {
@@ -293,25 +310,24 @@ RAM🚩------------------------------------------------------------- --}}
 
                 //Updating Lead Status
                 $.ajax({
-                    url: '/updateleadstatus'
-                    , method: 'POST'
-                    , data: {
-                        status: selectedStatus
-                        , record_id: leadid
-                    }
-                    , headers: {
+                    url: '/updateleadstatus',
+                    method: 'POST',
+                    data: {
+                        status: selectedStatus,
+                        record_id: leadid
+                    },
+                    headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    }
-                    , success: function(response) {
+                    },
+                    success: function(response) {
                         console.log(response);
-                    }
-                    , error: function(error) {
+                    },
+                    error: function(error) {
                         console.error(error);
                     }
                 });
             });
         });
-
     </script>
     <script>
         setTimeout(function() {
@@ -321,6 +337,5 @@ RAM🚩------------------------------------------------------------- --}}
         setTimeout(function() {
             $('#dangerAlert').fadeOut('slow');
         }, 2000);
-
     </script>
 </x-app-layout>

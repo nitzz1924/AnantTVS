@@ -74,10 +74,10 @@
                                     <th scope="col">Customer Name</th>
                                     <th scope="col">Phone Number</th>
                                     <th scope="col">Vehicle</th>
-                                    <th scope="col">HSRP Status</th>
                                     <th scope="col">Chassiss Number</th>
                                     <th scope="col">Color</th>
                                     <th scope="col">RC-Number</th>
+                                    <th scope="col">HSRP Status</th>
                                     <th scope="col">Invoice-Number</th>
                                     <th scope="col">Insurance-ID</th>
                                 </tr>
@@ -90,10 +90,10 @@
                                     <td>{{ $row->customername }}</td>
                                     <td>{{ $row->customerphoneno }}</td>
                                     <td>{{ $row->vehicle_id }}</td>
-                                    <td>{{ $row->numberplatestatus }}</td>
                                     <td>{{ $row->chassisnumber }}</td>
                                     <td>{{ $row->color }}</td>
                                     <td>{{ $row->rcnumber }}</td>
+                                    <td>{{ $row->numberplatestatus }}</td>
                                     <td>{{ $row->invoicenumber }}</td>
                                     <td>{{ $row->insuranceid }}</td>
                                 </tr>
