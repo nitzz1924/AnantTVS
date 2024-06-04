@@ -169,10 +169,13 @@ class StoreController extends Controller
 
     public function createbuyvehicle(Request $req)
     {
-
+        // dd($req->all());
         try {
             $req->validate([
-                'chassisnumber' => 'unique:buy_vehicles',
+                'chassisnumber' => 'required|unique:buy_vehicles,chassisnumber',
+                'uploadrc' => 'file|mimes:jpg,jpeg,png',
+                'uploadinvoice' => 'file|mimes:jpg,jpeg,png',
+                'uploadinsurance' => 'file|mimes:jpg,jpeg,png',
             ]);
             $imagePath = null;
             $imagePathinvoice = null;
@@ -194,6 +197,7 @@ class StoreController extends Controller
                 $imagePathinsurance = time() . '.' . $image->getClientOriginalExtension();
                 $image->move(public_path('uploads'), $imagePathinsurance);
             }
+
             BuyVehicle::create([
                 'customer_id' => $req->customerid,
                 'vehicle_id' => $req->vehiclemodal,

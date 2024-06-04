@@ -99,7 +99,7 @@ class ViewController extends Controller
         $masterdata = Master::where('type', '=', 'vehicle')->get();
         $mastercolor = Master::where('type', '=', 'color')->get();
         $vehicleid = Vehicle::pluck('id');
-        $exceldata = VehicleStock::get();
+        $exceldata = VehicleStock::where('status', '=', '0')->get();
         // dd($vehicleid);
         return view('buyvehicle', compact('masterdata', 'mastercolor', 'customerid', 'vehicleid', 'exceldata'));
     }
