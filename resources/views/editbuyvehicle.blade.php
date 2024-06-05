@@ -91,8 +91,8 @@
                                                             RC</label>
                                                         <input type="file" class="form-control" id="image"
                                                             placeholder="enter color" name="uploadrc">
-                                                        <input type="hidden" name="vehicleid"
-                                                            value="{{ $row->vehicle_id }}">
+                                                        <input type="hidden" name="chassisnumber"
+                                                            value="{{ $row->chassisnumber }}">
                                                     </div>
                                                 </div>
                                             </div>

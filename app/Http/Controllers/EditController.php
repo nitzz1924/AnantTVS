@@ -42,7 +42,7 @@ class EditController extends Controller
 
     public function updatedocuments(Request $request)
     {
-        // dd($request->all());
+        //dd($request->all());
         $imagePath = null;
         $imagePathinvoice = null;
         $imagePathinsurance = null;
@@ -64,7 +64,7 @@ class EditController extends Controller
             $image->move(public_path('uploads'), $imagePathinsurance);
         }
         try {
-            BuyVehicle::where('vehicle_id', $request->vehicleid)->update([
+            BuyVehicle::where('chassisnumber', $request->chassisnumber)->update([
                 'rcnumber' => $request->rcnumber,
                 'rcimage' => $imagePath,
                 'invoicenumber' => $request->invoicenumber,
