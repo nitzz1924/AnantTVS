@@ -50,17 +50,18 @@ class EditController extends Controller
         //Images Uploading
         if ($request->hasFile('uploadrc')) {
             $image = $request->file('uploadrc');
-            $imagePath = time() . '.' . $image->getClientOriginalExtension();
+            // $imagePath = 'RC-' . time() . '.' . $image->getClientOriginalExtension();
+            $imagePath = 'RC-' . $image->getClientOriginalName();
             $image->move(public_path('uploads'), $imagePath);
         }
         if ($request->hasFile('uploadinvoice')) {
             $image = $request->file('uploadinvoice');
-            $imagePathinvoice = time() . '.' . $image->getClientOriginalExtension();
+            $imagePathinvoice = 'Invoice-' . $image->getClientOriginalName();
             $image->move(public_path('uploads'), $imagePathinvoice);
         }
         if ($request->hasFile('uploadinsurance')) {
             $image = $request->file('uploadinsurance');
-            $imagePathinsurance = time() . '.' . $image->getClientOriginalExtension();
+            $imagePathinsurance = 'Insurance-' . $image->getClientOriginalName();
             $image->move(public_path('uploads'), $imagePathinsurance);
         }
         try {

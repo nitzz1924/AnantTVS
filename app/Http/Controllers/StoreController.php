@@ -169,13 +169,13 @@ class StoreController extends Controller
 
     public function createbuyvehicle(Request $req)
     {
-        // dd($req->all());
+        //dd($req->all());
         try {
             $req->validate([
                 'chassisnumber' => 'required|unique:buy_vehicles,chassisnumber',
-                'uploadrc' => 'file|mimes:jpg,jpeg,png',
-                'uploadinvoice' => 'file|mimes:jpg,jpeg,png',
-                'uploadinsurance' => 'file|mimes:jpg,jpeg,png',
+                'uploadrc' => 'file|mimes:jpg,jpeg,png,pdf',
+                'uploadinvoice' => 'file|mimes:jpg,jpeg,png,pdf',
+                'uploadinsurance' => 'file|mimes:jpg,jpeg,png,pdf',
             ]);
             $imagePath = null;
             $imagePathinvoice = null;
