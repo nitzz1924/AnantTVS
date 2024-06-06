@@ -231,6 +231,34 @@ RAM🚩------------------------------------------------------------- --}}
 </script>
 
 <script>
+    function getFileDisplayHTML(filename, type) {
+            let fileExtension = filename ? filename.split('.').pop().toLowerCase() : '';
+            let fileDisplayHTML = '';
+            console.log(filename);
+            if (filename) {
+                if (['jpg', 'jpeg', 'png', 'gif', 'bmp'].includes(fileExtension)) {
+                    fileDisplayHTML = `<img src="/uploads/${filename}" alt="${type} Thumbnail" class="" height="250px">`;
+                } else if (fileExtension === 'pdf') {
+                    fileDisplayHTML = `<embed src="/uploads/${filename}" type="application/pdf" width="100%" height="250px" />`;
+                }
+                message = "Download";
+                stylemsg = " btn-soft-success ";
+            } else {
+                if (['jpg', 'jpeg', 'png', 'gif', 'bmp'].includes(fileExtension)) {
+                    fileDisplayHTML = `<img src="/uploads/${filename}" alt="${type} Thumbnail" class="" height="250px">`;
+                } else if (fileExtension === 'pdf') {
+                    fileDisplayHTML = `<embed src="/uploads/${filename}" type="application/pdf" width="100%" height="250px" />`;
+                }
+                message = "Not Available yet";
+                stylemsg = " btn-soft-danger ";
+            }
+
+            return {
+                fileDisplayHTML
+                , message,
+                stylemsg
+            };
+        }
     $(document).ready(function() {
         $('.viemorebtn').on('click', function() {
             var recordId = $(this).data('record-id');
@@ -240,13 +268,16 @@ RAM🚩------------------------------------------------------------- --}}
             var modalbody = '';
 
                 buyVehiclesData.forEach(function(value) {
+                    console.log(value);
                     if (value.chassisnumber === chassiss) {
+                        let rcFileDisplayHTML = getFileDisplayHTML(value.rcimage, 'RC');
+                        let invoiceFileDisplayHTML = getFileDisplayHTML(value.invoiceimage, 'Invoice');
+                        let insuranceFileDisplayHTML = getFileDisplayHTML(value.insuranceimage, 'Insurance');
                         modalbody += `
 
                     <div class="row">
                         <div class="card">
                             <div class="mt-4">
-                                <h4 class="text-black-fw-bold mb-3">Download Vehicle Documents</h4>
                                 <div class="row">
                                     <div class="col-lg-4">
                                         <div class="card border border-1">
@@ -254,9 +285,11 @@ RAM🚩------------------------------------------------------------- --}}
                                                 <h4 class="card-title mb-0 text-center">RC Document</h4>
                                             </div>
                                             <div class="card-body">
-                                                        <h5 class="card-title text-center">${value.rcimage}</h5>
+                                                <div class="p-2 mt-3 ">
+                                                    ${rcFileDisplayHTML.fileDisplayHTML}
+                                                </div>
                                                         <div class="d-flex justify-content-center mt-2">
-                                                            <a href="/uploads/${value.rcimage}" class="btn btn-soft-success waves-effect waves-light btn-sm" download="RC">Download</a>
+                                                            <a href="/uploads/${value.rcimage}" class="btn ${rcFileDisplayHTML.stylemsg} waves-effect waves-light btn-sm" download="RC">${rcFileDisplayHTML.message}</a>
                                                         </div>
                                             </div>
                                         </div>
@@ -267,9 +300,11 @@ RAM🚩------------------------------------------------------------- --}}
                                                 <h4 class="card-title mb-0 text-center">Invoice Document</h4>
                                             </div>
                                             <div class="card-body">
-                                                        <h5 class="card-title text-center">${value.invoiceimage}</h5>
+                                                <div class="p-2 mt-3">
+                                                    ${invoiceFileDisplayHTML.fileDisplayHTML}
+                                                </div>
                                                         <div class="d-flex justify-content-center mt-2">
-                                                            <a href="/uploads/${value.invoiceimage}" class="btn btn-soft-success waves-effect waves-light btn-sm" download="Invoice">Download</a>
+                                                            <a href="/uploads/${value.invoiceimage}" class="btn ${invoiceFileDisplayHTML.stylemsg} waves-effect waves-light btn-sm" download="Invoice">${invoiceFileDisplayHTML.message}</a>
                                                         </div>
                                             </div>
                                         </div>
@@ -280,9 +315,11 @@ RAM🚩------------------------------------------------------------- --}}
                                                 <h4 class="card-title mb-0 text-center">Insurance Document</h4>
                                             </div>
                                             <div class="card-body">
-                                                        <h5 class="card-title text-center">${value.insuranceimage}</h5>
+                                                <div class="p-2 mt-3">
+                                                    ${insuranceFileDisplayHTML.fileDisplayHTML}
+                                                </div>
                                                         <div class="d-flex justify-content-center mt-2">
-                                                            <a href="/uploads/${value.insuranceimage}" class="btn btn-soft-success waves-effect waves-light btn-sm" download="Insurance">Download</a>
+                                                            <a href="/uploads/${value.insuranceimage}" class="btn ${insuranceFileDisplayHTML.stylemsg} waves-effect waves-light btn-sm" download="Insurance">${insuranceFileDisplayHTML.message}</a>
                                                         </div>
                                             </div>
                                         </div>
