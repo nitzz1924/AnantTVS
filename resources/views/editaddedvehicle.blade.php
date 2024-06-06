@@ -106,7 +106,7 @@
 
                                                     <div class="p-2 mt-3 border border-1 card">
                                                         @if ($row->bannerimage)
-                                                            <img src="{{ asset('uploads/vehicle/' . $row->bannerimage) }}"
+                                                            <img src="{{ asset('uploads/' . $row->bannerimage) }}"
                                                                 alt="Thumbnail" class="img-fluid" id="blah">
                                                         @endif
                                                     </div>

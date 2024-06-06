@@ -7,6 +7,7 @@ use App\Models\Vehicle;
 use App\Models\Master;
 use Illuminate\Http\Request;
 use App\Models\Customer;
+
 class EditController extends Controller
 {
     public function editcustomer($id)
@@ -65,14 +66,27 @@ class EditController extends Controller
             $image->move(public_path('uploads'), $imagePathinsurance);
         }
         try {
-            BuyVehicle::where('chassisnumber', $request->chassisnumber)->update([
+            $updateData = [
                 'rcnumber' => $request->rcnumber,
-                'rcimage' => $imagePath,
                 'invoicenumber' => $request->invoicenumber,
-                'invoiceimage' => $imagePathinvoice,
                 'insuranceid' => $request->insuranceid,
-                'insuranceimage' => $imagePathinsurance,
-            ]);
+            ];
+
+            // Conditionally add to the update array
+            if ($imagePath !== null) {
+                $updateData['rcimage'] = $imagePath;
+            }
+
+            if ($imagePathinvoice !== null) {
+                $updateData['invoiceimage'] = $imagePathinvoice;
+            }
+
+            if ($imagePathinsurance !== null) {
+                $updateData['insuranceimage'] = $imagePathinsurance;
+            }
+            // Perform the update
+            BuyVehicle::where('chassisnumber', $request->chassisnumber)->update($updateData);
+
             return back()->with('success', "Updated..!!!");
         } catch (\Exception $e) {
             return back()->with('error', "Not Updated.! Try Again..");
@@ -107,7 +121,7 @@ class EditController extends Controller
         $masterdata = Master::where('type', '=', 'Vehicle')->get();
         $masterdatacolor = Master::where('type', '=', 'color')->get();
         // dd($vehicles);
-        return view('editaddedvehicle', compact('vehicles','masterdatacolor'));
+        return view('editaddedvehicle', compact('vehicles', 'masterdatacolor'));
     }
 
     public function updatevehicle(Request $request)
@@ -122,13 +136,13 @@ class EditController extends Controller
 
         // Mutiple image upload
         $image = array();
-        if($files = $request->file('image')){
+        if ($files = $request->file('image')) {
             foreach ($files as $file) {
                 $image_name = md5(rand(1000, 10000));
                 $extension = strtolower($file->getClientOriginalExtension());
-                $image_fullname = $image_name.'.'.$extension;
+                $image_fullname = $image_name . '.' . $extension;
                 $uploaded_path = "public/uploads/vehicle/";
-                $image_url = $uploaded_path.$image_fullname;
+                $image_url = $uploaded_path . $image_fullname;
                 $file->move($uploaded_path, $image_fullname);
                 $image[] = $image_url;
             }
@@ -141,19 +155,19 @@ class EditController extends Controller
             : ($vehiclesdata->image == null
                 ? $slideimgs
                 : $slideimgs . ',' . $vehiclesdata->image);
-        try{
+        try {
 
-            Vehicle::where('id',$request->vehicleid)->update([
-                'name'=>$request->name,
-                'modelno'=>$request->modelno,
-                'price'=>$request->price,
-                'discription'=>$request->discription,
-                'color'=>$request->colors,
-                'bannerimage' => $imagePath==null?$request->pbannerimg:$imagePath,
+            Vehicle::where('id', $request->vehicleid)->update([
+                'name' => $request->name,
+                'modelno' => $request->modelno,
+                'price' => $request->price,
+                'discription' => $request->discription,
+                'color' => $request->colors,
+                'bannerimage' => $imagePath == null ? $request->pbannerimg : $imagePath,
                 'image' => $allstrings,
             ]);
             return back()->with('success', 'Vehicle Updated..!!');
-        }catch (\Exception $v) {
+        } catch (\Exception $v) {
             return redirect()->route('vieweditaddedvehicle')->with('error', 'Not Updated Try Again...');
         }
     }

@@ -34,9 +34,8 @@
                             <h4 class="card-title mb-0 flex-grow-1">Edit Vehicle</h4>
                             {{-- <div class="flex-shrink-0">
                                 <div class="form-check form-switch form-switch-right form-switch-md">
-                                    <a href=""><button
-                                            type="button"class="btn btn-primary waves-effect waves-light btn-sm">Show
-                                            Vehicles</button></a>
+                                    <a href="{{ url()->previous() }}"><button
+                                            type="button"class="btn btn-info waves-effect waves-light btn-sm">Go Back</button></a>
                                 </div>
                             </div> --}}
                         </div><!-- end card header -->
@@ -94,6 +93,21 @@
                                                         <input type="hidden" name="chassisnumber"
                                                             value="{{ $row->chassisnumber }}">
                                                     </div>
+                                                    <div class="p-2 mt-3 border border-1 card">
+                                                        @if ($row->rcimage)
+                                                            @php
+                                                                $fileExtension = pathinfo($row->rcimage, PATHINFO_EXTENSION);
+                                                                // echo PATHINFO_EXTENSION;
+                                                            @endphp
+
+                                                            @if (in_array(strtolower($fileExtension), ['jpg', 'jpeg', 'png', 'gif', 'bmp']))
+                                                                <img src="{{ asset('uploads/' . $row->rcimage) }}" alt="Thumbnail" class="" height="400px">
+                                                            @elseif (strtolower($fileExtension) == 'pdf')
+                                                                <embed src="{{ asset('uploads/' . $row->rcimage) }}" type="application/pdf" width="100%" height="400px" />
+                                                            @endif
+                                                        @endif
+                                                    </div>
+
                                                 </div>
                                             </div>
                                             <div class="col-lg-4  card p-2 border border-2">
@@ -108,6 +122,19 @@
                                                             Document</label>
                                                         <input type="file" class="form-control" id="image"
                                                             placeholder="enter color" name="uploadinvoice">
+                                                    </div>
+                                                    <div class="p-2 mt-3 border border-1 card">
+                                                        @if ($row->invoiceimage)
+                                                            @php
+                                                                $fileExtension = pathinfo($row->invoiceimage, PATHINFO_EXTENSION);
+                                                            @endphp
+
+                                                            @if (in_array(strtolower($fileExtension), ['jpg', 'jpeg', 'png', 'gif', 'bmp']))
+                                                                <img src="{{ asset('uploads/' . $row->invoiceimage) }}" alt="Thumbnail" class="" height="400px">
+                                                            @elseif (strtolower($fileExtension) == 'pdf')
+                                                                <embed src="{{ asset('uploads/' . $row->invoiceimage) }}" type="application/pdf" width="100%" height="400px" />
+                                                            @endif
+                                                        @endif
                                                     </div>
                                                 </div>
                                             </div>
@@ -124,6 +151,19 @@
                                                             Document</label>
                                                         <input type="file" class="form-control" id="image"
                                                             placeholder="enter color" name="uploadinsurance">
+                                                    </div>
+                                                    <div class="p-2 mt-3 border border-1 card">
+                                                        @if ($row->insuranceimage)
+                                                            @php
+                                                                $fileExtension = pathinfo($row->insuranceimage, PATHINFO_EXTENSION);
+                                                            @endphp
+
+                                                            @if (in_array(strtolower($fileExtension), ['jpg', 'jpeg', 'png', 'gif', 'bmp']))
+                                                                <img src="{{ asset('uploads/' . $row->insuranceimage) }}" alt="Thumbnail" class="" height="400px">
+                                                            @elseif (strtolower($fileExtension) == 'pdf')
+                                                                <embed src="{{ asset('uploads/' . $row->insuranceimage) }}" type="application/pdf" width="100%" height="400px" />
+                                                            @endif
+                                                        @endif
                                                     </div>
                                                 </div>
                                             </div>
