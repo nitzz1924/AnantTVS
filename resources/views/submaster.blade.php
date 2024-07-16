@@ -1,4 +1,5 @@
-{{-- -----------------------------------------------🙏JAI SHREE RAM🚩------------------------------------------------------------- --}}
+{{-- -----------------------------------------------🙏JAI SHREE
+RAM🚩------------------------------------------------------------- --}}
 <x-app-layout>
     <div class="page-content">
         <div class="container-fluid">
@@ -43,7 +44,7 @@
                                                     aria-label="Default select example" id="subcategory">
                                                     <option value="">select master category</option>
                                                     @foreach ($masterdata as $row)
-                                                        <option value="{{ $row->label }}">{{ $row->label }}</option>
+                                                    <option value="{{ $row->label }}">{{ $row->label }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -80,14 +81,14 @@
                 <div class="col-lg-12">
                     <div class="card">
                         @if ($message = Session::get('success'))
-                            <div class="alert border-0 alert-success text-center" role="alert" id="successAlert">
-                                <strong>{{ $message }}</strong>
-                            </div>
+                        <div class="alert border-0 alert-success text-center" role="alert" id="successAlert">
+                            <strong>{{ $message }}</strong>
+                        </div>
                         @endif
                         @if ($message = Session::get('failure'))
-                            <div class="alert border-0 alert-danger text-center" role="alert" id="dangerAlert">
-                                <strong>{{ $message }}</strong>
-                            </div>
+                        <div class="alert border-0 alert-danger text-center" role="alert" id="dangerAlert">
+                            <strong>{{ $message }}</strong>
+                        </div>
                         @endif
                         <div class="card-body">
                             <table class="table table-nowrap table-bordered text-center">
@@ -126,7 +127,7 @@
             var selectedCat = $(this).val();
             console.log(selectedCat);
             $.ajax({
-                type: 'GET'sideimages-container,
+                type: 'GET',
                 url: '/getmastercatajax/' + selectedCat,
                 success: function(data) {
                     console.log(data);

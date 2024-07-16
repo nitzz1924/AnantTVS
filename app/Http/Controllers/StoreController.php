@@ -136,7 +136,7 @@ class StoreController extends Controller
         try {
             $req->validate([
                 'customername' => 'required',
-                'customerphoneno' => 'required',
+                'customerphoneno' => 'required|unique:customers',
                 'customeremailaddress' => 'required|email|unique:customers',
                 'customercity' => 'required',
                 'customerstate' => 'required',

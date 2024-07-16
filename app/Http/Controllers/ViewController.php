@@ -99,7 +99,7 @@ class ViewController extends Controller
         $masterdata = Master::where('type', '=', 'vehicle')->get();
         $mastercolor = Master::where('type', '=', 'color')->get();
         $vehicleid = Vehicle::pluck('id');
-        $exceldata = VehicleStock::where('status', '=', '0')->get();
+        $exceldata = VehicleStock::where('status', '=', '0')->orWhere('status', '=', '2')->get();
         // dd($vehicleid);
         return view('buyvehicle', compact('masterdata', 'mastercolor', 'customerid', 'vehicleid', 'exceldata'));
     }
@@ -144,7 +144,6 @@ class ViewController extends Controller
     }
 
     //WEBSITE VIEWS
-
     public function frontendhomepage()
     {
         $allvehicles = Vehicle::paginate(4);
@@ -222,8 +221,9 @@ class ViewController extends Controller
 
     public function showstockdetails($selectedValue)
     {
-        $stockdata = VehicleStock::where('frameno', $selectedValue)->where('status', '=', 0)->get();
-        // dd($stockdata);
+        $stockdata = VehicleStock::where('frameno', $selectedValue)->where('status', '=', 0)->orWhere('status', '=', '2')->get();
+        // dd($stockdata);$exceldata = VehicleStock::where('status', '=', '0')->orWhere('status', '=', '2')->get();
+
         if ($stockdata->isEmpty()) {
             return response()->json(['error' => 'No stock data found'], 404);
         }
